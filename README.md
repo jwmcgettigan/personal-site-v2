@@ -1,1 +1,1 @@
-# jwmcgettigan.com
+# personal-site
