@@ -6,10 +6,10 @@ import Info from './Info';
 import Projects from './Projects';
 import Skills from './Skills';
 
-import resume from '../data/resume';
+import resume from '../../data/resume';
 
-const Document = () => (
-  <main>
+const Resume = () => (
+  <div id="document">
     <div className="left">
       <Info basics={resume.basics}/><br/>
       <Skills skills={resume.skills}/><br/>
@@ -20,7 +20,7 @@ const Document = () => (
       <Experience experience={resume.work}/><br/>
       <Projects projects={resume.publications}/>
     </div>
-  </main>
+  </div>
 );
 
-export default Document;
+export default Resume;

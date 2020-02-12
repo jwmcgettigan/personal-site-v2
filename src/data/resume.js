@@ -7,7 +7,7 @@ const resume = {
     "email": "jwmcgettigan@gmail.com",
     "phone": "",
     "website": "https://jwmcgettigan.com",
-    "summary": "Curious minded CS graduate seeking a software engineering position with an inclination towards computer vision and machine learning.",
+    "summary": "Curious minded CS graduate seeking a software engineering position with a passion for computer vision and machine learning.",
     "location": {
       "address": "",
       "postalCode": "",

@@ -1,0 +1,33 @@
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: black;
+  color: white; 
+  text-decoration: none;
+  padding: 13.5px;
+  font-family: Roboto Mono;
+  font-size: 1.75rem;
+
+  div {
+    display: flex;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 1.5rem;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  #social-links {
+    margin-right: 1.5rem;
+  }
+}

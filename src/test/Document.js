@@ -1,5 +1,5 @@
 import { renderToString } from 'react-dom/server';
-import Document from '../Components/Document';
+import Document from '../Components/Document/Document';
 import Style from '../scss/style.scss'
 
 const Renderer = require('@pdftron/web-to-pdf');

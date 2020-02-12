@@ -1,5 +1,5 @@
 import React from 'react';
-import FlPolyLogo from '../assets/flpolylogo.svg'
+import FlPolyLogo from '../../assets/FloridaPoly.svg'
 
 const Education = ({education}) => (
   <section id="education">

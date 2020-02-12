@@ -9,6 +9,7 @@
 
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
 $font-stack: Roboto, sans-serif;
 
 $palette: (
@@ -31,5 +32,6 @@ a, a:hover {
 
 body {
   font: 11px $font-stack;
-  color: map-get($palette, text-normal)
+  color: map-get($palette, text-normal);
+  margin: 0;
 }
