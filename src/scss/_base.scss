@@ -1,0 +1,35 @@
+//_base.scss
+
+@mixin font-face($name, $path) {
+  @font-face {
+    font-family: $name;
+    src: url($path);
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+$font-stack: Roboto, sans-serif;
+
+$palette: (
+  background-primary: #424242,//#36393f,
+  background-secondary: #303030,//#2f3136,
+  background-tertiary: #212121,//#202225,
+  background-quaternary: #000000,
+  text-normal: #333333,
+  text-middle: #575757,
+  text-muted: #888888,
+  text-title: #4d89ff
+);
+
+a, a:hover {
+  text-decoration: none;
+  color: inherit;
+} a:hover {
+  color: map-get($palette, text-title)
+}
+
+body {
+  font: 11px $font-stack;
+  color: map-get($palette, text-normal)
+}
