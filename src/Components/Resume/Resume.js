@@ -6,10 +6,11 @@ import Info from './Info';
 import Projects from './Projects';
 import Skills from './Skills';
 
-import resume from '../../data/resume';
+import resume from '../../data/resumeV2';
+import './_Resume.scss';
 
 const Resume = () => (
-  <div id="document">
+  <div id="resume">
     <div className="left">
       <Info basics={resume.basics}/><br/>
       <Skills skills={resume.skills}/><br/>

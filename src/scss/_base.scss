@@ -30,8 +30,15 @@ a, a:hover {
   color: map-get($palette, text-title)
 }
 
-body {
-  font: 11px $font-stack;
+html,
+body,
+#root {
+  font: 100% $font-stack;
   color: map-get($palette, text-normal);
+  height: 100%;
+  //margin: 0;
+}
+
+* {
   margin: 0;
 }

@@ -1,29 +1,28 @@
 import React from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {library, icon as getIcon} from '@fortawesome/fontawesome-svg-core';
-import {fas, faEnvelope, faMapMarkerAlt, faGlobe} from '@fortawesome/free-solid-svg-icons';
-//import {far} from '@fortawesome/free-regular-svg-icons';
-import {fab} from '@fortawesome/free-brands-svg-icons';
-library.add(fab)
+import * as Icons from 'react-icons/fa';
+import links from '../../data/links';
 
-const Link = ({text, icon, link}) => (
-  <a href={link} target="_blank" rel="noopener noreferrer">
-    <span className="icon">{icon}</span><span className="text">{text}</span>
-  </a>
-)
+const Link = ({url, text, icon}) => {
+  const Icon = Icons[icon.type]
+  return (
+    <a href={url}>
+      <span className="icon" title={text}><Icon color={icon.color}/></span><span className="text">{text}</span>
+    </a>
+  )
+}
 
-const Icon = ({icon}) => (
-  <FontAwesomeIcon icon={getIcon({prefix: icon.prefix, iconName: icon.name})}/>
-)
+const resume = links.resume
 
 const Info = ({basics}) => (
   <section id="info">
-    <h1>{basics.name.toUpperCase().split(' ')[0]} <span>{basics.name.toUpperCase().split(' ')[1]}</span></h1>
-    <Link text={basics.website.substring(8)} icon={<FontAwesomeIcon icon={faGlobe}/>} link={basics.website}/>
-    <Link text={basics.email} icon={<FontAwesomeIcon icon={faEnvelope}/>} link={'mailto:' + basics.email}/>
-    <Link text={basics.location.city + ', ' + basics.location.region} icon={<FontAwesomeIcon icon={faMapMarkerAlt}/>} link=""/>
-    {basics.profiles.map((profile, index) => (
-      <Link key={index} text={profile.network} icon={<Icon icon={profile.icon}/>} link={profile.url}/>
+    <h1>
+      JUSTIN<br/><span>MCGETTIGAN</span>
+    </h1>
+    <Link url={resume.website.url} text={resume.website.text} icon={resume.website.icon}/>
+    <Link url={resume.email.url} text={resume.email.text} icon={resume.email.icon}/>
+    <Link url={resume.location.url} text={resume.location.text} icon={resume.location.icon}/>
+    {resume.profiles.map((profile, index) => (
+      <Link key={index} url={profile.url} text={profile.network} icon={profile.icon}/>
     ))}
     <p>{basics.summary}</p>
   </section>

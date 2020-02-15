@@ -6,7 +6,9 @@ const Education = ({education}) => (
     <h1>EDUCATION</h1>
     {education.map((school, index) => (
       <p key={index}>
-        <img src={FlPolyLogo} alt="Florida Poly Logo"/> {school.institution + ' (Florida Poly)'}<br/>
+        <a href={school.url}>
+          <img src={FlPolyLogo} alt="Florida Poly Logo"/> {school.institution + ' (Florida Poly)'}<br/>
+        </a>
         <span>
           {school.area + ' | GPA: ' + school.gpa}<br/>
           {school.startDate + ' - ' + school.endDate}

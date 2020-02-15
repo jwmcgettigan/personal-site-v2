@@ -1,7 +1,33 @@
 //style.scss
 @import 'base';
-@import 'document';
+
+#root {
+  display: grid;
+  grid-template-rows: min-content auto min-content;
+}
 
 main {
-  
+  background-color: map-get($palette, background-secondary);
+  //height: 92.8vh;
+
+  font-family: Roboto;
+  color: white;
+  display: grid;
+  grid-template-columns: min-content auto;
+
+  .home-left {
+    display: grid;
+    grid-template-rows: min-content auto;
+    //grid-row-gap: 2rem;
+    border-right: 1px solid map-get($palette, background-primary);
+    padding: 2rem;
+    color: black;
+  }
+
+  .home-right {
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 2rem;
+    padding: 2rem;
+  }
 }

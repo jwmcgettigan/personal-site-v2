@@ -1,0 +1,20 @@
+@import '../../scss/base';
+
+.resume-background {
+  display: grid;
+  grid-template-rows: min-content auto;
+  background-color: map-get($palette, background-tertiary);
+  
+  main {
+    all: unset;
+    display: grid;
+    grid-template-columns: auto min-content auto auto;
+  }
+
+  iframe {
+    width: 97%;
+    height: 97%;
+    border: 0;
+    padding: 1.5%;
+  }
+}

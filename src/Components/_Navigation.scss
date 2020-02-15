@@ -1,15 +1,19 @@
+@import '../scss/base';
 
 header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  background-color: black;
+  background-color: map-get($palette, background-quaternary);
   color: white; 
   text-decoration: none;
   padding: 13.5px;
   font-family: Roboto Mono;
   font-size: 1.75rem;
+
+  // not sure about this \/ \/ \/
+  border-bottom: 1px solid map-get($palette, background-primary);
 
   div {
     display: flex;
@@ -29,5 +33,8 @@ header {
 
   #social-links {
     margin-right: 1.5rem;
+    a:hover {
+      transform: scale(1.1);
+    }
   }
 }

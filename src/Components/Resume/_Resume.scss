@@ -1,12 +1,14 @@
-@import 'base';
+@import '../../scss/base';
 
-#document {
+#resume {
   display: flex;
   //height: 100%;
+  font-family: Roboto;
   justify-content: center;
   align-content: center;
   width: 816px;
   height: 1056px;
+  color: map-get($palette, text-normal);
   border: 1px solid black;
 
   h1 {
@@ -14,7 +16,11 @@
     border-bottom: 4px solid map-get($palette, text-title);
     margin: 0;
     font-size: 26.6667px;
-    margin-top: 12px;
+    margin-top: 8px;
+  }
+
+  section:hover {
+    //border: 1px solid black;
   }
   
   p, h4, ul {
@@ -26,7 +32,6 @@
     padding: 1rem;
     width: 228px;
     width: min-content;
-    border-right: 1px solid white;
     background-color: #e7eaf0;
 
     #info {
@@ -39,22 +44,28 @@
         font-size: 29.3333px;
         color: black;
         border: none;
-        margin-top: 6px;
+        margin-top: 0;
         span {
           color: map-get($palette, text-muted);
         }
       }
       a {
         display: grid;
-        grid-template-columns: 15px auto;
+        grid-template-columns: 17px auto;
 
         .icon {
           text-align: center;
-          font-size: 14px;
+          font-size: 17px;
           color: black;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
         .text {
           margin-left: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
       p {
@@ -69,12 +80,15 @@
         span {
           font-size: 14.6667px;
         }
+      } p:hover {
+        //border: 1px solid black;
       }
     }
 
     #education {
       img {
         height: 1rem;
+        color: black;
       }
       p {
         font-size: 16px;
@@ -92,12 +106,16 @@
       font-size: 14.6667px;
       font-weight: bold;
       font-family: 'Roboto Slab';
+      span.interest:hover {
+        //border: 1px solid black;
+      }
     }
   }
   
   .right {
     padding: 1rem;
     width: 587px;
+    background-color: white;
 
     tr {
       display: flex;
@@ -106,7 +124,7 @@
     #experience {
       font-size: 14.6667px;
       h1 {
-        margin-top: 6px;
+        margin-top: 0;
       }
       h4 {
         display: grid;
@@ -125,6 +143,10 @@
       li {
         font-family: 'Roboto Slab';
         line-height: 1.4rem;
+      }
+      article:hover {
+        //transform: scale(1.025);
+        //border: 1px solid black;
       }
     }
 
@@ -154,6 +176,10 @@
           font-size: 14.6667px;
           font-family: 'Roboto Slab';
         }
+      }
+      .row:hover {
+        //transform: scale(1.025);
+        //border: 1px solid black;
       }
     }
   }
