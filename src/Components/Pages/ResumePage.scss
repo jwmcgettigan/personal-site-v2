@@ -1,0 +1,13 @@
+@import '../../scss/style';
+  
+#resume-page {
+  display: grid;
+  grid-template-columns: auto min-content auto;
+}
+
+iframe {
+  width: 97%;
+  height: 97%;
+  border: 0;
+  padding: 1.5%;
+}

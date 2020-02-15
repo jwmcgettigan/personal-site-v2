@@ -1,0 +1,71 @@
+@import '../../scss/style';
+
+#home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .home-left {
+    display: grid;
+    grid-template-rows: min-content auto;
+    grid-row-gap: 2rem;
+    padding: 13.5px;
+
+    #status {
+      //border: 3px solid map-get($palette, background-primary);
+      //border-radius: 6px;
+      background-color: map-get($palette, background-secondary);
+      padding: 13.5px;
+      border-radius: 2px;
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+      div {
+        border: 1px solid map-get($palette, text-title);
+        border-radius: 6px;
+        padding: 13.5px;
+      }
+    }
+  
+    #recent {
+      display: grid;
+      grid-template-rows: min-content auto;
+      background-color: map-get($palette, background-secondary);
+      padding: 13.5px;
+      border-radius: 2px;
+
+      h2 {
+        margin-bottom: 1rem;
+      }
+      div {
+        border: 1px solid map-get($palette, text-title);
+        border-radius: 6px;
+        padding: 13.5px;
+      }
+    }
+  }
+
+  .home-right {
+    display: grid;
+    padding: 13.5px;
+
+    #link-library {
+      display: grid;
+      grid-row-gap: 1rem;
+      grid-template-rows: min-content auto;
+
+      background-color: map-get($palette, background-secondary);
+      padding: 13.5px;
+      border-radius: 2px;
+  
+      h2 {
+        margin-bottom: 1rem;
+      }
+      div {
+        border: 1px solid map-get($palette, text-title);
+        border-radius: 6px;
+        padding: 13.5px;
+      }
+    }
+  }
+}

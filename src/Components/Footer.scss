@@ -1,0 +1,50 @@
+@import '../scss/style';
+
+footer {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 13.5px;
+
+  background-color: map-get($palette, background-secondary);
+  color: map-get($color-scheme1, 5); 
+  font-family: Roboto Slab;
+
+  border-width: 0 3px 3px 3px;
+  border-style: solid;
+  border-color: map-get($palette, background-primary);
+
+  * {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  p {
+    margin-left: 1.5rem;
+    margin-right: 2rem;
+  }
+
+  span {
+    margin: 0 1.25rem 0 1.25rem;
+  }
+
+  div {
+    display: flex;
+
+    a {
+      span {
+        margin: 0;
+      }
+    }
+  }
+
+  #social-links {
+    margin-right: 1.5rem;
+    a:hover {
+      transform: scale(1.1);
+    }
+  }
+}

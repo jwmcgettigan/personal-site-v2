@@ -1,0 +1,63 @@
+@import '../scss/style';
+
+header {
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  background-color: map-get($palette, background-secondary);
+  color: map-get($color-scheme1, 5); 
+  text-decoration: none;
+  padding: 13.5px;
+  font-family: Roboto Slab;
+  font-size: 1.75rem;
+
+  // not sure about this \/ \/ \/
+  //border-bottom: 1px solid map-get($palette, background-primary);
+  border-width: 3px 3px 0 3px;//0 1px 1px 1px;
+  border-style: solid;
+  border-color: map-get($palette, background-primary);
+
+  h1 {
+    font-family: Roboto Mono;
+    font-size: 2rem;
+    border: 2px solid map-get($color-scheme1, 5);
+    border-radius: 6px;
+    padding: 0 6px 0 6px;
+    margin-right: 2rem;
+    margin-left: 1.5rem;
+  } h1:hover {
+    background-color: map-get($palette, background-primary);
+    color: lighten(map-get($color-scheme1, 5), 10%);
+    transform: scale(1.025);
+  }
+
+  span {
+    margin: 0 1.25rem 0 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  div {
+    display: flex;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      span {
+        margin: 0;
+      }
+    }
+  }
+
+  #social-links {
+    margin-right: 1.5rem;
+    a:hover {
+      transform: scale(1.1);
+    }
+  }
+}
