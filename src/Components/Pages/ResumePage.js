@@ -8,9 +8,7 @@ import './ResumePage.scss';
 const ResumePage = () => (<>
   <Navigation/>
   <main id="resume-page">
-    <div></div>
     <Resume/>
-    <div></div>
     {/*<iframe title="PhoenixHacks Live" src="https://live.phoenixhacks.com"></iframe>
     <div style={{width: "816px", backgroundColor: "#424242"}}></div>*/}
   </main>

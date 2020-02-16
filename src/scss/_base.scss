@@ -36,7 +36,8 @@ body,
 #root {
   font: 100% $font-stack;
   color: map-get($palette, text-normal);
-  background-color: map-get($palette, background-tertiary);
+  //background-color: map-get($palette, background-tertiary);
+  background: radial-gradient(map-get($palette, background-primary), map-get($palette, background-tertiary));
   height: 100%;
   //margin: 0;
 }

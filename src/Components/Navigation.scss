@@ -8,10 +8,10 @@ header {
   justify-content: space-between;
 
   background-color: map-get($palette, background-secondary);
-  color: map-get($color-scheme1, 5); 
+  color: map-get($color-primary, 1); 
   text-decoration: none;
   padding: 13.5px;
-  font-family: Roboto Slab;
+  font-family: Roboto Mono;
   font-size: 1.75rem;
 
   // not sure about this \/ \/ \/
@@ -23,14 +23,14 @@ header {
   h1 {
     font-family: Roboto Mono;
     font-size: 2rem;
-    border: 2px solid map-get($color-scheme1, 5);
+    border: 2px solid map-get($color-primary, 1);
     border-radius: 6px;
     padding: 0 6px 0 6px;
     margin-right: 2rem;
     margin-left: 1.5rem;
   } h1:hover {
     background-color: map-get($palette, background-primary);
-    color: lighten(map-get($color-scheme1, 5), 10%);
+    color: lighten(map-get($color-primary, 1), 10%);
     transform: scale(1.025);
   }
 
@@ -56,7 +56,9 @@ header {
 
   #social-links {
     margin-right: 1.5rem;
-    a:hover {
+    a {
+      margin-left: 0.2rem;
+    } a:hover {
       transform: scale(1.1);
     }
   }
