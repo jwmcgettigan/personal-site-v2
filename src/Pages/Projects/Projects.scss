@@ -1,14 +1,17 @@
 @import '../../scss/style';
   
 #projects {
+  padding: 1rem;
 
   .gallery {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 1rem;
+    text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
+    padding: 1rem;
   
     .project {
-      background-color: map-get($palette, background-primary);
+      background-color: map-get($dark_scheme, 4);
       border: none !important;
       padding: 13.5px;
       border-radius: 3px;
@@ -47,7 +50,7 @@
       }
     } .project:hover {
       //transform: scale(1.001);
-      background-color: lighten(map-get($palette, background-primary), 10%);
+      background-color: map-get($color_scheme, 3);
     }
   }
 }

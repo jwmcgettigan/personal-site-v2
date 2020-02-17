@@ -7,7 +7,7 @@ import Projects from './Projects';
 import Skills from './Skills';
 
 import resume from '../../data/resumeV2';
-import './Resume.scss';
+import './ResumeDoc.scss';
 
 const Resume = () => (
   <div id="resume">

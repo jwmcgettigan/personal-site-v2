@@ -1,9 +1,87 @@
 $color_scheme1: (
+  1: #EAE0CC,
+  2: #C9ADA1,
+  3: #A0A083,
+  4: #798478,
+  5: #4D6A6D
+);
+
+$color_scheme2: (
   1: #F75C03,
   2: #D90368,
   3: #820263,
   4: #291720,
   5: #04A777
+);
+
+$color_scheme3: (
+  1: #FBF5F3,
+  2: #E28413,
+  3: #000022,
+  4: #DE3C4B,
+  5: #C42847
+);
+
+$color_scheme4: (
+  1: #26547C,
+  2: #EF476F,
+  3: #FFD166,
+  4: #06D6A0,
+  5: #FCFCFC
+);
+
+$color_scheme5: (
+  1: #F7F9F9,
+  2: #BED8D4,
+  3: #78D5D7,
+  4: #63D2FF,
+  5: #2081C3
+);
+
+$color_scheme6: (
+  1: #F7F9F9,
+  2: #BED8D4,
+  3: #78D5D7,
+  4: #63D2FF,
+  5: #2081C3
+);
+
+$light_scheme: (
+  1: #9bc400, // Grassy Green
+  2: #8076a3, // Purple Mountain Majesty
+  3: #f9c5bd, // Misty Mountain Pink
+  4: #7c677f, // Factory Stone Purple
+  5: #ffffff  // White
+);
+
+$dark_scheme: (
+  1: #e1b382, // Sand Tan
+  2: #c89666, // Sand Tan Shadow
+  3: #2d545e, // Night Blue
+  4: #12343b, // Night Blue Shadow
+  5: #091c20
+);
+
+$palette1: (
+  1: #424242,//#36393f,
+  2: #303030,//#2f3136,
+  3: #212121,//#202225,
+  4: #000000,
+  5: #333333,
+  6: #575757,
+  7: #888888,
+  8: #4d89ff
+);
+
+$palette: (
+  background-primary: #424242,//#36393f,
+  background-secondary: #303030,//#2f3136,
+  background-tertiary: #212121,//#202225,
+  background-quaternary: #000000,
+  text-normal: #333333,
+  text-middle: #575757,
+  text-muted: #888888,
+  text-title: #4d89ff
 );
 
 //1b1725-534b62-a499b3-d0bcd5-226ce0
@@ -16,5 +94,139 @@ $color-primary: (
   4: #061539,
   5: #1C2A4B,
   6: #314983,
-  7: #49546e
+  7: #49546e,
+  8: #1d282c
 );
+
+$color_scheme: $dark_scheme;
+
+$colors: (
+  'primary': #8e3329, 
+  'accent': #d98328,
+  'secondary': #5a1321,
+  'foreground': #191919,
+  'background': #e9e9e9
+);
+
+$color-key: 'base' !default;
+$ui-colors: (
+  'primary': (
+    'base': #7a2ae9,
+    'light': #8b39ff,
+    'dark': #3700b3,
+    'on': #ffffff
+  ),
+  'accent': (
+    'base': '',
+    'light': '',
+    'dark': '',
+    'on': #ffffff
+  ),
+  'secondary': (
+    'base': #03dac6,
+    'light': #02fce3,
+    'dark': #018786,
+    'on': #000000
+  ),
+  'surface': (
+    'base': #858585,
+    'light': #ffffff,
+    'dark': #292929,
+    'on': #000000
+  ),
+  'background': (
+    'base': #858585,
+    'light': #ffffff,
+    'dark': #292929,
+    'on': #000000
+  ),
+  'error': (
+    'base': #b00020,
+    'on': #ffffff
+  )
+);
+
+$named-opacity: (
+  'light': 0.8, // opacity used with lighter colors
+  'dark': 0.4   // opacity used with darker colors
+  // ... etc.
+);
+
+/*
+@function color($key: 'primary') {
+  @return map-get($colors, $key);
+}*/
+
+@function color(
+  $name: 'primary',
+  $variant: $color-key,
+  $opacity: 1
+) {
+  $color: null;
+  
+  // Get the color spectrum
+  $color-spectrum: map-get($ui-colors, $name);
+  
+  // Get the color variant
+  @if $color-spectrum {
+    $color: map-get($color-spectrum, $variant);
+  }
+  
+  // Get the alpha setting
+  $alpha: if(type-of($opacity) == 'number', $opacity, map-get($named-opacity, $opacity));
+  
+  // Set the alpha of the color
+  @if $alpha {
+    $color: rgba($color, $alpha);
+  }
+  
+  @return $color;
+}
+
+@function color-level($color-name: 'primary', $level: 0) {
+  $color: color($color-name);
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, $level * $color-interval);
+}
+
+@function color-alpha($name: 'primary', $opacity: 0) {
+  $color: color($name);
+
+  // Get the named opacity level, if it exists
+  @if map-key-exists($named-opacity, $opacity) {
+    $opacity: map-get($named-opacity, $opacity);
+  }
+
+  // Use rgba() to manipulate the color's alpha level
+  @return rgba($color, $opacity);
+}
+
+$contrast-colors: (
+  'dark': (
+    'primary': rgb(255, 255, 255),
+    'secondary': rgba(255, 255, 255, .70),
+    'disabled': rgba(255, 255, 255, .5),
+    'hint': rgba(255, 255, 255, .12)
+  ),
+  'light': (
+    'primary': rgba(0, 0, 0, .87),
+    'secondary': rgba(0, 0, 0, .54),
+    'disabled': rgba(0, 0, 0, .38),
+    'hint': rgba(0, 0, 0, .12)
+  ),
+);
+
+@function contrast($background: 'light', $type: 'primary') {
+  $map: map-get($contrast-colors, $background);
+  @return map-get($map, $type);
+}
+
+@mixin contrast($background: 'light', $type: 'primary') {
+  color: contrast($background, $type)
+}
+
+/*
+https://scotch.io/tutorials/aesthetic-sass-2-colors
+
+*/

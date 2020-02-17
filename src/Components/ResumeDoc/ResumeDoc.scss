@@ -9,7 +9,6 @@
   width: 816px;
   height: 1056px;
   color: map-get($palette, text-normal);
-  border: 1px solid black;
 
   h1 {
     color: map-get($palette, text-title);
@@ -88,7 +87,6 @@
     #education {
       img {
         height: 1rem;
-        color: black;
       }
       p {
         font-size: 16px;

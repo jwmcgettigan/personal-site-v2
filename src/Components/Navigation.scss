@@ -6,32 +6,40 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-content: flex-end;
 
-  background-color: map-get($palette, background-secondary);
-  color: map-get($color-primary, 1); 
+  //background-color: map-get($palette, background-secondary);
+  color: contrast(dark); 
   text-decoration: none;
-  padding: 13.5px;
+  padding: 1rem 1rem 0 1rem;
   font-family: Roboto Mono;
   font-size: 1.75rem;
 
   // not sure about this \/ \/ \/
+  border-bottom: 4px solid color(secondary);
   //border-bottom: 1px solid map-get($palette, background-primary);
+  /*
   border-width: 3px 3px 0 3px;//0 1px 1px 1px;
   border-style: solid;
-  border-color: map-get($palette, background-primary);
+  border-color: map-get($palette, background-primary);*/
 
-  h1 {
+  a:hover {
+    color: white;
+  }
+
+  .logo {
     font-family: Roboto Mono;
     font-size: 2rem;
-    border: 2px solid map-get($color-primary, 1);
-    border-radius: 6px;
     padding: 0 6px 0 6px;
-    margin-right: 2rem;
-    margin-left: 1.5rem;
-  } h1:hover {
-    background-color: map-get($palette, background-primary);
-    color: lighten(map-get($color-primary, 1), 10%);
-    transform: scale(1.025);
+    text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
+
+    h1 {
+      font-family: Roboto Mono;
+      font-size: 2rem;
+    }
+  } .logo:hover {
+    color: white;
+    //transform: scale(1.025);
   }
 
   span {
@@ -46,8 +54,10 @@ header {
 
     a {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
+      margin-right: 1.5rem;
+      text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
       span {
         margin: 0;
       }
@@ -59,7 +69,7 @@ header {
     a {
       margin-left: 0.2rem;
     } a:hover {
-      transform: scale(1.1);
+      transform: scale(1.01);
     }
   }
 }

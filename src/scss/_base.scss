@@ -1,4 +1,5 @@
 //_base.scss
+@import 'color';
 
 @mixin font-face($name, $path) {
   @font-face {
@@ -13,17 +14,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lobster);
 $font-stack: Roboto, sans-serif;
 
-$palette: (
-  background-primary: #424242,//#36393f,
-  background-secondary: #303030,//#2f3136,
-  background-tertiary: #212121,//#202225,
-  background-quaternary: #000000,
-  text-normal: #333333,
-  text-middle: #575757,
-  text-muted: #888888,
-  text-title: #4d89ff
-);
-
 a, a:hover {
   text-decoration: none;
   color: inherit;
@@ -35,11 +25,12 @@ html,
 body,
 #root {
   font: 100% $font-stack;
-  color: map-get($palette, text-normal);
-  //background-color: map-get($palette, background-tertiary);
-  background: radial-gradient(map-get($palette, background-primary), map-get($palette, background-tertiary));
+  color: contrast();
+  //background-color: map-get($color_scheme, 3);
+  //background: linear-gradient(0.25turn, map-get($color_scheme, 3), map-get($color_scheme, 4), map-get($color_scheme, 3));
+  background: color(background, dark);
+  //background: radial-gradient(map-get($palette, background-primary), map-get($palette, background-tertiary));
   height: 100%;
-  //margin: 0;
 }
 
 * {

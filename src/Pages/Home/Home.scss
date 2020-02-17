@@ -3,31 +3,53 @@
 #home {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
 
-  .title {
-    background-color: map-get($palette, background-primary);
+  text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
+
+  h2, h3 {
     padding: 1rem;
-    border-radius: 3px 3px 0 0;
-    //border-radius: 50% 50% 0 0;
+    border-radius: 3px;
     text-align: center;
+  }
+
+  h2 {
+    background: color(secondary, base, 0.9);
+    color: contrast(light);
+    text-shadow: none;
+  }
+
+  h3 {
+    background: color(secondary, base, 0.5);
+    color: contrast(light);
+    text-shadow: none;
+  }
+
+  section {
+    @extend .card-2;
+    display: grid;
+    grid-gap: 1rem;
+
+    border-radius: 3px;
+    background: color(secondary, dark);
+    padding: 1rem;
   }
 
   .home-left {
     display: grid;
     grid-template-rows: min-content auto;
-    grid-row-gap: 2rem;
-    padding: 13.5px;
+    grid-row-gap: 1rem;
+
+    padding: 1rem;
 
     #status {
-      border-radius: 3px;
 
       .dashboard {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
-        background-color: map-get($palette, background-secondary);
         border-radius: 3px;
-        padding: 13.5px;
+        
         border-radius: 0 0 3px 3px;
 
         div {
@@ -36,13 +58,12 @@
         }
 
         h3 {
-          background-color: map-get($palette, background-primary);
           padding: 0.5rem;
           border-radius: 3px 3px 0 0;
           text-align: center;
         }
         p {
-          background-color: map-get($palette, background-tertiary);
+          background-color: color(surface, dark);
           padding: 1rem;
           border-radius: 0 0 3px 3px;
         }
@@ -51,23 +72,20 @@
   
     #recent {
       display: grid;
-      grid-template-rows: min-content auto;
+      //grid-template-rows: min-content auto;
       //background-color: map-get($palette, background-secondary);
-      border-radius: 2px;
 
       .gallery {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
-        background-color: map-get($palette, background-secondary);
-        border-radius: 3px;
-        padding: 13.5px;
-        border-radius: 0 0 3px 3px;
+        
       
         div {
-          background-color: map-get($palette, background-primary);
+          background: color(secondary, base, 0.5);
+          color: contrast(light);
           border: none !important;
-          padding: 13.5px;
+          padding: 1rem;
           border-radius: 3px;
 
           img {
@@ -75,16 +93,17 @@
             height: 136px;
           }
           h3 {
+            padding: 0;
             text-align: center;
             margin-bottom: 0.5rem;
             font-size: 1rem;
           }
           p {
-            color: map-get($palette, text-muted);
+            color: contrast(light);
           }
         } div:hover {
           transform: scale(1.01);
-          background-color: lighten(map-get($palette, background-primary), 10%);
+          background: color(secondary);
         }
       }
     }
@@ -92,43 +111,41 @@
 
   .home-right {
     display: grid;
-    padding: 13.5px;
+    padding: 1rem;
     grid-template-rows: auto;
 
     #link-library {
       display: grid;
       grid-template-rows: min-content auto;
-      border-radius: 2px;
 
       .library {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 500px auto;
+        grid-template-rows: repeat(4, min-content) auto;
         grid-gap: 1rem;
-        background-color: map-get($palette, background-secondary);
-        border-radius: 3px;
-        padding: 13.5px;
-        border-radius: 0 0 3px 3px;
+        
 
         div {
-          //border: 1px solid map-get($palette, text-title);
           border-radius: 3px;
-          //padding: 13.5px;
           display: grid;
           grid-template-columns: auto;
-          grid-template-rows: min-content auto;
+          grid-template-rows: min-content;
 
           h3 {
             white-space: nowrap;
           }
+
+          .hidden {
+            display: none !important;
+          }
           .links {
             display: grid;
             grid-row-gap: 1rem;
+            grid-template-columns: 1fr 1fr;
             padding: 1rem;
             background-color: map-get($palette, background-tertiary);
             //border: 1px solid map-get($palette, text-title);
             border-radius: 0 0 3px 3px;
-            overflow-y: scroll;
+            //overflow-y: scroll;
           }
         }
       }

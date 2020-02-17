@@ -22,7 +22,7 @@ const Info = ({basics}) => (
     <Link url={resume.email.url} text={resume.email.text} icon={resume.email.icon}/>
     <Link url={resume.location.url} text={resume.location.text} icon={resume.location.icon}/>
     {resume.profiles.map((profile, index) => (
-      <Link key={index} url={profile.url} text={profile.network} icon={profile.icon}/>
+      <Link key={index} url={profile.url} text={profile.network + ': ' + profile.username} icon={profile.icon}/>
     ))}
     <p>{basics.summary}</p>
   </section>
