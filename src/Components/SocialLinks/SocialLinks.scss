@@ -1,0 +1,27 @@
+@import '../../scss/style.scss';
+
+#social-links {
+  display: grid;
+  justify-content: space-evenly;
+  align-content: center;
+
+  a {
+    grid-row: 1;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background: color(primary);
+
+    span {
+      display: flex;
+      justify-content: center;
+      margin-top: 25%;
+
+      svg {
+        color: color(primary, on) !important;
+        width: 50%;
+        height: 50%;
+      }
+    }
+  }
+}

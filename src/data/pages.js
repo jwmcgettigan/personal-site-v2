@@ -1,24 +1,39 @@
-import ResumePage from '../Pages/Resume';
-import Home from '../Pages/Home';
-import About from '../Pages/About';
-import Projects from '../Pages/Projects';
+//import ResumePage from '../Pages/Resume';
+//import Home from '../Pages/Home';
+//import About from '../Pages/About';
+//import Projects from '../Pages/Projects';
+
+const About = '';
+const Projects = '';
+const ResumePage = '';
 
 const pages = [
   {
-    component: Home,
-    path: '/'
-  },
-  {
-    component: ResumePage,
-    path: '/resume'
-  },
-  {
-    component: Projects,
-    path: '/projects'
-  },
-  {
+    name: 'About Me',
     component: About,
-    path: '/about'
+    path: '/',
+    icon: {
+      type: 'FaUserAlt',
+      color: '#ffffff'
+    }
+  },
+  {
+    name: 'Projects',
+    component: Projects,
+    path: '/projects',
+    icon: {
+      type: 'FaLaptopCode',
+      color: '#ffffff'
+    }
+  },
+  {
+    name: 'Resume',
+    component: ResumePage,
+    path: '/resume',
+    icon: {
+      type: 'FaFileAlt',
+      color: '#ffffff'
+    }
   }
 ]
 

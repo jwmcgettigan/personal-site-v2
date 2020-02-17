@@ -16,7 +16,7 @@ const links = {
       username: "jwmcgettigan",
       url: "https://www.linkedin.com/in/jwmcgettigan/",
       icon: {
-        type: "FaLinkedin",
+        type: "FaLinkedinIn",
         color: "#2867B2",
       }
     },
@@ -25,7 +25,7 @@ const links = {
       username: "jwmcgettigan",
       url: "https://github.com/jwmcgettigan",
       icon: {
-        type: "FaGithubSquare",
+        type: "FaGithubAlt",
         color: "#FFFFFF",
       }
     },

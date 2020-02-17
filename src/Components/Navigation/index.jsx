@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navigation.scss';
 import './Eyeball.scss';
-import SocialLinks from './SocialLinks';
+import SocialLinks from '../SocialLinks';
 import useMightyMouse from "react-hook-mighty-mouse";
 
 const EyeFollower = () => {

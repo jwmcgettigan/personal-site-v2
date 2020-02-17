@@ -1,0 +1,70 @@
+@import '../../../../scss/style.scss';
+
+.about-me {
+  display: grid;
+  grid-template-columns: auto min-content;
+  justify-content: center;
+  grid-gap: 3rem;
+
+  .profile {
+    color: color(surface, on, 0.7);
+
+    h2 {
+      font-size: 3rem;
+      color: color(surface, on);
+      margin-bottom: 0.25rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    .buttons {
+      display: flex;
+      align-content: center;
+      margin-bottom: 1.5rem;
+      color: color(surface, on);
+      font-weight: bold;
+
+      a {
+        background: color(surface, light);
+        padding: 0.375rem 1rem 0.375rem 1rem;
+        transition: all 0.4s ease-in-out;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: 0.25rem;
+
+        svg {
+          justify-content: center;
+          align-content: center;
+          margin-right: 0.5rem;
+        }
+      } a:first-child {
+        background: color(primary);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      max-width: 1140px;
+    }
+    @media (min-width: 992px) {
+      max-width: 960px;
+    }
+    @media (min-width: 768px) {
+      max-width: 720px;
+    }
+    @media (min-width: 576px) {
+      max-width: 540px;
+    }
+  }
+  img {
+    border-radius: 0;
+  }
+}
