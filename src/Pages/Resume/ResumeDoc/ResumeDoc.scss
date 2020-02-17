@@ -1,8 +1,23 @@
-@import '../../scss/base';
+//@import '../../../scss/style';
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+$palette: (
+  background-primary: #424242,//#36393f,
+  background-secondary: #303030,//#2f3136,
+  background-tertiary: #212121,//#202225,
+  background-quaternary: #000000,
+  text-normal: #333333,
+  text-middle: #575757,
+  text-muted: #888888,
+  text-title: #4d89ff
+);
 
 #resume {
   display: flex;
-  //height: 100%;
   font-family: Roboto;
   justify-content: center;
   align-content: center;
@@ -16,10 +31,6 @@
     margin: 0;
     font-size: 26.6667px;
     margin-top: 8px;
-  }
-
-  section:hover {
-    //border: 1px solid black;
   }
   
   p, h4, ul {
@@ -79,8 +90,6 @@
         span {
           font-size: 14.6667px;
         }
-      } p:hover {
-        //border: 1px solid black;
       }
     }
 
@@ -104,9 +113,6 @@
       font-size: 14.6667px;
       font-weight: bold;
       font-family: 'Roboto Slab';
-      span.interest:hover {
-        //border: 1px solid black;
-      }
     }
   }
   
@@ -142,10 +148,6 @@
         font-family: 'Roboto Slab';
         line-height: 1.4rem;
       }
-      article:hover {
-        //transform: scale(1.025);
-        //border: 1px solid black;
-      }
     }
 
     #projects {
@@ -174,10 +176,6 @@
           font-size: 14.6667px;
           font-family: 'Roboto Slab';
         }
-      }
-      .row:hover {
-        //transform: scale(1.025);
-        //border: 1px solid black;
       }
     }
   }

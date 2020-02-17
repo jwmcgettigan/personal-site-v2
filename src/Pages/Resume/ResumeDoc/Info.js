@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Icons from 'react-icons/fa';
-import links from '../../data/links';
+import links from '../../../data/links';
 
 const Link = ({url, text, icon}) => {
   const Icon = Icons[icon.type]

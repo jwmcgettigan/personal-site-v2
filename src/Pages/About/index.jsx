@@ -1,9 +1,8 @@
 import React from 'react';
-import Navigation from './Components/Navigation';
 import AboutMe from './Components/AboutMe';
 import FeaturedProjects from './Components/FeaturedProjects';
 
-import './Home.scss';
+import './About.scss';
 
 const Overview = () => (
   <section className="overview">
@@ -18,14 +17,4 @@ const About = () => (
   </main>
 )
 
-const Footer = () => (
-  <footer>
-  </footer>
-)
-
-const Home = () => (<>
-  <Navigation/>
-  <About/>
-</>)
-
-export default Home;
+export default About;

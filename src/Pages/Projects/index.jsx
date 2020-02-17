@@ -15,16 +15,31 @@ const Link = ({url, text, icon}) => {
   )
 }
 
-const Projects = () => (<>
-  <main id="projects">
-    <div className="gallery">
-      {projects.map((project, index) => {
-        let color = "#"+((1<<24)*Math.random()|0).toString(16);
-        return (
-          <div className="project" key={index}>
-            <img style={{backgroundColor: color}} alt=""/>
+const Icon = ({icon}) => {
+  const Icon = Icons[icon];
+  return (
+    <Icon/>
+  )
+}
+
+const Title = () => (
+  <section className="title">
+    <h2>Projects</h2>
+    <p>Welcome to my project portfolio!</p>
+    <a href="#"><Icon icon="FaPaperPlane"/>Hire Me</a>
+  </section>
+)
+
+const Gallery = () => (
+  <section className="gallery">
+    {projects.map((project, index) => {
+      let color = "#"+((1<<24)*Math.random()|0).toString(16);
+      return (
+        <div className="project" key={index}>
+          <img  src={require("../../assets/Projects/" + project.image)} alt=""/>
+          <div className="info">
             <h3>{project.name}</h3>
-            <p>{project.summary.substring(0, 28) + '...'}</p>
+            <p>{project.summary}</p>
             <div className="links">
               { project.url.repo !== '' ? 
                 <Link url={project.url.repo} text={project.name}
@@ -38,9 +53,16 @@ const Projects = () => (<>
               }
             </div>
           </div>
-        )
-      })}
-    </div>
+        </div>
+      )
+    })}
+  </section>
+)
+
+const Projects = () => (<>
+  <main className="projects">
+    <Title/>
+    <Gallery/>
   </main>
 </>)
  

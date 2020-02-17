@@ -32,7 +32,7 @@ const AboutMe = () => (
         <PageLink page={pages.find(page => page.name === 'Resume')}/>
       </div>
     </div>
-    <img src={ProfilePicture}/> 
+    <img src={ProfilePicture} alt="Profile"/> 
   </section>
 )
 

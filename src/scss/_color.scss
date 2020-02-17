@@ -3,11 +3,11 @@
 //=====Color Values============================================================
 
 $color-key: 'base' !default;
-$ui-colors: (
+$dark-theme: (
   'primary': (
-    'base': #54b689,
-    'light': #ffffff,
-    'dark': #ffffff,
+    'base': #4d89ff,
+    'light': #70a0ff,
+    'dark': #3d6dcc,
     'on': #ffffff
   ),
   'accent': (
@@ -40,6 +40,45 @@ $ui-colors: (
   )
 );
 
+$light-theme: (
+  'primary': (
+    'base': #54b689,
+    'light': #ffffff,
+    'dark': #ffffff,
+    'on': #ffffff
+  ),
+  'accent': (
+    'base': #ffffff,
+    'light': #ffffff,
+    'dark': #ffffff,
+    'on': #ffffff
+  ),
+  'secondary': (
+    'base': #ffffff,
+    'light': #ffffff,
+    'dark': #ffffff,
+    'on': #000000
+  ),
+  'surface': (
+    'base': #54b689,
+    'light': #2f435c,
+    'dark': #fafafa,
+    'on': #4f4f4f
+  ),
+  'background': (
+    'base': #ffffff,
+    'light': #ffffff,
+    'dark': #fafafa,
+    'on': #ffffff
+  ),
+  'error': (
+    'base': #b00020,
+    'on': #ffffff
+  )
+);
+
+$theme: $dark-theme;
+
 $named-opacity: (
   'light': 0.8, // opacity used with lighter colors
   'dark': 0.4   // opacity used with darker colors
@@ -56,7 +95,7 @@ $named-opacity: (
   $color: null;
   
   // Get the color spectrum
-  $color-spectrum: map-get($ui-colors, $name);
+  $color-spectrum: map-get($theme, $name);
   
   // Get the color variant
   @if $color-spectrum {

@@ -1,11 +1,7 @@
-//import ResumePage from '../Pages/Resume';
+import About from '../Pages/About';
+import Resume from '../Pages/Resume';
 //import Home from '../Pages/Home';
-//import About from '../Pages/About';
-//import Projects from '../Pages/Projects';
-
-const About = '';
-const Projects = '';
-const ResumePage = '';
+import Projects from '../Pages/Projects';
 
 const pages = [
   {
@@ -28,13 +24,22 @@ const pages = [
   },
   {
     name: 'Resume',
-    component: ResumePage,
+    component: Resume,
     path: '/resume',
     icon: {
       type: 'FaFileAlt',
       color: '#ffffff'
     }
-  }
+  }/*,
+  {
+    name: 'Resume',
+    component: ResumeDoc,
+    path: '/printresume',
+    icon: {
+      type: 'FaFilePdf',
+      color: '#ffffff'
+    }
+  }*/
 ]
 
 export default pages;

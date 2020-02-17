@@ -1,56 +1,40 @@
 import React from 'react';
- 
+import * as Icons from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+
+import SocialLinks from './SocialLinks';
+import ProfilePicture from '../../assets/ProfilePicture.png';
+import pages from '../../data/pages';
 import './Navigation.scss';
-import './Eyeball.scss';
-import SocialLinks from '../SocialLinks';
-import useMightyMouse from "react-hook-mighty-mouse";
 
-const EyeFollower = () => {
-  const data = useMightyMouse(true, "ball", { x: 45, y: 45 });
-  const eyeAngle = -data.selectedElement.position.angle;
-
-  const styleEye = {
-    '-webkit-transform': `rotate(${eyeAngle}deg)`,
-    '-moz-transform': `rotate(${eyeAngle}deg)`,
-    '-ms-transform': `rotate(${eyeAngle}deg)`,
-    'transform': `rotate(${eyeAngle}deg)`
-  };
-
-  /*
+const PageLink = ({page}) => {
+  const Icon = Icons[page.icon.type]
   return (
-    <div className="eye">
-      <div id="sclera" style={styleEye}>
-        <div className="iris">
-          <div className="pupil">
-            <div className="reflection"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )*/
-  return (
-    <section className="stage">
-      <figure id="ball">
-        <span className="shadow"></span>
-        <span className="iris"></span>
-      </figure>
-    </section>
+    <NavLink to={page.path}>
+      <Icon/>
+      {page.name}
+    </NavLink>
   )
 }
 
 const Navigation = () => (
   <header>
-    <div>
-      <EyeFollower/>
-      <a href="/" className="logo"><h1>jwmcgettigan</h1></a> {/* Replace 'JWM' with an eye that follows the mouse cursor. */}
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/resume">Resume</NavLink>
-      <NavLink to="/projects">Projects</NavLink>
-      <NavLink to="/about">About</NavLink>
+    <section className="profile">
+      <h1><a href="/">Justin McGettigan</a></h1>
+      <img src={ProfilePicture} alt="Profile"></img>
+      <p>Hi, my name is Justin McGettigan.  I'm an aspiring software engineer currently looking for a job.  Welcome to my website!</p>
+      <SocialLinks/>
+    </section><hr/>
+
+    <nav className="navbar">
+      {pages.map((page, index) => <PageLink page={page} key={index} />)}
+    </nav><hr/>
+
+    <div className="mode">
+
     </div>
-    {/*<SocialLinks/>*/}
+    <p className="copyright">© 2020 Justin McGettigan</p>
   </header>
 )
- 
+
 export default Navigation;

@@ -18,11 +18,8 @@ const FeaturedProjects = () => (
   <section className="featured-projects">
     <h2>Featured Projects</h2>
     <div className="gallery">
-      {projects.map((project, index) => {
-        let color = "#"+((1<<24)*Math.random()|0).toString(16);
-        return (
+      {projects.map((project, index) => (
           <div className="project" key={index}>
-            <div className="mask"/>
             <img src={require("../../../../assets/Projects/" + project.image)} alt=""/>
             <div className="info">
               <h3>{project.name}</h3>
@@ -42,7 +39,7 @@ const FeaturedProjects = () => (
             </div>
           </div>
         )
-      })}
+      )}
     </div>
   </section>
 )

@@ -6,11 +6,11 @@ import Info from './Info';
 import Projects from './Projects';
 import Skills from './Skills';
 
-import resume from '../../data/resumeV2';
+import resume from '../../../data/resumeV2';
 import './ResumeDoc.scss';
 
 const Resume = () => (
-  <div id="resume">
+  <article id="resume">
     <div className="left">
       <Info basics={resume.basics}/><br/>
       <Skills skills={resume.skills}/><br/>
@@ -21,7 +21,7 @@ const Resume = () => (
       <Experience experience={resume.work}/><br/>
       <Projects projects={resume.publications}/>
     </div>
-  </div>
+  </article>
 );
 
 export default Resume;

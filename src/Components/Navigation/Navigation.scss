@@ -1,75 +1,72 @@
-@import '../scss/style';
+@import '../../scss/color';
 
 header {
-  margin: auto;
-  width: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: flex-end;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 280px;
+  overflow-y: auto;
 
-  //background-color: map-get($palette, background-secondary);
-  color: contrast(dark); 
-  text-decoration: none;
-  padding: 1rem 1rem 0 1rem;
-  font-family: Roboto Mono;
-  font-size: 1.75rem;
+  background: color(surface);
+  color: color(surface, on);
 
-  // not sure about this \/ \/ \/
-  border-bottom: 4px solid color(secondary);
-  //border-bottom: 1px solid map-get($palette, background-primary);
-  /*
-  border-width: 3px 3px 0 3px;//0 1px 1px 1px;
-  border-style: solid;
-  border-color: map-get($palette, background-primary);*/
+  box-sizing: border-box;
+  padding: 1rem;
 
-  a:hover {
-    color: white;
-  }
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-rows: repeat(5, min-content) auto;
 
-  .logo {
-    font-family: Roboto Mono;
-    font-size: 2rem;
-    padding: 0 6px 0 6px;
-    text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
+  .profile {
+    display: grid;
+    justify-content: center;
+    grid-gap: 1rem;
 
     h1 {
-      font-family: Roboto Mono;
-      font-size: 2rem;
+      justify-self: center;
     }
-  } .logo:hover {
-    color: white;
-    //transform: scale(1.025);
+
+    img {
+      justify-self: center;
+      width: 50%;
+      border-radius: 50%;
+    }
+
+    p {
+      font-size: 0.875rem;
+      text-align: center;
+    }
   }
 
-  span {
-    margin: 0 1.25rem 0 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  div {
-    display: flex;
+  .navbar {
+    display: grid;
+    justify-content: center;
+    grid-gap: 1rem;
 
     a {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-right: 1.5rem;
-      text-shadow: rgba(0, 0, 0, 0.7) 0em 0.05em 0.1em;
-      span {
-        margin: 0;
+      font-weight: bold;
+      color: color(surface, on, 0.7);
+      
+      svg {
+        margin-right: 0.5rem;
       }
+    } a:hover {
+      color: color(surface, on);
     }
   }
 
-  #social-links {
-    margin-right: 1.5rem;
-    a {
-      margin-left: 0.2rem;
-    } a:hover {
-      transform: scale(1.01);
-    }
+  .copyright {
+    text-align: center;
+    font-weight: bold;
+    align-self: flex-end;
+    color: color(surface, on, 0.7);
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-color: rgba(255,255,255,0.08);
+    height: 0;
   }
 }

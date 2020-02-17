@@ -1,7 +1,7 @@
 //import puppeteer from 'puppeteer';
 const puppeteer = require('puppeteer');
 
-(async () => {
+const printPDF = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
@@ -16,4 +16,4 @@ const puppeteer = require('puppeteer');
   });
 
   await browser.close();
-})();
+}
