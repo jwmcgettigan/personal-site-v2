@@ -1,10 +1,11 @@
 import React from 'react';
+import './Experience.scss';
 
 const Experience = ({experience}) => (
-  <section id="experience">
-    <h1>EXPERIENCE</h1>
+  <div id="experience">
+    <h1 className="title">EXPERIENCE</h1>
     {experience.map((place, index) => (
-      <article key={index}>
+      <div key={index}>
         <h4>
           <b>{place.position}</b><span>{place.company}</span> 
           <i>{place.startDate + ' - ' + place.endDate}</i>
@@ -12,9 +13,9 @@ const Experience = ({experience}) => (
         <ul>
           {place.highlights.map((highlight, index) => <li key={index}>{highlight}</li>)}
         </ul>
-      </article>
+      </div>
     ))}
-  </section>
+  </div>
 )
 
 export default Experience;

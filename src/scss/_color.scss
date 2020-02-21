@@ -4,22 +4,18 @@
 
 $color-key: 'base' !default;
 $dark-theme: (
-  'primary': (
+  'primary': ( //color
     'base': #4d89ff,
-    'light': #70a0ff,
+    'light': #2f435c, //#70a0ff,
     'dark': #3d6dcc,
     'on': #ffffff
   ),
   'accent': (
-    'base': #ffffff,
-    'light': #ffffff,
-    'dark': #ffffff,
+    'base': #70a0ff,
     'on': #ffffff
   ),
-  'secondary': (
+  'secondary': ( //color
     'base': #ffffff,
-    'light': #ffffff,
-    'dark': #ffffff,
     'on': #000000
   ),
   'surface': (
@@ -30,8 +26,6 @@ $dark-theme: (
   ),
   'background': (
     'base': #111821,
-    'light': #ffffff,
-    'dark': #ffffff,
     'on': #ffffff
   ),
   'error': (
@@ -40,7 +34,46 @@ $dark-theme: (
   )
 );
 
+/*
+color: rgba(0,0,0,0.5); //hover pagelink
+
+background: rgba(0,0,0,0.3); //button background
+border-color: transparent;
+font-size: 1rem;
+*/
+
 $light-theme: (
+  'primary': (
+    'base': #54b689,
+    'light': #4f4f4f,
+    'dark': #2a5b45,
+    'on': #ffffff
+  ),
+  'accent': (
+    'base': #ffffff,
+    'on': #ffffff
+  ),
+  'secondary': (
+    'base': #ffffff,
+    'on': #000000
+  ), //e7eaf0
+  'surface': (
+    'base': #54b689,
+    'light': #fafafa,
+    'dark': #e7eaf0,
+    'on': #ffffff
+  ),
+  'background': (
+    'base': #ffffff,
+    'on': #000000
+  ),
+  'error': (
+    'base': #b00020,
+    'on': #ffffff
+  )
+);
+
+$resume-theme: (
   'primary': (
     'base': #54b689,
     'light': #ffffff,
@@ -48,28 +81,22 @@ $light-theme: (
     'on': #ffffff
   ),
   'accent': (
-    'base': #ffffff,
-    'light': #ffffff,
-    'dark': #ffffff,
+    'base': #54b689,
     'on': #ffffff
   ),
   'secondary': (
-    'base': #ffffff,
-    'light': #ffffff,
-    'dark': #ffffff,
+    'base': #333333, //resume don't need
     'on': #000000
-  ),
+  ), //e7eaf0
   'surface': (
-    'base': #54b689,
-    'light': #2f435c,
-    'dark': #fafafa,
-    'on': #4f4f4f
+    'base': #fafafa,
+    'light': #ffffff,
+    'dark': #e7eaf0,
+    'on': #000000 //#4f4f4f
   ),
   'background': (
     'base': #ffffff,
-    'light': #ffffff,
-    'dark': #fafafa,
-    'on': #ffffff
+    'on': #000000
   ),
   'error': (
     'base': #b00020,

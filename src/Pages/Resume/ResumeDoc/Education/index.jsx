@@ -1,9 +1,10 @@
 import React from 'react';
-import FlPolyLogo from '../../../assets/FloridaPoly.svg'
+import FlPolyLogo from '../../../../assets/FloridaPoly.svg';
+import './Education.scss';
 
 const Education = ({education}) => (
-  <section id="education">
-    <h1>EDUCATION</h1>
+  <div id="education">
+    <h1 className="title">EDUCATION</h1>
     {education.map((school, index) => (
       <p key={index}>
         <a href={school.url}>
@@ -15,7 +16,7 @@ const Education = ({education}) => (
         </span>
       </p>
     ))}
-  </section>
+  </div>
 )
 
 export default Education;

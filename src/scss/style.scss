@@ -4,11 +4,60 @@
 #root {
   background: color(background);
   color: color(background, on);
-}
+  display: grid;
+  grid-template-columns: min-content auto;
+  //filter: invert(100%); EXPLORE THIS!!!!!!
 
-main {
-  box-sizing: border-box;
-  margin: 0 0 0 280px;
-  width: auto;
-  justify-content: center;
+  main {
+    grid-column: 2;
+    margin: 0 0 0 280px;
+    justify-content: center;
+  
+    .section {
+      border-bottom: 1px solid color(background, on, 0.08);
+      padding: 3rem;
+      margin: auto;
+  
+      @media (min-width: 576px) {
+        max-width: 540px;
+      }
+      @media (min-width: 768px) {
+        max-width: 720px;
+      }
+      @media (min-width: 992px) {
+        max-width: 960px;
+      }
+      @media (min-width: 1200px) {
+        max-width: 1140px;
+      }
+    }
+
+    .title-section {
+      @extend .section;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      background: color(surface, dark);
+    }
+
+    .card {
+      border: 0;
+      //border: 1px solid rgba(255,255,255,0.08);
+      padding: 3rem;
+      //background: color(surface);
+  
+      @media (min-width: 576px) {
+        max-width: 540px;
+      }
+      @media (min-width: 768px) {
+        max-width: 720px;
+      }
+      @media (min-width: 992px) {
+        max-width: 960px;
+      }
+      @media (min-width: 1200px) {
+        max-width: 1140px;
+      }
+    }
+  }
 }

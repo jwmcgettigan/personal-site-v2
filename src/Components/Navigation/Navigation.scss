@@ -1,6 +1,7 @@
 @import '../../scss/color';
 
 header {
+  grid-column: 1;
   position: fixed;
   left: 0;
   top: 0;
@@ -29,7 +30,7 @@ header {
 
     img {
       justify-self: center;
-      width: 50%;
+      width: 60%;
       border-radius: 50%;
     }
 
@@ -52,15 +53,23 @@ header {
         margin-right: 0.5rem;
       }
     } a:hover {
-      color: color(surface, on);
+      color: color(background, on, 0.5);
+    } a.active {
+      color: color(primary, dark);
     }
   }
 
   .copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-weight: bold;
     align-self: flex-end;
     color: color(surface, on, 0.7);
+    svg {
+      margin-right: 0.5rem;
+    }
   }
 
   hr {

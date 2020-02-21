@@ -1,26 +1,7 @@
 @import '../../scss/color';
 
 #about {
-  display: grid;
-  grid-template-rows: min-content;
-
-  section {
-    border: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    border-color: rgba(255,255,255,0.08);
-    padding: 3rem;
-
-    @media (min-width: 576px) {
-      max-width: 540px;
-    }
-    @media (min-width: 768px) {
-      max-width: 720px;
-    }
-    @media (min-width: 992px) {
-      max-width: 960px;
-    }
-    @media (min-width: 1200px) {
-      max-width: 1140px;
-    }
-  }
+  //display: grid;
+  //grid-template-rows: min-content;
+  //justify-content: center;
 }

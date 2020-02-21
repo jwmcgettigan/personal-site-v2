@@ -3,11 +3,8 @@ const links = {
   downloads: [
     {
       text: "Download Resume",
-      url: "https://jwmcgettigan.com/resume?download",
-      icon: {
-        type: "IoMdDownload",
-        color: "#FFFFFF"
-      }
+      url: "https://jwmcgettigan.com/printresume",
+      icon: "IoMdDownload"
     }
   ],
   profiles: [
@@ -15,91 +12,61 @@ const links = {
       network: "LinkedIn",
       username: "jwmcgettigan",
       url: "https://www.linkedin.com/in/jwmcgettigan/",
-      icon: {
-        type: "FaLinkedinIn",
-        color: "#2867B2",
-      }
+      icon: "FaLinkedinIn"
     },
     {
       network: "GitHub",
       username: "jwmcgettigan",
       url: "https://github.com/jwmcgettigan",
-      icon: {
-        type: "FaGithubAlt",
-        color: "#FFFFFF",
-      }
+      icon: "FaGithubAlt"
     },
     {
       network: "Stack Overflow",
       username: "jwmcgettigan",
       url: "https://stackoverflow.com/users/11342791/jwmcgettigan",
-      icon: {
-        type: "FaStackOverflow",
-        color: "#F48024",
-      }
+      icon: "FaStackOverflow"
     },
     {
       network: "freeCodeCamp",
       username: "jwmcgettigan",
       url: "https://www.freecodecamp.org/jwmcgettigan",
-      icon: {
-        type: "FaFreeCodeCamp",
-        color: "#FFFFFF",
-      }
+      icon: "FaFreeCodeCamp"
     },
     {
       network: "DEV Community",
       username: "jwmcgettigan",
       url: "https://dev.to/jwmcgettigan",
-      icon: {
-        type: "FaDev",
-        color: "#FFFFFF",
-      }
+      icon: "FaDev"
     }
   ],
   resume: {
     website: {
       text: "jwmcgettigan.com",
       url: "https://jwmcgettigan.com",
-      icon: {
-        type: "FaGlobe",
-        color: "#000000",
-      }
+      icon: "FaGlobe"
     },
     email: {
       text: "jwmcgettigan@gmail.com",
       url: "mailto:jwmcgettigan@gmail.com",
-      icon: {
-        type: "FaEnvelope",
-        color: "#000000",
-      }
+      icon: "FaEnvelope"
     },
     location: {
       text: "Webster, FL",
       url: "https://www.google.com/maps/place/Webster+FL",
-      icon: {
-        type: "FaMapMarkerAlt",
-        color: "#000000",
-      }
+      icon: "FaMapMarkerAlt"
     },
     profiles: [
       {
         network: "LinkedIn",
         username: "jwmcgettigan",
         url: "https://www.linkedin.com/in/jwmcgettigan/",
-        icon: {
-          type: "FaLinkedinIn",
-          color: "#000000",
-        }
+        icon: "FaLinkedinIn"
       },
       {
         network: "GitHub",
         username: "jwmcgettigan",
         url: "https://github.com/jwmcgettigan",
-        icon: {
-          type: "FaGithub",
-          color: "#000000",
-        }
+        icon: "FaGithub"
       }
     ]
   },

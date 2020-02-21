@@ -1,0 +1,38 @@
+@import '../../../../scss/color';
+
+#info {
+  display: grid;
+  grid-row-gap: 6px;
+
+  font-size: 13.3333px;
+  font-weight: bold;
+  h1 {
+    font-size: 29.3333px;
+    color: color(background, on, 0.8);
+    line-height: 1.25;
+    span {
+      color: color(background, on, 0.465);
+    }
+  }
+  a {
+    display: grid;
+    grid-template-columns: 17px auto;
+
+    .icon {
+      text-align: center;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .text {
+      margin-left: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  p {
+    color: color(background, on, 0.56);
+  }
+}

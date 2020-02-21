@@ -4,11 +4,12 @@ import FeaturedProjects from './Components/FeaturedProjects';
 
 import './About.scss';
 
+/*
 const Overview = () => (
   <section className="overview">
 
   </section>
-)
+)*/
 
 const About = () => (
   <main id="about">

@@ -8,37 +8,25 @@ const pages = [
     name: 'About Me',
     component: About,
     path: '/',
-    icon: {
-      type: 'FaUserAlt',
-      color: '#ffffff'
-    }
+    icon: 'FaUserAlt'
   },
   {
     name: 'Projects',
     component: Projects,
     path: '/projects',
-    icon: {
-      type: 'FaLaptopCode',
-      color: '#ffffff'
-    }
+    icon: 'FaLaptopCode'
   },
   {
     name: 'Resume',
     component: Resume,
     path: '/resume',
-    icon: {
-      type: 'FaFileAlt',
-      color: '#ffffff'
-    }
+    icon: 'FaFileAlt'
   }/*,
   {
     name: 'Resume',
     component: ResumeDoc,
     path: '/printresume',
-    icon: {
-      type: 'FaFilePdf',
-      color: '#ffffff'
-    }
+    icon: 'FaFilePdf'
   }*/
 ]
 

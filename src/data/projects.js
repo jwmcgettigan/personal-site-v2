@@ -2,8 +2,8 @@
 const projects = [
   {
     name: "PhoenixHacks Live",
-    summary: "Created the live site for PhoenixHacks 2020.",
-    image: "phoenixhacks.svg",
+    summary: "Created the live site for PhoenixHacks 2020 with create-react-app.",
+    image: "phoenixhacks.png",
     url: {
       demo: "https://live.phoenixhacks.com/",
       repo: "https://github.com/PhoenixHacks/2020-live-web"
@@ -12,7 +12,7 @@ const projects = [
   {
     name: "Suspect Search",
     summary: "Implemented the speech-to-text (STT) and natural language processing (NLP) components of a system that takes in voice requests in the form of a visual description and outputs images of likely matches from nearby security cameras.  For a 48 hour hackathon.",
-    image: "phoenixhacks.svg",
+    image: "moto-avigilon.jpg",
     url: {
       demo: "",
       repo: ""
@@ -21,7 +21,7 @@ const projects = [
   {
     name: "RGB-D Based RTLS",
     summary: "Developed the foundation of a RTLS for tracking multiple people in a room that required spatial analysis and numerous frames of reference.",
-    image: "phoenixhacks.svg",
+    image: "RGB-D.jpg",
     url: {
       demo: "",
       repo: ""
@@ -30,7 +30,7 @@ const projects = [
   {
     name: "Gaze-Based UI Navigation",
     summary: "Developed a gaze-tracking system geared towards measuring the effectiveness of different gaze-based user interfaces and navigation methods.",
-    image: "phoenixhacks.svg",
+    image: "hyperbolic.png",
     url: {
       demo: "",
       repo: ""
@@ -39,7 +39,7 @@ const projects = [
   {
     name: "Patient Egress Alert System",
     summary: "Utilized OpenCV and YOLO to detect if a hospital patient is leaving their bed.",
-    image: "phoenixhacks.svg",
+    image: "VDS.png",
     url: {
       demo: "",
       repo: ""

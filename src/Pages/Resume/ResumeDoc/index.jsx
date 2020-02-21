@@ -12,13 +12,13 @@ import './ResumeDoc.scss';
 const Resume = () => (
   <article id="resume">
     <div className="left">
-      <Info basics={resume.basics}/><br/>
-      <Skills skills={resume.skills}/><br/>
-      <Education education={resume.education}/><br/>
+      <Info basics={resume.basics}/>
+      <Skills skills={resume.skills}/>
+      <Education education={resume.education}/>
       <Interests interests={resume.interests}/>
     </div>
     <div className="right">
-      <Experience experience={resume.work}/><br/>
+      <Experience experience={resume.work}/>
       <Projects projects={resume.publications}/>
     </div>
   </article>

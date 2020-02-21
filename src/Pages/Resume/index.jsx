@@ -1,20 +1,9 @@
 import React from 'react';
 import ResumeDoc from './ResumeDoc';
 
-import * as Icons from 'react-icons/fa';
-
+import { Button } from '../../Components/Link';
 import './Resume.scss';
 
-//const API_URL = 'http://localhost:3000';
-
-const Link = () => {
-  const Icon = Icons['FaFilePdf']
-  return (
-    <a href="" onClick={downloadResume}>
-      <Icon/><span>Download PDF Version</span>
-    </a>
-  )
-}
 
 const downloadResume = () => {
   const pdf = require('../../assets/resume.pdf')
@@ -27,6 +16,24 @@ const downloadResume = () => {
     })
   })
 }
+
+const ResumeDownload = () => (
+  <div className="resume-download title-section">
+    <h2>Resume</h2>
+    <Button icon={'FaFilePdf'} text={'Download PDF Version'} onclick={downloadResume}/>
+  </div>
+)
+
+const Resume = () => (<>
+  <main id="resume-page">
+    <ResumeDownload/>
+    <ResumeDoc/>
+  </main>
+</>);
+
+export default Resume;
+
+//const API_URL = 'http://localhost:3000';
 
 /*
 const printPDF = async () => {
@@ -65,18 +72,3 @@ const savePDF = () => {
       link.click();
     }).catch(err => console.log(err));
 }*/
-
-const ResumeDownload = () => (
-  <section className="resume-download">
-    <Link/>
-  </section>
-)
-
-const Resume = () => (<>
-  <main id="resume-page">
-    <ResumeDownload/>
-    <ResumeDoc/>
-  </main>
-</>);
-
-export default Resume;

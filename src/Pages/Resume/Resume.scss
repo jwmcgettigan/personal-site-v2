@@ -1,33 +1,17 @@
 @import '../../scss/color';
   
 #resume-page {
-  display: grid;
-  //justify-content: center;
-
   .resume-download {
     display: grid;
-    border: 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    border-color: rgba(255,255,255,0.08);
-    padding: 3rem;
     justify-content: center;
     align-content: center;
 
-    a {
-      color: color(surface, on);
-      font-weight: bold;
-      background: color(primary);
-      padding: 0.375rem 1rem 0.375rem 1rem;
-      transition: all 0.4s ease-in-out;
-      font-size: 1rem;
-      border-radius: 0.25rem;
-      line-height: 1.5;
-
-      svg {
-        justify-content: center;
-        align-content: center;
-        margin-right: 0.5rem;
-      }
+    h2 {
+      font-size: 2rem;
+      color: color(background, on, 0.95);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-align: center;
     }
   }
 
@@ -35,21 +19,7 @@
     box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
     //box-shadow: 0 1rem 3rem rgba(255,255,255,0.175);
     border: 1px solid rgba(0,0,0,0.025);
-    margin: 3rem auto 3rem auto;
-
-    .left {
-      background: color(surface);
-      color: color(surface, on, 0.7);
-    }
-    .right {
-      background: color(surface, dark);
-      color: color(surface, on, 0.7);
-    }
-
-    h1 {
-      color: color(primary);
-      border-color: color(primary, dark);
-    }
+    margin: 3rem auto;
   }
 }
 
