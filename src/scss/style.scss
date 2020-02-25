@@ -1,9 +1,12 @@
 @import 'base';
 @import 'color';
 
-#root {
+html {
+  // RETURN TO FIX THIS ISSUE
   background: color(background);
-  color: color(background, on);
+}
+
+#root {
   display: grid;
   grid-template-columns: min-content auto;
   //filter: invert(100%); EXPLORE THIS!!!!!!
@@ -12,6 +15,7 @@
     grid-column: 2;
     margin: 0 0 0 280px;
     justify-content: center;
+    color: color(background, on, 0.7);
   
     .section {
       border-bottom: 1px solid color(background, on, 0.08);
@@ -38,6 +42,20 @@
       max-width: 100%;
       box-sizing: border-box;
       background: color(surface, dark);
+      text-align: center;
+
+      h1 {
+        color: color(background, on, 0.95);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+      p {
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+        font-weight: 300;
+        //white-space: nowrap;
+      }
     }
 
     .card {

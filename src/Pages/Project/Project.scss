@@ -1,0 +1,54 @@
+@import '../../scss/color';
+
+#project {
+
+  .client {
+    display: flex;
+
+    img {
+      background: color(surface, dark);
+      width: 30%;
+      padding: 1.5rem;
+    }
+    .info {
+      background: color(surface, dark);
+      padding: 1.5rem;
+
+      h3, h4 {
+        color: color(background, on, 0.95);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      } h4 {
+        font-size: 1rem;
+      }
+      .metadata {
+        display: grid;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+
+        svg {
+          margin-right: 0.5rem;
+        }
+      }
+      p {
+        font-size: .875rem;
+        margin-bottom: 1.5rem;
+      }
+      li {
+        font-size: .875rem;
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+  .project-sections {
+
+    .project-section {
+      margin-bottom: 3rem;
+    }
+  }
+}

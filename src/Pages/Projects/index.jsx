@@ -17,7 +17,7 @@ const Gallery = () => (
   <div className="gallery section">
     {projects.map((project, index) => (
       <div className="project" key={index}>
-        <img  src={require("../../assets/Projects/" + project.image)} alt=""/>
+        <img src={require("../../assets/Projects/" + project.image)} alt=""/>
         <div className="info">
           <h3>{project.name}</h3>
           <p>{project.summary}</p>

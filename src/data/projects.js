@@ -7,6 +7,13 @@ const projects = [
     url: {
       demo: "https://live.phoenixhacks.com/",
       repo: "https://github.com/PhoenixHacks/2020-live-web"
+    },
+    content: {
+      overview: "",
+      challenge: "",
+      approach: "",
+      solution: "",
+      results: ""
     }
   },
   {

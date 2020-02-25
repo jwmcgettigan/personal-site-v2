@@ -1,0 +1,52 @@
+@import '../../scss/color';
+
+#link-library {
+
+  .library {
+    display: grid;
+    grid-gap: 3rem;
+    color: color(background, on, 0.7);
+  
+    a:hover {
+      color: color(primary);
+    }
+
+    .category {
+
+      .title {
+        padding: 1rem 1rem 0 0.5rem;
+        font-size: 2rem;
+        color: color(primary, dark);
+      }
+
+      .subcategories {
+        background: color(surface, dark);
+        padding: 1.5em 1.5em 0.5em 1.5em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-top: 4px solid color(primary, dark);
+
+        .subcategory {
+          background: color(surface, light);
+          flex: 1 1 auto; 
+          width: 8em;
+          margin: 0 0.5em 2em 0.5em;
+          border: 1px solid color(background, on, 0.05);
+          padding: 0.7rem;
+
+          h4 {
+            margin-bottom: 0.5rem;
+            text-decoration: underline;
+          }
+
+          .links {
+            display: grid;
+            grid-gap: 0.5rem;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}

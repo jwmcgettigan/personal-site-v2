@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, PageLink } from '../../../../Components/Link';
+import { Button } from '../../../../Components/Link';
 
 import ProfilePicture from '../../../../assets/ProfilePic1.3.png';
 import pages from '../../../../data/pages';
@@ -15,7 +15,7 @@ const AboutMe = () => (
         <h3>Aspiring Software Engineer</h3>
         <p>
           I'm an aspiring software engineer who loves learning about the cutting edge technologies that are shaping the future of our world.  
-          I have strong experience developing sensor fusion and tracking algorithms.
+          With strong experience developing sensor fusion and tracking algorithms,
           I believe that computer vision, machine learning, and augmented reality are the future.
         </p>
         <div className="buttons">
