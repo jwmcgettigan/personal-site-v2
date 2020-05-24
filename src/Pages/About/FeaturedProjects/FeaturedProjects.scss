@@ -1,4 +1,4 @@
-@import '../../../../scss/color';
+@import '../../../scss/color';
 
 .featured-projects {
   display: grid;
@@ -26,15 +26,16 @@
   .gallery {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin: 0 -15px;
+    //margin-right: -15px;
+    //margin-left: -15px;
     color: color(background, on, 0.7);
 
     .project {
       position: relative;
       margin: 0 15px 3rem 15px;
-      min-width: 515px;
-      width: 47%;
+      //min-width: 515px;
+      flex: 1 1 calc(20% - 5px);
 
       .hover-mask {
         position: absolute;
@@ -65,24 +66,40 @@
         flex: 1 1 auto; 
         box-sizing: border-box;
         display: grid;
-        grid-template-columns: min-content auto;
-        grid-template-rows: 200px;
+        
         background: color(surface, dark);
         border: 1px solid color(background, on, 0.05);
+
+        @include mq('tablet-wide') {
+          grid-template-columns: min-content auto;
+          grid-template-rows: 200px;
+        }
   
         img {
-          grid-column: 1;
+          @include mq('tablet-wide') {
+            grid-column: 1;
+          }
           box-sizing: border-box;
           padding: 0.5rem;
           background: color(surface, light, 0.2);
           border-radius: 0;
-          height: 200px;
-          width: 200px;
           object-fit: cover;
+          object-position: top;
+
+          width: 100%;
+          min-width: 200px;
+          height: 200px;
+          @include mq('tablet-wide') {
+            height: 200px;
+            width: 200px;
+          }
         }
   
         .info {
-          grid-column: 2;
+          height: 8rem;
+          @include mq('tablet-wide') {
+            grid-column: 2;
+          }
           padding: 1.25rem;
   
           h3 {
@@ -91,6 +108,7 @@
             line-height: 1.2;
             text-decoration: underline;
             text-decoration-color: color(background, on, 0.4);
+            white-space: nowrap;
           }
           p {
             font-size: 0.875rem;

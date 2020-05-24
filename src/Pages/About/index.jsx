@@ -1,6 +1,6 @@
 import React from 'react';
-import AboutMe from './Components/AboutMe';
-import FeaturedProjects from './Components/FeaturedProjects';
+import AboutMe from './AboutMe';
+import FeaturedProjects from './FeaturedProjects';
 
 import './About.scss';
 

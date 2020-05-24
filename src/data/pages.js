@@ -1,9 +1,8 @@
 import About from '../Pages/About';
 import Resume from '../Pages/Resume';
-//import Home from '../Pages/Home';
 import Projects from '../Pages/Projects';
 import LinkLibrary from '../Pages/LinkLibrary';
-import Project from '../Pages/Project';
+import Article from '../Pages/Article';
 
 const pages = [
   {
@@ -31,11 +30,30 @@ const pages = [
     icon: 'FaLink'
   },
   {
-    name: 'Project',
-    component: Project,
-    path: '/project',
-    icon: 'FaCogs'
-  }/*,
+    name: 'Learning',
+    component: LinkLibrary,
+    path: '/learning',
+    icon: 'FaGraduationCap'
+  }, // architecture design, datastructures, filters, color theory, rendering, modeling, graphics
+  {
+    name: 'Dreams',
+    component: LinkLibrary,
+    path: '/dreams',
+    icon: 'FaStar'
+  }, // house, car, invention
+  {
+    name: 'Games',
+    component: LinkLibrary,
+    path: '/games',
+    icon: 'FaGamepad'
+  }, // minesweeper, tic-tac-toe, chess, checkers
+  {
+    name: 'Article',
+    component: Article,
+    path: '/article',
+    icon: 'FaBook'
+  }
+  /*,
   {
     name: 'Resume',
     component: ResumeDoc,

@@ -1,8 +1,9 @@
 import React from 'react';
-import Link, { Button } from '../../../../Components/Link';
+import Link, { Button } from '../../../Components/Link';
 
-import projects from '../../../../data/projects';
+import projects from '../../../data/projects';
 import './FeaturedProjects.scss';
+import { NavLink } from 'react-router-dom';
 
 const FeaturedProjects = () => (
   <div className="featured-projects section">
@@ -12,7 +13,7 @@ const FeaturedProjects = () => (
       {projects.map((project, index) => (
           <div className="project" key={index}>
             <div className="content">
-              <img src={require("../../../../assets/Projects/" + project.image)} alt=""/>
+              <img src={require("../../../assets/Projects/" + project.image)} alt=""/>
               <div className="info">
                 <h3>{project.name}</h3>
                 <p>{project.summary}</p>
@@ -31,7 +32,9 @@ const FeaturedProjects = () => (
               </div>
             </div>
             <div className="hover-mask">
-              <Button text="View Project"/>
+              <NavLink to={"/project/" + project.name.replace(/ /g, '-').toLowerCase()} className={'button nav-link'} exact>
+                {"View Project"}
+              </NavLink>
             </div>
           </div>
         )

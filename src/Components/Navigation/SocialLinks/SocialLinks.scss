@@ -2,16 +2,22 @@
 
 #social-links {
   display: grid;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
+  gap: 1rem;
 
   a {
     grid-row: 1;
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     background: color(primary, dark);
     transition: all 0.1s ease-in-out;
+
+    @include mq('tablet-wide') {
+      height: 2rem;
+      width: 2rem;
+    }
 
     span {
       display: flex;

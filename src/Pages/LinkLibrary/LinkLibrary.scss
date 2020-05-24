@@ -20,7 +20,7 @@
       }
 
       .subcategories {
-        background: color(surface, dark);
+        background: color(surface, dark);//lighten(color(background), 3%);//color(surface, dark);
         padding: 1.5em 1.5em 0.5em 1.5em;
         display: flex;
         flex-wrap: wrap;
@@ -28,9 +28,12 @@
         border-top: 4px solid color(primary, dark);
 
         .subcategory {
-          background: color(surface, light);
+          background: color(surface, light);//lighten(color(background), 6%); //color(surface, light);
           flex: 1 1 auto; 
-          width: 8em;
+          //width: 8em;
+          
+          width: min-content;
+          white-space: nowrap;
           margin: 0 0.5em 2em 0.5em;
           border: 1px solid color(background, on, 0.05);
           padding: 0.7rem;

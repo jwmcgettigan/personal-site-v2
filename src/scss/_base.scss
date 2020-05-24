@@ -14,6 +14,7 @@ html,
 body,
 #root {
   font: 100% $font-stack;
-  background: color(background);
+  text-size-adjust: none;
   color: color(background, on);
+  //filter: invert(100%); //EXPLORE THIS!!!!!!
 }

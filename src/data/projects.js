@@ -1,6 +1,49 @@
 
 const projects = [
   {
+    name: "Case Study: Project Name",
+    summary: "Project intro goes here. In the intro it's a good idea to answer a potential client's need/problem so it's more likely to land your next project or job.",
+    image: "phoenixhacks.svg",
+    url: {
+      demo: "",
+      repo: ""
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: [
+      {
+        name: "Project Overview",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Challenge",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Approach & Solution",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Results",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      }
+    ]
+  },
+  {
     name: "PhoenixHacks Live",
     summary: "Created the live site for PhoenixHacks 2020 with create-react-app.",
     image: "phoenixhacks.png",
@@ -8,13 +51,40 @@ const projects = [
       demo: "https://live.phoenixhacks.com/",
       repo: "https://github.com/PhoenixHacks/2020-live-web"
     },
-    content: {
-      overview: "",
-      challenge: "",
-      approach: "",
-      solution: "",
-      results: ""
-    }
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: [
+      {
+        name: "Project Overview",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Challenge",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Approach & Solution",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      },
+      {
+        name: "The Results",
+        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+        images: []
+      }
+    ]
   },
   {
     name: "Suspect Search",
@@ -23,7 +93,20 @@ const projects = [
     url: {
       demo: "",
       repo: ""
-    }
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: []
   },
   {
     name: "RGB-D Based RTLS",
@@ -32,7 +115,20 @@ const projects = [
     url: {
       demo: "",
       repo: ""
-    }
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: []
   },
   {
     name: "Gaze-Based UI Navigation",
@@ -41,7 +137,20 @@ const projects = [
     url: {
       demo: "",
       repo: ""
-    }
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: []
   },
   {
     name: "Patient Egress Alert System",
@@ -50,7 +159,20 @@ const projects = [
     url: {
       demo: "",
       repo: ""
-    }
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: []
   },
   {
     name: "Renegade",
@@ -59,7 +181,20 @@ const projects = [
     url: {
       demo: "",
       repo: "https://github.com/jwmcgettigan/renegade"
-    }
+    },
+    client: {
+      name: 'Client Name',
+      industry: 'Tech',
+      size: '100+',
+      website: 'website.com',
+      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+    },
+    requirements: [
+      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      "Requirement donec pede justo, fringilla vel, aliquet nec.",
+      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+    ],
+    sections: []
   },
 ]
 

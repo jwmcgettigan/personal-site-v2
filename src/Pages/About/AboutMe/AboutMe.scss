@@ -1,14 +1,17 @@
-@import '../../../../scss/color';
+@import '../../../scss/color';
 
 .about-me {
-  display: grid;
-  grid-template-columns: auto min-content;
+  display: flex;
+  flex-wrap: wrap;
+  //grid-template-columns: auto min-content;
   justify-content: center;
-  grid-gap: 3rem;
+  //grid-gap: 3rem;
   margin: auto;
 
   .profile {
     color: color(background, on, 0.7);
+    width: 62.5%;
+    flex: 1 1 auto;
 
     h2 {
       font-size: 3rem;

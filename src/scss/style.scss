@@ -8,19 +8,33 @@ html {
 
 #root {
   display: grid;
-  grid-template-columns: min-content auto;
-  //filter: invert(100%); EXPLORE THIS!!!!!!
+  grid-template-rows: min-content auto;
+  background: color(background);
+
+  @include mq('tablet-wide') {
+    grid-template-columns: min-content auto;
+  }
 
   main {
-    grid-column: 2;
-    margin: 0 0 0 280px;
+    grid-row: 2;
+    margin: 74px 0 0 0;
+    //margin: 0 0 0 280px;
     justify-content: center;
     color: color(background, on, 0.7);
+
+    @include mq('tablet-wide') {
+      grid-column: 2;
+      margin: 0 0 0 280px;
+    }
   
     .section {
       border-bottom: 1px solid color(background, on, 0.08);
-      padding: 3rem;
+      padding: 1rem;
       margin: auto;
+
+      @include mq('tablet-wide') {
+        padding: 3rem;
+      }
   
       @media (min-width: 576px) {
         max-width: 540px;
@@ -41,7 +55,14 @@ html {
       width: 100%;
       max-width: 100%;
       box-sizing: border-box;
-      background: color(surface, dark);
+      //background: color(surface, dark);
+      background: repeating-linear-gradient(
+        to bottom,
+        #151e29,
+        #151e29 2px,
+        darken(#151e29, 1%) 2px,
+        darken(#151e29, 1%) 4px
+      );
       text-align: center;
 
       h1 {
@@ -61,8 +82,12 @@ html {
     .card {
       border: 0;
       //border: 1px solid rgba(255,255,255,0.08);
-      padding: 3rem;
       //background: color(surface);
+      
+      padding: 1rem;
+      @include mq('tablet-wide') {
+        padding: 3rem;
+      }
   
       @media (min-width: 576px) {
         max-width: 540px;

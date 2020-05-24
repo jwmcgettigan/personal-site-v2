@@ -1,4 +1,4 @@
-
+@import 'functions';
 
 //=====Color Values============================================================
 
@@ -44,9 +44,9 @@ font-size: 1rem;
 
 $light-theme: (
   'primary': (
-    'base': #54b689,
-    'light': #4f4f4f,
-    'dark': #2a5b45,
+    'base': #4d89ff,
+    'light': #2f435c, //#70a0ff,
+    'dark': #3d6dcc,
     'on': #ffffff
   ),
   'accent': (
@@ -58,7 +58,7 @@ $light-theme: (
     'on': #000000
   ), //e7eaf0
   'surface': (
-    'base': #54b689,
+    'base': #4d89ff,
     'light': #fafafa,
     'dark': #e7eaf0,
     'on': #ffffff

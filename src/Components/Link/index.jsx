@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 import './Link.scss';
 
-const Link = ({url = '', icon = '', text = '', style = '', title = '', onclick = () => false}) => (
-  <a href={url} onClick={onclick} title={title} className={style} target="_blank" rel="noopener noreferrer">
+const Link = ({url = '', icon = '', text = '', style = '', title = '', newtab = true, onclick = () => false}) => (
+  <a href={url} onClick={onclick} title={title} className={style} target={newtab ? "_blank" : ""} rel="noopener noreferrer">
     <span className="icon"><Icon icon={icon}/></span><span className="text">{text}</span>
   </a>
 )
@@ -19,12 +19,12 @@ const PageLink = ({page, style = ''}) => {
   </NavLink>)
 }
 
-const Button = ({url, type, page, icon, text, onclick}) => {
+const Button = ({url, type, page, icon, text, onclick, newtab}) => {
   //console.log(page);
   if (type === 'pagelink') {
-    return <PageLink page={page} style="button"/>
+    return <PageLink page={page} style={"button"}/>
   } else {
-    return <Link style="button" url={url} icon={icon} text={text} onclick={onclick}/>
+    return <Link style="button" url={url} icon={icon} text={text} onclick={onclick} newtab={newtab}/>
   }
 }
 

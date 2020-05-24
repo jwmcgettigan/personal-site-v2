@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from '../../../../Components/Link';
+import { Button } from '../../../Components/Link';
 
-import ProfilePicture from '../../../../assets/ProfilePic1.3.png';
-import pages from '../../../../data/pages';
+import ProfilePicture from '../../../assets/ProfilePic1.3.png';
+import pages from '../../../data/pages';
 import './AboutMe.scss';
 
 //pages.find(page => page.name === 'Resume')
