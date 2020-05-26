@@ -45,50 +45,30 @@ const projects = [
   },
   {
     name: "PhoenixHacks Live",
-    summary: "Created the live site for PhoenixHacks 2020 with create-react-app.",
+    summary: "The live site for PhoenixHacks 2020.",
     image: "phoenixhacks.png",
     url: {
       demo: "https://live.phoenixhacks.com/",
       repo: "https://github.com/PhoenixHacks/2020-live-web"
     },
     client: {
-      name: 'Client Name',
+      name: 'PhoenixHacks Committee',
       industry: 'Tech',
-      size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      size: '12',
+      website: 'phoenixhacks.com',
+      description: 'Florida Poly\'s student hackathon organization.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "Announcements",
+      "Schedule",
+      "Map",
+      "Resources & Links"
     ],
-    sections: [
-      {
-        name: "Project Overview",
-        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
-        images: []
-      },
-      {
-        name: "The Challenge",
-        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
-        images: []
-      },
-      {
-        name: "The Approach & Solution",
-        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
-        images: []
-      },
-      {
-        name: "The Results",
-        content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
-        images: []
-      }
-    ]
+    content: require('./Projects/PhoenixHacksLive.md')
   },
   {
     name: "Suspect Search",
-    summary: "Implemented the speech-to-text (STT) and natural language processing (NLP) components of a system that takes in voice requests in the form of a visual description and outputs images of likely matches from nearby security cameras.  For a 48 hour hackathon.",
+    summary: "",
     image: "moto-avigilon.jpg",
     url: {
       demo: "",
@@ -106,11 +86,11 @@ const projects = [
       "Requirement donec pede justo, fringilla vel, aliquet nec.",
       "Requirement phasellus ullamcorper ipsum rutrum nunc."
     ],
-    sections: []
+    content: require('./Projects/SuspectSearch.md')
   },
   {
     name: "RGB-D Based RTLS",
-    summary: "Developed the foundation of a RTLS for tracking multiple people in a room that required spatial analysis and numerous frames of reference.",
+    summary: "",
     image: "RGB-D.jpg",
     url: {
       demo: "",
@@ -128,11 +108,11 @@ const projects = [
       "Requirement donec pede justo, fringilla vel, aliquet nec.",
       "Requirement phasellus ullamcorper ipsum rutrum nunc."
     ],
-    sections: []
+    content: require('./Projects/RGBD-RTLS.md')
   },
   {
     name: "Gaze-Based UI Navigation",
-    summary: "Developed a gaze-tracking system geared towards measuring the effectiveness of different gaze-based user interfaces and navigation methods.",
+    summary: "",
     image: "hyperbolic.png",
     url: {
       demo: "",
@@ -150,7 +130,7 @@ const projects = [
       "Requirement donec pede justo, fringilla vel, aliquet nec.",
       "Requirement phasellus ullamcorper ipsum rutrum nunc."
     ],
-    sections: []
+    content: require('./Projects/GazeUI-Nav.md')
   },
   {
     name: "Patient Egress Alert System",
@@ -172,7 +152,7 @@ const projects = [
       "Requirement donec pede justo, fringilla vel, aliquet nec.",
       "Requirement phasellus ullamcorper ipsum rutrum nunc."
     ],
-    sections: []
+    content: require('./Projects/EgressAlertSystem.md')
   },
   {
     name: "Renegade",
@@ -194,7 +174,7 @@ const projects = [
       "Requirement donec pede justo, fringilla vel, aliquet nec.",
       "Requirement phasellus ullamcorper ipsum rutrum nunc."
     ],
-    sections: []
+    content: require('./Projects/Renegade.md')
   },
 ]
 

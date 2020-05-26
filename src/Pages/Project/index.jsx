@@ -1,7 +1,7 @@
 import React from 'react';
 import './Project.scss';
 import Icon from '../../Components/Icon';
-import projects from '../../data/projects';
+import ReactMd from 'react-md-file';
 
 const ClientSection = ({ project }) => (
   <div className="client section">
@@ -11,7 +11,7 @@ const ClientSection = ({ project }) => (
       <div className="metadata">
         <span><Icon icon="FaIndustry"/>&nbsp;Industry: {project.client.industry}</span>
         <span><Icon icon="FaUsers"/>&nbsp;Size: {project.client.size}</span>
-        <span><Icon icon="FaLink"/>&nbsp;Website: {project.client.website}</span>
+        <span><Icon icon="FaLink"/>&nbsp;Website: <a href={project.client.website}>{project.client.website}</a></span>
       </div>
       <p>{project.client.description}</p>
       <h4>Project Requirements</h4>
@@ -22,14 +22,9 @@ const ClientSection = ({ project }) => (
   </div>
 )
 
-const ProjectSections = ({ project }) => (
+const ProjectContent = ({ project }) => (
   <div className="project-sections section">
-    {project.sections.map((section, i) => (
-      <div className="project-section">
-        <h2>{section.name}</h2>
-        <p>{section.content}</p>
-      </div>
-    ))}
+    <ReactMd fileName={project.content}/>
   </div>
 )
 
@@ -42,7 +37,7 @@ const Project = ({project}) => {
         <p>{project.summary}</p>
       </div>
       <ClientSection project={project}/>
-      <ProjectSections project={project}/>
+      <ProjectContent project={project}/>
     </main>
   )
 }

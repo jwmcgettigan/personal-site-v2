@@ -2,6 +2,10 @@
 
 #project {
 
+  a:hover {
+    color: color(primary);
+  }
+
   .client {
     display: flex;
 
@@ -13,6 +17,8 @@
     .info {
       background: color(surface, dark);
       padding: 1.5rem;
+      width: auto;
+      flex: 1 1 auto;
 
       h3, h4 {
         color: color(background, on, 0.95);
