@@ -24,6 +24,11 @@
   }
 
   .gallery {
+    padding: 0 !important;
+  }
+
+  /*
+  .gallery {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -15px;
@@ -135,5 +140,5 @@
         //transition: all 0.1s ease-in-out;
       }
     }
-  }
+  }*/
 }

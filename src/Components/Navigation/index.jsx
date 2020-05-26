@@ -35,7 +35,7 @@ const Navigation = () => (
     {/*<div className="mode">
       
     </div>*/}
-    <p className="copyright"><Icon icon={'FaRegCopyright'}/> 2020 Justin McGettigan</p>
+    <p className="copyright"><Icon icon={'FaRegCopyright'}/> {(new Date().getFullYear())} Justin McGettigan</p>
   </header>
 )
 

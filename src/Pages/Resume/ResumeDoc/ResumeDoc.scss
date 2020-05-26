@@ -22,6 +22,10 @@ $palette: (
   background: section(background);
   color: section(text);
 
+  a:hover {
+    color: section(title);
+  }
+
   .title {
     color: section(title);
     border-bottom: 4px solid lighten(section(title), 5%);

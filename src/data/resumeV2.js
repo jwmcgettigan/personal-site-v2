@@ -4,7 +4,7 @@ const resume = {
     "name": "Justin McGettigan",
     "email": "jwmcgettigan@gmail.com",
     "website": "https://jwmcgettigan.com",
-    "summary": "Curious minded CS graduate seeking a software engineering position with a passion for computer vision and machine learning.",
+    "summary": "Curious minded CS graduate with a passion for computer vision and machine learning currently seeking a software engineering position.",
     "location": {
       "city": "Webster",
       "countryCode": "US",

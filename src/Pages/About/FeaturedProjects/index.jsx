@@ -1,5 +1,6 @@
 import React from 'react';
 import Link, { Button } from '../../../Components/Link';
+import Gallery from '../../../Components/Gallery';
 
 import projects from '../../../data/projects';
 import './FeaturedProjects.scss';
@@ -9,7 +10,8 @@ const FeaturedProjects = () => (
   <div className="featured-projects section">
     <h2>Featured Projects</h2>
 
-    <section className="gallery">
+    <Gallery n={6}/>
+    {/*<section className="gallery">
       {projects.map((project, index) => (
           <div className="project" key={index}>
             <div className="content">
@@ -39,7 +41,7 @@ const FeaturedProjects = () => (
           </div>
         )
       )}
-    </section>
+    </section>*/}
 
   </div>
 )
