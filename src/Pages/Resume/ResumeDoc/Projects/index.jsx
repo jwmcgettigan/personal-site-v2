@@ -4,12 +4,14 @@ import './Projects.scss';
 const Projects = ({projects}) => (
   <div id="projects">
     <h1 className="title">PROJECTS</h1>
-    {projects.map((project, index) => (
-      <div key={index}>
-        <h4>{project.name}</h4>
-        <p>{project.summary}</p>
-      </div>
-    ))}
+    <div className="projectlist">
+      {projects.map((project, index) => (
+        <div key={index} className="project">
+          <h4>{project.name}</h4>
+          <p>{project.summary}</p>
+        </div>
+      ))}
+    </div>
   </div>
 )
 

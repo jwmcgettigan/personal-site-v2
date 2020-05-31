@@ -55,7 +55,7 @@ const projects = [
       name: 'PhoenixHacks Committee',
       industry: 'Tech',
       size: '12',
-      website: 'phoenixhacks.com',
+      website: 'https://phoenixhacks.com/',
       description: 'Florida Poly\'s student hackathon organization.'
     },
     requirements: [
@@ -75,16 +75,16 @@ const projects = [
       repo: ""
     },
     client: {
-      name: 'Client Name',
+      name: 'Avigilon',
       industry: 'Tech',
       size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      website: 'https://www.avigilon.com/',
+      description: 'Avigilon is a multipurpose video analytics company.  This project was done during a 48 hour hackathon hosted by Avigilon.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "",
+      "",
+      ""
     ],
     content: require('./Projects/SuspectSearch.md')
   },
@@ -97,16 +97,16 @@ const projects = [
       repo: ""
     },
     client: {
-      name: 'Client Name',
+      name: 'Motorola Solutions',
       industry: 'Tech',
       size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      website: 'https://www.motorolasolutions.com/',
+      description: 'Motorola Solutions is a company that provides mission-critical communications products, solutions & services.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "Know the number of people in a room in real-time.",
+      "Use as few cameras as possible.",
+      "Know where people are in a room."
     ],
     content: require('./Projects/RGBD-RTLS.md')
   },
@@ -119,16 +119,18 @@ const projects = [
       repo: ""
     },
     client: {
-      name: 'Client Name',
-      industry: 'Tech',
-      size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      name: 'Computer Vision & Human Computer Interaction Courses',
+      industry: 'School',
+      size: 'N/A',
+      website: 'N/A',
+      description: 'This research project was done for these two courses\'s final projects.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "Use only one camera.",
+      "Track pupils' positions in realtime.",
+      "Track gaze estimation in realtime",
+      "Calibrate gaze estimation to screen position.",
+      "Have a 3D estimation of gaze destination on screen."
     ],
     content: require('./Projects/GazeUI-Nav.md')
   },
@@ -141,16 +143,19 @@ const projects = [
       repo: ""
     },
     client: {
-      name: 'Client Name',
-      industry: 'Tech',
+      name: 'Lakeland Regional Hospital',
+      industry: 'Health',
       size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      website: 'https://mylrh.org/',
+      description: 'This project was a senior design project for Lakeland Regional Hospital.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "Use a single camera.",
+      "Identify bed and patient.",
+      "Track bed area in image.",
+      "Track patient position in image.",
+      "Analyse data to determine whether a patient is in bed or out of bed.",
+      "Analyze data over time to improve prediction of a patient's intention to leave their bed."
     ],
     content: require('./Projects/EgressAlertSystem.md')
   },
@@ -163,16 +168,16 @@ const projects = [
       repo: "https://github.com/jwmcgettigan/renegade"
     },
     client: {
-      name: 'Client Name',
-      industry: 'Tech',
-      size: '100+',
-      website: 'website.com',
-      description: 'Short description of the client and project requirements. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.'
+      name: 'Autonomous Systems',
+      industry: 'School',
+      size: 'N/A',
+      website: 'N/A',
+      description: 'This project was for my Autonomous Systems course.  The goal was to gain experience with self-driving vehicles and the sensor data involved.'
     },
     requirements: [
-      "Requirement lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      "Requirement donec pede justo, fringilla vel, aliquet nec.",
-      "Requirement phasellus ullamcorper ipsum rutrum nunc."
+      "",
+      "",
+      ""
     ],
     content: require('./Projects/Renegade.md')
   },

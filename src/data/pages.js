@@ -3,6 +3,9 @@ import Resume from '../Pages/Resume';
 import Projects from '../Pages/Projects';
 import LinkLibrary from '../Pages/LinkLibrary';
 import Article from '../Pages/Article';
+import PageBuilder from '../Pages/PageBuilder';
+import Checkers from '../Pages/Game/Checkers';
+import Checkers3 from '../Pages/Game/Checkers3';
 
 const pages = [
   {
@@ -35,7 +38,8 @@ const pages = [
     path: '/learning',
     icon: 'FaGraduationCap'
   }, // architecture design, datastructures, filters, color theory, rendering, modeling, graphics
-  {
+     // drag & drop w/react, 
+  /*{
     name: 'Dreams',
     component: LinkLibrary,
     path: '/dreams',
@@ -46,12 +50,30 @@ const pages = [
     component: LinkLibrary,
     path: '/games',
     icon: 'FaGamepad'
-  }, // minesweeper, tic-tac-toe, chess, checkers
+  }, // minesweeper, tic-tac-toe, chess, checkers, sudoku*/
+  {
+    name: 'Checkers',
+    component: Checkers,
+    path: '/checkers',
+    icon: 'FaGamepad'
+  },
+  {
+    name: 'Checkers3',
+    component: Checkers3,
+    path: '/checkers3',
+    icon: 'FaGamepad'
+  },
   {
     name: 'Article',
     component: Article,
     path: '/article',
     icon: 'FaBook'
+  },
+  {
+    name: 'PageBuilder',
+    component: PageBuilder,
+    path: '/pagebuilder',
+    icon: 'FaCog'
   }
   /*,
   {
