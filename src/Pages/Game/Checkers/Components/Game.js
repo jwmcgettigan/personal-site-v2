@@ -4,14 +4,18 @@ let observers = []
 export let checkerPos = [0, 0]
 
 function emitChange() {
-  observers.forEach((o) => o && o(checkerPos))
+  observers.forEach((o) => {
+    return o && o(checkerPos)
+  })
 }
 
 export function observe(o) {
   observers.push(o)
   emitChange()
   return () => {
-    observers = observers.filter((t) => t !== o)
+    observers = observers.filter((t) => {
+      return t !== o
+    })
   }
 }
 

@@ -17,7 +17,11 @@ const containerStyle = {
 
 const Checkers = () => {
   const [checkerPos, setCheckerPos] = useState([0, 0]);
-  useEffect(() => observe((newPos) => setCheckerPos(newPos)))
+  useEffect(() => {
+      observe((newPos) => {
+        setCheckerPos(newPos)
+      })
+  })
 
   return (
     <DndProvider backend={HTML5Backend}>
