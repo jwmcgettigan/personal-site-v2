@@ -15,7 +15,7 @@ const Checker = ({ checker, forceUpdate, board }) => {
 
   const selectCheckerToggle = () => {
     if(window.game.activeChecker === checker
-      || checker.player === window.game.currentPlayer) {
+      || checker.player !== window.game.currentPlayer) {
       window.game.activeChecker = null;
       forceUpdate(null);
     } else {
@@ -28,7 +28,7 @@ const Checker = ({ checker, forceUpdate, board }) => {
     <div className="checker" style={{backgroundImage, border}}
       //onMouseEnter={() => setHover(true)}
       //onMouseLeave={() => setHover(false)}
-      onClick={() => selectCheckerToggle()}>
+      onClick={() => forceUpdate(checker.selectToggle())}>
       {/*checker.selected && <Overlay backgroundColor={"green"}/>*/}
     </div>
   )

@@ -19,29 +19,34 @@ const Tile = ({ backgroundColor, x, y, forceUpdate, board, children }) => {
     checker = children.props.checker;
   }
 
+  const emptyTile = checker == null;
+  const activeCheckerCanMove = emptyTile && (activeChecker != null);
   const checkerIsActive = (checker != null) && (checker === activeChecker);
-  //let possibleMove = (activeChecker != null) && activeChecker.canMove(x, y) && (checker == null);
-  const possibleMove = () => {
-    if(activeChecker != null) {
-      if(activeChecker.canMove(x, y)) { // || activeChecker.canJump(board.checkers, x, y)) {
-        if(checker == null) {
-          const [dx, dy] = getVector(...activeChecker.position, x, y);
-          if(Math.abs(dx) === 2 && Math.abs(dy) === 2) {
-            let jumpableChecker = board.checkers.filter(checker => (
-              JSON.stringify(getVector(...checker.position, x, y)) === JSON.stringify([dx/2, dy/2]))[0]
-            )
-          }
-          
-          return true;
-        } else {
-          return false;
-        }
+  const possibleMove = activeCheckerCanMove && activeChecker.canMoveTo(x, y);
+  const possibleJump = activeCheckerCanMove && activeChecker.canJumpTo(board.checkers, x, y);
+  const checkerCaptured = (x, y) => {
+    const [dx, dy] = getVector(...activeChecker.position, x, y);
+
+    if(Math.abs(dx) === 2 && Math.abs(dy) === 2) {
+      let capturedChecker = window.game.jumpableCheckers.filter(checker => {
+        //console.log(JSON.stringify(getVector(...activeChecker.position, ...checker.position)) + " = " + JSON.stringify([dx/2, dy/2]));
+        return JSON.stringify(getVector(...activeChecker.position, ...checker.position)) === JSON.stringify([dx/2, dy/2])
+      })[0]
+
+      if(capturedChecker != null) {
+        window.game.currentPlayer.capturedCheckers.push(capturedChecker);
+        let checkerIndex = capturedChecker.player.checkers.indexOf(capturedChecker);
+        capturedChecker.player.checkers.splice(checkerIndex, 1);
+        checkerIndex = board.checkers.indexOf(capturedChecker);
+        board.checkers.splice(checkerIndex, 1);
+        //! MAKE SURE TO CONSOLIDATE PLAYER AND BOARD CHECKER ARRAYS
+        window.game.jumpableCheckers = [];
       }
     }
-    return false;
   }
   const moveChecker = (checker) => {
-    if(checker != null && possibleMove()) {
+    if(checker != null && (possibleMove || possibleJump)) {
+      checkerCaptured(x, y);
       checker.position = [x, y];
       if((checker.player.side === "bottom" 
           && checker.position[1] === 0)
@@ -49,8 +54,10 @@ const Tile = ({ backgroundColor, x, y, forceUpdate, board, children }) => {
           && checker.position[1] === board.size[1]-1)) {
         checker.isKing = true;
       }
-      window.game.currentPlayer = board.players.filter(player => player !== window.game.currentPlayer)[0];
-      forceUpdate([x, y]);
+      window.game.currentPlayer = board.players.filter(player => (
+        player !== window.game.currentPlayer)
+      )[0]
+      forceUpdate(activeChecker.selectToggle());
     }
   }
 
@@ -61,7 +68,7 @@ const Tile = ({ backgroundColor, x, y, forceUpdate, board, children }) => {
       onClick={() => moveChecker(activeChecker)}
       >
       {children}
-      {possibleMove() && <Overlay backgroundColor={"yellow"}/>}
+      {(possibleMove || possibleJump) && <Overlay backgroundColor={"yellow"}/>}
       {/*isHover && <Overlay backgroundColor={"green"}/>*/}
       {checkerIsActive && <Overlay backgroundColor={"green"}/>}
     </div>

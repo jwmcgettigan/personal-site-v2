@@ -14,6 +14,8 @@ const Game = () => {
   window.game = {
     currentPlayer: null,
     activeChecker: null,
+    //lastActiveChecker: null,
+    jumpableCheckers: [],
     winner: null,
   }
 
@@ -40,63 +42,36 @@ const Game = () => {
       position: position,
       isKing: false,
       //isCaptured/isJumped?
-      canJump: (checkers, toX, toY) => {
-        const [x, y] = checker.position;
-        const dx = toX - x; // vector
-        const dy = toY - y; // vector
-        const checkVectors = [[2, 2], [2, -2], [-2, 2], [-2, -2]];
-        if(checker.isKing) {
-          checkVectors.forEach(vector => {
-            console.log([dx, dy]);
-            if(dx === vector[0] && dy === vector[1]
-              && checkers.filter(c => (
-                JSON.stringify(c.position) === JSON.stringify([dx+(vector[0]/-2), dy+(vector[1]/-2)])
-              ))) {
+      canJumpTo: (checkers, toX, toY) => {
+        const [dx, dy] = getVector(...checker.position, toX, toY);
+
+        const isJumpable = (condition) => {
+          if(condition) {
+            let jumpableChecker = board.checkers.filter(checker => (
+              JSON.stringify(getVector(...checker.position, toX, toY)) === JSON.stringify([dx/2, dy/2])
+            ))[0]
+            if(jumpableChecker != null && jumpableChecker.player !== checker.player) {
+              window.game.jumpableCheckers.push(jumpableChecker);
               return true;
             }
-          })
-        } else {
-          if(checker.player.side === "top") {
-            if(dx === 2 && dy === 2
-              && checkers.filter(c => (
-                JSON.stringify(c.position) === JSON.stringify([dx-1, dy-1])
-                && c.player !== checker.player
-              )[0])) {
-               return dx === 2 && dy === 2;
-            }
-            if(dx === -2 && dy === 2
-              && checkers.filter(c => (
-                JSON.stringify(c.position) === JSON.stringify([dx+1, dy-1])
-                && c.player !== checker.player
-              )[0])) {
-               return dx === -2 && dy === 2;
-            }
-          } else {
-            if(dx === 2 && dy === -2
-              && checkers.filter(c => (
-                JSON.stringify(c.position) === JSON.stringify([dx-1, dy+1])
-                && c.player !== checker.player
-              )[0])) {
-               return dx === 2 && dy === -2;
-            }
-            if(dx === -2 && dy === -2
-              && checkers.filter(c => (
-                JSON.stringify(c.position) === JSON.stringify([dx+1, dy+1])
-                && c.player !== checker.player
-              )[0])) {
-               return dx === -2 && dy === -2;
-            }
+            return false;
           }
         }
 
-        /*
-        checkers.filter(checker => 
-          JSON.stringify(checker.position) === JSON.stringify([x, y]))[0];*/
+        if(checker.isKing) {
+          return isJumpable(Math.abs(dx) === 2 && Math.abs(dy) === 2)
+        } else {
+          if(checker.player.side === "top") {
+            return isJumpable(Math.abs(dx) === 2 && dy === 2);
+          } else {
+            return isJumpable(Math.abs(dx) === 2 && dy === -2);
+          }
+        }
       },
-      canMove: (toX, toY) => {
+      canMoveTo: (toX, toY) => {
         const [x, y] = checker.position;
-        const dx = toX - x
-        const dy = toY - y
+        const dx = toX - x;
+        const dy = toY - y;
         if(checker.isKing) {
           return Math.abs(dx) === 1 && Math.abs(dy) === 1;
         } else {
@@ -105,6 +80,16 @@ const Game = () => {
           } else {
             return Math.abs(dx) === 1 && dy === -1;
           }
+        }
+      },
+      selectToggle: () => {
+        if(window.game.activeChecker === checker
+            || checker.player !== window.game.currentPlayer) {
+          window.game.activeChecker = null;
+          return null;
+        } else {
+          window.game.activeChecker = checker;
+          return checker;
         }
       }
     };
@@ -179,5 +164,17 @@ get vector between tile and activeChecker:
       )
       if (enemyChecker.player !== activeChecker.player):
         
-      
+I need a way to capture checkers.
+ - how to recognize that a checker has been captured?
+  - distinguish between moves and jumps
+  - identify (and store) the jumpable checkers for the activeChecker
+  - once activeChecker is moved, find jumped checker through vector math
+    and then capture it by moving it from playerX.checkers to playerY.capturedCheckers
+
+Need to implement chain jumping.
+ - instead of changing players and toggling the activeChecker right after moving,
+   do another check for possible jumps
+ - if there are possible jumps, then still forceUpdate but don't toggle activeChecker
+
+ 
 */
