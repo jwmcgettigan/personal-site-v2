@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import projects from '../../data/projects';
-import './Gallery.scss';
+import './Slider.scss';
 
 const Project = ({ project }) => (
   <NavLink to={"/project/" + project.name.replace(/ /g, '-').toLowerCase()} className={'nav-link'} exact>
@@ -15,14 +15,8 @@ const Project = ({ project }) => (
   </NavLink>
 )
 
-const Gallery = ({ n=-1, slider }) => (
-  <div className="gallery section">
-    {projects.map((project, index) => {
-      if (n < 0 || index <= n-1) {
-        return <Project key={index} project={project}/>
-      }
-    })}
-  </div>
-)
+const Slider = ({ n=-1 }) => {
+  
+}
  
-export default Gallery;
+export default Slider;

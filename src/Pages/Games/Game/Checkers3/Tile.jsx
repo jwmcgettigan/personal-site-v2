@@ -7,6 +7,7 @@ const getVector = (x, y, toX, toY) => {
 }
 
 const Overlay = ({ backgroundColor }) => {
+  //let boxShadow = `inset 0 0 1px 5px ${backgroundColor}`;
   return <div className="overlay" style={{backgroundColor}}/>
 }
 
@@ -54,10 +55,17 @@ const Tile = ({ backgroundColor, x, y, forceUpdate, board, children }) => {
           && checker.position[1] === board.size[1]-1)) {
         checker.isKing = true;
       }
-      window.game.currentPlayer = board.players.filter(player => (
-        player !== window.game.currentPlayer)
-      )[0]
-      forceUpdate(activeChecker.selectToggle());
+
+      //! NEED CHAINJUMP FUNCTIONALITY
+      let chainJump = false//activeCheckerCanMove && activeChecker.canJumpTo(board.checkers, x, y);
+      if(chainJump) {
+        //forceUpdate([x, y]);
+      } else {
+        window.game.currentPlayer = board.players.filter(player => (
+          player !== window.game.currentPlayer)
+        )[0]
+        forceUpdate(activeChecker.activeToggle());
+      }
     }
   }
 

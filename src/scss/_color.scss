@@ -5,13 +5,13 @@
 $color-key: 'base' !default;
 $dark-theme: (
   'primary': ( //color
-    'base': #4d89ff,
+    'base': #668fbe,
     'light': #2f435c, //#70a0ff,
-    'dark': #3d6dcc,
+    'dark': #597ba1,
     'on': #ffffff
   ),
   'accent': (
-    'base': #70a0ff,
+    'base': #80b1e8,
     'on': #ffffff
   ),
   'secondary': ( //color
@@ -44,9 +44,9 @@ font-size: 1rem;
 
 $light-theme: (
   'primary': (
-    'base': #4d89ff,
+    'base': #668fbe,
     'light': #2f435c, //#70a0ff,
-    'dark': #3d6dcc,
+    'dark': #597ba1,
     'on': #ffffff
   ),
   'accent': (
@@ -58,7 +58,7 @@ $light-theme: (
     'on': #000000
   ), //e7eaf0
   'surface': (
-    'base': #4d89ff,
+    'base': #668fbe,
     'light': #fafafa,
     'dark': #e7eaf0,
     'on': #ffffff
@@ -75,13 +75,13 @@ $light-theme: (
 
 $resume-theme: (
   'primary': (
-    'base': #54b689,
+    'base': #668fbe,
     'light': #ffffff,
     'dark': #ffffff,
     'on': #ffffff
   ),
   'accent': (
-    'base': #54b689,
+    'base': #668fbe,
     'on': #ffffff
   ),
   'secondary': (
@@ -104,6 +104,7 @@ $resume-theme: (
   )
 );
 
+//! IDEA: profile photo can be dragged in a circle like a record on a record player and music will start playing
 $theme: $dark-theme;
 
 $named-opacity: (

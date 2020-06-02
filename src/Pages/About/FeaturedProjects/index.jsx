@@ -3,10 +3,12 @@ import Link, { Button } from '../../../Components/Link';
 import Gallery from '../../../Components/Gallery';
 
 import projects from '../../../data/projects';
+import pages from '../../../data/pages';
 import './FeaturedProjects.scss';
 import { NavLink } from 'react-router-dom';
 
 const FeaturedProjects = () => (
+  //! CREATE A CAROUSEL VERSION OF THE GALLERY FOR THE FEATURED SECTIONS
   <div className="featured-projects section">
     <h2>Featured Projects</h2>
 

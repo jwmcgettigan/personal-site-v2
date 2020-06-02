@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import SideBoard from './SideBoard';
 
 const getVector = (x, y, toX, toY) => {
   const dx = toX - x; // x vector
@@ -82,7 +83,7 @@ const Game = () => {
           }
         }
       },
-      selectToggle: () => {
+      activeToggle: () => {
         if(window.game.activeChecker === checker
             || checker.player !== window.game.currentPlayer) {
           window.game.activeChecker = null;
@@ -135,46 +136,32 @@ export default Game;
 
 
 /*
-activeCheckerPOV
-------------------
-check 4 corners around activeChecker: 
-  [1, 1], [1, -1], [-1, 1], [1, 1]
-if a corner contains an enemy player's checker:
-  then check the tile that is one magnitude further: 
-    [corner[0]*2, corner[1]*2]
-    if tile is empty:
-      then this tile is a possible move and the checked checker is capturable
-        if the activeChecker moves to this tile:
-          then the checked checker will be considered captured
-
-
-should I take the approach of having a list of possibleMoves or
-should I keep doing it where each tile is checked to be a possible move rather than comparing to a list?
-
-tile POV
------------------
-const [x, y] = tile.position;
-let enemyChecker = null; // not necessarily enemy
-get vector between tile and activeChecker: 
-  const vector = getVector(...activeChecker.position, x, y);
-  if vector is Math.abs(dx) === 2 && Math.abs(dy) === 2:
-    if an enemy player's checker is inbetween tile and activeChecker:
-      enemyChecker = checkers.filter(checker => (
-        JSON.stringify(getVector(...checker.position, x, y)) === JSON.stringify(vector.map(v => v/2)))[0]
-      )
-      if (enemyChecker.player !== activeChecker.player):
-        
-I need a way to capture checkers.
+//I need a way to capture checkers.
  - how to recognize that a checker has been captured?
   - distinguish between moves and jumps
   - identify (and store) the jumpable checkers for the activeChecker
   - once activeChecker is moved, find jumped checker through vector math
     and then capture it by moving it from playerX.checkers to playerY.capturedCheckers
 
-Need to implement chain jumping.
+?Need to implement chain jumping.
  - instead of changing players and toggling the activeChecker right after moving,
    do another check for possible jumps
  - if there are possible jumps, then still forceUpdate but don't toggle activeChecker
 
- 
+?Need to implement Game Over
+  - declare winner and display it somewhere
+
+?Need to implement control panel / GUI
+  - control: board dimensions, player colors, checker modes
+  - have buttons to: reset the game, save the game config?
+
+?Need to implement sideboard to see captured checkers
+  - create a non-checkered sideboard that holds the captured checkers
+
+?Need to implement game modes
+  - forced jumping
+  - optional jumping
+  - human vs. human
+  - human vs. CPU
+  - CPU vs. CPU
 */

@@ -4,17 +4,17 @@
 
   .projectlist {
     display: grid;
-    grid-gap: 1rem;
+    //grid-gap: 1rem;
     padding-top: 1rem; 
-    grid-template-columns: 1fr 1fr;
+    //grid-template-columns: min-content 1fr;
     //grid-template-rows: repeat(auto-fit, minmax(0, 1fr)); //min-content;
     color: color(background, on, 0.7);
     
     .project {
       //background: color(surface, dark, 0.7);
-      border: 1px solid color(background, on, 0.05);
+      //border: 1px solid color(background, on, 0.05);
       vertical-align: middle;
-      padding: 0 0.5rem 0.5rem 0.5rem;
+      padding: 0 0.5rem 0.5rem 0;
       
       h4 {
         white-space: nowrap;

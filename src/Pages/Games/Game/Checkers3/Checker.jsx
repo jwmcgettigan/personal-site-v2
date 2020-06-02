@@ -28,7 +28,7 @@ const Checker = ({ checker, forceUpdate, board }) => {
     <div className="checker" style={{backgroundImage, border}}
       //onMouseEnter={() => setHover(true)}
       //onMouseLeave={() => setHover(false)}
-      onClick={() => forceUpdate(checker.selectToggle())}>
+      onClick={() => forceUpdate(checker.activeToggle())}>
       {/*checker.selected && <Overlay backgroundColor={"green"}/>*/}
     </div>
   )

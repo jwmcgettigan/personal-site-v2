@@ -35,4 +35,12 @@
   p {
     color: color(background, on, 0.56);
   }
+
+  .QRCode {
+    svg {
+      height: 29.3333px;
+      width: 29.3333px;
+      color: white;
+    }
+  }
 }

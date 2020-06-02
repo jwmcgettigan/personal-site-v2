@@ -2,10 +2,10 @@ import About from '../Pages/About';
 import Resume from '../Pages/Resume';
 import Projects from '../Pages/Projects';
 import LinkLibrary from '../Pages/LinkLibrary';
+import Learning from '../Pages/Learning';
 import Article from '../Pages/Article';
 import PageBuilder from '../Pages/PageBuilder';
-import Checkers from '../Pages/Game/Checkers';
-import Checkers3 from '../Pages/Game/Checkers3';
+import Games from '../Pages/Games';
 
 const pages = [
   {
@@ -34,7 +34,7 @@ const pages = [
   },
   {
     name: 'Learning',
-    component: LinkLibrary,
+    component: Learning,
     path: '/learning',
     icon: 'FaGraduationCap'
   }, // architecture design, datastructures, filters, color theory, rendering, modeling, graphics
@@ -44,25 +44,13 @@ const pages = [
     component: LinkLibrary,
     path: '/dreams',
     icon: 'FaStar'
-  }, // house, car, invention
+  }, // house, car, invention*/
   {
     name: 'Games',
-    component: LinkLibrary,
+    component: Games,
     path: '/games',
     icon: 'FaGamepad'
-  }, // minesweeper, tic-tac-toe, chess, checkers, sudoku*/
-  {
-    name: 'Checkers',
-    component: Checkers,
-    path: '/checkers',
-    icon: 'FaGamepad'
-  },
-  {
-    name: 'Checkers3',
-    component: Checkers3,
-    path: '/checkers3',
-    icon: 'FaGamepad'
-  },
+  }, // minesweeper, tic-tac-toe, chess, checkers, sudoku
   {
     name: 'Article',
     component: Article,
