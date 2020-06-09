@@ -1,6 +1,8 @@
 import React from 'react';
 
 import './PageBuilder.scss';
+import { Paper } from '@material-ui/core';
+
 
 export default class PageBuilder extends React.Component {
   
@@ -8,7 +10,9 @@ export default class PageBuilder extends React.Component {
   render() {
     return (
       <main id="pagebuilder">
-
+        <Paper elevation={0} />
+        <Paper />
+        <Paper elevation={3} />
       </main>
     );
   }

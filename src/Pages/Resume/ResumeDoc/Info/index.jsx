@@ -23,7 +23,7 @@ const Info = ({basics}) => (
     </h1>
     <Link url={resume.website.url} text={resume.website.text} icon={resume.website.icon}/>
     <Link url={resume.email.url} text={resume.email.text} icon={resume.email.icon}/>
-    <Link url={resume.location.url} text={resume.location.text + ' (✔️relocate)'} icon={resume.location.icon}/>
+    <Link url={resume.location.url} text={resume.location.text + ' (relocatable)'} icon={resume.location.icon}/>
     {resume.profiles.map((profile, index) => (
       <Link key={index} url={profile.url} text={profile.network + ': ' + profile.username} icon={profile.icon}/>
     ))}
