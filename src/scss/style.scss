@@ -3,13 +3,15 @@
 
 html {
   // RETURN TO FIX THIS ISSUE
-  background: color(background);
+  //! background: color(background);
+  //background: #D9B08C;
 }
 
 #root {
   display: grid;
   grid-template-rows: min-content auto;
-  background: color(background);
+  //! background: color(background);
+  //background: #D9B08C;
 
   @include mq('tablet-wide') {
     grid-template-columns: min-content auto;
@@ -20,7 +22,7 @@ html {
     margin: 74px 0 0 0;
     //margin: 0 0 0 280px;
     justify-content: center;
-    color: color(background, on, 0.7);
+    //! color: color(background, on, 0.7);
 
     @include mq('tablet-wide') {
       grid-column: 2;
@@ -56,17 +58,18 @@ html {
       max-width: 100%;
       box-sizing: border-box;
       //background: color(surface, dark);
-      background: repeating-linear-gradient(
+      /*background: repeating-linear-gradient(
         to bottom,
         #151e29,
         #151e29 2px,
         darken(#151e29, 1%) 2px,
         darken(#151e29, 1%) 4px
-      );
+      );*/
+      //! background: #FFCB9A;
       text-align: center;
 
       h1 {
-        color: color(background, on, 0.95);
+        //color: color(background, on, 0.95);
         font-size: 2rem;
         margin-bottom: 0.5rem;
         line-height: 1.2;

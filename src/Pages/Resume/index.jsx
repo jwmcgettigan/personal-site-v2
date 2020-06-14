@@ -3,6 +3,7 @@ import ResumeDoc from './ResumeDoc';
 
 import { Button } from '../../Components/Link';
 import './Resume.scss';
+import { Paper } from '@material-ui/core';
 
 
 const downloadResume = () => {
@@ -18,10 +19,10 @@ const downloadResume = () => {
 }
 
 const ResumeDownload = () => (
-  <div className="resume-download title-section">
+  <Paper elevation={2} className="resume-download title-section">
     <h2>Resume</h2>
     <Button icon={'FaFilePdf'} text={'Download PDF Version'} onclick={downloadResume}/>
-  </div>
+  </Paper>
 )
 
 const Resume = () => (<>

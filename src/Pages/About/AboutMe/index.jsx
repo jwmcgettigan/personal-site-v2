@@ -5,10 +5,24 @@ import ProfilePicture from '../../../assets/ProfilePic1.3.png';
 import pages from '../../../data/pages';
 import './AboutMe.scss';
 
+import { Paper } from '@material-ui/core';
 //pages.find(page => page.name === 'Resume')
+import { makeStyles } from '@material-ui/core/styles';
 
-const AboutMe = () => (
-  <div className="title-section">
+const useStyles = makeStyles((theme) => ({
+  titleSection: {
+    backgroundColor: theme.palette.secondary.dark,
+    color: theme.palette.getContrastText(theme.palette.secondary.dark)
+  },
+  button: {
+    backgroundColor: theme.palette.primary.main
+  },
+}));
+
+const AboutMe = () => {
+  const classes = useStyles();
+  return (
+  <Paper elevation={2} className={classes.titleSection + " title-section"} square>
     <div className="about-me card">
       <div className="profile">
         <h2>Justin McGettigan</h2>
@@ -25,7 +39,7 @@ const AboutMe = () => (
       </div>
       <img src={ProfilePicture} alt="Profile"/> 
     </div>
-  </div>
-)
+  </Paper>
+)}
 
 export default AboutMe;

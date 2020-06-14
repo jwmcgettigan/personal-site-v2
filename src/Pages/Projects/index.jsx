@@ -1,13 +1,14 @@
 import React from 'react';
 import Gallery from '../../Components/Gallery';
 import './Projects.scss';
+import { Paper } from '@material-ui/core';
 
 const Title = () => (
-  <div className="title title-section">
+  <Paper elevation={2} className="title title-section">
     <h2>Projects</h2>
     <p>Welcome to my project portfolio!</p>
     {/*<a href="#"><Icon icon="FaPaperPlane"/>Hire Me</a>*/}
-  </div>
+  </Paper>
 )
 
 const Projects = () => (<>

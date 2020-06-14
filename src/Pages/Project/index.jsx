@@ -3,6 +3,9 @@ import './Project.scss';
 import Icon from '../../Components/Icon';
 import ReactMd from 'react-md-file';
 
+import { Paper } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
 const ClientSection = ({ project }) => (
   <div className="client section">
     <img src={require("../../assets/Projects/" + project.image)} alt=""/>
@@ -32,10 +35,10 @@ const Project = ({project}) => {
 
   return (
     <main id="project">
-      <div className="title-section">
+      <Paper elevation={2} className="title-section">
         <h1>{project.name}</h1>
         <p>{project.summary}</p>
-      </div>
+      </Paper>
       <ClientSection project={project}/>
       <ProjectContent project={project}/>
     </main>
