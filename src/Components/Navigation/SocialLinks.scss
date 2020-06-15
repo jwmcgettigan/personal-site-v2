@@ -11,7 +11,7 @@
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
-    background: color(primary, dark);
+    //! background: color(primary, dark);
     transition: all 0.1s ease-in-out;
 
     @include mq('tablet-wide') {
@@ -25,12 +25,12 @@
       margin-top: 25%;
 
       svg {
-        color: color(primary, on) !important;
+        //! color: color(primary, on) !important;
         width: 50%;
         height: 50%;
       }
     }
   } a:hover {
-    color: color(background);
+    //! color: color(background);
   }
 }

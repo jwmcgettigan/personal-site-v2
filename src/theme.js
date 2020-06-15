@@ -1,6 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { indigo, pink, red, blueGrey } from '@material-ui/core/colors';
 
+//! MAKE SURE I'M USING THE IDEAL THEMING PACKAGE/TOOL
+
 const theme = createMuiTheme({
   palette: {
     type: 'light',
@@ -14,12 +16,16 @@ const theme = createMuiTheme({
       main: '#ffcb9a',
       dark: '#ca9a6b'
     },
+    navigation: indigo,
     background: blueGrey,
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2
   },
   typography: {
+    
+  },
+  styles: {
     
   }
 })
