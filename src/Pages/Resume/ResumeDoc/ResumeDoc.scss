@@ -12,7 +12,7 @@ $palette: (
   @return map-get($palette, $name);
 }
 
-#resume {
+#resume {/*
   display: flex;
   justify-content: center;
   align-content: center;
@@ -20,8 +20,9 @@ $palette: (
   height: 1056px;
 
   background: section(background);
-  color: section(text);
+  color: section(text);*/
 
+  /*
   a:hover {
     color: section(title);
   }
@@ -37,8 +38,8 @@ $palette: (
   p, h4, ul {
     margin: 0;
     margin-top: 6px;
-  }
-
+  }*/
+  /*
   .left {
     padding: 1rem;
     width: 228px;
@@ -60,5 +61,5 @@ $palette: (
     tr {
       display: flex;
     }
-  }
+  }*/
 }

@@ -8,7 +8,7 @@ import Navbar from './Navbar';
 
 import { useTheme } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
-import { bp, mq } from '../../helper';
+import { bp, mq, zDepth } from '../../helper';
 
 const Copyright = () => {
   const copyrightStyle = css(`
@@ -21,6 +21,7 @@ const Copyright = () => {
       text-align: center;
       font-weight: bold;
       align-self: flex-end;
+      //margin-top: auto;
       svg {
         margin-right: 0.5rem;
       }
@@ -35,7 +36,7 @@ const Copyright = () => {
   )
 }
 
-const Navigation = () => {
+const Navigation = ({ toggleTheme }) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const isTabletOrMobile = useMediaQuery({query: `(max-width: ${bp['tablet-wide']-1}px)`});
   //! detect touchscreen
@@ -50,10 +51,9 @@ const Navigation = () => {
     width: 100%;
     box-sizing: border-box;
     padding: 1rem;
-    background: ${theme.palette.navigation[300]};
-    color: ${theme.palette.getContrastText(theme.palette.secondary.main)};
-    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2), 0px 3px 4px 0px rgba(0,0,0,0.14), 0px 1px 8px 0px rgba(0,0,0,0.12);
-    //! I need to implement an material design elevation shadow system.
+    background: ${theme.palette.primary.dark}; //${theme.palette.navigation[300]};
+    color: ${theme.palette.getContrastText(theme.palette.primary.dark)}; //(theme.palette.secondary.main)};
+    ${zDepth(8)}
 
     display: grid;
     grid-gap: 1rem;
@@ -63,7 +63,7 @@ const Navigation = () => {
       height: 100vh;
       width: 280px;
       overflow-y: auto;
-      grid-template-rows: repeat(5, min-content) auto;
+      grid-template-rows: repeat(4, min-content) auto min-content;
     }
 
     hr {
@@ -71,6 +71,7 @@ const Navigation = () => {
       border-top: 1px solid rgba(0,0,0,0.1);
       border-color: rgba(255,255,255,0.08);
       height: 0;
+      align-self: flex-end;
     }
 
     .expander {
@@ -100,8 +101,20 @@ const Navigation = () => {
         <Icon icon={"FaBars"}/>
       </button>
       {!isHidden && <><Profile/><hr/></>}
-      {!isHidden && <><Navbar/><hr/></>}
+      {!isHidden && <Navbar/>}
       {/*<div className="mode"></div>*/}
+      <button css={css`
+        all: unset;
+        width: 3rem;
+        margin: auto;
+        svg {
+          width: 100%;
+          height: 100%;
+          color: ${theme.palette.background};
+        }
+      `} onClick={() => toggleTheme()}>
+        <Icon icon={theme.palette.type === 'light' ? 'FaToggleOff' : 'FaToggleOn'}/>
+      </button><hr/>
       {!isHidden && <Copyright/>}
     </header>
   )

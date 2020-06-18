@@ -1,3 +1,8 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { useTheme } from '@material-ui/core/styles';
+import { bp, mq, zDepth } from '../../helper';
+
 import React from 'react';
 import './Article.scss';
 import { Button } from '../../Components/Link';
@@ -126,8 +131,8 @@ const Section = ({ section }) => {
   )
 }
 
-const Article = () => (
-  <main id="article">
+const Article = ({ className }) => (
+  <main id="article" className={className}>
     <article>
       <h2>{articleExample.title}</h2>
       <Status/>

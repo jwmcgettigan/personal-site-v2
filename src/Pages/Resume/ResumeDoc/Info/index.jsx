@@ -1,7 +1,7 @@
 import React from 'react';
 import links from '../../../../data/links';
 
-import Link from '../../../../Components/Link';
+import Link, { Content } from '../../../../Components/Link';
 import Icon from '../../../../Components/Icon';
 import './Info.scss';
 
@@ -17,30 +17,23 @@ const QRCode = ({ text }) => (
   </div>
 )
 
-const LinkContent = ({icon, text}) => (<>
-  <span className="icon">
-    <Icon icon={icon}/>
-  </span>
-  <span className="text">{text}</span></>
-)
-
 const Info = ({basics}) => (
   <div id="info">
     <h1>
       JUSTIN<br/><span>MCGETTIGAN</span>
     </h1>
     <Link url={resume.website.url}>
-      <LinkContent icon={resume.website.icon} text={resume.website.text}/>
+      <Content icon={resume.website.icon} text={resume.website.text}/>
     </Link>
     <Link url={resume.email.url}>
-      <LinkContent icon={resume.email.icon} text={resume.email.text}/>
+      <Content icon={resume.email.icon} text={resume.email.text}/>
     </Link>
     <Link url={resume.location.url}>
-      <LinkContent icon={resume.location.icon} text={resume.location.text + ' (relocatable)'}/>
+      <Content icon={resume.location.icon} text={resume.location.text + ' (relocatable)'}/>
     </Link>
     {resume.profiles.map((profile, index) => (
       <Link url={profile.url} key={index}>
-        <LinkContent icon={profile.icon} text={profile.network + ': ' + profile.username}/>
+        <Content icon={profile.icon} text={profile.network + ': ' + profile.username}/>
       </Link>
     ))}
     <p>{basics.summary}</p>

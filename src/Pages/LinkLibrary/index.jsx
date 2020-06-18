@@ -1,9 +1,15 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { useTheme } from '@material-ui/core/styles';
+import { bp, mq, zDepth } from '../../helper';
+
 import React from 'react';
 import './LinkLibrary.scss';
 import links from '../../data/links';
+import Library from '../../Components/Library';
 
-const LinkLibrary = () => (
-  <main id="link-library">
+const LinkLibrary = ({ className }) => (
+  <main id="link-library" className={className}>
     <div className="library section">
       {links.library.map((category, i) => (
         <div className="category" key={i}>

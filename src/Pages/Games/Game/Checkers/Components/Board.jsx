@@ -4,8 +4,8 @@ import Checker from './Checker';
 import { CheckerPositions } from './Game';
 
 const boardStyle = {
-  width: 500,
-  height: 500,
+  width: 560,
+  height: 560,
   border: '1px solid gray',
   display: 'flex',
   flexWrap: 'wrap',

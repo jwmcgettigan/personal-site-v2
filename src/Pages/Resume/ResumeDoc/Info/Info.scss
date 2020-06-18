@@ -8,10 +8,10 @@
   font-weight: bold;
   h1 {
     font-size: 29.3333px;
-    color: color(background, on, 0.8);
+    //! color: color(background, on, 0.8);
     line-height: 1.25;
     span {
-      color: color(background, on, 0.465);
+      //! color: color(background, on, 0.465);
     }
   }
   a {
@@ -33,7 +33,7 @@
     }
   }
   p {
-    color: color(background, on, 0.56);
+    //! color: color(background, on, 0.56);
   }
 
   .QRCode {

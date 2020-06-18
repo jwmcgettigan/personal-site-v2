@@ -4,8 +4,8 @@ import { css, jsx } from '@emotion/core'
 import React from "react";
 import { PageLink } from '../Link';
 import { useTheme } from '@material-ui/core/styles';
-import pages from '../../data/pages';
-import { mq } from '../../helper';
+import pages from '../../data/staticPages';
+import { mq, zDepth } from '../../helper';
 
 const Navbar = () => {
   const theme = useTheme();
@@ -24,7 +24,9 @@ const Navbar = () => {
     a {
       font-size: 1.5rem;
       font-weight: bold;
-      border: 1px solid color(surface, on, 0.1);
+      //border: 1px solid ${theme.palette.background[900]};
+      background: ${theme.palette.background[500]};
+      ${zDepth(4)}
       border-radius: 3px;
       padding: 0.25rem 1rem;
       //flex: 1 1 calc(20% - 5px);
@@ -34,18 +36,20 @@ const Navbar = () => {
       margin: 0.25rem;
 
       ${mq('tablet-wide')} {
+        width: 100%;
         font-size: 1rem;
         border: none;
         justify-content: left;
         margin: 0;
         background: none;
+        ${zDepth(0)}
       }
       
       svg {
         margin-right: 0.5rem;
       }
       &:hover {
-        color: ${theme.palette.secondary.dark};
+        color: ${theme.palette.secondary.main};
       }
       &.active {
         color: ${theme.palette.secondary.light};

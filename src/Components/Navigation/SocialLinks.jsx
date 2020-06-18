@@ -3,14 +3,10 @@ import { css, jsx } from '@emotion/core'
 
 import React from "react";
 import { useTheme } from '@material-ui/core/styles';
-import Link from '../Link';
+import Link, { Content } from '../Link';
 import Icon from '../Icon';
 
 import links from '../../data/links';
-
-const LinkContent = ({title, icon}) => (
-  <Icon icon={icon}/>
-)
 
 const SocialLinks = () => {
   const theme = useTheme();
@@ -40,7 +36,7 @@ const SocialLinks = () => {
     `}>
       {links.profiles.map((p, i) => (
         <Link css={linkStyle} url={p.url} key={i}>
-          <LinkContent title={p.network} icon={p.icon}/>
+          <Content icon={p.icon} title={p.network}/>
         </Link>
       ))}
     </div>

@@ -1,21 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import React from 'react';
-import Link, { Button } from '../../../Components/Link';
-import Gallery from '../../../Components/Gallery';
+import Gallery from '../../Components/Gallery';
+import Section from '../../Components/Section';
 
-import projects from '../../../data/projects';
-import pages from '../../../data/pages';
-//import './FeaturedProjects.scss';
-import { NavLink } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 
 const FeaturedProjects = () => {
   //! CREATE A CAROUSEL VERSION OF THE GALLERY FOR THE FEATURED SECTIONS
   const theme = useTheme();
 
   const headerStyle = css(`
+    color: ${theme.palette.getContrastText(theme.palette.background)};
     font-size: 2rem;
     padding-left: 1.5rem;
     font-weight: 700;
@@ -35,15 +31,15 @@ const FeaturedProjects = () => {
     }
   `)
 
-  return <div css={css`
-    display: grid;
-    justify-content: center;
-    `}>
-    <div className="section">
+  return (
+    <Section css={css`
+      display: grid;
+      justify-content: center;
+      `}>
       <h2 css={headerStyle}>Featured Projects</h2>
-      <Gallery n={6}/>
-    </div>
-  </div>
+      <Gallery n={6} css={css`padding: 0 !important;`}/>
+    </Section>
+  )
 }
 
 export default FeaturedProjects;

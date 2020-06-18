@@ -3,6 +3,7 @@
 .about-me {
   //display: flex;
   //flex-wrap: wrap;
+  /*
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto min-content;
@@ -13,8 +14,8 @@
   @include mq('desktop') {
     grid-template-columns: auto min-content;
     grid-template-rows: 1fr;
-  }
-
+  }*/
+  /*
   .profile {
     //! color: color(background, on, 0.7);
     //width: 62.5%;
@@ -50,11 +51,12 @@
         //! background: color(primary, light);
       }
     }
-  }
+  }*/
+  /*
   img {
     border-radius: 0;
     align-self: center;
     width: 256px;
     //margin-left: 1rem;
-  }
+  }*/
 }

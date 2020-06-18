@@ -1,5 +1,6 @@
 @import 'base';
 @import 'color';
+@import '../../node_modules/react-notion/src/styles.css';
 
 html {
   // RETURN TO FIX THIS ISSUE
@@ -16,8 +17,9 @@ html {
   @include mq('tablet-wide') {
     grid-template-columns: min-content auto;
   }
-
+  
   main {
+    /*
     grid-row: 2;
     margin: 70px 0 0 0;
     //margin: 0 0 0 280px;
@@ -27,8 +29,9 @@ html {
     @include mq('tablet-wide') {
       grid-column: 2;
       margin: 0 0 0 280px;
-    }
+    }*/
   
+    /*
     .section {
       border-bottom: 1px solid color(background, on, 0.08);
       padding: 1rem;
@@ -50,13 +53,13 @@ html {
       @media (min-width: 1200px) {
         max-width: 1140px;
       }
-    }
-
+    }*/
+    /*
     .title-section {
       @extend .section;
       width: 100%;
       max-width: 100%;
-      box-sizing: border-box;
+      box-sizing: border-box;*/
       //background: color(surface, dark);
       /*background: repeating-linear-gradient(
         to bottom,
@@ -66,7 +69,7 @@ html {
         darken(#151e29, 1%) 4px
       );*/
       //! background: #FFCB9A;
-      text-align: center;
+      /*text-align: center;
 
       h1 {
         //color: color(background, on, 0.95);
@@ -80,7 +83,7 @@ html {
         font-weight: 300;
         //white-space: nowrap;
       }
-    }
+    }*/
 
     .card {
       border: 0;

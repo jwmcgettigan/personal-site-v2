@@ -15,7 +15,7 @@ const containerStyle = {
   alignItems: 'center'
 }
 
-const Checkers = () => {
+const Checkers = ({ className }) => {
   const [checkerPos, setCheckerPos] = useState([0, 0]);
   useEffect(() => {
       observe((newPos) => {
@@ -25,7 +25,7 @@ const Checkers = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <main id="checkers">
+      <main id="checkers" className={className}>
         <div className="section" style={containerStyle}>
           <Board checkerPos={checkerPos} />
         </div>

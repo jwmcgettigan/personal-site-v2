@@ -2,10 +2,10 @@ import React from 'react';
 import './Checkers.scss';
 import Game from './Game';
 
-const Checkers3 = () => {
+const Checkers3 = ({ className }) => {
 
   return (
-    <main id="checkers">
+    <main id="checkers" className={className}>
       <div className="game section">
         {Game()}
       </div>

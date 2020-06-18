@@ -1,9 +1,14 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import React from 'react';
 import ResumeDoc from './ResumeDoc';
 
-import { Button } from '../../Components/Link';
-import './Resume.scss';
-import { Paper } from '@material-ui/core';
+import { Button, Content } from '../../Components/Link';
+import { TitleSection } from '../../Components/Section';
+import { useTheme } from '@material-ui/core/styles';
+import { mq, zDepth } from '../../helper';
+
+//import './Resume.scss';
 
 
 const downloadResume = () => {
@@ -18,19 +23,40 @@ const downloadResume = () => {
   })
 }
 
-const ResumeDownload = () => (
-  <Paper elevation={2} className="resume-download title-section">
-    <h2>Resume</h2>
-    <Button icon={'FaFilePdf'} text={'Download PDF Version'} onclick={downloadResume}/>
-  </Paper>
-)
 
-const Resume = () => (<>
-  <main id="resume-page">
-    <ResumeDownload/>
-    <ResumeDoc/>
-  </main>
-</>);
+const ResumeDownload = () => {
+  const theme = useTheme();
+  const resumeDownloadStyle = css(`
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+  `)
+
+  return (
+    <TitleSection css={resumeDownloadStyle}>
+      <h2>Resume</h2>
+      <Button onclick={downloadResume}>
+        <Content icon={'FaFilePdf'} text={'Download PDF Version'}/>
+      </Button>
+    </TitleSection>
+  )
+}
+
+const Resume = ({ className }) => {
+  return (
+    <main className={className}>
+      <ResumeDownload/>
+      <ResumeDoc/>
+    </main>
+  )
+};
 
 export default Resume;
 

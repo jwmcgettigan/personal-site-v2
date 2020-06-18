@@ -1,22 +1,20 @@
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { useTheme } from '@material-ui/core/styles';
+import { bp, mq, zDepth } from '../../helper';
+
 import React from 'react';
 
-import './PageBuilder.scss';
-import { Paper } from '@material-ui/core';
-
-
-export default class PageBuilder extends React.Component {
+const PageBuilder = ({ className }) => {
   
-
-  render() {
-    return (
-      <main id="pagebuilder">
-        <Paper elevation={0} />
-        <Paper />
-        <Paper elevation={3} />
-      </main>
-    );
-  }
+  return (
+    <main className={className}>
+      
+    </main>
+  );
 }
+
+export default PageBuilder;
 
 /*
 const PageBuilder = () => (
