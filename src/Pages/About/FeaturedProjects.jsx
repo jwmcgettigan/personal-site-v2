@@ -1,14 +1,16 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React from 'react';
+import React, { useContext } from 'react';
 import Gallery from '../../Components/Gallery';
 import Section from '../../Components/Section';
 
 import { useTheme } from '@material-ui/core/styles';
+import { StateContext } from '../../App';
 
 const FeaturedProjects = () => {
   //! CREATE A CAROUSEL VERSION OF THE GALLERY FOR THE FEATURED SECTIONS
   const theme = useTheme();
+  const projectPages = useContext(StateContext).projects;
 
   const headerStyle = css(`
     color: ${theme.palette.getContrastText(theme.palette.background)};
@@ -37,7 +39,7 @@ const FeaturedProjects = () => {
       justify-content: center;
       `}>
       <h2 css={headerStyle}>Featured Projects</h2>
-      <Gallery n={6} css={css`padding: 0 !important;`}/>
+      <Gallery subpath={'/project'} pages={projectPages} n={6} css={css`padding: 0 !important;`}/>
     </Section>
   )
 }

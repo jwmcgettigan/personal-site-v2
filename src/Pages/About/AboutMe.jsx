@@ -34,9 +34,11 @@ const AboutMe = () => {
   `)
 
   const profileStyle = css(`
+    //color: ${theme.palette.getContrastText(theme.palette.surface)};
     h2 {
       font-size: 3rem;
       //! color: color(background, on);
+      color: ${theme.palette.getContrastText(theme.palette.surface)};
       margin-bottom: 0.25rem;
     }
 

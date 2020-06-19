@@ -12,13 +12,13 @@ import Section from './Section';
 const projectPages = [
   {
     name: "Project One",
-    image: 'phoenixhacks.svg',
+    image: require('../assets/Projects/phoenixhacks.svg'),
     path: '/project/project-one',
-
   }
 ]
 
-const PageCard = ({ page }) => {
+const PageCard = ({ subpath, page }) => {
+  const imageExists = page.image != null;
   const theme = useTheme();
 
   const pageCardStyle = css(`
@@ -28,10 +28,11 @@ const PageCard = ({ page }) => {
     background: ${theme.palette.surface};
     color: ${theme.palette.getContrastText(theme.palette.background)};
     border-radius: 3px;
-    ${zDepth(2)}
+    ${zDepth(2, true)}
 
     &:hover {
-      transition: all 0.1s ease-in-out;
+      transition: all 0.01s ease-in-out;
+      ${zDepth(5, true)}
       transform: scale(1.01, 1.01);
     }
   `)
@@ -43,34 +44,18 @@ const PageCard = ({ page }) => {
     width: 100%;
     min-width: 16rem;
     height: 16rem;
-
+    
     &:before { 
-      content: " ";
-      display: block;
-    
-      position: absolute;
-      top: -10px;
-      left: 0;
-      height: calc(100% + 10px);
-      width: 100%;
-      background-color: rgb(230, 230, 230);
-      border: 2px dotted rgb(200, 200, 200);
-      border-radius: 5px;
-    }
-    
-    &:after { 
       content: "";
       display: block;
-      font-size: 16px;
-      font-style: normal;
-      font-family: FontAwesome;
-      color: rgb(100, 100, 100);
-      
       position: absolute;
-      top: 5px;
+      top: 0;
       left: 0;
-      width: 100%;
-      text-align: center;
+      right: 0;
+      bottom: 0;
+      background-color: rgb(230, 230, 230);
+      border: 2px dashed rgb(200, 200, 200);
+      border-radius: 5px;
     }
   `)
 
@@ -87,12 +72,10 @@ const PageCard = ({ page }) => {
     }
   `)
 
-  const image = require("../assets/Projects/" + page.image);
-
   return (
-  <NavLink to={page.path} className={'nav-link'} exact>
+  <NavLink to={subpath + page.path} className={'nav-link'} exact>
     <div css={pageCardStyle}>
-      <img css={imageStyle} src={image} alt=""/>
+      <img css={imageStyle} src={imageExists ? page.image : ''} alt=""/>
       <div css={infoStyle}>
         <h3>{page.name}</h3>
       </div>
@@ -104,21 +87,21 @@ const galleryStyle = css(`
   //margin: 0 -15px;
   display: grid;
   grid-gap: 3rem 2rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(1, minmax(16rem, 1fr));
 
   ${mq('tablet-small')} {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(16rem, 1fr));
   }
   ${mq('desktop')} {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(16rem, 1fr));
   }
 `)
 
-const Gallery = ({ n=-1, slider, className }) => (
+const Gallery = ({ subpath, pages, n=-1, slider, className }) => (
   <Section css={galleryStyle} className={className}>
-    {projectPages.map((page, index) => {
+    {pages.map((page, index) => {
       if (n < 0 || index <= n-1) {
-        return <PageCard key={index} page={page}/>
+        return <PageCard key={index} subpath={subpath} page={page}/>
       }
     })}
   </Section>

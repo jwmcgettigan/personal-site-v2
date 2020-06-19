@@ -23,12 +23,22 @@ const getTablePages = async (table) => {
   const pages = [];
 
   for(let article in table) {
-    const blockMap = await fetchPage(table[article].id);
+    const articleName = table[article].Name;
+    const articleID = table[article].id;
+    const blockMap = await fetchPage(articleID);
     
     if(blockMap != null) {
+      let articleImage = null;
+      if (blockMap[articleID].value.format != null
+        && blockMap[articleID].value.format.page_cover != null) {
+        articleImage = 'https://www.notion.so' + blockMap[articleID].value.format.page_cover;
+      }
       pages.push({
-        name: table[article].Name,
-        blockMap: blockMap
+        name: articleName,
+        id: articleID,
+        image: articleImage,
+        blockMap: blockMap,
+        path: '/' + articleName.replace(/ /g, '-').toLowerCase()
       });
     }
   }
@@ -41,7 +51,8 @@ const fetchTables = async (blockMap) => {
     const tables = Object.values(blockMap).filter(block => block.value.type === "collection_view")
     
     for(let table in tables) {
-      table = await fetchTable(tables[table].value.id);
+      const tableID = tables[table].value.id;
+      table = await fetchTable(tableID);
       
       if(table != null) {
         const tableName = table[0].Name;
@@ -50,6 +61,7 @@ const fetchTables = async (blockMap) => {
 
         formattedTables.push({
           name: tableName,
+          id: tableID,
           pages: pages
         })
       }
@@ -83,7 +95,8 @@ const fetchPages = async (tables) => {
     component: Projects,
     path: '/projects',
     subpath: '/project',
-    subpages: renderPages(projects)
+    subpages: renderPages(projects),
+    subpageData: projects
   })
   
   const articles = Object.values(tables).filter(table => table.name === "Articles")[0].pages;

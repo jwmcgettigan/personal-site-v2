@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from '@material-ui/core/styles';
-import { mq, zDepth } from '../../../helper';
+import { mq, zDepth, lighten } from '../../../helper';
 
 import React from 'react';
 import Education from './Education';
@@ -14,15 +14,6 @@ import Skills from './Skills';
 import resume from '../../../data/resumeV2';
 //import './ResumeDoc.scss';
 
-function lighten(color, percent) {
-  var num = parseInt(color.replace("#",""),16),
-    amt = Math.round(2.55 * percent),
-    R = (num >> 16) + amt,
-    B = (num >> 8 & 0x00FF) + amt,
-    G = (num & 0x0000FF) + amt;
-  return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
-};
-
 const Resume = () => {
   const theme = useTheme();
   const resumeStyle = css(`
@@ -31,7 +22,7 @@ const Resume = () => {
     align-content: center;
     width: 816px;
     height: 1056px;
-    ${zDepth(24)}
+    ${zDepth(24)};
 
     //background: ${theme.palette.background};
     //color: ${theme.palette.getContrastText(theme.palette.background)};

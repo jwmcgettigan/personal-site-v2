@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
+//import { createState, useState } from '@hookstate/core';
+
 import staticPages from './data/staticPages';
 import Page from './Components/Page';
 import Error from './Pages/Error';
@@ -14,19 +16,20 @@ import lightTheme, { darkTheme } from './theme';
 import { fetchFromNotion } from './pageData';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { dark } from '@material-ui/core/styles/createPalette';
 
-const Pages = ({ toggleTheme }) => {
+export const StateContext = createContext();
+
+const Pages = ({ dynamicPages }) => {
   //const [pages, setPages] = useState(pageData);
-  const [dynamicPages, setDynamicPages] = useState([]);
-  const [projects, setProjects] = useState([]);
-
+  //const [dynamicPages, setDynamicPages] = useState([]);
+  //const [projects, setProjects] = useState([]);
+  /*
   useEffect(() => {
     (async () => {
       const fetchedPages = await fetchFromNotion();
       setDynamicPages(fetchedPages);
     })()
-  }, [])
+  }, [])*/
   
   return (
     <Router>
@@ -35,7 +38,7 @@ const Pages = ({ toggleTheme }) => {
         {/* Menu Pages */ }
         {staticPages.map((page, i) => {
           //const PageComponent = page.component;
-          return <Route key={i} path={page.path} render={() => <Page page={page.component} toggleTheme={toggleTheme} />} exact/>
+          return <Route key={i} path={page.path} render={() => <Page page={page.component}/>} exact/>
         })}
 
         {/* Testing Pages */ }
@@ -44,7 +47,7 @@ const Pages = ({ toggleTheme }) => {
             return page.subpages.map((subpage, i) => {
               if(subpage != null) {
                 return <Route key={i} path={page.subpath + subpage.path}
-                render={() => <Page page={ subpage.component } toggleTheme={toggleTheme} /> }  exact/>
+                render={() => <Page page={ subpage.component }/> }  exact/>
               }
             })
           }
@@ -56,7 +59,7 @@ const Pages = ({ toggleTheme }) => {
             return page.subpages.map((subpage, i) => {
               if(subpage != null) {
                 return <Route key={i} path={page.subpath + subpage.path}
-                render={() => <Page page={ subpage.component } renderedPage={subpage.renderedPage} toggleTheme={toggleTheme} /> }  exact/>
+                render={() => <Page page={ subpage.component } renderedPage={subpage.renderedPage}/> }  exact/>
               }
             })
           }
@@ -74,6 +77,16 @@ const Pages = ({ toggleTheme }) => {
 
 const App = () => {
   const [theme, setTheme] = useState(lightTheme);
+  const [dynamicPages, setDynamicPages] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const fetchedPages = await fetchFromNotion();
+      setDynamicPages(fetchedPages);
+      setProjects(fetchedPages[0].subpageData);
+    })()
+  }, [])
 
   const html = document.documentElement;
   html.style.backgroundColor = theme.palette.background;//theme.palette.primary.light;
@@ -86,9 +99,16 @@ const App = () => {
     }
   }
 
+  const stateContext = {
+    projects: projects,
+    toggleTheme: toggleTheme
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <Pages toggleTheme={toggleTheme} />
+      <StateContext.Provider value={stateContext}>
+        <Pages dynamicPages={dynamicPages} />
+      </StateContext.Provider>
     </ThemeProvider>
   );
 }

@@ -100,8 +100,8 @@ const darkTheme = createMuiTheme({
       dark: orangish[800]
     },
     navigation: indigo,
-    background: '#111821',
-    surface: '#151e29',
+    background: '#121212',
+    surface: '#1f1f1f',
     error: red,
     contrastThreshold: 3,
     tonalOffset: 0.2

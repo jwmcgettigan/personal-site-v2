@@ -14,7 +14,6 @@ const Section = ({ className, children }) => {
     padding: 1rem;
     margin: auto;
     //box-sizing: border-box;
-    //${zDepth(3)}
 
     ${mq('tablet-wide')} {
       padding: 3rem;

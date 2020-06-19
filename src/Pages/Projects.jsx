@@ -1,11 +1,13 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-import React from 'react';
+import React, { useContext } from 'react';
 import Gallery from '../Components/Gallery';
 import { useTheme } from '@material-ui/core/styles';
 import { zDepth } from '../helper';
 import { TitleSection } from '../Components/Section';
+
+import { StateContext } from '../App';
 
 const Title = () => {
   const theme = useTheme();
@@ -35,12 +37,15 @@ const Title = () => {
   )
 }
 
-const Projects = ({ className }) => (
-  <main className={className}>
-    <Title/>
-    <Gallery/>
-  </main>
-)
+const Projects = ({ className }) => {
+  const projectPages = useContext(StateContext).projects;
+  return (
+    <main className={className}>
+      <Title/>
+      <Gallery subpath={'/project'} pages={projectPages}/>
+    </main>
+  )
+}
  
 export default Projects;
 

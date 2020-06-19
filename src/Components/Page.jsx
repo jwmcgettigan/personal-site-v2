@@ -8,9 +8,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { mq, zDepth } from '../helper';
 //import Footer from './Footer';
 
-
-
-const Page = ({ page, renderedPage, toggleTheme }) => {
+const Page = ({ page, renderedPage}) => {
   const theme = useTheme();
   const pageStyle = css(`
     display: grid;
@@ -28,7 +26,7 @@ const Page = ({ page, renderedPage, toggleTheme }) => {
   const Main = page;
 
   return (<>
-    <Navigation toggleTheme={toggleTheme} />
+    <Navigation/>
     <Main css={pageStyle} renderedPage={renderedPage}/>
   </>)
 }

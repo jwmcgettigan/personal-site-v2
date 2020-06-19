@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Icon from '../Icon';
 import Profile from './Profile';
 import Navbar from './Navbar';
@@ -10,33 +10,134 @@ import { useTheme } from '@material-ui/core/styles';
 import { useMediaQuery } from 'react-responsive';
 import { bp, mq, zDepth } from '../../helper';
 
-const Copyright = () => {
-  const copyrightStyle = css(`
-    display: none;
+import { StateContext } from '../../App';
 
-    ${mq('tablet-wide')} {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-weight: bold;
-      align-self: flex-end;
-      //margin-top: auto;
-      svg {
-        margin-right: 0.5rem;
-      }
+const Copyright = ({ className }) => {
+  const copyrightStyle = css(`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    align-self: end;
+    white-space: nowrap;
+    svg {
+      margin-right: 0.5rem;
     }
   `)
 
   return (
-    <p css={copyrightStyle}>
+    <p css={copyrightStyle} className={className}>
       <Icon icon={'FaRegCopyright'}/>
       {(new Date().getFullYear())} Justin McGettigan
     </p>
   )
 }
 
-const Navigation = ({ toggleTheme }) => {
+const Menu = ({ isTabletOrMobile }) => {
+  const toggleTheme = useContext(StateContext).toggleTheme;
+  const theme = useTheme();
+
+  const menuStyle = css(`
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+
+    ${mq('tablet-wide')} {
+      grid-column: 1;
+      overflow-y: auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(2, min-content) auto;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-color: rgba(255,255,255,0.08);
+      height: 0;
+      align-self: end;
+    }
+
+    .submenu {
+      display: grid;
+      grid-gap: 1rem;
+      grid-template-rows: min-content auto;
+      align-content: space-between;
+
+      .footer {
+        display: grid;
+        grid-gap: 1rem;
+        justify-content: center;
+      }
+    }
+  `)
+
+  const buttonStyle = css(`
+    all: unset;
+    width: 3rem;
+    margin: auto;
+    align-self: end;
+    svg {
+      width: 100%;
+      height: 100%;
+      color: ${theme.palette.background};
+    }
+  `)
+
+  return (
+    <div css={menuStyle}>
+      <Profile/>
+      {!isTabletOrMobile && <hr/>}
+      <div className="submenu">
+        <Navbar/>
+        <div className="footer">
+          <button css={buttonStyle} onClick={() => toggleTheme()}>
+            <Icon icon={theme.palette.type === 'light' ? 'FaToggleOff' : 'FaToggleOn'}/>
+          </button>
+          <hr/>
+          <Copyright/>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const ProfileButton = ({}) => {
+  const theme = useTheme();
+  const profileButtonStyle = css(`
+    all: unset;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 5rem;
+    height: 5rem;
+    ${zDepth(6, true)}
+    margin: auto;
+    border-radius: 50%;
+    background: ${theme.palette.secondary.main};
+    text-align: center;
+    z-index: 10;
+    margin: 1rem;
+    svg {
+      width: 50%;
+      height: 100%;
+      color: black;//${theme.palette.primary.main};
+    }
+    &:hover {
+      transition: all 0.01s ease-in-out;
+      ${zDepth(12, true)}
+      transform: scale(1.01, 1.01);
+    }
+  `)
+
+  return (
+    <button css={profileButtonStyle}>
+      <Icon icon={"FaUserTie"}/>
+    </button>
+  )
+}
+
+const Navigation = ({}) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const isTabletOrMobile = useMediaQuery({query: `(max-width: ${bp['tablet-wide']-1}px)`});
   //! detect touchscreen
@@ -53,25 +154,17 @@ const Navigation = ({ toggleTheme }) => {
     padding: 1rem;
     background: ${theme.palette.primary.dark}; //${theme.palette.navigation[300]};
     color: ${theme.palette.getContrastText(theme.palette.primary.dark)}; //(theme.palette.secondary.main)};
-    ${zDepth(8)}
+    ${zDepth(8, true)}
 
     display: grid;
     grid-gap: 1rem;
-    z-index: 1;
+    z-index: 10;
+
     ${mq('tablet-wide')} {
       grid-column: 1;
       height: 100vh;
       width: 280px;
       overflow-y: auto;
-      grid-template-rows: repeat(4, min-content) auto min-content;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      border-color: rgba(255,255,255,0.08);
-      height: 0;
-      align-self: flex-end;
     }
 
     .expander {
@@ -93,31 +186,17 @@ const Navigation = ({ toggleTheme }) => {
     }
   `)
 
-  const isHidden = isTabletOrMobile && isCollapsed
+  const isHidden = isTabletOrMobile && isCollapsed;
 
-  return (
+  return (<>
     <header name="navigation" css={headerStyle}>
       <button className="expander" onClick={() => setCollapsed(!isCollapsed)}>
         <Icon icon={"FaBars"}/>
       </button>
-      {!isHidden && <><Profile/><hr/></>}
-      {!isHidden && <Navbar/>}
-      {/*<div className="mode"></div>*/}
-      <button css={css`
-        all: unset;
-        width: 3rem;
-        margin: auto;
-        svg {
-          width: 100%;
-          height: 100%;
-          color: ${theme.palette.background};
-        }
-      `} onClick={() => toggleTheme()}>
-        <Icon icon={theme.palette.type === 'light' ? 'FaToggleOff' : 'FaToggleOn'}/>
-      </button><hr/>
-      {!isHidden && <Copyright/>}
+      {!isHidden && <Menu isTabletOrMobile={isTabletOrMobile}/>}
     </header>
-  )
+    {isTabletOrMobile && <ProfileButton/>}
+  </>)
 }
 
 export default Navigation;

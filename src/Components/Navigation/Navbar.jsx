@@ -10,9 +10,11 @@ import { mq, zDepth } from '../../helper';
 const Navbar = () => {
   const theme = useTheme();
   const navbarStyle = css(`
-    display: flex;
-    flex-wrap: wrap;
-    margin: -0.25rem;
+    //!display: flex;
+    //!flex-wrap: wrap;
+    //!margin: -0.25rem;
+    justify-self: center;
+    width: max-content;
 
     ${mq('tablet-wide')} {
       display: grid;
@@ -24,13 +26,13 @@ const Navbar = () => {
     a {
       font-size: 1.5rem;
       font-weight: bold;
-      //border: 1px solid ${theme.palette.background[900]};
-      background: ${theme.palette.background[500]};
-      ${zDepth(4)}
+      //border: 1px solid ${theme.palette.background};
+      background: ${theme.palette.primary.main};
+      ${zDepth(4, true)};
       border-radius: 3px;
       padding: 0.25rem 1rem;
       //flex: 1 1 calc(20% - 5px);
-      flex: 1 1 auto;
+      //!flex: 1 1 auto;
       white-space: nowrap;
       justify-content: center;
       margin: 0.25rem;
@@ -42,7 +44,7 @@ const Navbar = () => {
         justify-content: left;
         margin: 0;
         background: none;
-        ${zDepth(0)}
+        ${zDepth(0, true)};
       }
       
       svg {

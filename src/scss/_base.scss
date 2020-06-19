@@ -2,6 +2,7 @@
 
 * {
   margin: 0;
+  position: relative;
 }
 
 a, a:hover {
@@ -19,4 +20,5 @@ body,
   //! color: color(background, on);
   color: black;
   //filter: invert(100%); //EXPLORE THIS!!!!!!
+  //overflow-x: hidden;
 }

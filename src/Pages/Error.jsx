@@ -16,7 +16,7 @@ const Error = ({ className }) => {
     width: min-content;
     white-space: nowrap;
     //margin: auto;
-    ${zDepth(5)}
+    ${zDepth(5, true)};
     border-radius: 3px;
     background: ${theme.palette.secondary.light};
 

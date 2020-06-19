@@ -20,7 +20,8 @@ const Subcategory = ({ subcategory, className }) => {
     margin: 0 0.5em 2em 0.5em;
     //border: 1px solid ${theme.palette.secondary.light};
     padding: 0.7rem;
-    ${zDepth(1)};
+
+    ${zDepth(1, true)}
 
     h3 {
       margin-bottom: 0.5rem;
@@ -33,7 +34,7 @@ const Subcategory = ({ subcategory, className }) => {
       font-weight: 500;
 
       a {
-        ${zDepth(2)};
+        ${zDepth(2, true)}
         padding: .2em .5em .3em;
         width: min-content;
         background: ${theme.palette.surface};
@@ -92,6 +93,7 @@ const Library = ({ library, className}) => {
     grid-gap: 3rem;
     color: ${theme.palette.getContrastText(theme.palette.surface)};
     width: 100%;
+    padding: 0 !important;
 
     a:hover {
       color: ${theme.palette.primary.light};

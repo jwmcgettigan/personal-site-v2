@@ -7,6 +7,7 @@ import Article from '../Pages/Article';
 import PageBuilder from '../Pages/PageBuilder';
 import Games from '../Pages/Games';
 import Testing from '../Pages/Testing';
+import Library from '../Components/Library';
 
 const pages = [
   {
@@ -54,6 +55,7 @@ const pages = [
       }, // minesweeper, tic-tac-toe, chess, checkers, sudoku
       {
         name: 'Article',
+        image: require('../assets/Projects/phoenixhacks.svg'),
         component: Article,
         path: '/article',
         icon: 'FaBook'

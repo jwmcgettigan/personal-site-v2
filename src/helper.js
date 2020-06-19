@@ -1,4 +1,5 @@
-import theme from './theme';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 
 export const bp = {
   "phone-small":  375,
@@ -19,6 +20,15 @@ export const mq = (n, type='min') => {
     return acc;
   }, []);
   return result;
+};
+
+export const lighten = (color, percent) => {
+  var num = parseInt(color.replace("#",""),16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    B = (num >> 8 & 0x00FF) + amt,
+    G = (num & 0x0000FF) + amt;
+  return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
 };
 
 const objectMap = (obj, fn) => Object.fromEntries(
@@ -115,9 +125,30 @@ const ambientShadowMap = objectMap({
   24: '11px 15px 0'
 }, v => '0 ' + v + ' ' + ambientShadowColor);
 
-export const zDepth = (elevation) => (
-  'box-shadow: ' +
-  shadowUmbraMap[elevation] + ', ' +
-  shadowPenumbraMap[elevation] + ', ' +
-  ambientShadowMap[elevation] + ';'
-)
+export const zDepth = (elevation, lighten=false) => {
+  //! the class/element that you put this in needs to be: "position: relative;"
+  const ratio = 0.16 / 24;
+  const boxShadow = `
+  box-shadow: ${shadowUmbraMap[elevation]}, ${shadowPenumbraMap[elevation]}, ${ambientShadowMap[elevation]};
+  `
+  const overlay = `
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    //right: 0;
+    //bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,${elevation * ratio});
+    pointer-events: none;
+  }
+  `
+  /*
+  return css(`
+  //${boxShadow};
+  //${lighten && overlay};
+  `)*/
+  return boxShadow + '\n' + (lighten ? overlay : '');
+}

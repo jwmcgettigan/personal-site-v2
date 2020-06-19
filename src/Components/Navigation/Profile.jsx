@@ -6,7 +6,7 @@ import SocialLinks from './SocialLinks';
 import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
 import { mq } from '../../helper';
 
-const Profile = () => {
+const Profile = ({}) => {
 
   const profileStyle = css(`
     display: grid;
@@ -20,23 +20,17 @@ const Profile = () => {
     }
 
     img {
-      display: none;
-      ${mq('tablet-wide')} {
-        display: block;
-        justify-self: center;
-        width: 200px;
-        border-radius: 50%;
-        //border: 2px solid color(background, base, 0.5);
-      }
+      display: block;
+      justify-self: center;
+      width: 200px;
+      border-radius: 50%;
+      //border: 2px solid color(background, base, 0.5);
     }
 
     p {
-      display: none;
-      ${mq('tablet-wide')} {
-        display: block;
-        font-size: 0.875rem;
-        text-align: center;
-      }
+      display: block;
+      font-size: 0.875rem;
+      text-align: center;
     }
   `)
 
