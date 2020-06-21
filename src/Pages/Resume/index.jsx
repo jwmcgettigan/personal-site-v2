@@ -1,14 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React from 'react';
 import ResumeDoc from './ResumeDoc';
-
-import { Button, Content } from '../../Components/Link';
-import { TitleSection } from '../../Components/Section';
-import { useTheme } from '@material-ui/core/styles';
-import { mq, zDepth } from '../../helper';
-
-//import './Resume.scss';
+import { Section, TitleSection, Button, LinkContent } from '../../Components';
 
 
 const downloadResume = () => {
@@ -25,7 +18,6 @@ const downloadResume = () => {
 
 
 const ResumeDownload = () => {
-  const theme = useTheme();
   const resumeDownloadStyle = css(`
     display: grid;
     justify-content: center;
@@ -43,7 +35,7 @@ const ResumeDownload = () => {
     <TitleSection css={resumeDownloadStyle}>
       <h2>Resume</h2>
       <Button onclick={downloadResume}>
-        <Content icon={'FaFilePdf'} text={'Download PDF Version'}/>
+        <LinkContent icon={'FaFilePdf'} text={'Download PDF'}/>
       </Button>
     </TitleSection>
   )
@@ -53,7 +45,9 @@ const Resume = ({ className }) => {
   return (
     <main className={className}>
       <ResumeDownload/>
-      <ResumeDoc/>
+      <Section>
+        <ResumeDoc/>
+      </Section>
     </main>
   )
 };

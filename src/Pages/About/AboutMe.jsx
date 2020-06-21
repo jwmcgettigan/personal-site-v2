@@ -1,15 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React from 'react';
 import { Button } from '../../Components/Link';
 import { TitleSection } from '../../Components/Section';
+import { useTheme } from 'emotion-theming';
+import { mq, zDepth, color } from '../../utils';
 
 import ProfilePicture from '../../assets/body-shot-placeholder.jpg';
-import pages from '../../data/staticPages';
-
-//pages.find(page => page.name === 'Resume')
-import { useTheme } from '@material-ui/core/styles';
-import { mq, zDepth } from '../../helper';
+import { pages } from '../../data';
 
 const AboutMe = () => {
   const theme = useTheme();
@@ -34,11 +31,11 @@ const AboutMe = () => {
   `)
 
   const profileStyle = css(`
-    //color: ${theme.palette.getContrastText(theme.palette.surface)};
+    //color: ${color(theme.palette.surface).getContrastText()};
     h2 {
       font-size: 3rem;
       //! color: color(background, on);
-      color: ${theme.palette.getContrastText(theme.palette.surface)};
+      color: ${color(theme.palette.surface).getContrastText()};
       margin-bottom: 0.25rem;
     }
 
@@ -62,11 +59,11 @@ const AboutMe = () => {
         margin-bottom: 1rem;
         &:first-of-type {
           background: ${theme.palette.primary.dark};
-          color: ${theme.palette.getContrastText(theme.palette.primary.dark)};
+          color: ${color(theme.palette.primary.dark).getContrastText()};
         }
         &:last-of-type {
           background: ${theme.palette.primary.main};
-          color: ${theme.palette.getContrastText(theme.palette.primary.main)};
+          color: ${color(theme.palette.primary.main).getContrastText()};
         }
         &:hover {
           filter: none;

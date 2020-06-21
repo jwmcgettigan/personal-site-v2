@@ -3,8 +3,8 @@ import { css, jsx } from '@emotion/core'
 
 import React, { useContext } from 'react';
 import Gallery from '../Components/Gallery';
-import { useTheme } from '@material-ui/core/styles';
-import { zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { zDepth } from '../utils';
 import { TitleSection } from '../Components/Section';
 
 import { StateContext } from '../App';

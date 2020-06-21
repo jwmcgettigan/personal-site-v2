@@ -1,15 +1,8 @@
-import About from '../Pages/About';
-import Resume from '../Pages/Resume';
-import Projects from '../Pages/Projects';
-import LinkLibrary from '../Pages/LinkLibrary';
-import Learning from '../Pages/Learning';
-import Article from '../Pages/Article';
-import PageBuilder from '../Pages/PageBuilder';
-import Games from '../Pages/Games';
-import Testing from '../Pages/Testing';
-import Library from '../Components/Library';
+import { About, Projects, Resume, Testing, LinkLibrary, Learning, Games, PageBuilder, Article} from '../Pages';
+//import { About, Projects, Resume, Testing } from '../Pages';
+//import { LinkLibrary, Learning, Games, PageBuilder } from '../Pages/Testing';
 
-const pages = [
+export const pages = [
   {
     name: 'About Me',
     component: About,
@@ -53,13 +46,13 @@ const pages = [
         path: '/games',
         icon: 'FaGamepad'
       }, // minesweeper, tic-tac-toe, chess, checkers, sudoku
-      {
+      /*{
         name: 'Article',
         image: require('../assets/Projects/phoenixhacks.svg'),
         component: Article,
         path: '/article',
         icon: 'FaBook'
-      },
+      },*/
       {
         name: 'PageBuilder',
         component: PageBuilder,
@@ -114,5 +107,3 @@ const pages = [
     icon: 'FaFilePdf'
   }*/
 ]
-
-export default pages;

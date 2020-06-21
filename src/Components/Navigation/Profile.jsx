@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core'
 import React from "react";
 import SocialLinks from './SocialLinks';
 import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
-import { mq } from '../../helper';
+import { mq } from '../../utils';
 
 const Profile = ({}) => {
 

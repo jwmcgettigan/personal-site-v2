@@ -1,12 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth } from '../../../utils';
 
 import React from 'react';
 import './LinkLibrary.scss';
-import links from '../../data/links';
-import Library from '../../Components/Library';
+import { links } from '../../../data';
+import { Library } from '../../../Components';
 
 const LinkLibrary = ({ className }) => (
   <main id="link-library" className={className}>

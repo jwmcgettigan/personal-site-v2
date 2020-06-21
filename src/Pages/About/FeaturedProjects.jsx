@@ -4,8 +4,9 @@ import React, { useContext } from 'react';
 import Gallery from '../../Components/Gallery';
 import Section from '../../Components/Section';
 
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme } from 'emotion-theming';
 import { StateContext } from '../../App';
+import { color } from '../../utils';
 
 const FeaturedProjects = () => {
   //! CREATE A CAROUSEL VERSION OF THE GALLERY FOR THE FEATURED SECTIONS
@@ -13,7 +14,7 @@ const FeaturedProjects = () => {
   const projectPages = useContext(StateContext).projects;
 
   const headerStyle = css(`
-    color: ${theme.palette.getContrastText(theme.palette.background)};
+    color: ${color(theme.palette.background).getContrastText()};
     font-size: 2rem;
     padding-left: 1.5rem;
     font-weight: 700;

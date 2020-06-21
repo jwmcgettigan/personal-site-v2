@@ -1,11 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-
-import React from "react";
 import { PageLink } from '../Link';
-import { useTheme } from '@material-ui/core/styles';
-import pages from '../../data/staticPages';
-import { mq, zDepth } from '../../helper';
+import { useTheme } from 'emotion-theming';
+import { pages } from '../../data';
+import { mq, zDepth } from '../../utils';
 
 const Navbar = () => {
   const theme = useTheme();
@@ -51,10 +49,10 @@ const Navbar = () => {
         margin-right: 0.5rem;
       }
       &:hover {
-        color: ${theme.palette.secondary.main};
+        color: ${theme.palette.secondary.light};
       }
       &.active {
-        color: ${theme.palette.secondary.light};
+        color: ${theme.palette.secondary.main};
       }
     }
   `)

@@ -1,5 +1,5 @@
 
-const links = {
+export const links = {
   downloads: [
     {
       text: "Download Resume",
@@ -368,5 +368,3 @@ const links = {
     }
   ]
 }
-
-export default links;

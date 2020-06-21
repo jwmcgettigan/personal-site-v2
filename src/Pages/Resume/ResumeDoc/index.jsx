@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from '@material-ui/core/styles';
-import { mq, zDepth, lighten } from '../../../helper';
+import { useTheme } from 'emotion-theming';
+import { mq, zDepth, lighten, color } from '../../../utils';
 
 import React from 'react';
 import Education from './Education';
@@ -11,8 +11,7 @@ import Info from './Info';
 import Projects from './Projects';
 import Skills from './Skills';
 
-import resume from '../../../data/resumeV2';
-//import './ResumeDoc.scss';
+import { resume } from '../../../data/resumeV2';
 
 const Resume = () => {
   const theme = useTheme();
@@ -25,7 +24,8 @@ const Resume = () => {
     ${zDepth(24)};
 
     //background: ${theme.palette.background};
-    //color: ${theme.palette.getContrastText(theme.palette.background)};
+    //color: ${color(theme.palette.background).getContrastText()};
+    color: ${color(theme.palette.resume.left).getContrastText(13)};
 
     //box-shadow: 0 1rem 3rem rgba(0,0,0,0.275);
     margin: 3rem auto;
@@ -43,12 +43,12 @@ const Resume = () => {
     }
 
     a:hover {
-      color: ${theme.palette.primary.main};
+      color: ${theme.palette.resume.title};
     }
   
     .title {
-      color: ${theme.palette.primary.main};
-      border-bottom: 4px solid ${lighten(theme.palette.primary.main, 5)};
+      color: ${theme.palette.resume.title};
+      border-bottom: 4px solid ${color(theme.palette.resume.title).adjustBrightness(5)};
       margin: 0;
       font-size: 26.6667px;
       line-height: 1.25;
@@ -64,7 +64,7 @@ const Resume = () => {
     padding: 1rem;
     width: 228px;
     width: min-content;
-    background: ${theme.palette.surface};
+    background: ${theme.palette.resume.left};
 
     display: grid;
     grid-row-gap: 0.5rem;
@@ -73,7 +73,7 @@ const Resume = () => {
   const rightStyle = css(`
     padding: 1rem;
     width: 587px;
-    background: ${theme.palette.background};
+    background: ${theme.palette.resume.right};
 
     display: grid;
     grid-template-rows: min-content;

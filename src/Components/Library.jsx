@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth, color } from '../utils';
 
 import React from 'react';
 import learning from '../data/learning';
@@ -91,7 +91,7 @@ const Library = ({ library, className}) => {
   const libraryStyle = css(`
     display: grid;
     grid-gap: 3rem;
-    color: ${theme.palette.getContrastText(theme.palette.surface)};
+    color: ${color(theme.palette.surface).getContrastText()};
     width: 100%;
     padding: 0 !important;
 

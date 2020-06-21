@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth } from '../../../utils';
 
 import React from 'react';
 import './Article.scss';
-import { Button } from '../../Components/Link';
+import { Button } from '../../../Components/Link';
 
 const articleExample = {
   title: "Data Structures",

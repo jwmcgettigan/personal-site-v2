@@ -2,8 +2,8 @@
 import { css, jsx } from '@emotion/core'
 
 import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth, color } from '../utils';
 
 const Section = ({ className, children }) => {
   const theme = useTheme();
@@ -12,7 +12,7 @@ const Section = ({ className, children }) => {
     //border-bottom: 1px solid ${theme.palette.secondary.dark};
     background: ${theme.palette.background};
     padding: 1rem;
-    margin: auto;
+    //margin: auto;
     //box-sizing: border-box;
 
     ${mq('tablet-wide')} {
@@ -45,7 +45,7 @@ const TitleSection = ({ className, children }) => {
 
   const titleSectionStyle = css(`
     background: ${theme.palette.surface};
-    color: ${theme.palette.getContrastText(theme.palette.surface)};
+    color: ${color(theme.palette.surface).getContrastText()};
     max-width: 100% !important;
     width: 100%;
     box-sizing: border-box;

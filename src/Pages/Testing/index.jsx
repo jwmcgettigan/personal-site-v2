@@ -1,11 +1,10 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth } from '../../utils';
 
-import pages from '../data/staticPages';
-import Library from '../Components/Library';
-import Gallery from '../Components/Gallery';
+import { pages } from '../../data';
+import { Library, Gallery } from '../../Components';
 
 const Testing = ({ className }) => {
   const testingPage = pages.find(page => page.name === 'Testing');
@@ -27,6 +26,15 @@ const Testing = ({ className }) => {
 }
 
 export default Testing;
+
+
+export {default as Article} from './Article';
+export {default as Games} from './Games';
+export {default as LinkLibrary} from './LinkLibrary';
+export {default as PageBuilder} from './PageBuilder';
+export {default as Learning} from './Learning';
+export {default as Art} from './Art';
+export {default as ControlPanel} from './ControlPanel';
 
 const library = [
   {

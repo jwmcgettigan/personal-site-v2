@@ -6,9 +6,9 @@ import Icon from '../Icon';
 import Profile from './Profile';
 import Navbar from './Navbar';
 
-import { useTheme } from '@material-ui/core/styles';
+import { useTheme } from 'emotion-theming';
 import { useMediaQuery } from 'react-responsive';
-import { bp, mq, zDepth } from '../../helper';
+import { bp, mq, zDepth, color } from '../../utils';
 
 import { StateContext } from '../../App';
 
@@ -37,6 +37,7 @@ const Copyright = ({ className }) => {
 const Menu = ({ isTabletOrMobile }) => {
   const toggleTheme = useContext(StateContext).toggleTheme;
   const theme = useTheme();
+  const isDarkTheme = theme.palette.type === 'dark';
 
   const menuStyle = css(`
     display: grid;
@@ -152,8 +153,8 @@ const Navigation = ({}) => {
     width: 100%;
     box-sizing: border-box;
     padding: 1rem;
-    background: ${theme.palette.primary.dark}; //${theme.palette.navigation[300]};
-    color: ${theme.palette.getContrastText(theme.palette.primary.dark)}; //(theme.palette.secondary.main)};
+    background: ${theme.palette.primary.dark};
+    color: ${color(theme.palette.primary.dark).getContrastText()}; //(theme.palette.secondary.main)};
     ${zDepth(8, true)}
 
     display: grid;

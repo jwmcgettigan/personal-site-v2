@@ -5,8 +5,8 @@ import React from 'react';
 import Icon from './Icon';
 import { NavLink } from 'react-router-dom';
 
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth, color } from '../utils';
 
 //! Rather than passing in all of this info, why not pass in functions to differentiate link types?
 // So that the focus is onClick instead of <a></a>
@@ -43,7 +43,7 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
   const theme = useTheme();
   const buttonStyle = css(`
     background: ${theme.palette.primary.dark};
-    color: ${theme.palette.getContrastText(theme.palette.primary.dark)};
+    color: ${color(theme.palette.primary.dark).getContrastText()};
     font-weight: bold;
     padding: 0.375rem 1rem 0.375rem 1rem;
     transition: all 0.1s ease-in-out;
@@ -82,7 +82,7 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
   }
 }
 
-const Content = ({icon, text, title}) => (<>
+const LinkContent = ({icon, text, title}) => (<>
   <span className="icon">
     <Icon icon={icon}/>
   </span>
@@ -92,7 +92,7 @@ const Content = ({icon, text, title}) => (<>
 export {
   Button,
   PageLink,
-  Content
+  LinkContent
 }
 export default Link;
 

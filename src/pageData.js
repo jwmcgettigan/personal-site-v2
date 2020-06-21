@@ -3,7 +3,7 @@ import { css, jsx } from '@emotion/core'
 
 import React, { useState, useEffect } from 'react';
 import Projects from './Pages/Projects';
-import Article from './Pages/Article';
+//import Article from './Pages/Article';
 import { NotionRenderer } from "react-notion";
 import NotionPage from './Components/NotionPage';
 
@@ -98,7 +98,7 @@ const fetchPages = async (tables) => {
     subpages: renderPages(projects),
     subpageData: projects
   })
-  
+  /*
   const articles = Object.values(tables).filter(table => table.name === "Articles")[0].pages;
   pages.push({
     name: 'Articles',
@@ -107,7 +107,7 @@ const fetchPages = async (tables) => {
     path: '/articles',
     subpath: '/article',
     subpages: renderPages(articles)
-  })
+  })*/
   return pages;
 }
 

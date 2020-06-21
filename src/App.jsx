@@ -1,18 +1,17 @@
 import React, { useState, useEffect, createContext } from 'react';
 //import { createState, useState } from '@hookstate/core';
 
-import staticPages from './data/staticPages';
+import { pages as staticPages } from './data';
 import Page from './Components/Page';
 import Error from './Pages/Error';
 import ResumeDoc from './Pages/Resume/ResumeDoc';
-import Project from './Pages/Project';
-
 import ScrollToTop from './Components/ScrollToTop';
 
 import './scss/style.scss';
-import projects from './data/projects';
-import { ThemeProvider } from '@material-ui/core/styles';
-import lightTheme, { darkTheme } from './theme';
+//import { projects } from './data';
+//import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from 'emotion-theming';
+import { lightTheme, darkTheme } from './utils';
 import { fetchFromNotion } from './pageData';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';

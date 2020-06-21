@@ -4,9 +4,8 @@ import { css, jsx } from '@emotion/core'
 import React, { useState, useEffect } from 'react';
 import 'react-notion/src/styles.css';
 import Section from './Section';
-import { bp, mq, zDepth, lighten } from '../helper';
-import { useTheme } from '@material-ui/core';
-
+import { bp, mq, zDepth, lighten, color } from '../utils';
+import { useTheme } from 'emotion-theming';
 
 
 const NotionPage = ({ renderedPage, className }) => {
@@ -18,8 +17,8 @@ const NotionPage = ({ renderedPage, className }) => {
     padding-bottom: 0 !important;
 
     .notion {
-      color: ${theme.palette.getContrastText(theme.palette.background)};
-      caret-color: ${theme.palette.getContrastText(theme.palette.background)};
+      color: ${color(theme.palette.background).getContrastText()};
+      caret-color: ${color(theme.palette.background).getContrastText()};
       ${isDarkTheme ? `background: ${theme.palette.surface};` : ''}
     }
 
@@ -36,18 +35,18 @@ const NotionPage = ({ renderedPage, className }) => {
 
     .notion-code {
       background: ${lighten(theme.palette.surface, 4)};
-      color: ${theme.palette.getContrastText(theme.palette.surface)};
+      color: ${color(theme.palette.surface).getContrastText()};
     }
 
     .notion-bookmark {
       .notion-bookmark-title {
-        color: ${theme.palette.getContrastText(theme.palette.surface)};
+        color: ${color(theme.palette.surface).getContrastText()};
       }
       .notion-bookmark-description {
-        color: ${theme.palette.getContrastText(theme.palette.surface)};
+        color: ${color(theme.palette.surface).getContrastText()};
       }
       .notion-bookmark-link > div {
-        color: ${theme.palette.getContrastText(theme.palette.surface)};
+        color: ${color(theme.palette.surface).getContrastText()};
       }
     }
 

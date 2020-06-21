@@ -5,8 +5,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import projects from '../data/projects';
-import { useTheme } from '@material-ui/core/styles';
-import { bp, mq, zDepth } from '../helper';
+import { useTheme } from 'emotion-theming';
+import { bp, mq, zDepth, color } from '../utils';
 import Section from './Section';
 
 const projectPages = [
@@ -26,7 +26,7 @@ const PageCard = ({ subpath, page }) => {
     grid-template-rows: min-content auto;
     overflow: hidden;
     background: ${theme.palette.surface};
-    color: ${theme.palette.getContrastText(theme.palette.background)};
+    color: ${color(theme.palette.background).getContrastText()};
     border-radius: 3px;
     ${zDepth(2, true)}
 

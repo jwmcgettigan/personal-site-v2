@@ -1,5 +1,5 @@
 
-const projects = [
+export const projects = [
   {
     name: "Case Study: Project Name",
     summary: "Project intro goes here. In the intro it's a good idea to answer a potential client's need/problem so it's more likely to land your next project or job.",
@@ -182,5 +182,3 @@ const projects = [
     content: require('./Projects/Renegade.md')
   },
 ]
-
-export default projects;

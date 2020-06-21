@@ -1,14 +1,14 @@
-import React from 'react';
-import links from '../../../../data/links';
-
-import Link, { Content } from '../../../../Components/Link';
-import Icon from '../../../../Components/Icon';
-import './Info.scss';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
+import { color } from '../../../utils';
+import { Link, LinkContent } from '../../../Components';
+//import links from '../../../data/links';
+import { links } from '../../../data';
 
 const resume = links.resume
 
-const QRCode = ({ text }) => (
-  <div className="QRCode">
+const QRCode = ({ text, className }) => (
+  <div className="QRCode" className={className}>
     {text}
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 25 25" stroke="none">
       <rect width="100%" height="100%" fill="rgb(255,255,255, 1)"/>
@@ -17,27 +17,75 @@ const QRCode = ({ text }) => (
   </div>
 )
 
-const Info = ({basics}) => (
-  <div id="info">
-    <h1>
-      JUSTIN<br/><span>MCGETTIGAN</span>
-    </h1>
-    <Link url={resume.website.url}>
-      <Content icon={resume.website.icon} text={resume.website.text}/>
-    </Link>
-    <Link url={resume.email.url}>
-      <Content icon={resume.email.icon} text={resume.email.text}/>
-    </Link>
-    <Link url={resume.location.url}>
-      <Content icon={resume.location.icon} text={resume.location.text + ' (relocatable)'}/>
-    </Link>
-    {resume.profiles.map((profile, index) => (
-      <Link url={profile.url} key={index}>
-        <Content icon={profile.icon} text={profile.network + ': ' + profile.username}/>
+const Info = ({ basics, className }) => {
+  const infoStyle = theme => css(`
+    display: grid;
+    grid-row-gap: 6px;
+
+    font-size: 13.3333px;
+    font-weight: bold;
+    h1 {
+      font-size: 29.3333px;
+      
+      color: ${color(theme.palette.resume.left).getContrastText(13)};
+      line-height: 1.25;
+      span {
+        color: ${color(theme.palette.resume.left).getContrastText(4)};
+      }
+    }
+    a {
+      display: grid;
+      grid-template-columns: 17px auto;
+
+      .icon {
+        text-align: center;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .text {
+        margin-left: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    p {
+      color: ${color(theme.palette.resume.left).getContrastText(5)};
+    }
+
+    .QRCode {
+      svg {
+        height: 29.3333px;
+        width: 29.3333px;
+        color: white;
+      }
+    }
+  `)
+
+  return (
+    <div css={infoStyle} className={className}>
+      <h1>
+        JUSTIN<br/><span>MCGETTIGAN</span>
+      </h1>
+      <Link url={resume.website.url}>
+        <LinkContent icon={resume.website.icon} text={resume.website.text}/>
       </Link>
-    ))}
-    <p>{basics.summary}</p>
-  </div>
-)
+      <Link url={resume.email.url}>
+        <LinkContent icon={resume.email.icon} text={resume.email.text}/>
+      </Link>
+      <Link url={resume.location.url}>
+        <LinkContent icon={resume.location.icon} text={resume.location.text + ' (relocatable)'}/>
+      </Link>
+      {resume.profiles.map((profile, index) => (
+        <Link url={profile.url} key={index}>
+          <LinkContent icon={profile.icon} text={profile.network + ': ' + profile.username}/>
+        </Link>
+      ))}
+      <p>{basics.summary}</p>
+    </div>
+  )
+}
 
 export default Info;

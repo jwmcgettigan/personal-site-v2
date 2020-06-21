@@ -1,5 +1,5 @@
 
-const learning = {
+export const learning = {
   library: [
     {
       name: 'Skills',
@@ -276,5 +276,3 @@ const learning = {
     }
   ]
 }
-
-export default learning;

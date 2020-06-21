@@ -1,5 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import './color';
+import { color } from './color';
+
+// Media Queries ==============================================================
 
 export const bp = {
   "phone-small":  375,
@@ -22,14 +26,7 @@ export const mq = (n, type='min') => {
   return result;
 };
 
-export const lighten = (color, percent) => {
-  var num = parseInt(color.replace("#",""),16),
-    amt = Math.round(2.55 * percent),
-    R = (num >> 16) + amt,
-    B = (num >> 8 & 0x00FF) + amt,
-    G = (num & 0x0000FF) + amt;
-  return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
-};
+// Material Design Elevation ==================================================
 
 const objectMap = (obj, fn) => Object.fromEntries(
   Object.entries(obj).map(
@@ -152,3 +149,79 @@ export const zDepth = (elevation, lighten=false) => {
   `)*/
   return boxShadow + '\n' + (lighten ? overlay : '');
 }
+
+
+// Color Functions ============================================================
+
+export const lighten = (color, percent) => {
+  var num = parseInt(color.replace("#",""),16),
+    amt = Math.round(2.55 * percent),
+    R = (num >> 16) + amt,
+    B = (num >> 8 & 0x00FF) + amt,
+    G = (num & 0x0000FF) + amt;
+  return "#" + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (B<255?B<1?0:B:255)*0x100 + (G<255?G<1?0:G:255)).toString(16).slice(1);
+};
+
+/*
+function hexToRgb(hex) {
+  var bigint = parseInt(hex, 16);
+  var r = (bigint >> 16) & 255;
+  var g = (bigint >> 8) & 255;
+  var b = bigint & 255;
+  return [r, g, b];
+}
+
+function relativeLuminance(R8bit, G8bit, B8bit) {
+  // from http://www.w3.org/TR/WCAG20/#relativeluminancedef
+  var RsRGB = R8bit/255;
+  var GsRGB = G8bit/255;
+  var BsRGB = B8bit/255;
+
+  var R = (RsRGB <= 0.03928) ? RsRGB/12.92 : Math.pow((RsRGB+0.055)/1.055, 2.4);
+  var G = (GsRGB <= 0.03928) ? GsRGB/12.92 : Math.pow((GsRGB+0.055)/1.055, 2.4);
+  var B = (BsRGB <= 0.03928) ? BsRGB/12.92 : Math.pow((BsRGB+0.055)/1.055, 2.4);
+
+  // For the sRGB colorspace, the relative luminance of a color is defined as: 
+  var L = 0.2126 * R + 0.7152 * G + 0.0722 * B;
+
+  return L;
+}
+
+function luminanace(r, g, b) {
+  var a = [r, g, b].map((v) => {
+      v /= 255;
+      return v <= 0.03928
+          ? v / 12.92
+          : Math.pow( (v + 0.055) / 1.055, 2.4 );
+  });
+  return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+function contrast(rgb1, rgb2) {
+  var lum1 = luminanace(rgb1[0], rgb1[1], rgb1[2]);
+  var lum2 = luminanace(rgb2[0], rgb2[1], rgb2[2]);
+  var brightest = Math.max(lum1, lum2);
+  var darkest = Math.min(lum1, lum2);
+  return (brightest + 0.05)
+       / (darkest + 0.05);
+}
+
+
+
+export const textColor = (backgroundColor) => {
+  // 1. determine if textColor will be white or black based on backgroundColor
+  // 2. calculate the required opacity to achieve the desired contrast between textColor and backgroundColor
+  // 3. apply opacity to textColor and return textColor
+  const bcRGB = hexToRgb(backgroundColor);
+  //const bcLuminance = luminance(...bcRGB);
+  const bcLuminosity = '';
+  const bcBrightness = Math.round(((parseInt(bcRGB[0]) * 299) +
+                      (parseInt(bcRGB[1]) * 587) +
+                      (parseInt(bcRGB[2]) * 114)) / 1000);
+                      
+  let textColour = (bcBrightness > 125) ? [0, 0, 0] : [255, 255, 255];
+  let contrasT = contrast(bcRGB, textColour);
+  //console.log(contrasT);
+}*/
+
+
+//textColor('#000000')

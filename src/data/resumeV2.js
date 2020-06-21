@@ -1,5 +1,5 @@
 
-const resume = {
+export const resume = {
   "basics": {
     "name": "Justin McGettigan",
     "email": "jwmcgettigan@gmail.com",
@@ -179,5 +179,3 @@ const resume = {
     "Reading", "Math", "Travel"
   ]
 }
-
-export default resume;
