@@ -12,7 +12,8 @@ $palette: (
   @return map-get($palette, $name);
 }
 
-#resume {/*
+#resume {
+  /*
   display: flex;
   justify-content: center;
   align-content: center;

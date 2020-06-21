@@ -1,34 +1,17 @@
+/** @jsx jsx */
+/** @jsxFrag React.Fragment */
+import { css, jsx, Global } from '@emotion/core'
+import { ThemeProvider } from 'emotion-theming';
 import React, { useState, useEffect, createContext } from 'react';
 //import { createState, useState } from '@hookstate/core';
 
-import { pages as staticPages } from './data';
-import Page from './Components/Page';
-import Error from './Pages/Error';
-import ResumeDoc from './Pages/Resume/ResumeDoc';
-import ScrollToTop from './Components/ScrollToTop';
-
-import './scss/style.scss';
-//import { projects } from './data';
-//import { ThemeProvider } from '@material-ui/core/styles';
-import { ThemeProvider } from 'emotion-theming';
-import { lightTheme, darkTheme } from './utils';
-import { fetchFromNotion } from './pageData';
-
+import { Page, ScrollToTop } from './2_Components';
+import { pages as staticPages, Error, fetchFromNotion } from './3_Data';
+import { lightTheme, darkTheme, mq, StateContext } from './4_Utilities';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-export const StateContext = createContext();
 
 const Pages = ({ dynamicPages }) => {
-  //const [pages, setPages] = useState(pageData);
-  //const [dynamicPages, setDynamicPages] = useState([]);
-  //const [projects, setProjects] = useState([]);
-  /*
-  useEffect(() => {
-    (async () => {
-      const fetchedPages = await fetchFromNotion();
-      setDynamicPages(fetchedPages);
-    })()
-  }, [])*/
   
   return (
     <Router>
@@ -36,7 +19,6 @@ const Pages = ({ dynamicPages }) => {
       <Switch>
         {/* Menu Pages */ }
         {staticPages.map((page, i) => {
-          //const PageComponent = page.component;
           return <Route key={i} path={page.path} render={() => <Page page={page.component}/>} exact/>
         })}
 
@@ -65,7 +47,7 @@ const Pages = ({ dynamicPages }) => {
         })}
 
         {/* Resume Document */ }
-        <Route path="/printresume" component={ResumeDoc} />
+        {/*<Route path="/resume/print" component={ResumeDoc} />*/}
 
         {/* 404 Page */ }
         <Route render={() => <Page page={Error} />}/>
@@ -88,7 +70,7 @@ const App = () => {
   }, [])
 
   const html = document.documentElement;
-  html.style.backgroundColor = theme.palette.background;//theme.palette.primary.light;
+  html.style.backgroundColor = theme.palette.background;
 
   const toggleTheme = () => {
     if(theme.palette.type === 'light') {
@@ -103,13 +85,43 @@ const App = () => {
     toggleTheme: toggleTheme
   }
 
-  return (
+  const fontStack = `Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`;
+
+  const globalStyles = css(`
+    * {
+      margin: 0;
+      position: relative;
+    }
+    
+    a, a:hover {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    html,
+    body,
+    #root {
+      font: 100% ${fontStack};
+      text-size-adjust: none;
+    }
+
+    #root {
+      display: grid;
+      grid-template-rows: min-content auto;
+      ${mq('tablet-wide')} {
+        grid-template-columns: min-content auto;
+      }
+    }
+  `)
+
+  return (<>
+    <Global styles={globalStyles}/>
     <ThemeProvider theme={theme}>
       <StateContext.Provider value={stateContext}>
         <Pages dynamicPages={dynamicPages} />
       </StateContext.Provider>
     </ThemeProvider>
-  );
+  </>);
 }
 
 export default App;
