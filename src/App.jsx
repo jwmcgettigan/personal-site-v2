@@ -2,12 +2,14 @@
 /** @jsxFrag React.Fragment */
 import { css, jsx, Global } from '@emotion/core'
 import { ThemeProvider } from 'emotion-theming';
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useMemo } from 'react';
+import { useAsync } from 'react-async';
 //import { createState, useState } from '@hookstate/core';
 
-import { Page, ScrollToTop } from './2_Components';
-import { pages as staticPages, Error, fetchFromNotion } from './3_Data';
-import { lightTheme, darkTheme, mq, StateContext } from './4_Utilities';
+import { Page, ScrollToTop, NotionPage } from './2_Components';
+import { pages as staticPages, fetchFromNotion, useNotionAPI } from './3_Data';
+import { Error, ResumeDoc } from './1_Pages';
+import { lightTheme, darkTheme, mq, StateContext, clone } from './4_Utilities';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
@@ -39,15 +41,16 @@ const Pages = ({ dynamicPages }) => {
           if(page.subpages != null) {
             return page.subpages.map((subpage, i) => {
               if(subpage != null) {
+                //console.log(subpage)
                 return <Route key={i} path={page.subpath + subpage.path}
-                render={() => <Page page={ subpage.component } renderedPage={subpage.renderedPage}/> }  exact/>
+                render={() => <Page page={ subpage.component } renderedPage={subpage.render()}/> }  exact/>
               }
             })
           }
         })}
 
         {/* Resume Document */ }
-        {/*<Route path="/resume/print" component={ResumeDoc} />*/}
+        <Route path="/resume/print" component={ResumeDoc} />
 
         {/* 404 Page */ }
         <Route render={() => <Page page={Error} />}/>
@@ -57,36 +60,11 @@ const Pages = ({ dynamicPages }) => {
 }
 
 const App = () => {
+  const [notionConfig, setNotionConfig] = useState('2b1541f09b37490cb283993c73e1fde9')
+  const notionAPI = useNotionAPI(notionConfig);
+  console.log(clone(notionAPI))
   const [theme, setTheme] = useState(lightTheme);
-  const [dynamicPages, setDynamicPages] = useState([]);
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const fetchedPages = await fetchFromNotion();
-      setDynamicPages(fetchedPages);
-      setProjects(fetchedPages[0].subpageData);
-    })()
-  }, [])
-
-  const html = document.documentElement;
-  html.style.backgroundColor = theme.palette.background;
-
-  const toggleTheme = () => {
-    if(theme.palette.type === 'light') {
-      setTheme(darkTheme);
-    } else {
-      setTheme(lightTheme);
-    }
-  }
-
-  const stateContext = {
-    projects: projects,
-    toggleTheme: toggleTheme
-  }
-
   const fontStack = `Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`;
-
   const globalStyles = css(`
     * {
       margin: 0;
@@ -103,6 +81,7 @@ const App = () => {
     #root {
       font: 100% ${fontStack};
       text-size-adjust: none;
+      background: ${theme.palette.background};
     }
 
     #root {
@@ -114,11 +93,24 @@ const App = () => {
     }
   `)
 
+  const toggleTheme = () => {
+    if(theme.palette.type === 'light') {
+      setTheme(darkTheme);
+    } else {
+      setTheme(lightTheme);
+    }
+  }
+
+  const stateContext = {
+    notionAPI: notionAPI,
+    toggleTheme: toggleTheme
+  }
+
   return (<>
     <Global styles={globalStyles}/>
     <ThemeProvider theme={theme}>
       <StateContext.Provider value={stateContext}>
-        <Pages dynamicPages={dynamicPages} />
+        <Pages dynamicPages={notionAPI.data.dynamicPages} />
       </StateContext.Provider>
     </ThemeProvider>
   </>);

@@ -4,7 +4,7 @@ import { css, jsx } from '@emotion/core'
 import React, { useState, useEffect } from 'react';
 import 'react-notion/src/styles.css';
 import Section from './Section';
-import { bp, mq, zDepth, lighten, color } from '../4_Utilities';
+import { bp, mq, zDepth, color } from '../4_Utilities';
 import { useTheme } from 'emotion-theming';
 
 
@@ -34,7 +34,7 @@ const NotionPage = ({ renderedPage, className }) => {
     }
 
     .notion-code {
-      background: ${lighten(theme.palette.surface, 4)};
+      background: ${color(theme.palette.surface).adjustBrightness(4)};
       color: ${color(theme.palette.surface).getContrastText()};
     }
 

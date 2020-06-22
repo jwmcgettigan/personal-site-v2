@@ -45,7 +45,7 @@ const ResumeDownload = () => {
 const Resume = ({ className }) => {
   const resumeDocStyle = theme => css(`
     ${zDepth(24)};
-    margin: 3rem auto;
+    //margin: 3rem auto;
     transform-origin: top;
 
     ${mq('tablet-wide')} {
@@ -64,7 +64,7 @@ const Resume = ({ className }) => {
     <main className={className}>
       <ResumeDownload/>
       <Section>
-        <ResumeDoc/>
+        <ResumeDoc css={resumeDocStyle}/>
       </Section>
     </main>
   )

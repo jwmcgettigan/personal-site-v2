@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming';
-import { Button, TitleSection } from '../../2_Components';
+import { Button, TitleSection, Card } from '../../2_Components';
 import { pages } from '../../3_Data';
 import { mq, zDepth, color } from '../../4_Utilities';
 
@@ -74,7 +74,7 @@ const AboutMe = () => {
 
   return (
     <TitleSection>
-      <div css={aboutMeStyle} className="card">
+      <Card css={aboutMeStyle}>
         <div css={profileStyle}>
           <h2>Justin McGettigan</h2>
           <h3>Aspiring Software Engineer</h3>
@@ -89,7 +89,7 @@ const AboutMe = () => {
           </div>
         </div>
         <img src={ProfilePicture} alt="Profile"/> 
-      </div>
+      </Card>
     </TitleSection>
   )
 }

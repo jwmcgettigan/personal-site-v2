@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming';
-import { mq, zDepth, lighten, color } from '../../../4_Utilities';
+import { mq, zDepth, color } from '../../../4_Utilities';
 
 import Education from './Education';
 import Experience from './Experience';
@@ -15,9 +15,9 @@ import { resume } from '../../../3_Data';
 const ResumeDoc = ({ className }) => {
   const theme = useTheme();
   const resumeStyle = css(`
-    display: grid;
+    display: grid;/*
     justify-content: center;
-    align-content: center;
+    align-content: center;*/
     width: 816px;
     height: 1056px;
     color: ${color(theme.palette.resume.left).getContrastText(13)};
@@ -43,8 +43,8 @@ const ResumeDoc = ({ className }) => {
   const leftStyle = css(`
     grid-column: 1;
     padding: 1rem;
-    width: 228px;
-    width: min-content;
+    //width: 228px;
+    //width: min-content;
     background: ${theme.palette.resume.left};
 
     display: grid;
@@ -54,7 +54,7 @@ const ResumeDoc = ({ className }) => {
   const rightStyle = css(`
     grid-column: 2;
     padding: 1rem;
-    width: 587px;
+    //width: 587px;
     background: ${theme.palette.resume.right};
 
     display: grid;

@@ -1,20 +1,6 @@
-import { About, Projects, Resume, Testing, LinkLibrary, Learning, Games, PageBuilder, ResumeDoc, Error } from '../1_Pages';
+import { About, Projects, Resume, Testing, LinkLibrary, Learning, Games, PageBuilder } from '../1_Pages';
 
-//import { About, Projects, Resume, Testing } from '../1_Pages';
-//import { LinkLibrary, Learning, Games, PageBuilder } from '../Pages/Testing';
-/*
-console.log('About', About)
-console.log('Projects', Projects)
-console.log('Resume', Resume)
-console.log('Testing', Testing)
-console.log('LinkLibrary', LinkLibrary)
-console.log('Learning', Learning)
-console.log('Games', Games)
-console.log('PageBuilder', PageBuilder)
-console.log('Article', Article)
-console.log('ResumeDoc', ResumeDoc)*/
-
-const pages = [
+export const pages = [
   {
     name: 'About Me',
     component: About,
@@ -31,16 +17,7 @@ const pages = [
     name: 'Resume',
     component: Resume,
     path: '/resume',
-    icon: 'FaFileAlt',
-    subpath: '/resume',
-    subpages: [
-      {
-        name: 'Print',
-        component: ResumeDoc,
-        path: '/print',
-        icon: 'FaFilePdf'
-      }
-    ]
+    icon: 'FaFileAlt'
   },
   {
     name: 'Testing',
@@ -76,8 +53,6 @@ const pages = [
     ]
   }
 ]
-
-export { pages, Error };
 
 
 /*{

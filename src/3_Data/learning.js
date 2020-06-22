@@ -6,7 +6,7 @@ export const learning = {
       subcategories: [
         {
           name: 'General',
-          subjects: [
+          items: [
             {
               name: 'Python'
             },
@@ -26,7 +26,7 @@ export const learning = {
         },
         {
           name: 'Linux',
-          subjects: [
+          items: [
             {
               name: 'BASH',
             },
@@ -52,7 +52,7 @@ export const learning = {
         },
         {
           name: 'Virtual',
-          subjects: [
+          items: [
             {
               name: 'VirtualBox',
             },
@@ -75,7 +75,7 @@ export const learning = {
         },
         {
           name: 'Web',
-          subjects: [
+          items: [
             {
               name: 'JavaScript',
             },
@@ -95,7 +95,7 @@ export const learning = {
         },
         {
           name: 'Data',
-          subjects: [
+          items: [
             {
               name: 'SQL',
             },
@@ -118,7 +118,7 @@ export const learning = {
         },
         {
           name: 'Create',
-          subjects: [
+          items: [
             {
               name: 'Unity',
             },
@@ -148,66 +148,31 @@ export const learning = {
       name: 'Algorithms',
       subcategories: [
         {
-          name: 'Computer Vision',
-          subjects: [
+          name: 'Placeholder',
+          items: [
             {
-              name: 'OpenCV',
-              url: 'https://opencv.org/',
+              name: 'Placeholder',
+              url: '',
               tags: []
             }
           ]
         },
         {
-          name: 'Machine Learning',
-          subjects: [
+          name: 'Placeholder2',
+          items: [
             {
-              name: 'PyTorch',
-              url: 'https://pytorch.org/',
-              tags: []
-            },
-            {
-              name: 'Keras',
-              url: 'https://keras.io/',
-              tags: []
-            },
-            {
-              name: 'TensorFlow',
-              url: 'https://www.tensorflow.org/',
-              tags: []
-            },
-            {
-              name: 'CUDA',
-              url: 'https://developer.nvidia.com/cuda-zone',
+              name: 'Placeholder',
+              url: '',
               tags: []
             }
           ]
         },
         {
-          name: 'Misc',
-          subjects: [
+          name: 'Placeholder3',
+          items: [
             {
-              name: 'NumPy',
-              url: 'https://numpy.org/',
-              tags: []
-            },
-            {
-              name: 'Matlab',
-              url: 'https://www.mathworks.com/products/matlab',
-              tags: []
-            },
-            {
-              name: 'Processing',
-              url: 'https://processing.org/',
-              tags: []
-            },
-            {
-              name: 'Point Cloud Library (PCL)',
-              url: 'https://github.com/PointCloudLibrary/pcl',
-              tags: []
-            },
-            {
-              name: 'ROS',
-              url: 'https://www.ros.org/',
+              name: 'Placeholder',
+              url: '',
               tags: []
             }
           ]
@@ -218,11 +183,11 @@ export const learning = {
       name: 'Techniques',
       subcategories: [
         {
-          name: 'Game Development',
-          subjects: [
+          name: 'Placeholder',
+          items: [
             {
-              name: 'Sebastian Lague',
-              url: 'https://www.youtube.com/user/Cercopithecan',
+              name: 'Placeholder',
+              url: '',
               tags: []
             }
           ]
@@ -233,41 +198,11 @@ export const learning = {
       name: 'Methods',
       subcategories: [
         {
-          name: 'Florida Colleges',
-          subjects: [
+          name: 'Placeholder',
+          items: [
             {
-              name: 'ShellHacks',
-              url: 'https://shellhacks.net',
-              tags: []
-            },
-            {
-              name: 'HackFSU',
-              url: 'https://hackfsu.com',
-              tags: []
-            },
-            {
-              name: 'SwampHacks',
-              url: 'https://2020.swamphacks.com',
-              tags: []
-            },
-            {
-              name: 'KnightHacks',
-              url: 'https://knighthacks.org',
-              tags: []
-            },
-            {
-              name: 'HackABull',
-              url: 'https://hackabull.io',
-              tags: []
-            },
-            {
-              name: 'HatterHacks',
-              url: 'http://greatercentralfloridatechfaire.com',
-              tags: []
-            },
-            {
-              name: 'PhoenixHacks',
-              url: 'http://phoenixhacks.com/',
+              name: 'Placeholder',
+              url: '',
               tags: []
             }
           ]

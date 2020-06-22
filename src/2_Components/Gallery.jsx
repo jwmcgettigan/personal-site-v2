@@ -2,6 +2,7 @@
 import { css, jsx } from '@emotion/core'
 
 import { NavLink } from 'react-router-dom';
+import { Icon, Image } from '../2_Components';
 import { projects } from '../3_Data';
 import { useTheme } from 'emotion-theming';
 import { bp, mq, zDepth, color } from '../4_Utilities';
@@ -15,7 +16,7 @@ const projectPages = [
   }
 ]
 
-const PageCard = ({ subpath, page }) => {
+const PageCard = ({ subpath, page, className }) => {
   const imageExists = page.image != null;
   const theme = useTheme();
 
@@ -23,6 +24,7 @@ const PageCard = ({ subpath, page }) => {
     display: grid;
     grid-template-rows: min-content auto;
     overflow: hidden;
+    width: 100%;
     background: ${theme.palette.surface};
     color: ${color(theme.palette.background).getContrastText()};
     border-radius: 3px;
@@ -32,34 +34,18 @@ const PageCard = ({ subpath, page }) => {
       transition: all 0.01s ease-in-out;
       ${zDepth(5, true)}
       transform: scale(1.01, 1.01);
+      color: ${color(theme.palette.background).getContrastText()};
     }
   `)
 
   const imageStyle = css(`
-    box-sizing: border-box;
-    object-fit: cover;
-    object-position: top;
     width: 100%;
+    //max-width: 22rem;
     min-width: 16rem;
     height: 16rem;
-    
-    &:before { 
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgb(230, 230, 230);
-      border: 2px dashed rgb(200, 200, 200);
-      border-radius: 5px;
-    }
   `)
 
   const infoStyle = css(`
-    display: grid;
-    grid-template-rows: min-content min-content auto;
     padding: 1rem;
 
     h3 {
@@ -71,38 +57,43 @@ const PageCard = ({ subpath, page }) => {
   `)
 
   return (
-  <NavLink to={subpath + page.path} className={'nav-link'} exact>
-    <div css={pageCardStyle}>
-      <img css={imageStyle} src={imageExists ? page.image : ''} alt=""/>
-      <div css={infoStyle}>
-        <h3>{page.name}</h3>
-      </div>
+  <NavLink to={subpath + page.path} css={pageCardStyle} className={className} exact>
+    <Image css={imageStyle} image={page.image} alt={""}>
+      {page.icon != null ? <Icon icon={page.icon}/> : ''}
+    </Image>
+    <div css={infoStyle}>
+      <h3>{page.name}</h3>
     </div>
   </NavLink>
 )}
 
 const galleryStyle = css(`
-  //margin: 0 -15px;
   display: grid;
   grid-gap: 3rem 2rem;
-  grid-template-columns: repeat(1, minmax(16rem, 1fr));
+  //grid-template-columns: repeat(1, minmax(16rem, 1fr));
+  //grid-template-columns: repeat(auto-fit, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 
   ${mq('tablet-small')} {
-    grid-template-columns: repeat(2, minmax(16rem, 1fr));
+    //grid-template-columns: repeat(2, minmax(16rem, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
   ${mq('desktop')} {
-    grid-template-columns: repeat(3, minmax(16rem, 1fr));
+    //grid-template-columns: repeat(3, minmax(16rem, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 `)
 
-const Gallery = ({ subpath, pages, n=-1, slider, className }) => (
-  <Section css={galleryStyle} className={className}>
-    {pages.map((page, index) => {
-      if (n < 0 || index <= n-1) {
-        return <PageCard key={index} subpath={subpath} page={page}/>
-      }
-    })}
-  </Section>
-)
+const Gallery = ({ subpath, pages, n=-1, slider, className }) => {
+  return (
+    <Section css={galleryStyle} className={className}>
+      {pages.map((page, index) => {
+        if (n < 0 || index <= n-1) {
+          return <PageCard key={index} subpath={subpath} page={page}/>
+        }
+      })}
+    </Section>
+  )
+}
  
 export default Gallery;

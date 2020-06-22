@@ -19,30 +19,34 @@ const Link = ({url, onclick, className, newtab, children}) => (
   </a>
 )
 
+const LinkContent = ({icon, text, title}) => (<>
+  <span className="icon">
+    <Icon icon={icon}/>
+  </span>
+  <span className="text">{text}</span></>
+)
+
 const PageLink = ({page, className}) => {
-  const theme = useTheme();
   const navLinkStyle = css(`
-    display: flex;
+    /*display: flex;
     align-items: center;
 
     svg {
       display: flex;
       align-items: center;
       margin-right: 0.5rem;
-    }
+    }*/
   `)
   
   return (
   <NavLink to={page.path} css={navLinkStyle} className={className} exact>
-    <Icon icon={page.icon}/>
-    {page.name}
+    <LinkContent icon={page.icon} text={page.name}/>
   </NavLink>)
 }
 
 const Button = ({url, onclick, className, type, page, newtab, children}) => {
   //! Figure out when it's best to use <button> vs <a>
-  const theme = useTheme();
-  const buttonStyle = css(`
+  const buttonStyle = theme => css(`
     background: ${theme.palette.primary.dark};
     color: ${color(theme.palette.primary.dark).getContrastText()};
     font-weight: bold;
@@ -82,13 +86,6 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
     )
   }
 }
-
-const LinkContent = ({icon, text, title}) => (<>
-  <span className="icon">
-    <Icon icon={icon}/>
-  </span>
-  <span className="text">{text}</span></>
-)
 
 export {
   Button,

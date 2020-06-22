@@ -76,7 +76,7 @@ export const links = {
       subcategories: [
         {
           name: 'Media',
-          links: [
+          items: [
             {
               name: 'Blender',
               url: 'https://www.blender.org/',
@@ -86,7 +86,7 @@ export const links = {
         },
         {
           name: 'Remote',
-          links: [
+          items: [
             {
               name: 'AnyDesk',
               url: 'https://anydesk.com/',
@@ -96,7 +96,7 @@ export const links = {
         },
         {
           name: 'Management',
-          links: [
+          items: [
             {
               name: 'Notion',
               url: 'https://www.notion.so/',
@@ -106,7 +106,7 @@ export const links = {
         },
         {
           name: 'Power User',
-          links: [
+          items: [
             {
               name: 'ShareX',
               url: 'https://getsharex.com/',
@@ -116,7 +116,7 @@ export const links = {
         },
         {
           name: 'Torrent Client',
-          links: [
+          items: [
             {
               name: 'qBittorrent',
               url: 'https://www.qbittorrent.org/',
@@ -126,7 +126,7 @@ export const links = {
         },
         {
           name: 'Communication',
-          links: [
+          items: [
             {
               name: 'Discord',
               url: 'https://discordapp.com/',
@@ -136,7 +136,7 @@ export const links = {
         },
         {
           name: 'Development',
-          links: [
+          items: [
             {
               name: 'Visual Studio Code',
               url: 'https://code.visualstudio.com/',
@@ -156,7 +156,7 @@ export const links = {
         },
         {
           name: 'Terminal',
-          links: [
+          items: [
             {
               name: 'Windows Terminal',
               url: 'https://github.com/microsoft/terminal',
@@ -176,7 +176,7 @@ export const links = {
         },
         {
           name: 'System',
-          links: [
+          items: [
             {
               name: 'Winaero Tweaker',
               url: 'https://winaero.com/',
@@ -201,7 +201,7 @@ export const links = {
         },
         {
           name: 'Misc',
-          links: [
+          items: [
             {
               name: 'Alcohol 120%',
               url: 'https://www.alcohol-soft.com/',
@@ -231,7 +231,7 @@ export const links = {
       subcategories: [
         {
           name: 'Computer Vision',
-          links: [
+          items: [
             {
               name: 'OpenCV',
               url: 'https://opencv.org/',
@@ -241,7 +241,7 @@ export const links = {
         },
         {
           name: 'Machine Learning',
-          links: [
+          items: [
             {
               name: 'PyTorch',
               url: 'https://pytorch.org/',
@@ -266,7 +266,7 @@ export const links = {
         },
         {
           name: 'Misc',
-          links: [
+          items: [
             {
               name: 'NumPy',
               url: 'https://numpy.org/',
@@ -301,7 +301,7 @@ export const links = {
       subcategories: [
         {
           name: 'Game Development',
-          links: [
+          items: [
             {
               name: 'Sebastian Lague',
               url: 'https://www.youtube.com/user/Cercopithecan',
@@ -313,7 +313,7 @@ export const links = {
     },/*
     {
       name: 'People',
-      links: [
+      items: [
         {
           name: '',
           url: '',
@@ -326,7 +326,7 @@ export const links = {
       subcategories: [
         {
           name: 'Florida Colleges',
-          links: [
+          items: [
             {
               name: 'ShellHacks',
               url: 'https://shellhacks.net',

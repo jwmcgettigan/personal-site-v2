@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming';
-import { mq, zDepth, lighten, color } from '../../../4_Utilities';
+import { mq, zDepth, color } from '../../../4_Utilities';
 import React from 'react';
 
 const Projects = ({ projects, className }) => {

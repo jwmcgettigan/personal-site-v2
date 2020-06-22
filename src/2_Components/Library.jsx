@@ -1,14 +1,12 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useTheme } from 'emotion-theming';
 import { bp, mq, zDepth, color } from '../4_Utilities';
 
 import { learning } from '../3_Data';
 import { Section } from '../2_Components';
 
 const Subcategory = ({ subcategory, className }) => {
-  const theme = useTheme();
-  const subcategoryStyle = css(`
+  const subcategoryStyle = theme => css(`
     //background: ${theme.palette.secondary.main};
     background: ${theme.palette.surface};
     flex: 1 1 auto; 
@@ -53,8 +51,7 @@ const Subcategory = ({ subcategory, className }) => {
 }
 
 const Category = ({ category, className }) => {
-  const theme = useTheme();
-  const categoryStyle = css(`
+  const categoryStyle = theme => css(`
 
     h1 {
       padding: 1rem 1rem 0 0.5rem;
@@ -86,16 +83,15 @@ const Category = ({ category, className }) => {
 
 
 const Library = ({ library, className}) => {
-  const theme = useTheme();
-  const libraryStyle = css(`
+  const libraryStyle = theme => css(`
     display: grid;
     grid-gap: 3rem;
-    color: ${color(theme.palette.surface).getContrastText()};
+    color: ${color(theme.palette.surface).getContrastText(13)};
     width: 100%;
     padding: 0 !important;
 
     a:hover {
-      color: ${theme.palette.primary.light};
+      color: ${theme.palette.secondary.light};
       cursor: pointer;
     }
   `)

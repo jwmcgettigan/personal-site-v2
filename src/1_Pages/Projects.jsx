@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core'
 
 import React, { useContext } from 'react';
-import { zDepth, StateContext } from '../4_Utilities';
+import { zDepth, StateContext, clone } from '../4_Utilities';
 import { TitleSection, Gallery } from '../2_Components';
 
 const Title = () => {
@@ -33,11 +33,13 @@ const Title = () => {
 }
 
 const Projects = ({ className }) => {
-  const projectPages = useContext(StateContext).projects;
+  const notionAPI = useContext(StateContext).notionAPI;
+  //console.log(clone(notionAPI))
   return (
     <main className={className}>
       <Title/>
-      <Gallery subpath={'/project'} pages={projectPages}/>
+      {notionAPI.isLoading ? <div>Loading ...</div>
+      : <Gallery subpath={'/project'} pages={notionAPI.data.projectPages}/>}
     </main>
   )
 }

@@ -12,6 +12,7 @@ const Section = ({ className, children }) => {
     //border-bottom: 1px solid ${theme.palette.secondary.dark};
     background: ${theme.palette.background};
     padding: 1rem;
+    justify-self: center;
     //margin: auto;
     //box-sizing: border-box;
 

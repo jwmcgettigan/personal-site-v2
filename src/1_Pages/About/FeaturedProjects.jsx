@@ -1,17 +1,24 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Gallery, Section } from '../../2_Components';
 
 import { useTheme } from 'emotion-theming';
-import { color, StateContext } from '../../4_Utilities';
+import { color, StateContext, clone } from '../../4_Utilities';
 
-const FeaturedProjects = () => {
+const print = (notionAPI) => {
+  console.log(notionAPI)
+  //console.log(isLoading)
+  //console.log(projectPages)
+  //console.log('PROJECT PAGES: ' + JSON.stringify(projectPages[0]))
+  return JSON.stringify(notionAPI)//isLoading ? 'LOADING...' : 'LOADED!'
+}
+
+let isLoaded = false;
+const FeaturedProjects = ({ className }) => {
   //! CREATE A CAROUSEL VERSION OF THE GALLERY FOR THE FEATURED SECTIONS
-  const theme = useTheme();
-  const projectPages = useContext(StateContext).projects;
-
-  const headerStyle = css(`
+  const notionAPI = useContext(StateContext).notionAPI;
+  const headerStyle = theme => css(`
     color: ${color(theme.palette.background).getContrastText()};
     font-size: 2rem;
     padding-left: 1.5rem;
@@ -36,9 +43,11 @@ const FeaturedProjects = () => {
     <Section css={css`
       display: grid;
       justify-content: center;
-      `}>
+      `} className={className}>
       <h2 css={headerStyle}>Featured Projects</h2>
-      <Gallery subpath={'/project'} pages={projectPages} n={6} css={css`padding: 0 !important;`}/>
+      { notionAPI.isLoading ? <div>Loading ...</div>
+      : <Gallery subpath={'/project'} pages={notionAPI.data.projectPages}
+      n={6} css={css`padding: 0 !important;`}/> }
     </Section>
   )
 }

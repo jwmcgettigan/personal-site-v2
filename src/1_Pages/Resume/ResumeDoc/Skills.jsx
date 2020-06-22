@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { useTheme } from 'emotion-theming';
-import { mq, zDepth, lighten } from '../../../4_Utilities';
+import { mq, zDepth } from '../../../4_Utilities';
 import React from 'react';
 
 const Skills = ({ skills, className }) => {
