@@ -11,31 +11,33 @@ const Navbar = () => {
     //!display: flex;
     //!flex-wrap: wrap;
     //!margin: -0.25rem;
-    justify-self: center;
     width: max-content;
+    display: grid;
+    justify-self: center;
+    justify-content: center;
 
-    ${mq('tablet-wide')} {
-      display: grid;
-      justify-content: center;
+    //${mq('tablet-wide')} {
+      //display: grid;
+      //justify-content: center;
       grid-gap: 1rem;
       margin: 0;
-    }
+    //}
 
     a {
-      font-size: 1.5rem;
+      //!font-size: 1.5rem;
       font-weight: bold;
       //border: 1px solid ${theme.palette.background};
-      background: ${theme.palette.primary.main};
-      ${zDepth(4, true)};
+      //!background: ${theme.palette.primary.main};
+      //!${zDepth(4, true)};
       border-radius: 3px;
       padding: 0.25rem 1rem;
       //flex: 1 1 calc(20% - 5px);
       //!flex: 1 1 auto;
       white-space: nowrap;
-      justify-content: center;
-      margin: 0.25rem;
+      //!justify-content: center;
+      //!margin: 0.25rem;
 
-      ${mq('tablet-wide')} {
+      // ${mq('tablet-wide')} {
         width: 100%;
         font-size: 1rem;
         border: none;
@@ -43,7 +45,7 @@ const Navbar = () => {
         margin: 0;
         background: none;
         ${zDepth(0, true)};
-      }
+      //}
       
       svg {
         margin-right: 0.5rem;

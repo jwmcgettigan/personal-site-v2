@@ -14,6 +14,11 @@ class Color  {
 		return this.rgba.slice(0,3);
 	};
 
+	get hex () {
+		const [r, g, b] = this.rgba.slice(0,3);
+		return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	};
+
 	get alpha () {
 		return this.rgba[3];
 	};

@@ -6,25 +6,44 @@ import SocialLinks from './SocialLinks';
 import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
 import { mq } from '../../4_Utilities';
 
-const Profile = ({}) => {
+const Profile = ({ isTabletOrMobile, className}) => {
 
   const profileStyle = css(`
     display: grid;
     grid-gap: 1rem;
+    grid-template-rows: repeat(3, min-content);
+    justify-content: center;
+
+    ${mq('tablet-wide')} {
+      width: 200px;
+      justify-self: center;
+    }
 
     h1 {
-      display: flex;
+      display: grid;
       width: 100%;
-      justify-content: center;
+      grid-template-rows: min-content;
+      grid-template-columns: min-content 1fr;
+      grid-gap: 0.5rem;
       align-items: center;
+
+      ${mq('tablet-wide')} {
+        grid-template-rows: repeat(2, min-content);
+        grid-template-columns: 1fr;
+        justify-content: center;
+        text-align: center;
+      }
     }
 
     img {
       display: block;
-      justify-self: center;
-      width: 200px;
+      width: 50px;
       border-radius: 50%;
       //border: 2px solid color(background, base, 0.5);
+      ${mq('tablet-wide')} {
+        width: 200px;
+        justify-self: center;
+      }
     }
 
     p {
@@ -35,9 +54,11 @@ const Profile = ({}) => {
   `)
 
   return (
-    <section css={profileStyle}>
-      <img src={ProfilePicture} alt="Profile"/>
-      <h1><a href="/">Justin McGettigan</a></h1>
+    <section css={profileStyle} className={className}>
+      <h1>
+        <img src={ProfilePicture} alt="Profile"/>
+        <a href="/">Justin McGettigan</a>
+      </h1>
       <p>Artist | Developer | Engineer</p>
       <SocialLinks/>
     </section>

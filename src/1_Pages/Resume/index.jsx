@@ -47,10 +47,20 @@ const Resume = ({ className }) => {
     ${zDepth(24)};
     //margin: 3rem auto;
     transform-origin: top;
+    display: block;
+    width: 100%;
+    height: auto;
+    div > div > h4 {
+      white-space: normal;
+    }
 
-    ${mq('tablet-wide')} {
+    ${mq('tablet')} {
+      display: grid;
       transform: scale(0.9);
       zoom: 0.9;
+      div > div > h4 {
+        white-space: nowrap;
+      }
     }
     ${mq('desktop')} {
       transform: scale(1.1);
@@ -63,7 +73,7 @@ const Resume = ({ className }) => {
   return (
     <main className={className}>
       <ResumeDownload/>
-      <Section>
+      <Section css={css`max-width: 100% !important;`}>
         <ResumeDoc css={resumeDocStyle}/>
       </Section>
     </main>

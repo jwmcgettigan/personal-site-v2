@@ -62,7 +62,6 @@ const Pages = ({ dynamicPages }) => {
 const App = () => {
   const [notionConfig, setNotionConfig] = useState('2b1541f09b37490cb283993c73e1fde9')
   const notionAPI = useNotionAPI(notionConfig);
-  console.log(clone(notionAPI))
   const [theme, setTheme] = useState(lightTheme);
   const fontStack = `Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`;
   const globalStyles = css(`

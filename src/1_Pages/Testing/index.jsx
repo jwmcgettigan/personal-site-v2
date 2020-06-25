@@ -15,6 +15,7 @@ const Testing = ({ className }) => {
     //max-width: 100% !important; 
     //width: 100%; 
     //box-sizing: border-box;
+    padding-top: 3rem;
   `)
 
   return (

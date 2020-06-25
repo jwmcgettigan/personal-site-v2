@@ -10,7 +10,8 @@ const Page = ({ page, renderedPage}) => {
   const pageStyle = theme => css(`
     display: grid;
     grid-row: 2;
-    margin: 70px 0 0 0;
+    //!margin: 70px 0 0 0;
+    margin: 0;
     //justify-content: center;
     //background: grey;
     //background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);

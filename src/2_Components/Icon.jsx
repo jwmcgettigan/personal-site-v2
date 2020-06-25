@@ -1,12 +1,12 @@
 import React from 'react';
 import * as Icons from 'react-icons/fa';
 
-const Icon = ({icon}) => {
+const Icon = ({ icon, className }) => {
   if (icon === '') {
     return '';
   } else {
     const Icon = Icons[icon];
-    return <Icon/>;
+    return <Icon className={className}/>;
   }
 }
 

@@ -1,11 +1,12 @@
 //import puppeteer from 'puppeteer';
+// run 'yarn generate' to run this script
 const puppeteer = require('puppeteer');
 
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
-  await page.goto("http://localhost:3000/printresume", {
+  await page.goto("http://localhost:3000/resume/print", {
     waitUntil: "networkidle2"
   });
 

@@ -122,32 +122,43 @@ const ambientShadowMap = objectMap({
   24: '11px 15px 0'
 }, v => '0 ' + v + ' ' + ambientShadowColor);
 
-export const zDepth = (elevation, lighten=false) => {
+export const zDepth = (elevation, lighten=false, unlighten=false) => {
   //! the class/element that you put this in needs to be: "position: relative;"
   const ratio = 0.16 / 24;
-  const boxShadow = `
-  box-shadow: ${shadowUmbraMap[elevation]}, ${shadowPenumbraMap[elevation]}, ${ambientShadowMap[elevation]};
-  `
-  const overlay = `
-  &:after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    //right: 0;
-    //bottom: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,${elevation * ratio});
-    pointer-events: none;
+  const isNegative = elevation < 0;
+
+  const boxShadow = () => {
+    const absElevation = Math.abs(elevation);
+    const inset = (isNegative) ? 'inset ' : '';
+
+    return (`
+      box-shadow: ${inset + shadowUmbraMap[absElevation]}, ${inset + shadowPenumbraMap[absElevation]}, ${inset + ambientShadowMap[absElevation]};
+    `)
   }
-  `
+
+  const overlay = () => {
+    const backgroundColor = (isNegative) ? '0, 0, 0' : '255, 255, 255';
+
+    return (`
+      &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(${backgroundColor}, ${elevation * ratio});
+        pointer-events: none;
+      }
+    `)
+  }
+
   /*
   return css(`
   //${boxShadow};
   //${lighten && overlay};
   `)*/
-  return boxShadow + '\n' + (lighten ? overlay : '');
+  return boxShadow() + '\n' + (lighten ? overlay() : (unlighten ? '&:after {all: unset;}' : ''));
 }
 
 

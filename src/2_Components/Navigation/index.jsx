@@ -2,7 +2,7 @@
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core'
 
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, createRef } from 'react';
 import Icon from '../Icon';
 import Profile from './Profile';
 import Navbar from './Navbar';
@@ -41,13 +41,21 @@ const Menu = ({ isTabletOrMobile }) => {
   const menuStyle = css(`
     display: grid;
     grid-gap: 1rem;
-    grid-template-columns: 1fr 1fr;
+    //!grid-template-columns: 1fr 1fr;
+    grid-column: 1;
+    overflow-y: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, min-content) auto;
+    width: max-content;
+    background: ${theme.palette.primary.dark};
+    ${zDepth(24, true)}
+    padding: 1rem;
 
     ${mq('tablet-wide')} {
-      grid-column: 1;
-      overflow-y: auto;
-      grid-template-columns: 1fr;
-      grid-template-rows: repeat(2, min-content) auto;
+      width: 100%;
+      background: none;
+      padding: 0;
+      ${zDepth(0, false, true)}
     }
 
     hr {
@@ -63,6 +71,7 @@ const Menu = ({ isTabletOrMobile }) => {
       grid-gap: 1rem;
       grid-template-rows: min-content auto;
       align-content: space-between;
+      width: 100%;
 
       .footer {
         display: grid;
@@ -86,8 +95,8 @@ const Menu = ({ isTabletOrMobile }) => {
 
   return (
     <div css={menuStyle}>
-      <Profile/>
-      {!isTabletOrMobile && <hr/>}
+      <Profile isTabletOrMobile={isTabletOrMobile}/>
+      <hr/>
       <div className="submenu">
         <Navbar/>
         <div className="footer">
@@ -148,54 +157,104 @@ const Navigation = ({}) => {
     position: fixed;
     left: 0;
     top: 0;
-    ${isCollapsed ? 'height: 70px;' : ''}
+    /* ${isCollapsed ? 'height: 70px;' : ''} */
     width: 100%;
     box-sizing: border-box;
     padding: 1rem;
-    background: ${theme.palette.primary.dark};
+    //!background: ${theme.palette.primary.dark};
+    background: none;
     color: ${color(theme.palette.primary.dark).getContrastText()}; //(theme.palette.secondary.main)};
-    ${zDepth(8, true)}
+    /*${zDepth(8, true)}*/
 
     display: grid;
     grid-gap: 1rem;
     z-index: 10;
 
     ${mq('tablet-wide')} {
+      background: ${theme.palette.primary.dark};
+      ${zDepth(8, true)}
       grid-column: 1;
       height: 100vh;
       width: 280px;
       overflow-y: auto;
     }
+  `)
 
-    .expander {
-      display: grid;
-      background: none;
-      border: none;
-      width: 40px;
-      padding: 0.5rem;
-      border: 1px solid color(background, on, 0.5);
-      border-radius: 3px;
+  const expanderButtonStyle = css(`
+    display: grid;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+    border: 1px solid color(background, on, 0.5);
+    border-radius: 3px;
+    background: ${theme.palette.primary.dark};
+    color: ${color(theme.palette.primary.dark).getContrastText(13)};
+    ${zDepth(8, true)}
 
-      svg {
-        font-size: 1.5rem;
+    svg {
+      font-size: 1.5rem;
+    }
+
+    ${mq('tablet-wide')} {
+      display: none;
+    }
+
+    .collapsed, .expanded {
+      position: absolute;
+			top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+			display: block;
+    }
+
+    .collapsed {
+      transition: opacity .3s, transform .3s;
+    }
+    .expanded {
+      transition: opacity .3s, transform .3s;
+			transform: rotate(-180deg) scale(.5);
+			opacity: 0;
+    }
+    &:focus {
+      .collapsed {
+        transform: rotate(180deg) scale(.5);
+			  opacity: 0;
       }
-
-      ${mq('tablet-wide')} {
-        display: none;
+      .expanded {
+        transform: rotate(0deg) scale(1);
+			  opacity: 1;
       }
     }
   `)
 
+  const hasFocus = element => element === document.activeElement;
+  const expanderButtonRef = createRef();
+  const headerRef = createRef();
   const isHidden = isTabletOrMobile && isCollapsed;
+  //if(!hasFocus(expanderButtonRef.current)) setCollapsed(!isCollapsed);
 
   return (<>
-    <header name="navigation" css={headerStyle}>
-      <button className="expander" onClick={() => setCollapsed(!isCollapsed)}>
-        <Icon icon={"FaBars"}/>
+    <header name="navigation" css={headerStyle} ref={headerRef}>
+      <button css={expanderButtonStyle} ref={expanderButtonRef} 
+        onClick={() => {
+          setCollapsed(!isCollapsed);
+          //if(!isCollapsed) expanderButtonRef.current.blur()
+        }} tabIndex="0" onBlur={() => {
+          if(!headerRef.current.contains(document.activeElement)) {
+            //console.log(headerRef.current.contains(document.activeElement))
+            
+            //setCollapsed(true);
+          }
+        }}>
+        <Icon icon={'FaBox'} className="collapsed"/>
+        <Icon icon={'FaBoxOpen'} className="expanded"/>
       </button>
       {!isHidden && <Menu isTabletOrMobile={isTabletOrMobile}/>}
     </header>
-    {isTabletOrMobile && <ProfileButton/>}
+    {/* isTabletOrMobile && <ProfileButton/> */}
   </>)
 }
 

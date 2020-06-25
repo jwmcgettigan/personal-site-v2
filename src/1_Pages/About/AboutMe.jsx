@@ -15,10 +15,11 @@ const AboutMe = () => {
     grid-template-columns: 1fr;
     grid-template-rows: auto min-content;
     justify-content: center;
-    grid-gap: 3rem;
+    grid-gap: 1rem;
     margin: auto;
 
     ${mq('desktop')} {
+      grid-gap: 3rem;
       grid-template-columns: auto min-content;
       grid-template-rows: 1fr;
     }
