@@ -1,0 +1,24 @@
+@import 'functions';
+
+* {
+  margin: 0;
+  position: relative;
+}
+
+a, a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+$font-stack: Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+html,
+body,
+#root {
+  font: 100% $font-stack;
+  text-size-adjust: none;
+  //! color: color(background, on);
+  color: black;
+  //filter: invert(100%); //EXPLORE THIS!!!!!!
+  //overflow-x: hidden;
+}

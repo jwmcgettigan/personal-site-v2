@@ -1,0 +1,66 @@
+@import '../../../scss/color';
+
+$palette: (
+  background: color(surface, light),
+  text: color(background, on, 0.8),
+  left: color(surface, dark),
+  right: color(surface, light),
+  title: color(primary),
+);
+
+@function section($name) {
+  @return map-get($palette, $name);
+}
+
+#resume {
+  /*
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 816px;
+  height: 1056px;
+
+  background: section(background);
+  color: section(text);*/
+
+  /*
+  a:hover {
+    color: section(title);
+  }
+
+  .title {
+    color: section(title);
+    border-bottom: 4px solid lighten(section(title), 5%);
+    margin: 0;
+    font-size: 26.6667px;
+    line-height: 1.25;
+  }
+  
+  p, h4, ul {
+    margin: 0;
+    margin-top: 6px;
+  }*/
+  /*
+  .left {
+    padding: 1rem;
+    width: 228px;
+    width: min-content;
+    background: section(left);
+
+    display: grid;
+    grid-row-gap: 0.5rem;
+  }
+  
+  .right {
+    padding: 1rem;
+    width: 587px;
+    background: section(right);
+
+    display: grid;
+    grid-template-rows: min-content;
+    grid-row-gap: 1rem;
+    tr {
+      display: flex;
+    }
+  }*/
+}

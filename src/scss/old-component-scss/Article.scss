@@ -1,0 +1,95 @@
+@import '../../../scss/color';
+
+#article {
+  display: grid;
+  
+  article {
+    padding: 1rem;
+    justify-content: center;
+    max-width: 820px;
+    //background: lighten(color(background), 2%);
+    //border: 1px solid lighten(color(background), 5%);
+
+    @include mq('tablet-wide') {
+      padding: 3rem;
+    }
+
+    .table-of-contents {
+      display: flex;
+      justify-content: left;
+      flex-wrap: wrap;
+      //margin: -0.3rem;
+      background: lighten(color(background), 5%);
+      padding: 0.3rem;
+      margin-bottom: 1rem;
+      
+      a {
+        width: min-content;
+        white-space: nowrap;
+        margin: 0.3rem;
+        flex: 1 1 auto;
+        justify-content: center;
+        background: color(surface, light);
+      }
+    }
+    
+    h2 {
+      font-size: 2rem;
+      color: color(background, on, 0.95);
+    } h3 {
+      font-size: 1.75rem;
+      color: color(background, on, 0.95);
+      margin: 0 0 1rem 0;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .status {
+      margin-bottom: 1rem;
+
+      span {
+        color: color(background, on, 0.4);
+      } span:after {
+        content: "";
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #8f8f8f;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        position: relative;
+        top: -3px;
+      } span:last-child:after {
+        display: none;
+      }
+    }
+
+    .article-section {
+      margin-top: 3rem;
+      padding: 1rem;
+      background: lighten(color(background), 5%);
+
+      .article-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -0.5rem;
+
+        .article-sub-section {
+          background: lighten(color(background), 10%);
+          margin: 0.5rem;
+          padding: 1rem;
+          border-radius: 3px;
+          flex: 1 1 auto;
+          min-width: 10rem;
+
+          h4 {
+            color: color(background, on, 0.95);
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+}

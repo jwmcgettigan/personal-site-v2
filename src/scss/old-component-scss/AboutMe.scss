@@ -1,0 +1,62 @@
+@import '../../../scss/color';
+
+.about-me {
+  //display: flex;
+  //flex-wrap: wrap;
+  /*
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto min-content;
+  justify-content: center;
+  grid-gap: 3rem;
+  margin: auto;
+
+  @include mq('desktop') {
+    grid-template-columns: auto min-content;
+    grid-template-rows: 1fr;
+  }*/
+  /*
+  .profile {
+    //! color: color(background, on, 0.7);
+    //width: 62.5%;
+    //flex: 1 1 auto;
+
+    h2 {
+      font-size: 3rem;
+      //! color: color(background, on);
+      margin-bottom: 0.25rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .buttons {
+      display: flex;
+      margin-bottom: 1.5rem;
+
+      a {
+        margin-right: 0.5rem;
+        margin-bottom: 1rem;
+      } a:first-child {
+        //! background: color(primary);
+      } a:last-child {
+        //! background: color(primary, light);
+      }
+    }
+  }*/
+  /*
+  img {
+    border-radius: 0;
+    align-self: center;
+    width: 256px;
+    //margin-left: 1rem;
+  }*/
+}
