@@ -5,7 +5,8 @@ import { Button, TitleSection, Card } from '../../2_Components';
 import { pages } from '../../3_Data';
 import { mq, zDepth, color } from '../../4_Utilities';
 
-import ProfilePicture from '../../assets/body-shot-placeholder.jpg';
+//import ProfilePicture from '../../assets/body-shot-placeholder.jpg';
+import ProfilePicture from '../../assets/ProfilePic/ProfilePic1-resized.png';
 
 const AboutMe = () => {
   const theme = useTheme();

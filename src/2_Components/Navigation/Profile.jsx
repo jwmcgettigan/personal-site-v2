@@ -3,7 +3,10 @@ import { css, jsx } from '@emotion/core'
 
 import React from "react";
 import SocialLinks from './SocialLinks';
-import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
+//import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
+//import ProfilePicture from '../../assets/ProfilePic/EditedHeadshot1.2.png';
+import ProfilePicture from '../../assets/ProfilePic/ProfilePic2.6.jpg';
+import { Image } from '../../2_Components';
 import { mq } from '../../4_Utilities';
 
 const Profile = ({ isTabletOrMobile, className}) => {
@@ -38,10 +41,12 @@ const Profile = ({ isTabletOrMobile, className}) => {
     img {
       display: block;
       width: 50px;
+      height: 50px;
       border-radius: 50%;
       //border: 2px solid color(background, base, 0.5);
       ${mq('tablet-wide')} {
         width: 200px;
+        height: 200px;
         justify-self: center;
       }
     }
@@ -56,7 +61,7 @@ const Profile = ({ isTabletOrMobile, className}) => {
   return (
     <section css={profileStyle} className={className}>
       <h1>
-        <img src={ProfilePicture} alt="Profile"/>
+        <Image css={css`img { object-position: center; }`} image={ProfilePicture} alt={"Profile"}/>
         <a href="/">Justin McGettigan</a>
       </h1>
       <p>Artist | Developer | Engineer</p>
