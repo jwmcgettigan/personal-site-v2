@@ -58,10 +58,26 @@ const Profile = ({ isTabletOrMobile, className}) => {
     }
   `)
 
+  const imageStyle = css(`
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    //border: 2px solid color(background, base, 0.5);
+    ${mq('tablet-wide')} {
+      width: 200px;
+      height: 200px;
+      justify-self: center;
+    }
+    img {
+      object-position: center;
+    }
+  `)
+
   return (
     <section css={profileStyle} className={className}>
       <h1>
-        <Image css={css`img { object-position: center; }`} image={ProfilePicture} alt={"Profile"}/>
+        <Image css={imageStyle} image={ProfilePicture} alt={"Profile"}/>
         <a href="/">Justin McGettigan</a>
       </h1>
       <p>Artist | Developer | Engineer</p>
