@@ -228,3 +228,30 @@ export const textColor = (backgroundColor) => {
 
 
 //textColor('#000000')
+
+
+/*
+
+const Lines = ({ lines, className }) => {
+
+  const lineStyle = css(`
+    height: 100%;
+    width: 100%;
+    line {
+      stroke: black;
+      stroke-width: 3;
+    }
+  `)
+
+  return (
+    <svg css={lineStyle} className={className}>
+      {lines.map((line, i) => {
+        const [x1, y1] = line[0];
+        const [x2, y2] = line[1];
+        return <line x1={x1} y1={y1} x2={x2} y2={y2} />
+      })}
+    </svg>
+  )
+}
+
+*/

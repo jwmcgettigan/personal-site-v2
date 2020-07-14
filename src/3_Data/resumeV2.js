@@ -133,14 +133,14 @@ export const resume = {
       "name": "GENERAL",
       "level": "",
       "keywords": [
-        "Python", "Java", "C#", "C/C++"
+        "Python", "Java", "C#", "C/C++", "Bash", "Regex"
       ]
     },
     {
-      "name": "LINUX",
+      "name": "TOOL",
       "level": "",
       "keywords": [
-        "BASH", "Git", "NFS", "ZSH", "REGEX", "CONDA", "ROS"
+        "Git", "Anaconda", "npm/yarn", "OpenCV"
       ]
     },
     {
@@ -161,7 +161,7 @@ export const resume = {
       "name": "DATA",
       "level": "",
       "keywords": [
-        "SQL", "Kusto", "plot.ly", "Grafana", "NumPy", "OpenCV"
+        "SQL", "Kusto", "plot.ly", "Grafana", "NumPy", "ROS"
       ]
     },
     {
