@@ -77,9 +77,11 @@ const Profile = ({ isTabletOrMobile, className}) => {
   const constructionStyle = css(`
     color: orange;
     font-size: 1.25rem;
+    font-weight: 500;
     display: flex;
     align-items: center;
-    
+    justify-content: center;
+
     svg {
       animation: rotation 2s infinite linear;
       margin-right: 0.5rem;
@@ -97,8 +99,8 @@ const Profile = ({ isTabletOrMobile, className}) => {
 
   return (
     <section css={profileStyle} className={className}>
+      <span css={constructionStyle}><Icon icon={"FaCog"}/>Under Construction</span>
       <h1>
-        <span css={constructionStyle}><Icon icon={"FaCog"}/>Under Construction</span>
         <Image css={imageStyle} image={ProfilePicture} alt={"Profile"}/>
         <a href="/">Justin McGettigan</a>
       </h1>
