@@ -1,16 +1,17 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Icon } from '../../../../../2_Components';
+import { GameContext } from './state';
 import Tile from './Tile';
-
-const useForceUpdate = () => useState()[1];
 
 /**
  * 
  * @param {Array} size - the number of [columns, rows]
  */
-const Board = ({ board, className }) => {
+const Board = ({ className }) => {
+  const gameContext = useContext(GameContext);
+  const board = gameContext.board;
   const [numCols, numRows] = board.size.map(v => v+1);
   
   const [highlight, setHighlight] = useState({

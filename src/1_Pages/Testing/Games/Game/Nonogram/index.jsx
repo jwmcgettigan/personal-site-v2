@@ -8,6 +8,7 @@
 import { css, jsx } from '@emotion/core'
 import React from 'react';
 import Board from './Board';
+import Game from './Game';
 
 const Nonogram = ({}) => {
   const nonogramStyle = theme => css(`
@@ -15,7 +16,7 @@ const Nonogram = ({}) => {
   `)
 
   return (
-    <Board size={[10, 10]}/>
+    <Game size={[10, 10]}/>
   )
 }
 

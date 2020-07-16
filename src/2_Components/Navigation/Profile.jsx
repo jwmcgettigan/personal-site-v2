@@ -6,7 +6,7 @@ import SocialLinks from './SocialLinks';
 //import ProfilePicture from '../../assets/head-shot-placeholder.jpg';
 //import ProfilePicture from '../../assets/ProfilePic/EditedHeadshot1.2.png';
 import ProfilePicture from '../../assets/ProfilePic/ProfilePic2.6.jpg';
-import { Image } from '../../2_Components';
+import { Image, Icon } from '../../2_Components';
 import { mq } from '../../4_Utilities';
 
 const Profile = ({ isTabletOrMobile, className}) => {
@@ -74,9 +74,31 @@ const Profile = ({ isTabletOrMobile, className}) => {
     }
   `)
 
+  const constructionStyle = css(`
+    color: orange;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    
+    svg {
+      animation: rotation 2s infinite linear;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(359deg);
+      }
+    }
+  `)
+
   return (
     <section css={profileStyle} className={className}>
       <h1>
+        <span css={constructionStyle}><Icon icon={"FaCog"}/>Under Construction</span>
         <Image css={imageStyle} image={ProfilePicture} alt={"Profile"}/>
         <a href="/">Justin McGettigan</a>
       </h1>

@@ -7,6 +7,7 @@ import React from 'react';
 import Checkers from './Game/Checkers';
 import Checkers3 from './Game/Checkers3';
 import Nonogram from './Game/Nonogram';
+import Nonogram2 from './Game/Nonogram2';
 
 const Games = ({ className }) => {
   const gamesStyle = theme => css(`
@@ -19,7 +20,8 @@ const Games = ({ className }) => {
   return (
     <main className={className}>
       <div css={gamesStyle}>
-        <Nonogram/>
+        {/* <Nonogram/> */}
+        <Nonogram2/>
         <div css={css`display: flex; #checkers { margin: 3rem; }`}>
           <Checkers3/>
           <Checkers/>
