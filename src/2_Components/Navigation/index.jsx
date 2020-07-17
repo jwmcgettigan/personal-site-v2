@@ -146,7 +146,7 @@ const ProfileButton = ({}) => {
   )
 }
 
-const Navigation = ({}) => {
+const Navigation = ({ className, handlers }) => {
   const [isCollapsed, setCollapsed] = useState(true);
   const isTabletOrMobile = useMediaQuery({query: `(max-width: ${bp['tablet-wide']-1}px)`});
   //! detect touchscreen
@@ -155,12 +155,14 @@ const Navigation = ({}) => {
   const headerStyle = css(`
     grid-row: 1;
     position: fixed;
-    left: 0;
+    //left: 0;
     top: 0;
     /* ${isCollapsed ? 'height: 70px;' : ''} */
-    width: 100%;
+    left: -295.41px;
+    height: 100vh;
+    width: max-content;
     box-sizing: border-box;
-    padding: 1rem;
+    //padding: 1rem;
     //!background: ${theme.palette.primary.dark};
     background: none;
     color: ${color(theme.palette.primary.dark).getContrastText()}; //(theme.palette.secondary.main)};
@@ -171,6 +173,7 @@ const Navigation = ({}) => {
     z-index: 10;
 
     ${mq('tablet-wide')} {
+      left: 0;
       background: ${theme.palette.primary.dark};
       ${zDepth(8, true)}
       grid-column: 1;
@@ -237,8 +240,8 @@ const Navigation = ({}) => {
   //if(!hasFocus(expanderButtonRef.current)) setCollapsed(!isCollapsed);
 
   return (<>
-    <header name="navigation" css={headerStyle} ref={headerRef}>
-      <button css={expanderButtonStyle} ref={expanderButtonRef} 
+    <header name="navigation" css={headerStyle} ref={headerRef} className={className} {...handlers}>
+      {/* <button css={expanderButtonStyle} ref={expanderButtonRef} 
         onClick={() => {
           setCollapsed(!isCollapsed);
           //if(!isCollapsed) expanderButtonRef.current.blur()
@@ -249,13 +252,52 @@ const Navigation = ({}) => {
             //setCollapsed(true);
           }
         }}>
-        <Icon icon={'FaBox'} className="collapsed"/>
-        <Icon icon={'FaBoxOpen'} className="expanded"/>
-      </button>
-      {!isHidden && <Menu isTabletOrMobile={isTabletOrMobile}/>}
+        <Icon icon={'FaBars'} className="collapsed"/>
+        <Icon icon={'FaTimes'} className="expanded"/>
+      </button> */}
+      {/*!isHidden && <Menu isTabletOrMobile={isTabletOrMobile}/>*/}
+      <Menu isTabletOrMobile={isTabletOrMobile}/>
     </header>
     {/* isTabletOrMobile && <ProfileButton/> */}
   </>)
 }
 
 export default Navigation;
+
+const TransitionIcon = ({ from, to, className }) => {
+  const transitionStyle = css(`
+    .collapsed, .expanded {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      display: block;
+    }
+
+    .collapsed {
+      transition: opacity .3s, transform .3s;
+    }
+    .expanded {
+      transition: opacity .3s, transform .3s;
+      transform: rotate(-180deg) scale(.5);
+      opacity: 0;
+    }
+    &:focus {
+      .collapsed {
+        transform: rotate(180deg) scale(.5);
+        opacity: 0;
+      }
+      .expanded {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+      }
+    }
+  `)
+  return (
+    <div css={transitionStyle} className={className}>
+      <Icon icon={'FaBars'} className="collapsed"/>
+      <Icon icon={'FaTimes'} className="expanded"/>
+    </div>
+  )
+}
