@@ -83,13 +83,13 @@ const App = () => {
       background: ${theme.palette.background};
     }
 
-    #root {
+    /*#root {
       display: grid;
       grid-template-rows: min-content auto;
       ${mq('tablet-wide')} {
         grid-template-columns: min-content auto;
       }
-    }
+    }*/
   `)
 
   const toggleTheme = () => {

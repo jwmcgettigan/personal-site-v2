@@ -158,9 +158,9 @@ const Navigation = ({ className, handlers }) => {
     //left: 0;
     top: 0;
     /* ${isCollapsed ? 'height: 70px;' : ''} */
-    left: -295.41px;
+    left: -280px;
     height: 100vh;
-    width: max-content;
+    width: 280px;
     box-sizing: border-box;
     //padding: 1rem;
     //!background: ${theme.palette.primary.dark};

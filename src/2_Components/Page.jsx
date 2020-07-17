@@ -10,7 +10,6 @@ import { useSwipeable } from 'react-swipeable';
 
 const Page = ({ page, renderedPage, className }) => {
   const [swipe, setSwipe] = useState(null);
-  console.log(swipe);
 
   const swipeStyle = (swipe != null) ? `
   ${mq('tablet-wide', 'max')} {
@@ -22,14 +21,14 @@ const Page = ({ page, renderedPage, className }) => {
       height: 0;
     }*/
 
-    animation: slide 0.35s 1 linear ${swipe.dir === "Right" ? 'forwards' : (swipe.dir === "Left" ? 'reverse' : '')};
+    animation: slide 0.5s 1 linear ${swipe.dir === "Right" ? 'forwards' : (swipe.dir === "Left" ? 'reverse' : '')};
 
     @keyframes slide {
       from {
         transform: translateX(0);
       }
       to {
-        transform: translateX(295.41px);
+        transform: translateX(280px);
       }
     }
   }` : ''
@@ -50,12 +49,24 @@ const Page = ({ page, renderedPage, className }) => {
     }
   `)
 
+  const containerStyle = css(`
+    //display: grid;
+    //grid-template-columns: min-content 1fr;
+    //width: calc(100vw - 280px);
+    display: grid;
+    grid-template-rows: min-content auto;
+    ${mq('tablet-wide')} {
+      grid-template-columns: min-content auto;
+    }
+    ${swipeStyle}
+  `)
+
   const Main = page;
   const config = {};
   const handlers = useSwipeable({ onSwiped: (eventData) => {setSwipe(eventData);}, ...config });
 
   return (
-    <div css={css`${swipeStyle}`} className={className} {...handlers}>
+    <div css={containerStyle} className={className} {...handlers}>
       <Navigation/>
       <Main css={pageStyle} renderedPage={renderedPage}/>
     </div>
