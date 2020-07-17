@@ -66,7 +66,7 @@ const Page = ({ page, renderedPage, className }) => {
   const handlers = useSwipeable({ onSwiped: (eventData) => {setSwipe(eventData);}, ...config });
 
   return (
-    <div css={containerStyle} className={className} {...handlers}>
+    <div css={containerStyle} className={className} {...handlers} onTouchMove={e => e.preventDefault()}>
       <Navigation/>
       <Main css={pageStyle} renderedPage={renderedPage}/>
     </div>

@@ -29,6 +29,7 @@ const Profile = ({ isTabletOrMobile, className}) => {
       grid-template-columns: min-content 1fr;
       grid-gap: 0.5rem;
       align-items: center;
+      font-size: 1.38rem;
 
       ${mq('tablet-wide')} {
         grid-template-rows: repeat(2, min-content);

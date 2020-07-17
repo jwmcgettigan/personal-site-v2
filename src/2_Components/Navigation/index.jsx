@@ -46,7 +46,7 @@ const Menu = ({ isTabletOrMobile }) => {
     overflow-y: auto;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, min-content) auto;
-    width: max-content;
+    //width: max-content;
     background: ${theme.palette.primary.dark};
     ${zDepth(24, true)}
     padding: 1rem;
@@ -162,6 +162,7 @@ const Navigation = ({ className, handlers }) => {
     height: 100vh;
     width: 280px;
     box-sizing: border-box;
+    //overflow-y: hidden;
     //padding: 1rem;
     //!background: ${theme.palette.primary.dark};
     background: none;
@@ -180,6 +181,7 @@ const Navigation = ({ className, handlers }) => {
       height: 100vh;
       width: 280px;
       overflow-y: auto;
+      padding: 1rem;
     }
   `)
 
