@@ -17,7 +17,7 @@ const Menu = ({ className }) => {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%; // or 100vh?
+    height: 100vh; // or 100%?
     width: 280px;
     padding: 1rem;
     box-sizing: border-box;
