@@ -2,7 +2,7 @@
 import { css, jsx } from '@emotion/core';
 import { useTheme } from 'emotion-theming';
 import { useContext } from 'react';
-import { Icon } from '../../2_Components';
+import { Icon, TransitionIcon } from '../../2_Components';
 import { StateContext } from '../../4_Utilities';
 
 const ThemeToggle = ({ className }) => {
@@ -12,23 +12,23 @@ const ThemeToggle = ({ className }) => {
   const buttonStyle = css(`
     all: unset;
     display: flex;
-    width: 3rem;
-    height: auto;
-    //margin: auto;
+    width: min-content;
     justify-self: center;
     align-self: end;
-    svg {
-      width: 100%;
-      height: 100%;
-      color: ${theme.palette.background};
-    }
+  `)
+
+  const iconStyle = theme => css(`
+    width: 3rem;
+    height: 3rem;
+    color: ${theme.palette.background};
   `)
 
   return (
     <button css={buttonStyle} onClick={() => toggleTheme()} className={className}>
-      <Icon icon={
+      <Icon css={iconStyle} icon={
         theme.palette.type === 'light' ? 'FaToggleOff' : 'FaToggleOn'
         }/>
+      {/* <TransitionIcon css={iconStyle} defaultIcon={'FaMoon'} transitionIcon={'FaSun'}/> */}
     </button>
   )
 }

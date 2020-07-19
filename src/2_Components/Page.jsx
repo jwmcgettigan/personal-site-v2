@@ -35,6 +35,7 @@ const Page = ({ page, renderedPage, className }) => {
         transform: translateX(${to}px);
         //animation: slide 0.5s ease forwards;
         transition: transform 0.5s ease-out;
+        ${zDepth(24)}
       `}
     }
   `

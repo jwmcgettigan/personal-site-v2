@@ -11,7 +11,7 @@ const Icon = ({ icon, className }) => {
   }
 }
 
-const TransitionIcon = ({ from, to, className }) => {
+const TransitionIcon = ({ defaultIcon, transitionIcon, className }) => {
   const transitionStyle = css(`
     .collapsed, .expanded {
       position: absolute;
@@ -41,10 +41,11 @@ const TransitionIcon = ({ from, to, className }) => {
       }
     }
   `)
+
   return (
-    <div css={transitionStyle} className={className}>
-      <Icon icon={'FaBars'} className="collapsed"/>
-      <Icon icon={'FaTimes'} className="expanded"/>
+    <div css={transitionStyle} className={className} tabIndex="0">
+      <Icon icon={defaultIcon} className="collapsed"/>
+      <Icon icon={transitionIcon} className="expanded"/>
     </div>
   )
 }

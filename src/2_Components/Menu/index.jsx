@@ -23,15 +23,16 @@ const Menu = ({ className }) => {
     box-sizing: border-box;
     background: ${theme.palette.primary.dark};
     color: ${color(theme.palette.primary.dark).getContrastText()};
+    z-index: 24;
 
     display: grid;
     grid-template-rows: repeat(3, min-content) auto;
     grid-gap: 1rem;
-    z-index: 8;
-    transform: translateX(-280px);
+    //transform: translateX(-280px);
 
     ${mq('tablet-wide')} {
-      transform: translateX(0px);
+      //transform: translateX(0px);
+      ${zDepth(24)}
     }
 
     hr {
