@@ -62,6 +62,7 @@ const Page = ({ page, renderedPage, className }) => {
     display: grid;
     grid-template-rows: min-content auto;
     overflow: hidden;
+    height: 100%;
 
     ${mq('tablet-wide')} {
       grid-template-columns: min-content auto;

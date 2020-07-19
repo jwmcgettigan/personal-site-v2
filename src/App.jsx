@@ -76,10 +76,12 @@ const App = () => {
     }
 
     html,
-    body {
+    body,
+    #root {
       font: 100% ${fontStack};
       text-size-adjust: none;
       background: ${theme.palette.background};
+      height: 100%;
     }
 
     /*#root {
