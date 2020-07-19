@@ -1,20 +1,18 @@
 
 //let tiles = [[],[]]
 let tiles = null;
-let observer = null;
+let observers = []
 
 export function observe(o) {
-  if (observer) {
-    throw new Error('Multiple observers not implemented.')
-  }
-  
-  observer = o
-  console.log(observer instanceof Function)
+  observers.push(o)
   emitChange()
+  return () => {
+    observers = observers.filter((t) => t !== o)
+  }
 }
 
 function emitChange() {
-  observer(tiles)
+  observers.forEach((o) => o && o(tiles))
 }
 
 export function updateTiles(newTiles) {
@@ -22,7 +20,7 @@ export function updateTiles(newTiles) {
   emitChange()
 }
 
-const applyToLine = (from, to, fn) => {
+export const applyToLine = (from, to, fn) => {
   // Apply a function to a line of coordinates that snaps to a grid.
   const [x1, y1] = from;
   const [x2, y2] = to;
@@ -65,8 +63,10 @@ const applyToLine = (from, to, fn) => {
 }
 
 export const selectTile = (x, y) => {
-  if (window.nonogram.tiles[y][x] === '-') {
-    window.nonogram.tiles[y][x] = '#';
+  //console.log(tiles)
+  if (tiles[y][x] === '-') {
+    tiles[y][x] = '#';
+    emitChange();
   }
 }
 
@@ -75,8 +75,9 @@ export const selectTiles = (from, to) => {
 }
 
 export const eliminateTile = (x, y) => {
-  if (window.nonogram.tiles[y][x] === '-') {
-    window.nonogram.tiles[y][x] = 'x';
+  if (tiles[y][x] === '-') {
+    tiles[y][x] = 'x';
+    emitChange();
   }
 }
 
@@ -87,3 +88,5 @@ export const eliminateTiles = (from, to) => {
 const dragSelection = () => {
 
 }
+
+export {tiles};

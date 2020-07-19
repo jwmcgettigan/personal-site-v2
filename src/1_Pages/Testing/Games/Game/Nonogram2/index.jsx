@@ -22,15 +22,19 @@ const config = {
 }
 const [numCols, numRows] = config.board.size;
 const initialTiles = Array(numRows).fill(null).map(() => Array(numCols).fill("-"));
+let once = true;
 
 const Nonogram = ({ }) => {
   const [tiles, setTiles] = useState(initialTiles);
   useEffect(() => {
-    observe((newTiles) => {
-      setTiles(newTiles)
-    })
-    updateTiles(tiles);
-  }, [])
+    observe((newTiles) => setTiles(newTiles))
+    if (once) {
+      updateTiles(tiles);
+      once = false;
+    }
+  });
+
+  console.log(tiles)
 
   const nonogramStyle = theme => css(`
 
@@ -38,12 +42,17 @@ const Nonogram = ({ }) => {
 
   const gameContext = {
     tiles: tiles,
-    board: config.board
+    board: config.board,
+    drag: {
+      start: null,
+      current: null,
+      end: null
+    }
   }
 
   return (
     <GameContext.Provider value={gameContext}>
-      <Board/>
+      <Board tiles={tiles}/>
     </GameContext.Provider>
   )
 }

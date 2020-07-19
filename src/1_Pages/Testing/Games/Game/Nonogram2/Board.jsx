@@ -9,7 +9,7 @@ import Tile from './Tile';
  * 
  * @param {Array} size - the number of [columns, rows]
  */
-const Board = ({ className }) => {
+const Board = ({ tiles, className }) => {
   const gameContext = useContext(GameContext);
   const board = gameContext.board;
   const [numCols, numRows] = board.size.map(v => v+1);
@@ -25,6 +25,10 @@ const Board = ({ className }) => {
     function renderTile(i) {
       const x = i % numCols;
       const y = Math.floor(i / numRows);
+      const tileState = {
+        selected: tiles[x, y] === '#',
+        eliminated: tiles[x, y] === 'x'
+      }
       
       let tileStyle = '';
       let groups = [];
@@ -51,7 +55,7 @@ const Board = ({ className }) => {
           tileStyle += 'background-color: white;'
         }
       }
-      return <Tile key={i} css={css(tileStyle)} groups={groups} x={x} y={y} setHighlight={setHighlight}/>
+      return <Tile key={i} css={css(tileStyle)} tileState={tileState} groups={groups} x={x} y={y} setHighlight={setHighlight}/>
     }
 
     for (let i = 0; i < (numCols*numRows); i += 1) {

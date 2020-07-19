@@ -1,7 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Icon } from '../../../../../2_Components';
+import { applyToLine, selectTile } from './logic';
+import { GameContext } from './state';
 
 const Overlay = ({ icon, backgroundColor='white', className }) => {
   const overlayStyle = theme => css(`
@@ -22,9 +24,12 @@ const Overlay = ({ icon, backgroundColor='white', className }) => {
   )
 }
 
-const Tile = ({ groups, x, y, setHighlight, className }) => {
-  const [isSelected, setSelected] = useState(false);
-  const [isEliminated, setEliminated] = useState(false);
+const Tile = ({ tileState, groups, x, y, setHighlight, className }) => {
+  //const [isSelected, setSelected] = useState(false);
+  //const [isEliminated, setEliminated] = useState(false);
+  const isSelected = false//(tileState != null) && tileState.selected;
+  const isEliminated = false//(tileState != null) && tileState.eliminated;
+  const gameContext = useContext(GameContext);
   const isSelectable = groups != null && groups.length === 0;
 
   const tileStyle = theme => css(`
@@ -54,6 +59,10 @@ const Tile = ({ groups, x, y, setHighlight, className }) => {
 
   const mouseEntersTile = () => {
     highlightColumnAndRow();
+    gameContext.drag.current = [x, y];
+    if(gameContext.drag.start != null && gameContext.drag.current != null) {
+      applyToLine(gameContext.drag.start, gameContext.drag.current, selectTile);
+    }
   }
 
   const mouseLeavesTile = () => {
@@ -61,11 +70,12 @@ const Tile = ({ groups, x, y, setHighlight, className }) => {
   }
 
   const mouseDown = () => {
-    
+    gameContext.drag.start = [x, y];
   }
 
   const mouseUp = () => {
-    
+    //gameContext.drag.end = [x, y];
+    //gameContext.drag.start = [];
   }
 
   const eliminateTile = (e) => {
