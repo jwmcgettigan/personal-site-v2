@@ -55,6 +55,7 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
     font-size: 1rem;
     border-radius: 0.25rem;
     line-height: 1.5;
+    ${zDepth(2)}
 
     border: 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -73,6 +74,7 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
       //transform: scale(1.01, 1.01);
       //transition: all 0.1s ease-in-out;
       cursor: pointer;
+      ${zDepth(8)}
     }
   `)
 

@@ -1,7 +1,7 @@
 export {default as Navigation} from './Navigation';
 export {default as Card} from './Card';
 export {default as Gallery} from './Gallery';
-export {default as Icon} from './Icon';
+export {default as Icon, TransitionIcon} from './Icon';
 export {default as Image} from './Image';
 export {default as Library} from './Library';
 export {default as Link, Button, PageLink, LinkContent} from './Link';

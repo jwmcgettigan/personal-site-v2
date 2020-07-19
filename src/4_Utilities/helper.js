@@ -124,6 +124,7 @@ const ambientShadowMap = objectMap({
 
 export const zDepth = (elevation, lighten=false, unlighten=false) => {
   //! the class/element that you put this in needs to be: "position: relative;"
+  // Consider changing z-index accordingly to elevation
   const ratio = 0.16 / 24;
   const isNegative = elevation < 0;
 

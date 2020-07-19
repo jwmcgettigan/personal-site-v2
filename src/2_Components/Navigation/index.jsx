@@ -48,7 +48,7 @@ const Menu = ({ isTabletOrMobile }) => {
     grid-template-rows: repeat(2, min-content) auto;
     //width: max-content;
     background: ${theme.palette.primary.dark};
-    ${zDepth(24, true)}
+    //${zDepth(24, true)}
     padding: 1rem;
 
     ${mq('tablet-wide')} {
@@ -154,14 +154,16 @@ const Navigation = ({ className, handlers }) => {
   const theme = useTheme();
   const headerStyle = css(`
     grid-row: 1;
-    position: fixed;
+    position: fixed !important;
     //left: 0;
     top: 0;
     /* ${isCollapsed ? 'height: 70px;' : ''} */
-    left: -280px;
+    //left: -280px;
+    left: 0;
     height: 100vh;
     width: 280px;
     box-sizing: border-box;
+    overflow-y: auto;
     //overflow-y: hidden;
     //padding: 1rem;
     //!background: ${theme.palette.primary.dark};
@@ -265,41 +267,3 @@ const Navigation = ({ className, handlers }) => {
 }
 
 export default Navigation;
-
-const TransitionIcon = ({ from, to, className }) => {
-  const transitionStyle = css(`
-    .collapsed, .expanded {
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      width: 80%;
-      height: 80%;
-      display: block;
-    }
-
-    .collapsed {
-      transition: opacity .3s, transform .3s;
-    }
-    .expanded {
-      transition: opacity .3s, transform .3s;
-      transform: rotate(-180deg) scale(.5);
-      opacity: 0;
-    }
-    &:focus {
-      .collapsed {
-        transform: rotate(180deg) scale(.5);
-        opacity: 0;
-      }
-      .expanded {
-        transform: rotate(0deg) scale(1);
-        opacity: 1;
-      }
-    }
-  `)
-  return (
-    <div css={transitionStyle} className={className}>
-      <Icon icon={'FaBars'} className="collapsed"/>
-      <Icon icon={'FaTimes'} className="expanded"/>
-    </div>
-  )
-}

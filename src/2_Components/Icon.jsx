@@ -1,4 +1,5 @@
-import React from 'react';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import * as Icons from 'react-icons/fa';
 
 const Icon = ({ icon, className }) => {
@@ -10,4 +11,45 @@ const Icon = ({ icon, className }) => {
   }
 }
 
+const TransitionIcon = ({ from, to, className }) => {
+  const transitionStyle = css(`
+    .collapsed, .expanded {
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 80%;
+      height: 80%;
+      display: block;
+    }
+
+    .collapsed {
+      transition: opacity .3s, transform .3s;
+    }
+    .expanded {
+      transition: opacity .3s, transform .3s;
+      transform: rotate(-180deg) scale(.5);
+      opacity: 0;
+    }
+    &:focus {
+      .collapsed {
+        transform: rotate(180deg) scale(.5);
+        opacity: 0;
+      }
+      .expanded {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+      }
+    }
+  `)
+  return (
+    <div css={transitionStyle} className={className}>
+      <Icon icon={'FaBars'} className="collapsed"/>
+      <Icon icon={'FaTimes'} className="expanded"/>
+    </div>
+  )
+}
+
+export {
+  TransitionIcon
+}
 export default Icon;

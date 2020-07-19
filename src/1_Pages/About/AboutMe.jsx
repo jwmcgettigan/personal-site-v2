@@ -28,6 +28,7 @@ const AboutMe = () => {
       border-radius: 0;
       align-self: center;
       width: 256px;
+      border-radius: 3px;
     }
   `)
 
@@ -58,6 +59,8 @@ const AboutMe = () => {
       a {
         margin-right: 0.5rem;
         margin-bottom: 1rem;
+        transform: perspective(100px) translateZ(0px);
+        transition: transform 100ms linear;
         &:first-of-type {
           background: ${theme.palette.primary.dark};
           color: ${color(theme.palette.primary.dark).getContrastText()};
@@ -68,7 +71,9 @@ const AboutMe = () => {
         }
         &:hover {
           filter: none;
-          transform: scale(1.1, 1.1);
+          //transform: scale(1.1, 1.1);
+          //transform: translateZ(400px) perspective(500px);
+          transform: perspective(100px) translateZ(5px);
         }
       }
     }
