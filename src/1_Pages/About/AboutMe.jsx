@@ -71,9 +71,11 @@ const AboutMe = () => {
         }
         &:hover {
           filter: none;
+          transform: scale(1.1);
+          transition: transform .3s cubic-bezier(0, .52, 0, 1);
           //transform: scale(1.1, 1.1);
           //transform: translateZ(400px) perspective(500px);
-          transform: perspective(100px) translateZ(5px);
+          //transform: perspective(100px) translateZ(5px);
         }
       }
     }

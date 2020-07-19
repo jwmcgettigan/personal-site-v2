@@ -2,73 +2,53 @@
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core'
 import React, { useState } from 'react';
-import Navigation from './Navigation';
 import Menu from './Menu';
 import { mq, zDepth } from '../4_Utilities';
-//import Footer from './Footer';
 
 import { useSwipeable } from 'react-swipeable';
+let isHidden = true;
 
 const Page = ({ page, renderedPage, className }) => {
   const [swipe, setSwipe] = useState(null);
+
+  isHidden = (swipe != null) ? (
+    swipe.dir === "Right" ? false : true
+  ) : true
   
-  const swipeStyle = (swipe != null) ? `
-  ${mq('tablet-wide', 'max')} {
-    /*overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-    }*/
-
-    //${swipe.dir === "Right" ? 'animation: slide 0.5s 1 linear forwards' : ''};
-    //${swipe.dir === "Left" ? 'animation: slide 1s 1 linear reverse' : ''};
-    //animation: slide 0.5s 1 linear ${swipe.dir === "Right" ? 'forwards' : (swipe.dir === "Left" ? 'reverse' : '')};
-    
-    
-    ${swipe.dir === "Right" ? `
-      transform: translateX(0px);
-      transition: transform .3s cubic-bezier(0, .52, 0, 1);
-    ` : ''}
-
+  const slideAnimation = (from, to) => `
     @keyframes slide {
-      from {
-        transform: translateX(-280px);
-      }
-      to {
-        transform: translateX(0px);
-      }
-      //0% { transform: translateX(-280px); }
-      //90% { transform: translateX(10px); }
-      //100% { transform: translateX(0px); }
+      0% { transform: translateX(${from}px) scaleX(1); }
+      90% { transform: translateX(${to+10}px) scaleX(1.07); }
+      100% { transform: translateX(${to}px) scaleX(1); }
     }
-  }` : ''
+  `
 
-  const navStyle = css(`
-    //transform: translateX(-280px);
+  const swipeAnimation = (from, to) => `
+    ${mq('tablet-wide', 'max')} {
+      ${isHidden ? ` // Slide In
+        ${slideAnimation(to, from)}
+        transform: translateX(${from}px);
+        //animation: slide 0.5s ease 0.1s forwards;
+        transition: transform 0.4s ease-out;
+      ` : ` // Slide Out
+        ${slideAnimation(from, to)}
+        transform: translateX(${to}px);
+        //animation: slide 0.5s ease forwards;
+        transition: transform 0.5s ease-out;
+      `}
+    }
+  `
 
-    /*${swipe != null && swipe.dir === "Right" ? `
-      transform: translateX(0px);
-      transition: transform .3s cubic-bezier(0, .52, 0, 1);
-    ` : ''}*/
-
-    //${swipeStyle}
+  const menuStyle = css(`
+    ${swipeAnimation(-280, 0)}
   `)
 
   const pageStyle = theme => css(`
     display: grid;
     grid-row: 2;
-    //!margin: 70px 0 0 0;
     margin: 0;
-    //justify-content: center;
-    //background: grey;
-    //background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 
-    /*${swipe != null && swipe.dir === "Right" ? `
-      transform: translateX(280px);
-      transition: transform .3s cubic-bezier(0, .52, 0, 1);
-    ` : ''}*/
+    ${swipeAnimation(0, 280)}
 
     ${mq('tablet-wide')} {
       grid-row: 1;
@@ -78,9 +58,6 @@ const Page = ({ page, renderedPage, className }) => {
   `)
 
   const containerStyle = css(`
-    //display: grid;
-    //grid-template-columns: min-content 1fr;
-    //width: calc(100vw - 280px);
     display: grid;
     grid-template-rows: min-content auto;
     overflow: hidden;
@@ -88,7 +65,6 @@ const Page = ({ page, renderedPage, className }) => {
     ${mq('tablet-wide')} {
       grid-template-columns: min-content auto;
     }
-    //${swipeStyle}
   `)
 
   const Main = page;
@@ -97,8 +73,7 @@ const Page = ({ page, renderedPage, className }) => {
 
   return (
     <div css={containerStyle} className={className} {...handlers}>
-      {/* <Navigation css={navStyle}/> */}
-      <Menu/>
+      <Menu css={menuStyle}/>
       <Main css={pageStyle} renderedPage={renderedPage}/>
     </div>
   )

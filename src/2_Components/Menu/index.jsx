@@ -19,7 +19,9 @@ const Menu = ({ className }) => {
     left: 0;
     height: 100%; // or 100vh?
     width: 280px;
+    padding: 1rem;
     box-sizing: border-box;
+    background: ${theme.palette.primary.dark};
     color: ${color(theme.palette.primary.dark).getContrastText()};
 
     display: grid;
@@ -29,8 +31,6 @@ const Menu = ({ className }) => {
     transform: translateX(-280px);
 
     ${mq('tablet-wide')} {
-      background: ${theme.palette.primary.dark};
-      padding: 1rem; // necessary?
       transform: translateX(0px);
     }
 
