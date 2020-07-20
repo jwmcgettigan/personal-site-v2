@@ -61,7 +61,7 @@ const Page = ({ page, renderedPage, className }) => {
   const containerStyle = css(`
     display: grid;
     grid-template-rows: min-content auto;
-    //overflow: hidden;
+    overflow: hidden;
 
     ${mq('tablet-wide')} {
       grid-template-columns: min-content auto;
