@@ -2,10 +2,12 @@
 import { css, jsx } from '@emotion/core'
 import React, { useState, useEffect, useContext } from 'react';
 import { Icon } from '../../../../../2_Components';
-import { applyToLine, selectTile } from './logic';
-import { GameContext } from './state';
+//import { startDrag, stopDrag, dragSelection } from './logic';
+import { useBoardState } from './state';
+//import { GameContext } from './state';
+import { observer } from 'mobx-react-lite';
 
-const Overlay = ({ icon, backgroundColor='white', className }) => {
+const Overlay = ({ icon, backgroundColor='rgba(0,0,0,0)', className }) => {
   const overlayStyle = theme => css(`
     position: absolute;
     height: calc(100% - 4px);
@@ -24,16 +26,18 @@ const Overlay = ({ icon, backgroundColor='white', className }) => {
   )
 }
 
-const Tile = ({ tileState, groups, x, y, setHighlight, className }) => {
-  //const [isSelected, setSelected] = useState(false);
-  //const [isEliminated, setEliminated] = useState(false);
-  const isSelected = false//(tileState != null) && tileState.selected;
-  const isEliminated = false//(tileState != null) && tileState.eliminated;
-  const gameContext = useContext(GameContext);
-  const isSelectable = groups != null && groups.length === 0;
+const Tile = observer(({ groups, x, y, setHighlight, className }) => {
+  const boardState = useBoardState();
+  const isSelectable = y > 0 && x > 0;
+  x = x-1;
+  y = y-1;
+  const selected = isSelectable && boardState.tiles[y][x] === '#';
+  const eliminated = isSelectable && boardState.tiles[y][x] === 'x';
+  let dragType = null;
+  //const isSelectable = groups != null && groups.length === 0;
 
   const tileStyle = theme => css(`
-    //background-color: ${isSelected ? 'black' : 'white'};
+    //background-color: ${selected ? 'black' : 'white'};
     //position: relative;
     border: 1px solid black;
     display: flex;
@@ -51,35 +55,41 @@ const Tile = ({ tileState, groups, x, y, setHighlight, className }) => {
   }
 
   const tileLeftClick = () => {
+    //boardState.selectTile(x, y);
   }
   
-  const tileRightClick = () => {
-
+  const tileRightClick = (e) => {
+    e.preventDefault();
+    //boardState.eliminateTile(x, y);
   }
 
   const mouseEntersTile = () => {
     highlightColumnAndRow();
-    gameContext.drag.current = [x, y];
-    if(gameContext.drag.start != null && gameContext.drag.current != null) {
-      applyToLine(gameContext.drag.start, gameContext.drag.current, selectTile);
-    }
+    boardState.dragSelection([x, y]);
   }
 
   const mouseLeavesTile = () => {
 
   }
 
-  const mouseDown = () => {
-    gameContext.drag.start = [x, y];
+  const mouseDown = (e) => {
+    switch(e.button) {
+      case 0: // Left Mouse Button
+        dragType = '#';
+        break;
+      case 1: // Middle Mouse Button
+        break;
+      case 2: // Right Mouse Button
+        dragType = 'x';
+        break;
+    }
+    boardState.startDrag([x, y], dragType);
+    boardState.updateTile([x, y]);
   }
 
   const mouseUp = () => {
     //gameContext.drag.end = [x, y];
-    //gameContext.drag.start = [];
-  }
-
-  const eliminateTile = (e) => {
-    e.preventDefault()
+    boardState.stopDrag();
   }
 
   const dragtoTile = () => {
@@ -88,21 +98,21 @@ const Tile = ({ tileState, groups, x, y, setHighlight, className }) => {
 
   const highlightColumnAndRow = () => {
     setHighlight({
-      column: x,
-      row: y
+      column: x+1,
+      row: y+1
     })
   }
 
   return (
     <div css={tileStyle} onClick={() => tileLeftClick()} 
-      onContextMenu={(e) => eliminateTile(e)} onMouseDown={() => mouseDown()} 
+      onContextMenu={(e) => tileRightClick(e)} onMouseDown={(e) => mouseDown(e)} 
       onMouseUp={() => mouseUp()} onMouseEnter={() => mouseEntersTile()} 
       onMouseLeave={() => mouseLeavesTile()} className={className}>
       {displayGroups(groups)}
-      {isSelected && <Overlay backgroundColor={'black'}/>}
-      {isEliminated && <Overlay icon={'FaTimes'}/>}
+      {selected && <Overlay backgroundColor={'black'}/>}
+      {eliminated && <Overlay icon={'FaTimes'}/>}
     </div>
   )
-}
+})
 
 export default Tile;

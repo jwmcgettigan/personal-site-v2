@@ -2,17 +2,22 @@
 import { css, jsx } from '@emotion/core'
 import React, { useContext, useState, useEffect } from 'react';
 import { Icon } from '../../../../../2_Components';
-import { GameContext } from './state';
+//import { GameContext } from './state';
 import Tile from './Tile';
+
+import { useBoardState } from './state';
+import { observer } from 'mobx-react-lite';
 
 /**
  * 
  * @param {Array} size - the number of [columns, rows]
  */
-const Board = ({ tiles, className }) => {
-  const gameContext = useContext(GameContext);
-  const board = gameContext.board;
-  const [numCols, numRows] = board.size.map(v => v+1);
+const Board = observer(({ className }) => {
+  const boardState = useBoardState();
+  console.log('rerendered board!')
+  const [numCols, numRows] = [
+    boardState.numCols + 1, boardState.numRows + 1
+  ]
   
   const [highlight, setHighlight] = useState({
     column: -1,
@@ -25,10 +30,6 @@ const Board = ({ tiles, className }) => {
     function renderTile(i) {
       const x = i % numCols;
       const y = Math.floor(i / numRows);
-      const tileState = {
-        selected: tiles[x, y] === '#',
-        eliminated: tiles[x, y] === 'x'
-      }
       
       let tileStyle = '';
       let groups = [];
@@ -40,11 +41,11 @@ const Board = ({ tiles, className }) => {
       }
       if (x === 0) {
         tileStyle += 'border-left: 3px solid black; justify-content: flex-end; padding: 0 0.5rem; span { margin-left: 0.75rem; }';
-        groups = board.rows[y-1];
+        groups = boardState.rows[y-1];
       }
       if (y === 0) {
         tileStyle += 'border-top: 3px solid black; flex-direction: column; justify-content: flex-end; padding: 0.5rem 0; span { margin-top: 0.25rem; }';
-        groups = board.columns[x-1];
+        groups = boardState.columns[x-1];
       }
       if (x === 0 && y === 0) {
         tileStyle += 'border-top: none; border-left: none;';
@@ -55,7 +56,7 @@ const Board = ({ tiles, className }) => {
           tileStyle += 'background-color: white;'
         }
       }
-      return <Tile key={i} css={css(tileStyle)} tileState={tileState} groups={groups} x={x} y={y} setHighlight={setHighlight}/>
+      return <Tile key={i} css={css(tileStyle)} groups={groups} x={x} y={y} setHighlight={setHighlight}/>
     }
 
     for (let i = 0; i < (numCols*numRows); i += 1) {
@@ -80,6 +81,6 @@ const Board = ({ tiles, className }) => {
       {renderTiles()}
     </div>
   )
-}
+})
 
 export default Board;

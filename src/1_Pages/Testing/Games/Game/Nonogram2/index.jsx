@@ -10,36 +10,16 @@ import { css, jsx } from '@emotion/core'
 import React, { createContext, useState, useEffect } from 'react';
 import Board from './Board';
 //import Game from './Game';
-import { updateTiles, observe } from './logic';
-import { GameContext } from './state';
-
-const config = {
-  board: {
-    size: [10, 10],
-    columns: [[4], [3], [1], [3], [4,2], [4,4], [3,2], [3,4], [1,1,2], [2,7]],
-    rows: [[3,4,1], [2,6], [2,4], [1,2,1], [1], [1], [1,3], [1,1,1,1], [7], [7]]
-  }
-}
-const [numCols, numRows] = config.board.size;
-const initialTiles = Array(numRows).fill(null).map(() => Array(numCols).fill("-"));
-let once = true;
+//import { boardState } from './logic';
+import { BoardProvider } from './state';
 
 const Nonogram = ({ }) => {
-  const [tiles, setTiles] = useState(initialTiles);
-  useEffect(() => {
-    observe((newTiles) => setTiles(newTiles))
-    if (once) {
-      updateTiles(tiles);
-      once = false;
-    }
-  });
-
-  console.log(tiles)
 
   const nonogramStyle = theme => css(`
 
   `)
 
+  /*
   const gameContext = {
     tiles: tiles,
     board: config.board,
@@ -48,12 +28,12 @@ const Nonogram = ({ }) => {
       current: null,
       end: null
     }
-  }
+  }*/
 
   return (
-    <GameContext.Provider value={gameContext}>
-      <Board tiles={tiles}/>
-    </GameContext.Provider>
+    <BoardProvider>
+      <Board/>
+    </BoardProvider>
   )
 }
 
