@@ -13,6 +13,7 @@ const Overlay = ({ icon, backgroundColor='rgba(0,0,0,0)', className }) => {
     height: calc(100% - 4px);
     width: calc(100% - 4px);
     background-color: ${backgroundColor};
+    pointer-events: none;
     svg {
       height: 100%;
       width: 100%;
@@ -29,25 +30,19 @@ const Overlay = ({ icon, backgroundColor='rgba(0,0,0,0)', className }) => {
 const Tile = observer(({ groups, x, y, setHighlight, className }) => {
   const boardState = useBoardState();
   const isSelectable = y > 0 && x > 0;
+  const isGroups = groups != null;
   x = x-1;
   y = y-1;
   const selected = isSelectable && boardState.tiles[y][x] === '#';
   const eliminated = isSelectable && boardState.tiles[y][x] === 'x';
+  let highlighted = (isSelectable || isGroups) && (boardState.highlight.column === x || boardState.highlight.row === y);
   let dragType = null;
+  let currentTile = JSON.stringify([x, y]) === JSON.stringify(boardState.drag.current);
+  let startTile = JSON.stringify([x, y]) === JSON.stringify(boardState.drag.start);
   //const isSelectable = groups != null && groups.length === 0;
 
-  const tileStyle = theme => css(`
-    //background-color: ${selected ? 'black' : 'white'};
-    //position: relative;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-  `)
-
   const displayGroups = (groups) => {
-    if (!isSelectable && groups != null) {
+    if (isGroups) {
       return groups.map((group, i) => {
         return <span key={i} css={css`font-size: 1.5rem; font-weight: 500;`}>{group}</span>;
       })
@@ -64,12 +59,15 @@ const Tile = observer(({ groups, x, y, setHighlight, className }) => {
   }
 
   const mouseEntersTile = () => {
-    highlightColumnAndRow();
+    boardState.highlight = {
+      column: x,
+      row: y
+    }
     boardState.dragSelection([x, y]);
   }
 
   const mouseLeavesTile = () => {
-
+    
   }
 
   const mouseDown = (e) => {
@@ -83,12 +81,14 @@ const Tile = observer(({ groups, x, y, setHighlight, className }) => {
         dragType = 'x';
         break;
     }
+    if (boardState.tiles[y][x] !== '-') {
+      dragType = '-'; // or boardState.tiles[y][x]
+    }
     boardState.startDrag([x, y], dragType);
-    boardState.updateTile([x, y]);
+    console.log(JSON.stringify(boardState.drag.tiles.after))
   }
 
   const mouseUp = () => {
-    //gameContext.drag.end = [x, y];
     boardState.stopDrag();
   }
 
@@ -96,12 +96,15 @@ const Tile = observer(({ groups, x, y, setHighlight, className }) => {
     
   }
 
-  const highlightColumnAndRow = () => {
-    setHighlight({
-      column: x+1,
-      row: y+1
-    })
-  }
+  const tileStyle = theme => css(`
+    background-color: ${highlighted ? 'lightgrey' : 'white'};
+    //position: relative;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  `)
 
   return (
     <div css={tileStyle} onClick={() => tileLeftClick()} 
@@ -111,6 +114,8 @@ const Tile = observer(({ groups, x, y, setHighlight, className }) => {
       {displayGroups(groups)}
       {selected && <Overlay backgroundColor={'black'}/>}
       {eliminated && <Overlay icon={'FaTimes'}/>}
+      {currentTile && <Overlay css={css`border-radius:50%;height:5rem;width:5rem;z-index:50;`} backgroundColor={'rgba(0,0,0,0.3)'}/>}
+      {startTile && <Overlay css={css`border: 3px solid rgba(255,0,0,0.8);`}/>}
     </div>
   )
 })

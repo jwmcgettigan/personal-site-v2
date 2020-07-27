@@ -4,7 +4,7 @@ export const resume = {
     "name": "Justin McGettigan",
     "email": "jwmcgettigan@gmail.com",
     "website": "https://jwmcgettigan.com",
-    "summary": "Curious minded CS graduate with a passion for computer vision and machine learning currently seeking a software engineering position.",
+    "summary": "Curious minded CS graduate with a passion for computer vision and augmented reality, currently seeking a software engineering position.",
     "location": {
       "city": "Webster",
       "countryCode": "US",
@@ -104,7 +104,7 @@ export const resume = {
       "publisher": "",
       "releaseDate": "",
       "website": "",
-      "summary": "Developed the foundation of a RTLS for tracking multiple people in a room that required spatial analysis and numerous frames of reference."
+      "summary": "Developed the foundation of a RTLS for tracking multiple people in a room that introduced me to spatial frames of reference."
     },
     {
       "name": "Gaze-Based UI Navigation",

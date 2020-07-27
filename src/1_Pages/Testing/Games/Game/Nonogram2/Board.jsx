@@ -1,12 +1,9 @@
 /** @jsx jsx */
-import { css, jsx } from '@emotion/core'
-import React, { useContext, useState, useEffect } from 'react';
-import { Icon } from '../../../../../2_Components';
-//import { GameContext } from './state';
-import Tile from './Tile';
-
+import { css, jsx } from '@emotion/core';
 import { useBoardState } from './state';
 import { observer } from 'mobx-react-lite';
+
+import Tile from './Tile';
 
 /**
  * 
@@ -15,14 +12,7 @@ import { observer } from 'mobx-react-lite';
 const Board = observer(({ className }) => {
   const boardState = useBoardState();
   console.log('rerendered board!')
-  const [numCols, numRows] = [
-    boardState.numCols + 1, boardState.numRows + 1
-  ]
-  
-  const [highlight, setHighlight] = useState({
-    column: -1,
-    row: -1
-  })
+  const [numCols, numRows] = boardState.size.map(v => v+1);
 
   function renderTiles() {
     const tiles = [];
@@ -50,13 +40,7 @@ const Board = observer(({ className }) => {
       if (x === 0 && y === 0) {
         tileStyle += 'border-top: none; border-left: none;';
       }
-      if ((x > 0 && x === highlight.column) || (y > 0 && y === highlight.row)) {
-        tileStyle += 'background-color: lightgrey;'
-        if (x === highlight.column && y === highlight.row) {
-          tileStyle += 'background-color: white;'
-        }
-      }
-      return <Tile key={i} css={css(tileStyle)} groups={groups} x={x} y={y} setHighlight={setHighlight}/>
+      return <Tile key={i} css={css(tileStyle)} groups={groups} x={x} y={y}/>
     }
 
     for (let i = 0; i < (numCols*numRows); i += 1) {
