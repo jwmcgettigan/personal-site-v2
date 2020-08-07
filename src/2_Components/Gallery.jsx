@@ -45,6 +45,19 @@ const PageCard = ({ subpath, page, className }) => {
     height: 16rem;
   `)
 
+  let statusColor = '';
+  switch (page.status) {
+    case 'Complete':
+      statusColor = theme.palette.type === 'light' ? color('#cce7e1') : color('#3e7068');
+      break;
+    case 'In Progress':
+      statusColor = theme.palette.type === 'light' ? color('#fbeecc') : color('#978840');
+      break;
+    case 'Haitus':
+      statusColor = theme.palette.type === 'light' ? color('#ffccd1') : color('#975450');
+      break;
+  }
+
   const infoStyle = css(`
     padding: 1rem;
 
@@ -54,7 +67,22 @@ const PageCard = ({ subpath, page, className }) => {
       line-height: 1.2;
       font-weight: 500;
     }
+
+    ${statusColor === '' ? '' : `
+      p {
+        background-color: ${statusColor};
+        color: ${statusColor.getContrastText()};
+        padding: .2em .5em .3em;
+        ${zDepth(1)}
+        border-radius: 3px;
+        width: min-content;
+        margin-top: 0.5rem;
+        white-space: nowrap;
+      }
+    `}
   `)
+
+  //console.log(page)
 
   return (
   <NavLink to={subpath + page.path} css={pageCardStyle} className={className} exact>
@@ -63,6 +91,7 @@ const PageCard = ({ subpath, page, className }) => {
     </Image>
     <div css={infoStyle}>
       <h3>{page.name}</h3>
+      <p>{page.status}</p>
     </div>
   </NavLink>
 )}

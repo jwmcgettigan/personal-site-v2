@@ -142,7 +142,7 @@ export const boardState = () => {
         }
       }
 
-      console.log(JSON.stringify(this.drag.tiles.after))
+      //console.log(JSON.stringify(this.drag.tiles.after))
 
       this.drag.tiles.lastSnappedTile = snappedTile;
     },
@@ -343,11 +343,15 @@ export const boardState = () => {
           }
         })
       })
+    },
+
+    clearNonogram () {
+      this.tiles = Array(state.size[1]).fill(null).map(
+        () => Array(state.size[0]).fill("-"));
     }
   }
 
-  state.tiles = Array(state.size[1]).fill(null).map(
-    () => Array(state.size[0]).fill("-"));
+  state.clearNonogram(); // Initialize all tiles to empty.
 
   // a function that observes the state
   autorun(() => {

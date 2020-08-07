@@ -1,5 +1,5 @@
 //import { createMuiTheme } from '@material-ui/core/styles';
-import { indigo, pink, red, blueGrey } from '@material-ui/core/colors';
+//import { indigo, pink, red, blueGrey } from '@material-ui/core/colors';
 //import { color } from './color';
 
 //! MAKE SURE I'M USING THE IDEAL THEMING PACKAGE/TOOL
@@ -70,7 +70,7 @@ const lightTheme = {
     secondary: secondary,
     background: '#ffffff',
     surface: '#e7eaf0',
-    error: red,
+    error: '#ff0033',
     resume: resume,
     contrastThreshold: 3,
     tonalOffset: 0.2
@@ -90,7 +90,7 @@ const darkTheme = {
     secondary: secondary,
     background: '#121212',
     surface: '#1f1f1f',
-    error: red,
+    error: '#ff0033',
     resume: resume,
     contrastThreshold: 3,
     tonalOffset: 0.2

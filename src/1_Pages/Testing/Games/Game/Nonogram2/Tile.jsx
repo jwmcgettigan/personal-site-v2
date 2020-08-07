@@ -85,7 +85,7 @@ const Tile = observer(({ groups, x, y, setHighlight, className }) => {
       dragType = '-'; // or boardState.tiles[y][x]
     }
     boardState.startDrag([x, y], dragType);
-    console.log(JSON.stringify(boardState.drag.tiles.after))
+    //console.log(JSON.stringify(boardState.drag.tiles.after))
   }
 
   const mouseUp = () => {

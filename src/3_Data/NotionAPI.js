@@ -18,6 +18,8 @@ class Page {
     this.image = null;
     this.component = NotionPage;
     this.icon = page.icon;
+    this.status = page.status;
+    this.links = page.links;
     this.path = page.path;
     this.blockMap = page.blockMap;
   }
@@ -124,20 +126,23 @@ export const useNotionAPI = (CMS_PAGE_ID='2b1541f09b37490cb283993c73e1fde9') => 
     const pages = [];
     await Promise.all(table.data.map(async post => {
       const page = await fetchPage(post.id);
-      page.name = post.Name;
-      page.icon = post.Icon;
-      page.path = '/' + page.name.replace(/ /g, '-').toLowerCase();
-      
-      //let postImage = page.blockMap[page.id].value.format.page_cover;
-      let postImageExists = exists(page.blockMap[page.id].value.format) && exists(page.blockMap[page.id].value.format.page_cover);
-      if (postImageExists) {
-        let postImage = page.blockMap[page.id].value.format.page_cover;
-        page.image = (postImage.includes('https://') 
-        ? postImage : 'https://www.notion.so' + postImage);
-      } else {
+      if ((window.location.hostname === 'jwmcgettigan.com' && post.Publish) || window.location.hostname !== 'jwmcgettigan.com') {
+        page.name = post.Name;
+        page.icon = post.Icon;
+        page.status = post.Status;
+        page.links = post.Links;
+        page.path = '/' + page.name.replace(/ /g, '-').toLowerCase();
+        
+        //let postImage = page.blockMap[page.id].value.format.page_cover;
+        let postImageExists = exists(page.blockMap[page.id].value.format) && exists(page.blockMap[page.id].value.format.page_cover);
+        if (postImageExists) {
+          let postImage = page.blockMap[page.id].value.format.page_cover;
+          page.image = (postImage.includes('https://') 
+          ? postImage : 'https://www.notion.so' + postImage);
+        } else {
+        }
+        pages.push(page);
       }
-      pages.push(page);
-      
     }))
     return pages;
   };

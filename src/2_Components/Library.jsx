@@ -94,13 +94,41 @@ const Library = ({ library, className}) => {
       color: ${theme.palette.secondary.light};
       cursor: pointer;
     }
+
+    .items {
+      display: grid;
+      grid-gap: 0.5rem;
+      font-weight: 500;
+      grid-template-columns: 1fr;
+      ${mq('tablet')} {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      p {
+        ${zDepth(2, true)}
+        padding: .2em .5em .3em;
+        width: min-content;
+        background: ${theme.palette.surface};
+        white-space: nowrap;
+      }
+    }
   `)
+
+  const content = () => {
+    if(library[0] != null && library[0].hasOwnProperty('subcategories')) {
+      return library.map((category, i) => (
+        <Category key={i} category={category}/>
+      ))
+    } else {
+      return <div className="items">
+        {library.map( (item, i) => <p key={i}>{item}</p>)}
+      </div>
+    }
+  }
   
   return (
     <Section css={libraryStyle}>
-      {library.map((category, i) => (
-        <Category key={i} category={category}/>
-      ))}
+      {content()}
     </Section>
   )
 }

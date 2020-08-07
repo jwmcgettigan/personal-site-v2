@@ -3,7 +3,7 @@ import { css, jsx } from '@emotion/core'
 import ResumeDoc from './ResumeDoc';
 import { Section, TitleSection, Button, LinkContent } from '../../2_Components';
 import { mq, zDepth } from '../../4_Utilities';
-
+import Courses from './Courses';
 
 const downloadResume = () => {
   const pdf = require('../../assets/resume.pdf')
@@ -45,7 +45,7 @@ const ResumeDownload = () => {
 const Resume = ({ className }) => {
   const resumeDocStyle = theme => css(`
     ${zDepth(24)};
-    //margin: 3rem auto;
+    margin: 3rem auto;
     transform-origin: top;
     display: block;
     width: 100%;
@@ -61,21 +61,25 @@ const Resume = ({ className }) => {
       div > div > h4 {
         white-space: nowrap;
       }
+      margin-bottom: -2rem;
     }
     ${mq('desktop')} {
       transform: scale(1.1);
+      margin-bottom: 10rem;
     }
     ${mq('desktop-wide')} {
       transform: scale(1.3);
+      margin-bottom: 23rem;
     }
   `)
 
   return (
     <main className={className}>
       <ResumeDownload/>
-      <Section css={css`max-width: 100% !important;`}>
+      <Section css={css`max-width: 100% !important; padding: 0 !important; z-index: 1;`}>
         <ResumeDoc css={resumeDocStyle}/>
       </Section>
+      <Courses/>
     </main>
   )
 };

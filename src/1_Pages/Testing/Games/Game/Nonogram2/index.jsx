@@ -96,7 +96,8 @@ const ControlPanel = observer(({ className }) => {
           <button onClick={(e) => {e.preventDefault();boardState.solveNonogram();}}>Solve</button>
           <button>Next Step</button>
           <button>Previous Step</button>
-          <button>Undo</button><br/>
+          <button>Undo</button>
+          <button onClick={(e) => {e.preventDefault();boardState.clearNonogram();}}>Clear</button><br/>
           <input type="text" placeholder="speed"/><br/> {/* Replace this with slider.  Control 'lines solved per second'. */}
           <label>
             <input type="checkbox" />

@@ -29,6 +29,7 @@ const Menu = ({ className }) => {
     grid-template-rows: repeat(3, min-content) auto;
     grid-gap: 1rem;
     //transform: translateX(-280px);
+    overflow: hidden;
 
     ${mq('tablet-wide')} {
       //transform: translateX(0px);
