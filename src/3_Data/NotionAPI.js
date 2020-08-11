@@ -4,6 +4,7 @@ import { useState, useEffect, useReducer } from 'react';
 
 import { Projects } from '../1_Pages';
 //import post from './Pages/post';
+import "prismjs/themes/prism-tomorrow.css";
 import { NotionRenderer } from "react-notion";
 import { NotionPage } from '../2_Components';
 import { clone } from '../4_Utilities';

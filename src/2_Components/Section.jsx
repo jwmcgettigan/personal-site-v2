@@ -51,6 +51,8 @@ const TitleSection = ({ className, children }) => {
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+    //border-bottom: 2px solid black;
+    ${zDepth(1)}
 
     h1 {
       font-size: 2rem;

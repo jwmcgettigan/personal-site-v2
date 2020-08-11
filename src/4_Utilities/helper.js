@@ -134,6 +134,7 @@ export const zDepth = (elevation, lighten=false, unlighten=false) => {
 
     return (`
       box-shadow: ${inset + shadowUmbraMap[absElevation]}, ${inset + shadowPenumbraMap[absElevation]}, ${inset + ambientShadowMap[absElevation]};
+      z-index: ${elevation};
     `)
   }
 

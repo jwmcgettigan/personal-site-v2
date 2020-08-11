@@ -33,11 +33,6 @@ const NotionPage = ({ renderedPage, className }) => {
       word-break: normal;
     }
 
-    .notion-code {
-      background: ${color(theme.palette.surface).adjustBrightness(4)};
-      color: ${color(theme.palette.surface).getContrastText()};
-    }
-
     .notion-bookmark {
       .notion-bookmark-title {
         color: ${color(theme.palette.surface).getContrastText()};

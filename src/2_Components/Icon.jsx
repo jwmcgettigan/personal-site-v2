@@ -6,8 +6,14 @@ const Icon = ({ icon, className }) => {
   if (icon === '') {
     return '';
   } else {
+    /* if (icon !== undefined && icon in Icons) {
+      const Icon = Icons[icon];
+    } else {
+      console.log(`There exists no icon called '${icon}'.`)
+      const Icon = Icons['FaExclamationCircle']
+    } */
     const Icon = Icons[icon];
-    return <Icon className={className}/>;
+    return <Icon className={className}/>
   }
 }
 

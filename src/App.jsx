@@ -9,6 +9,7 @@ import { useAsync } from 'react-async';
 import { Page, ScrollToTop, NotionPage } from './2_Components';
 import { pages as staticPages, fetchFromNotion, useNotionAPI } from './3_Data';
 import { Error, ResumeDoc } from './1_Pages';
+import ResumeDoc2 from './1_Pages/Resume/ResumeDoc2';
 import { lightTheme, darkTheme, mq, StateContext, clone } from './4_Utilities';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -51,6 +52,7 @@ const Pages = ({ dynamicPages }) => {
 
         {/* Resume Document */ }
         <Route path="/resume/print" component={ResumeDoc} />
+        <Route path="/resume/print2" component={ResumeDoc2} />
 
         {/* 404 Page */ }
         <Route render={() => <Page page={Error} />}/>
@@ -60,8 +62,8 @@ const Pages = ({ dynamicPages }) => {
 }
 
 const App = () => {
-  const [notionConfig, setNotionConfig] = useState('2b1541f09b37490cb283993c73e1fde9')
-  const notionAPI = useNotionAPI(notionConfig);
+  //const [notionConfig, setNotionConfig] = useState('2b1541f09b37490cb283993c73e1fde9')
+  const notionAPI = useNotionAPI('2b1541f09b37490cb283993c73e1fde9');
   const [theme, setTheme] = useState(lightTheme);
   const fontStack = `Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`;
   const globalStyles = css(`

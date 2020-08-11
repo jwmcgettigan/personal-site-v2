@@ -19,23 +19,77 @@ const Link = ({url, onclick, className, newtab, children}) => (
   </a>
 )
 
-const LinkContent = ({icon, text, title}) => (<>
-  <span className="icon">
-    <Icon icon={icon}/>
-  </span>
-  <span className="text">{text}</span></>
-)
+const LinkContent = ({icon, text, end}) => {
+  const linkContentStyle = css(`
+    display: grid;
+    grid-template-columns: ${end ? 'auto 17px' : '17px auto'};
+    align-items: center;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 17px;
+
+      svg {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .text {
+      margin: auto;
+      ${end ? 'margin-right: 6px;' : 'margin-left: 6px;'}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  `)
+
+  const textStyle = css(`
+    ${end ? 'margin: auto;' : ''}
+    display: flex;
+    align-items: center;
+  `)
+
+  const iconStyle = css(`
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    svg {
+      display: flex;
+      align-items: center;
+    }
+  `)
+
+  if (end) {
+    return (<>
+      <span css={textStyle} className="text">{text}</span>
+      <span css={iconStyle} className="icon">
+        <Icon icon={icon}/>
+      </span>
+    </>)
+  } else {
+    return (<>
+      <span css={iconStyle} className="icon">
+        <Icon icon={icon}/>
+      </span>
+      <span css={textStyle} className="text">{text}</span>
+    </>)
+  }
+}
 
 const PageLink = ({page, className}) => {
   const navLinkStyle = css(`
-    /*display: flex;
+    display: flex;
     align-items: center;
 
     svg {
       display: flex;
       align-items: center;
       margin-right: 0.5rem;
-    }*/
+    }
   `)
   
   return (
@@ -75,6 +129,7 @@ const Button = ({url, onclick, className, type, page, newtab, children}) => {
       //transition: all 0.1s ease-in-out;
       cursor: pointer;
       ${zDepth(8)}
+      color: ${color(theme.palette.primary.dark).getContrastText()};
     }
   `)
 
