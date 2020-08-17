@@ -5,6 +5,9 @@ import { css, jsx } from '@emotion/core';
 import Link from 'modules/common/Link';
 import Icon from 'modules/common/Icon';
 
+// Import helpers
+import { elevate, mq, color } from 'helpers';
+
 
 const socialNetworks = [
   {
@@ -35,11 +38,13 @@ const socialNetworks = [
 ]
 
 const SocialNetworks = ({ ...props }) => {
-  const style = css`
+  const style = theme => css`
     height: max-content;
     display: grid;
     grid-auto-flow: column;
     justify-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid ${color(theme.primary.main).getContrastText(1.2).toString()};
 
     a {
       display: flex;
@@ -54,7 +59,7 @@ const SocialNetworks = ({ ...props }) => {
   return (
     <div css={style} {...props}>
       {socialNetworks.map(sn => (
-        <Link href={sn.url} title={sn.name} key={sn.name}>
+        <Link href={sn.url} title={sn.name} key={sn.name} newtab>
           <Icon icon={sn.icon}/>
         </Link>
       ))}

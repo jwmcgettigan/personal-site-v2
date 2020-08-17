@@ -13,7 +13,7 @@ const Navigation = ({ ...props }) => {
     display: grid;
     //grid-auto-flow: column;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.5rem;
     height: min-content;
     justify-self: center;
     width: min-content;
@@ -43,6 +43,10 @@ const Navigation = ({ ...props }) => {
       font-size: 2rem;
       //margin-right: 0.5rem;
       //font-size: 1.25rem;
+    }
+
+    .navbar-expand-md .navbar-collapse {
+        height: auto !important;
     }
   `;
 

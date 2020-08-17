@@ -16,10 +16,21 @@ import Basic from 'modules/pages/Resume/Basic';
 // Import themes
 import { lightTheme } from 'setup/theme';
 
+const font = (name, path) => css`
+  @font-face {
+    font-family: ${name};
+    src: url(${path});
+  }
+`;
+
 function App() {
   const [theme, setTheme] = useState(lightTheme);
   //const fontStack = `Montserrat,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"`;
   const globalStyles = css`
+    // Import fonts
+    @import url(https://fonts.googleapis.com/css2?family=Roboto);
+    @import url(https://fonts.googleapis.com/css2?family=Rubik);
+
     * {
       margin: 0;
       position: relative;

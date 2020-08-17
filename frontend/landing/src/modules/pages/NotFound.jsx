@@ -3,10 +3,10 @@ import { css, jsx } from '@emotion/core';
 
 import Main from 'modules/common/Main';
 
-const NotFound = ({ className }) => {
+const NotFound = (props) => {
 
   return (
-    <Main>
+    <Main {...props}>
       <h1>Page Not Found</h1>
     </Main>
   );

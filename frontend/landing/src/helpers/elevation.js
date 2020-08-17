@@ -19,7 +19,7 @@ export const elevate = (dp, lighten=false, unlighten=false) => {
 
     return css`
       box-shadow: ${inset + shadowUmbraMap[absDp]}, ${inset + shadowPenumbraMap[absDp]}, ${inset + ambientShadowMap[absDp]};
-      z-index: ${dp};
+      //z-index: ${dp};
     `;
   }
 

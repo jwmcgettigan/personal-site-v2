@@ -16,6 +16,7 @@ const Basic = ({ className }) => {
     grid-row-gap: 0.5rem;
     padding: 1rem;
     font-size: 14px;
+    background: white;
 
     .contact {
       display: grid;

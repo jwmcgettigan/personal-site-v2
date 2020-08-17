@@ -1,7 +1,6 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
 import React, { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
@@ -12,7 +11,7 @@ import Menu from 'modules/common/Menu';
 // Import helpers
 import { mq, color } from 'helpers';
 
-const Main = ({ theme, children, staticContext, className }) => {
+const Main = ({ children, className }) => {
   const [isOpen, setOpen] = useState(false);
   const handlers = useSwipeable({
     trackMouse: true,
@@ -40,18 +39,19 @@ const Main = ({ theme, children, staticContext, className }) => {
   `;
 
   const menuWidth = '280px';
-  const menuStyle = css`
-    /* ${gridBackground(color(theme.primary.main).toString())}; */
-    ${swipeAnimation(-280, 0)}
+  const menuStyle = theme => css`
+    ${gridBackground(color(theme.primary.main).toString())};
+    ${swipeAnimation(-280, 0)};
     width: ${menuWidth};
     ${mq('tablet-wide')} {
       transform: none;
       transition: none;
     }
   `;
-  const mainStyle = css`
+  const mainStyle = theme => css`
+    display: grid;
     ${gridBackground(color(theme.secondary.lighter).adjustBrightness(30).toString())};
-    ${swipeAnimation(0, 280)}
+    ${swipeAnimation(0, 280)};
     ${mq('tablet-wide')} {
       margin: 0 0 0 ${menuWidth};
       transform: none;
@@ -73,4 +73,4 @@ const Main = ({ theme, children, staticContext, className }) => {
   );
 }
 
-export default withTheme(Main);
+export default Main;

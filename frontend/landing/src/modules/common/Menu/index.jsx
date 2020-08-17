@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
 //import { push as PushMenu } from 'react-burger-menu';
 
 // Import components
@@ -11,8 +10,8 @@ import Navigation from './Navigation';
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
-const Menu = ({ theme, staticContext, ...rest }) => {
-  const style = css`
+const Menu = (props) => {
+  const style = theme => css`
     // Layout
     position: fixed;
     top: 0; left: 0;
@@ -48,7 +47,7 @@ const Menu = ({ theme, staticContext, ...rest }) => {
 
   //TODO: Try out the 'desktop app' look instead of the normal one.
   return (
-    <header css={style} {...rest}>
+    <header css={style} {...props}>
       <div css={css`
           display: grid;
           gap: 2rem;
@@ -65,4 +64,4 @@ const Menu = ({ theme, staticContext, ...rest }) => {
   )
 }
 
-export default withTheme(Menu);
+export default Menu;

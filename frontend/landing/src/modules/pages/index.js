@@ -2,6 +2,9 @@
 // Pages
 import About from './About';
 import Resume from './Resume';
+import Portfolio from './Portfolio';
+import Blog from './Blog';
+import Gallery from './Gallery';
 import Contact from './Contact';
 import Demo from './Demo';
 import NotFound from './NotFound';
@@ -10,6 +13,9 @@ import NotFound from './NotFound';
 export default [
   About,
   Resume,
+  Portfolio,
+  Blog,
+  Gallery,
   Contact,
   Demo,
   NotFound

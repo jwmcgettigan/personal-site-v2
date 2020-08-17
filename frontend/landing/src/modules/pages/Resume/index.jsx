@@ -15,7 +15,7 @@ const Resume = ({ className }) => {
   `;
 
   const docStyle = css`
-    background: white;
+    margin: 3rem;
     ${elevate(24)};
   `;
 

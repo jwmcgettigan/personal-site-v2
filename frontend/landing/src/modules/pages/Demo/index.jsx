@@ -5,6 +5,7 @@ import { css, jsx } from '@emotion/core';
 import Main from 'modules/common/Main';
 import Elevator from './Elevator';
 
+//TODO: Make mobile friendly?
 const Demo = ({ ...props }) => {
 
   return (

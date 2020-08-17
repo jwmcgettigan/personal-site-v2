@@ -9,7 +9,7 @@ import Main from 'modules/common/Main';
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
-const Contact = (props) => {
+const Blog = (props) => {
   const style = css`
     height: 100%;
   `;
@@ -22,11 +22,11 @@ const Contact = (props) => {
 }
 
 export default {
-  name: 'Contact',
-  icon: 'FaEnvelopeOpenText',
+  name: 'Blog',
+  icon: 'IoIosPaper',
   routeProps: {
-    path: '/contact',
+    path: '/blog',
     exact: true,
-    component: Contact
+    component: Blog
   }
 };

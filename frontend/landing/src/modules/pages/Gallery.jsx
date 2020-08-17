@@ -9,7 +9,7 @@ import Main from 'modules/common/Main';
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
-const Contact = (props) => {
+const Gallery = (props) => {
   const style = css`
     height: 100%;
   `;
@@ -22,11 +22,11 @@ const Contact = (props) => {
 }
 
 export default {
-  name: 'Contact',
-  icon: 'FaEnvelopeOpenText',
+  name: 'Gallery',
+  icon: 'MdWallpaper',
   routeProps: {
-    path: '/contact',
+    path: '/gallery',
     exact: true,
-    component: Contact
+    component: Gallery
   }
 };

@@ -16,6 +16,10 @@ class Color  {
 		return this.rgba.slice(0,3);
 	};
 
+	get str () {
+		return 'rgb' + (this.alpha < 1? 'a' : '') + '(' + this.rgba.slice(0, this.alpha >= 1? 3 : 4).join(', ') + ')';
+	}
+
 	get hex () {
 		const [r, g, b] = this.rgba.slice(0,3);
 		return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
@@ -28,6 +32,11 @@ class Color  {
 	set alpha (alpha) {
 		this.rgba[3] = alpha;
 	};
+
+	setAlpha (alpha) {
+		this.alpha = alpha;
+		return this.clone();
+	}
 
 	get luminance () {
 		// Formula: http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef

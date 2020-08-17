@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
+
+// Import helpers
+import { elevate, mq, color } from 'helpers';
 
 //import profilePic from 'assets/head-shot-placeholder.jpg';
-import profilePic from 'assets/head-shot-450x450.jpg';
+import profilePic from 'assets/body-shot-256x256.png';
 
 const data = {
   name: 'Justin McGettigan',
@@ -12,13 +14,17 @@ const data = {
   image: profilePic
 }
 
-const Profile = ({ theme, className }) => {
+const Profile = (props) => {
   //TODO: Look into doing an animated '...' to <code> and consider adding colors.
-  const style = css`
+  const style = theme => css`
+    //font-family: Rubik, sans-serif;
     display: grid;
     align-content: flex-start;
-    gap: 2rem;
+    gap: 1rem;
     height: max-content;
+    ${mq('tablet-wide')} {
+      gap: 2rem;
+    }
 
     img {
       position: relative;
@@ -59,7 +65,7 @@ const Profile = ({ theme, className }) => {
   `;
 
   return (
-    <div css={style} className={className}>
+    <div css={style} {...props}>
       <img src={data.image} alt={'ProfilePic'}/>
       <h3>{data.name}</h3>
       <p>{data.desc}</p>
@@ -68,4 +74,4 @@ const Profile = ({ theme, className }) => {
   )
 }
 
-export default withTheme(Profile);
+export default Profile;

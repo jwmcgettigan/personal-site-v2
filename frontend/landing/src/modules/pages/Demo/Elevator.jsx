@@ -8,37 +8,51 @@ import { css, jsx } from '@emotion/core';
 import { elevate, mq } from 'helpers';
 
 const Elevator = ({ ...props }) => {
-  const stairs = [...Array(25).keys()];
+  const stairs = [...Array(25).keys()].slice(1);
 
   const elevatorStyle = css`
     display: grid;
-    justify-content: left;
-    padding: 2rem;
+    grid-auto-flow: row;
     margin: 1rem;
-    border: 1px solid black;
+    border-radius: 2rem;
     width: min-content;
-    background: rgba(119,119,119,1.0);
+    background: rgba(177,177,177,1.0);
+    ${elevate(4)};
 
     h2 {
       text-align: center;
-      grid-row: 1;
-      grid-column: 1 / 3;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     div {
-      grid-row: 2;
+
+      &.light, &.dark {
+        //grid-row: 2;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        padding: 2rem;
+      }
+
+      &.light {
+        background: rgba(241,241,241,1.0);
+      }
+      &.dark {
+        background: rgba(14,14,14,1.0);
+        border-bottom-right-radius: 2rem;
+        border-bottom-left-radius: 2rem;
+      }
 
       & > div {
-        width: 3rem;
-        height: 2rem;
+        width: 5rem;
+        height: 5rem;
       }
 
       &.dark > div {
-        grid-column: 1;
         background: rgba(31, 35, 38, 1.0);
       }
       &.light > div {
-        grid-column: 2;
         background: rgba(255,255,255, 1.0);
       }
     }
@@ -46,19 +60,15 @@ const Elevator = ({ ...props }) => {
 
   return (
     <div css={elevatorStyle}>
-      <h2>Elevator</h2>
-      <div className="dark">
-        {stairs.map(stair =>
-          <div key={stair} css={elevate(stair, true)}>
-            {stair}
-          </div>
-        )}
-      </div>
+      <h2>elevate()</h2>
       <div className="light">
         {stairs.map(stair =>
-          <div key={stair} css={elevate(stair)}>
-            {stair}
-          </div>
+          <div key={stair} css={elevate(stair)}/>
+        )}
+      </div>
+      <div className="dark">
+        {stairs.map(stair =>
+          <div key={stair} css={elevate(stair, true)}/>
         )}
       </div>
     </div>
