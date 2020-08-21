@@ -8,7 +8,7 @@ import Profile from './Profile';
 import Navigation from './Navigation';
 
 // Import helpers
-import { elevate, mq, color } from 'helpers';
+import { elevate, mq, bp, color } from 'helpers';
 
 const Menu = (props) => {
   const style = theme => css`
@@ -18,7 +18,7 @@ const Menu = (props) => {
     height: 100vh;
     padding: 2rem;
     ${mq('tablet-wide')} {
-      padding-top: 4rem;
+      padding: 4rem;
     }
     //border-top-left-radius: 2rem;
     //border-bottom-left-radius: 2rem;
@@ -26,7 +26,8 @@ const Menu = (props) => {
     // Color
     background: ${theme.primary.main};
     color: ${color(theme.primary.main).getContrastText(15).toString()};
-    ${elevate(4)};
+    ${elevate(24)};
+    z-index: 4;
 
     // Content Layout
     display: grid;

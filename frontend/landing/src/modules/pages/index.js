@@ -7,6 +7,7 @@ import Blog from './Blog';
 import Gallery from './Gallery';
 import Contact from './Contact';
 import Demo from './Demo';
+import Admin from './Admin';
 import NotFound from './NotFound';
 
 // NotFound must be the last in the list.
@@ -18,5 +19,6 @@ export default [
   Gallery,
   Contact,
   Demo,
+  Admin,
   NotFound
 ];

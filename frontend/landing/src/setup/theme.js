@@ -25,5 +25,6 @@ export const lightTheme = {
     A200: '#D33208',
     A400: '#C12800',
     A700: '#B22400'
-  }
+  },
+  background: '#FFF'
 }

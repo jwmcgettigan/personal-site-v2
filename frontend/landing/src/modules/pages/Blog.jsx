@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { withTheme } from 'emotion-theming';
 import { Link } from "react-router-dom";
 
 // Import components

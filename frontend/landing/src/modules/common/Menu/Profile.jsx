@@ -9,7 +9,7 @@ import profilePic from 'assets/body-shot-256x256.png';
 
 const data = {
   name: 'Justin McGettigan',
-  desc: 'I am a software engineer with a passion for virtual reality and autonomous systems.',
+  desc: 'I am a software developer with a passion for virtual reality and autonomous systems.',
   status: 'Job Searching',
   image: profilePic
 }
@@ -34,9 +34,22 @@ const Profile = (props) => {
       box-shadow: 0 0 0 3px rgba(59, 54, 47, 1.0);
     }
 
+    h3 {
+      grid-area: 1 / 2;
+      align-self: center;
+      ${mq('tablet-wide')} {
+        grid-area: 2 / 1;
+      }
+    }
+
     p {
       font-style: italic;
       opacity: 0.6;
+      grid-column: 1 / 3;
+      grid-row: 3;
+      ${mq('tablet-wide')} {
+        grid-column: 1;
+      }
     }
 
     code {
@@ -44,6 +57,11 @@ const Profile = (props) => {
       padding: 0.25rem;
       padding-right: 0.5rem;
       line-height: 1rem;
+      grid-column: 1 / 3;
+      grid-row: 4;
+      ${mq('tablet-wide')} {
+        grid-column: 1;
+      }
       
       &:after {
         content: '';

@@ -47,6 +47,7 @@ const Elevator = ({ ...props }) => {
       & > div {
         width: 5rem;
         height: 5rem;
+        border-radius: 0.25rem;
       }
 
       &.dark > div {

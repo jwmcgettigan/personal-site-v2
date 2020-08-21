@@ -8,8 +8,8 @@ import {
   FaDev, FaGlobe, FaEnvelope, FaMapMarkerAlt, FaPhone,
   FaStackOverflow, FaFreeCodeCamp, FaUserAlt, FaCog,
   FaLaptopCode, FaFileAlt, FaLink, FaGraduationCap,
-  FaGamepad, FaTools, FaExclamationTriangle,
-  FaEnvelopeOpenText
+  FaGamepad, FaTools, FaExclamationTriangle, FaKey,
+  FaEnvelopeOpenText, 
 } from 'react-icons/fa';
 import { IoIosPaper } from 'react-icons/io';
 import { MdWallpaper } from 'react-icons/md';
@@ -19,7 +19,7 @@ const Icons = {
   FaDev, FaGlobe, FaEnvelope, FaMapMarkerAlt, FaPhone,
   FaStackOverflow, FaFreeCodeCamp, FaUserAlt, FaCog,
   FaLaptopCode, FaFileAlt, FaLink, FaGraduationCap,
-  FaGamepad, FaTools, FaExclamationTriangle,
+  FaGamepad, FaTools, FaExclamationTriangle, FaKey,
   FaEnvelopeOpenText, IoIosPaper, MdWallpaper
 };
 

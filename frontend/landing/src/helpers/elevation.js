@@ -24,6 +24,7 @@ export const elevate = (dp, lighten=false, unlighten=false) => {
   }
 
   // Applies or removes a lightness overlay depending on the 'lighten' and 'unlighten' options.
+  //TODO: parent's border often doesn't match pseudo-element's border
   const overlay = () => {
     const backgroundColor = (isNegative) ? '0, 0, 0' : '255, 255, 255';
     //TODO: Figure out how I chose this ratio.
@@ -38,6 +39,10 @@ export const elevate = (dp, lighten=false, unlighten=false) => {
           left: 0;
           width: 100%;
           height: 100%;
+          box-sizing: inherit;
+          border: inherit;
+          border-radius: inherit;
+          border-color: rgba(255,255,255,0);
           background: rgba(${backgroundColor}, ${dp * ratio});
           pointer-events: none;
         }

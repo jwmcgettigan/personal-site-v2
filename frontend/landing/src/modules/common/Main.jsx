@@ -21,10 +21,10 @@ const Main = ({ children, className }) => {
 
   const gridBackground = (bg_color) => css`
     background-color: ${bg_color};
-    background-image:
+    /* background-image:
     repeating-linear-gradient(${color(bg_color).getContrastText(1.1).toString()} 0 1px, transparent 1px 100%),
     repeating-linear-gradient(90deg, ${color(bg_color).getContrastText(1.1).toString()} 0 1px, transparent 1px 100%);
-    background-size: 8px 8px;
+    background-size: 8px 8px; */
   `;
 
   const swipeAnimation = (from, to) => css`
@@ -40,7 +40,7 @@ const Main = ({ children, className }) => {
 
   const menuWidth = '280px';
   const menuStyle = theme => css`
-    ${gridBackground(color(theme.primary.main).toString())};
+    ${gridBackground(theme.primary.main)};
     ${swipeAnimation(-280, 0)};
     width: ${menuWidth};
     ${mq('tablet-wide')} {
@@ -49,8 +49,10 @@ const Main = ({ children, className }) => {
     }
   `;
   const mainStyle = theme => css`
+    height: 100%;
     display: grid;
-    ${gridBackground(color(theme.secondary.lighter).adjustBrightness(30).toString())};
+    align-content: flex-start;
+    ${gridBackground(theme.background)};
     ${swipeAnimation(0, 280)};
     ${mq('tablet-wide')} {
       margin: 0 0 0 ${menuWidth};
@@ -65,7 +67,7 @@ const Main = ({ children, className }) => {
       <ScrollToTop/>
       <div css={containerStyle} {...handlers}>
         <Menu css={menuStyle}/>
-        <main id="main" css={mainStyle} className={className}>
+        <main css={mainStyle} className={className}>
           {children}
         </main>
       </div>
