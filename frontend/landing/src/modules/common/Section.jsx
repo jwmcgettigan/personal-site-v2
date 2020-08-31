@@ -9,13 +9,16 @@ const Section = ({ children, ...props }) => {
 
   const sectionStyle = theme => css`
     margin: 2rem;
+    margin-top: 0;
     padding: 1rem;
-    background: ${color(theme.primary.main).setAlpha(0.8).str};
-    color: ${color(theme.primary.main).getContrastText(15).str};
-    border-top: 3px solid ${theme.secondary.light};
-    border-left: 3px solid ${theme.secondary.light};
-    border-right: 3px solid ${theme.secondary.dark};
-    border-bottom: 3px solid ${theme.secondary.dark};
+    //background: ${color(theme.primary.main).setAlpha(0.3).str};
+    //color: ${color(theme.primary.main).getContrastText(15).getContrastText(15).str};
+    background: #fff;
+    color: ${color('#fff').getContrastText(15).str};
+    //border-top: 3px solid ${theme.secondary.light};
+    //border-left: 3px solid ${theme.secondary.light};
+    //border-right: 3px solid ${theme.secondary.dark};
+    //border-bottom: 3px solid ${theme.secondary.dark};
     width: 100%;
     justify-self: center;
     ${elevate(1)};

@@ -4,12 +4,13 @@ import { css, jsx } from '@emotion/core';
 // Import components
 import Main from 'modules/common/Main';
 import Basic from './Basic';
+import Header from 'modules/common/Header';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
 
 const Resume = ({ className }) => {
-  const style = css`
+  const style = theme => css`
     display: grid;
     justify-items: center;
   `;
@@ -21,6 +22,9 @@ const Resume = ({ className }) => {
 
   return (
     <Main css={style}>
+      <Header>
+        <h2>Resume</h2>
+      </Header>
       <Basic css={docStyle}/>
     </Main>
   );

@@ -50,9 +50,15 @@ const updatePage = async (req, res) => {
         message: 'Page not found!',
       });
     }
-    page.name = body.name;
-    page.time = body.time;
-    page.rating = body.rating;
+    //page.name = body.name;
+    //page.time = body.time;
+    //page.rating = body.rating;
+    page.path = body.path;
+    page.title = body.title;
+    page.body = body.body;
+    page.style = body.style;
+    page.categories = body.categories;
+    page.tags = body.tags;
     page
       .save()
       .then(() => {

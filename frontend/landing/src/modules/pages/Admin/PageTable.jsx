@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTable, useRowSelect } from 'react-table';
 import moment from 'moment';
 
@@ -29,58 +29,50 @@ const getKeyByValue = (object, value) => {
   return Object.keys(object).find(key => object[key] === value);
 }
 
-const PageTable = ({ columns, data, setSelectedPage }) => {
+const PageTable = ({ data, setSelectedPage }) => {
+  const [selectedRow, setSelectedRow] = useState(0);
+  setSelectedPage(data[selectedRow]);
+  const columns = useMemo(() => [
+    {
+      Header: 'ID',
+      accessor: '_id',
+      filterable: true,
+    },
+    {
+      Header: 'Title',
+      accessor: 'title',
+      filterable: true,
+    },
+    {
+      Header: 'Categories',
+      accessor: 'categories',
+      Cell: props => <span>{props.value.join(' , ')}</span>,
+    },
+    {
+      Header: 'Tags',
+      accessor: 'tags',
+      Cell: props => <span>{props.value.join(' , ')}</span>,
+    },
+    {
+      Header: 'Updated',
+      accessor: 'updatedAt',
+      filterable: true,
+      Cell: props => <span>{moment(props.value).format('h:mm a, MMMM Do YYYY')}</span>,
+    }
+  ], []);
+  
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow,
-    state: { selectedRowIds },
-  } = useTable({
-    columns,
-    data,
-  },
-  useRowSelect,
-  hooks => {
-    hooks.visibleColumns.push(columns => [
-      // Let's make a column for selection
-      {
-        id: 'selection',
-        // The header can use the table's getToggleAllRowsSelectedProps method
-        // to render a checkbox
-        Header: ({ getToggleAllRowsSelectedProps }) => (
-          <div>
-            {/* <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} /> */}
-          </div>
-        ),
-        // The cell can use the individual row's getToggleRowSelectedProps method
-        // to the render a checkbox
-        Cell: ({ row }) => {
-          if(rows.filter(row => row.isSelected).length < 1 || row.isSelected) {
-            return (
-              <div>
-                <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-              </div>
-            )
-          } else {
-            return (
-              <div>
-                <IndeterminateCheckbox checked={false} readOnly style={row.getToggleRowSelectedProps().style} />
-              </div>
-            )
-          }
-        },
-      },
-      ...columns,
-    ])
-  });
-
-
-  const selectedRow = rows.filter(row => row.isSelected)[0];
-  if(selectedRow != null) {
-    setSelectedPage(data[selectedRow.index]);
-  }
+  } = useTable(
+    {
+      columns,
+      data,
+    }
+  );
 
   const style = theme => css`
     border-spacing: 0;
@@ -107,7 +99,28 @@ const PageTable = ({ columns, data, setSelectedPage }) => {
         border-right: 0;
       }
     }
+
+    tbody > tr:hover {
+      cursor: pointer;
+      color: blue;
+
+      td {
+        //border-bottom: 3px solid red;
+        //border-right: 3px solid red;
+        ${elevate(-4)};
+      }
+    }
   `;
+
+  const selectedRowStyle = css`
+    background: pink;
+    ${elevate(-4)};
+  `;
+
+  const selectRowAndPage = (i) => {
+    setSelectedRow(i);
+    setSelectedPage(data[i]);
+  }
 
   return (
     <table css={style} {...getTableProps()}>
@@ -124,9 +137,9 @@ const PageTable = ({ columns, data, setSelectedPage }) => {
         {rows.map((row, i) => {
           prepareRow(row)
           return (
-            <tr {...row.getRowProps()}>
+            <tr onClick={() => selectRowAndPage(i)} {...row.getRowProps()}>
               {row.cells.map(cell => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                return <td css={selectedRow===i ? selectedRowStyle : ''} {...cell.getCellProps()}>{cell.render('Cell')}</td>
               })}
             </tr>
           )

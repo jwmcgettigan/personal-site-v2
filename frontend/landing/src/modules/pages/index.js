@@ -15,10 +15,10 @@ export default [
   About,
   Resume,
   Portfolio,
-  Blog,
-  Gallery,
+  //Blog,
+  //Gallery,
   Contact,
   Demo,
-  Admin,
+  //Admin,
   NotFound
 ];

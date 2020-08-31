@@ -18,7 +18,7 @@ const Menu = (props) => {
     height: 100vh;
     padding: 2rem;
     ${mq('tablet-wide')} {
-      padding: 4rem;
+      //padding: 4rem;
     }
     //border-top-left-radius: 2rem;
     //border-bottom-left-radius: 2rem;

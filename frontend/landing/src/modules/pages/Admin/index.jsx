@@ -46,47 +46,21 @@ const Admin = (props) => {
     })();
   }, []);
 
-  const columns = useMemo(() => [
-    {
-      Header: 'ID',
-      accessor: '_id',
-      filterable: true,
-    },
-    {
-      Header: 'Title',
-      accessor: 'title',
-      filterable: true,
-    },
-    {
-      Header: 'Categories',
-      accessor: 'categories',
-      Cell: props => <span>{props.value.join(' , ')}</span>,
-    },
-    {
-      Header: 'Tags',
-      accessor: 'tags',
-      Cell: props => <span>{props.value.join(' , ')}</span>,
-    }/*,
-    {
-      Header: 'Updated',
-      accessor: 'updatedAt',
-      filterable: true,
-    }*/
-  ], []);
-
-  let showTable = true
+  let loadPageData = true;
   //pages.length > 0 && console.log(pages);
   if (!pages.length) {
-    showTable = false
+    loadPageData = false;
   }
 
   const style = css`
     display: flex;
   `;
 
-  const sectionStyle1 = css`
+  const sectionStyle1 = theme => css`
     display: grid;
-    align-content: flex-start;
+    height: 100%;
+    grid-template-rows: min-content auto;
+    //align-content: flex-start;
     padding: 1rem !important;
     gap: 1rem;
     margin-right: 0;
@@ -102,6 +76,13 @@ const Admin = (props) => {
       font-size: 1.1rem;
       font-weight: 800;
       padding: 0.25rem .5rem;
+    }
+
+    .parsedpage {
+      border: 1px solid grey;
+      height: 100%;
+      padding: 2rem;
+      background: ${theme.background};
     }
   `;
 
@@ -123,24 +104,35 @@ const Admin = (props) => {
   };
 
   //(pages[0] != null) && console.log(pages[0])
-  const ParsedPage = parsePage(pages[0]);
+
+  /* const ParsedPage = parsePage(selectedPage); */
+
   //const ParsedPage = () => (pages[0] != null) ? parsePage(pages[0]) : '';
   //const ParsedPage = parsePage(testPage);
   //const ParsedPage = () => parse(testPage.body);
   //const ParsedPage = () => React.createElement('div', null, testPage.body);
 
+  const pageExists = selectedPage == null;
+  let ParsedPage = () => <div/>
+  if(!pageExists) {
+    ParsedPage = parsePage(selectedPage);
+  }
+
   return (
     <Main css={style} {...props}>
       <Section css={sectionStyle1}>
-        {/* pages.length > 0 && <ParsedPage/> */}
-        { showTable &&
+        { loadPageData &&
           <PageTable
-            columns={columns}
             data={pages}
             setSelectedPage={setSelectedPage}/>
         }
+        <div className="parsedpage">
+          { <ParsedPage/> }
+        </div>
       </Section>
-      <PageEditor page={selectedPage}/>
+      { pageExists ? '' :
+        <PageEditor page={selectedPage} setPage={setSelectedPage}/>
+      }
     </Main>
   );
 };
