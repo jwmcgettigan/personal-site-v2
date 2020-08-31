@@ -14,8 +14,7 @@ import { elevate, mq, color } from 'helpers';
 const About = (props) => {
   const style = theme => css`
     height: 100%;
-    font-size: 1.25rem;
-    background: #f8f8f8;
+    //font-size: 1.25rem;
 
     .hoverbox {
       width: 100px;

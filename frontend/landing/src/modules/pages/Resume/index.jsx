@@ -4,6 +4,7 @@ import { css, jsx } from '@emotion/core';
 // Import components
 import Main from 'modules/common/Main';
 import Basic from './Basic';
+import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
 
 // Import helpers
@@ -12,11 +13,11 @@ import { mq, color, elevate } from 'helpers';
 const Resume = ({ className }) => {
   const style = theme => css`
     display: grid;
-    justify-items: center;
+    justify-items: left;
   `;
 
   const docStyle = css`
-    margin: 3rem;
+    //margin: 3rem;
     ${elevate(24)};
   `;
 
@@ -25,7 +26,9 @@ const Resume = ({ className }) => {
       <Header>
         <h2>Resume</h2>
       </Header>
-      <Basic css={docStyle}/>
+      <Section>
+        <Basic css={docStyle}/>
+      </Section>
     </Main>
   );
 }

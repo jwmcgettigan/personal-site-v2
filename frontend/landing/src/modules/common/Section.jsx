@@ -13,8 +13,8 @@ const Section = ({ children, ...props }) => {
     padding: 1rem;
     //background: ${color(theme.primary.main).setAlpha(0.3).str};
     //color: ${color(theme.primary.main).getContrastText(15).getContrastText(15).str};
-    background: #fff;
-    color: ${color('#fff').getContrastText(15).str};
+    background: ${theme.foreground};
+    color: ${color(theme.foreground).getContrastText(15).str};
     //border-top: 3px solid ${theme.secondary.light};
     //border-left: 3px solid ${theme.secondary.light};
     //border-right: 3px solid ${theme.secondary.dark};

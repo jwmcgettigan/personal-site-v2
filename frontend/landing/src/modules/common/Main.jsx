@@ -52,6 +52,7 @@ const Main = ({ children, className }) => {
     height: 100%;
     display: grid;
     align-content: flex-start;
+    font-size: 1.25rem;
     ${gridBackground(theme.background)};
     ${swipeAnimation(0, 280)};
     ${mq('tablet-wide')} {

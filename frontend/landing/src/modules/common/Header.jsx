@@ -28,6 +28,7 @@ const Header = ({ children, ...rest }) => {
       width: 100%;
       display: flex;
       justify-items: left;
+      padding: 1rem;
 
       ${mq('tablet')} {
         max-width: ${bp['tablet']}px;
