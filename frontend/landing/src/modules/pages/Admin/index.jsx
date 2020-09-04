@@ -8,6 +8,7 @@ import Main from 'modules/common/Main';
 import Section from 'modules/common/Section';
 import PageEditor from './PageEditor';
 import PageTable from './PageTable';
+import Header from 'modules/common/Header';
 
 // Import helpers
 import { elevate, mq, color } from 'helpers';
@@ -53,7 +54,10 @@ const Admin = (props) => {
   }
 
   const style = css`
-    display: flex;
+    
+    .sections {
+      display: flex;
+    }
   `;
 
   const sectionStyle1 = theme => css`
@@ -84,6 +88,14 @@ const Admin = (props) => {
       padding: 2rem;
       background: ${theme.background};
     }
+  `;
+
+  const sectionStyle2 = css`
+    margin-left: 0;
+    padding: 1rem !important;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    gap: 1rem;
   `;
 
   const parsePage = (page, props={}) => {
@@ -120,19 +132,26 @@ const Admin = (props) => {
 
   return (
     <Main css={style} {...props}>
-      <Section css={sectionStyle1}>
-        { loadPageData &&
-          <PageTable
-            data={pages}
-            setSelectedPage={setSelectedPage}/>
-        }
-        <div className="parsedpage">
-          { <ParsedPage/> }
-        </div>
-      </Section>
-      { pageExists ? '' :
-        <PageEditor page={selectedPage} setPage={setSelectedPage}/>
-      }
+      <Header>
+        <h2>Admin</h2>
+      </Header>
+      <div className="sections">
+        <Section css={sectionStyle1}>
+          <div className="parsedpage">
+            { <ParsedPage/> }
+          </div>
+        </Section>
+        <Section css={sectionStyle2}>
+          { loadPageData &&
+            <PageTable
+              data={pages}
+              setSelectedPage={setSelectedPage}/>
+          }
+          { pageExists ? '' :
+            <PageEditor page={selectedPage} setPage={setSelectedPage}/>
+          }
+        </Section>
+      </div>
     </Main>
   );
 };

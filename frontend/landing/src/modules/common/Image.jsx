@@ -1,5 +1,7 @@
 /** @jsx jsx */
+/** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
+import React from 'react';
 
 //! WIP
 const Image = ({ className, children: placeholder, ...props }) => {
@@ -34,7 +36,7 @@ const Image = ({ className, children: placeholder, ...props }) => {
   return (
     <div css={css`overflow: hidden;`} className={className}>
       {props.src != null ? 
-        <img css={imageStyle} {...props}/>
+        <><img css={imageStyle} {...props}/>{placeholder}</>
         : <div css={placeholderStyle}>{placeholder}</div>
       }
     </div>

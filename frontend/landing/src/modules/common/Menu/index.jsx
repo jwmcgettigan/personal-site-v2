@@ -26,7 +26,7 @@ const Menu = (props) => {
     // Color
     background: ${theme.primary.main};
     color: ${color(theme.primary.main).getContrastText(15).toString()};
-    ${elevate(24)};
+    //${elevate(24)};
     z-index: 4;
 
     // Content Layout

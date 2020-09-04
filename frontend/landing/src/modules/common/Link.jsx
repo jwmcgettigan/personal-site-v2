@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
-const Link = ({newtab=false, children, ...props}) => (
-  <a target={newtab ? "_blank" : ""} rel="noopener noreferrer" {...props}>
+const Link = ({ newtab=false, children, ...rest }) => (
+  <a target={newtab ? "_blank" : ""} rel="noopener noreferrer" {...rest}>
     {children}
   </a>
 )

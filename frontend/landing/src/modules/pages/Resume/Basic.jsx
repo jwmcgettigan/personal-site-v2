@@ -6,6 +6,9 @@ import parse from 'html-react-parser';
 import Document from 'modules/common/Document';
 import Icon from 'modules/common/Icon';
 
+// Import helpers
+import { elevate, mq, color } from 'helpers';
+
 // Import data
 import resume from 'data/resume';
 
@@ -24,7 +27,7 @@ const Basic = ({ className }) => {
       height: max-content;
 
       .name {
-        font-family: Lato;
+        font-family: 'Segoe UI';
         font-weight: 700;
         font-size: 2rem;
         text-align: center;
@@ -124,7 +127,7 @@ const Basic = ({ className }) => {
         <h3 className="section-title">Education</h3>
         <div className="item-title">
           <span>{resume.education.location}</span>
-          <span>{resume.education.university}</span>
+          <span><a href={resume.education.website}>{resume.education.university}</a></span>
           <span>{resume.education.time}</span>
         </div>
         <ul>
@@ -171,7 +174,11 @@ const Basic = ({ className }) => {
       </div>
       <div className="skills">
         <h3 className="section-title">Skills</h3>
-        <p><b>Software: </b><i>(proficient): </i>{resume.skills.proficient} | <i>(familiar): </i>{resume.skills.familiar}</p>
+        {resume.skills.map(skills => (
+          <p>
+            <b>{skills.type}: </b><i>(proficient): </i>{skills.proficient} | <i>(familiar): </i>{skills.familiar}
+          </p>
+        ))}
       </div>
     </Document>
   );

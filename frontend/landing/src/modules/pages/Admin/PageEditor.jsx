@@ -81,7 +81,7 @@ const TabularEditor = ({}) => {
 
 let prevPage = null;
 
-const PageEditor = ({ page, setPage, ...props }) => {
+const PageEditor = ({ page, setPage, ...rest }) => {
   let newPage = {...page};
   //console.log(newPage)
   const [selectedTab, setSelectedTab] = useState(0);
@@ -89,11 +89,6 @@ const PageEditor = ({ page, setPage, ...props }) => {
     path: page.path,
     title: page.title
   });
-
-  const style = css`
-    margin-left: 0;
-    padding: 1rem !important;
-  `;
 
   const formStyle = theme => css`
     display: grid;
@@ -209,43 +204,41 @@ const PageEditor = ({ page, setPage, ...props }) => {
   const CurrentTab = () => tabContent[selectedTab];
 
   return (
-    <Section css={style} {...props}>
-      <form css={formStyle}>
-        <div className="smallinputs">
-          <div className="textinputs">
-            <label css={css``}>
-              <span>Path name: </span>
-              <input type="text" value={text.path}
-                onChange={e => {
-                  newPage.path = e.target.value;
-                  setText({...text, path: e.target.value});
-                }}/>
-            </label>
+    <form css={formStyle} {...rest}>
+      <div className="smallinputs">
+        <div className="textinputs">
+          <label css={css``}>
+            <span>Path name: </span>
+            <input type="text" value={text.path}
+              onChange={e => {
+                newPage.path = e.target.value;
+                setText({...text, path: e.target.value});
+              }}/>
+          </label>
 
-            <label css={css``}>
-              <span>Title: </span>
-              <input type="text" value={text.title}
-                onChange={e => {
-                  newPage.title = e.target.value;
-                  setText({...text, title: e.target.value});
-                }}/>
-            </label>
-          </div>
-          <div className="buttons">
-            <CreatePage page={newPage} css={css`background:lightblue;`}/>
-            <SavePage page={newPage} css={css`background:lightgreen;`}/>
-            <DeletePage page={newPage} css={css`background:red;`}/>
-          </div>
+          <label css={css``}>
+            <span>Title: </span>
+            <input type="text" value={text.title}
+              onChange={e => {
+                newPage.title = e.target.value;
+                setText({...text, title: e.target.value});
+              }}/>
+          </label>
         </div>
+        <div className="buttons">
+          <CreatePage page={newPage} css={css`background:lightblue;`}/>
+          <SavePage page={newPage} css={css`background:lightgreen;`}/>
+          <DeletePage page={newPage} css={css`background:red;`}/>
+        </div>
+      </div>
 
-        <label css={css`grid-template-rows: min-content auto;`}>
-          <div className="tabs">
-            { renderTabs() }
-          </div>
-          <CurrentTab/>
-        </label>
-      </form>
-    </Section>
+      <label css={css`grid-template-rows: min-content auto;`}>
+        <div className="tabs">
+          { renderTabs() }
+        </div>
+        <CurrentTab/>
+      </label>
+    </form>
   );
 }
 

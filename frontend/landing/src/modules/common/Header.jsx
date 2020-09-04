@@ -21,13 +21,13 @@ const Header = ({ children, ...rest }) => {
     h2 {
       font-family: 'Rubik', sans-serif;
       font-weight: 300;
-      font-size: 30px;
     }
 
     .container {
       width: 100%;
       display: flex;
       justify-items: left;
+      align-items: center;
       padding: 1rem;
 
       ${mq('tablet')} {

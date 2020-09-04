@@ -7,12 +7,19 @@ import { useSwipeable } from 'react-swipeable';
 // Components
 import ScrollToTop from 'modules/common/ScrollToTop';
 import Menu from 'modules/common/Menu';
+import Copyright from 'modules/common/Copyright';
+import Icon from 'modules/common/Icon';
 
 // Import helpers
-import { mq, color } from 'helpers';
+import { mq, color, elevate } from 'helpers';
+
+let indicate = true;
 
 const Main = ({ children, className }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
+  if(isOpen) {
+    indicate = false;
+  }
   const handlers = useSwipeable({
     trackMouse: true,
     onSwipedRight: () => setOpen(true),
@@ -43,13 +50,13 @@ const Main = ({ children, className }) => {
     ${gridBackground(theme.primary.main)};
     ${swipeAnimation(-280, 0)};
     width: ${menuWidth};
+    ${isOpen ? elevate(24) : ''};
     ${mq('tablet-wide')} {
       transform: none;
       transition: none;
     }
   `;
   const mainStyle = theme => css`
-    height: 100%;
     display: grid;
     align-content: flex-start;
     font-size: 1.25rem;
@@ -59,6 +66,31 @@ const Main = ({ children, className }) => {
       margin: 0 0 0 ${menuWidth};
       transform: none;
       transition: none;
+    }
+
+    .indicator {
+      ${indicate ? css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: sticky;
+        background: rgba(0,0,0,0.8);
+        width: 100%;
+        height:4rem;
+        bottom: 0;
+        font-family: Rubik, sans-serif;
+        font-weight: 300;
+        color: rgba(255,255,255,0.8);
+        text-shadow: 0 1px 1px black;
+        svg {
+          height: 100%;
+          width: auto;
+          filter: drop-shadow(0 1px 1px black);
+        }
+        h3 {
+          margin-right: 1rem;
+        }
+      ` : ''};
     }
   `;
 
@@ -70,6 +102,11 @@ const Main = ({ children, className }) => {
         <Menu css={menuStyle}/>
         <main css={mainStyle} className={className}>
           {children}
+          <Copyright/>
+          {/* <div className="indicator">
+            <Icon icon='MdKeyboardArrowRight'/>
+            <h3>Slide to Open Menu</h3>
+          </div> */}
         </main>
       </div>
     </>

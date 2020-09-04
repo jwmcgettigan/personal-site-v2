@@ -8,7 +8,7 @@ import { elevate, mq, bp, color } from 'helpers';
 const Section = ({ children, ...props }) => {
 
   const sectionStyle = theme => css`
-    margin: 2rem;
+    //margin: 2rem;
     margin-top: 0;
     padding: 1rem;
     //background: ${color(theme.primary.main).setAlpha(0.3).str};

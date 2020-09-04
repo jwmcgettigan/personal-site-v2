@@ -42,7 +42,7 @@ const resume = {
     major: "Computer Science, B.S. (GPA: 3.8) with a Concentration in Cyber Security",
     coursework: {
       fundamentals: 'Algorithms, Data Structures, OS Concepts, Networks, Project Management, Statistics',
-      topics: 'Computer Vision, Autonomous Systems, Software Engineering, Human Computer Interaction'
+      topics: 'Computer Vision, Autonomous Systems, Software Engineering, Human-Computer Interaction'
     }, // Select the relevant coursework depending on the role and focus
   },
   employment: [ // Select the relevant employement depending on the role and focus
@@ -54,7 +54,7 @@ const resume = {
       time: "May 2019-Aug 2019",
       highlights: [
         "Prototyped a cost-efficient RGB-D based RTLS, similar to OpenPTrack, by testing different RTLS's for people tracking, creating deployment models, and performing cost-benefit and feasibility analyses.",
-        "Visualized the distance of persons from a point, based upon the strength of their phones' bluetooth signal, by using plot.ly to process data through an Azure API",
+        "Visualized the distance of persons from a point, based upon the strength of their phones' bluetooth signal, by using plot.ly to process data through an Azure API.",
         "Collaborated with a team on a hackathon project (Suspect Search) by implementing the keyword detection, speech-to-text, and natural language processing components.",
       ],
       leveraged: "Git, Docker, C, C++, Python, OpenCV, Matrix Math, Azure App/Log Analytics, plot.ly, Grafana, Intel RealSense SDK & D435 RGB-D camera."
@@ -71,7 +71,7 @@ const resume = {
         "Implemented a network monitor, firewall and VPN, and centralized security administration by respectively creating a server for LibreNMS, pfSense, and Kaspersky Security Center.",
         "Assessed and inventoried the entire IT infrastructure by creating diagrams, supporting documentation, and advocating the use of management tools like Trello.",
       ],
-      leveraged: "Bash Scripting, Virtualization (VMware vSphere), Network Security (pfSense), Computer Security (Kaspersky Security Center), SQL Database Management (phpMyAdmin), cPanel, WordPress"
+      leveraged: "Bash Scripting, Virtualization (VMware vSphere), Network Security (pfSense), Computer Security (Kaspersky Security Center), SQL Database Management (phpMyAdmin), cPanel, and WordPress."
     }/*,
     {
       company: "Florida Polytechnic University",
@@ -90,7 +90,7 @@ const resume = {
       website: "https://jwmcgettigan.com",
       desc: "<a href='https://www.jwmcgettigan.com/'>www.jwmgettigan.com</a> (for more information and projects)",
       highlights: [],
-      utilized: "JavaScript, HTML, CSS, ReactJS, NodeJS, Git"
+      utilized: "JavaScript, HTML, CSS, ReactJS, NodeJS, Git, MongoDB, Docker"
     },
     {
       name: "PhoenixHacks Live",
@@ -132,11 +132,14 @@ const resume = {
       utilized: "Python, OpenCV, ROS, LiDAR, ZED Stereoscopic Camera, Nvidia TX2, Linux, Git"
     }
   ],
-  skills: {
-    fluent: [],
-    proficient: "Python, JavaScript, Java, Unix, Git, HTML/CSS",
-    familiar: "C, C++, C#, SQL, NoSQL"
-  }
+  skills: [
+    {
+      type: 'Software',
+      fluent: '',
+      proficient: "Python, JavaScript, Java, Unix, Git, HTML/CSS, Bash",
+      familiar: "C, C++, C#, SQL, NoSQL"
+    }
+  ]
 }
 
 export default resume;

@@ -9,7 +9,7 @@ import profilePic from 'assets/body-shot-256x256.png';
 
 const data = {
   name: 'Justin McGettigan',
-  desc: 'I am a software developer with a passion for virtual reality and autonomous systems.',
+  desc: 'I am a software developer with a passion for mathematics and computer science.',
   status: 'Job Searching',
   image: profilePic
 }

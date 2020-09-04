@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { NavLink } from "react-router-dom";
+import moment from 'moment';
 
 // Import components
 import Main from 'modules/common/Main';
@@ -8,89 +9,141 @@ import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
 import Image from 'modules/common/Image';
 import Icon from 'modules/common/Icon';
+import Link from 'modules/common/Link';
 
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
+// use pause, play, & stop to indicate 'haitus', 'in progress', and 'done'
+const lastActiveCurrent = moment().format('MMM YYYY');
 const projects = [
   {
     name: "PhoenixHacks Live",
     summary: "The live site for PhoenixHacks 2020.",
-    status: 'complete',
-    //image: "phoenixhacks.png",
-    url: {
-      demo: "https://live.phoenixhacks.com/",
-      repo: "https://github.com/PhoenixHacks/2020-live-web"
+    status: {
+      title: 'Complete',
+      icon: 'FaStopCircle',
+      color: '#975450'
     },
-    tags: ['javascript', 'nodejs', 'reactjs', 'HTML', 'CSS']
+    image: require('assets/projects/PhoenixHacks Live.gif'),
+    urls: [
+      {
+        href: 'https://live.phoenixhacks.com/',
+        icon: 'FaGlobe'
+      },
+      {
+        href: 'https://github.com/PhoenixHacks/2020-live-web',
+        icon: 'FaGithub'
+      }
+    ],
+    tags: ['javascript', 'nodejs', 'reactjs', 'HTML', 'CSS'],
+    lastActive: 'Jan 2020'
   },
   {
     name: "Suspect Search",
-    summary: "Use geolocation and verbal description to identify nearby suspects.",
-    status: 'complete',
-    //image: "moto-avigilon.jpg",
-    url: {
-      demo: "",
-      repo: ""
+    summary: "Use geolocation + verbal description + security cameras to find suspects.",
+    status: {
+      title: 'Complete',
+      icon: 'FaStopCircle',
+      color: '#975450'
     },
-    tags: ['python']
+    image: require('assets/projects/Suspect Search.jpg'),
+    urls: [],
+    tags: ['python', 'STT', 'NLP'],
+    lastActive: 'July 2019'
   },
   {
     name: "RGB-D Based RTLS",
     summary: "Track and visualize people in a room.",
-    status: 'complete',
-    //image: "RGB-D.jpg",
-    url: {
-      demo: "",
-      repo: ""
+    status: {
+      title: 'Complete',
+      icon: 'FaStopCircle',
+      color: '#975450'
     },
-    tags: ['computer vision', 'python', 'opencv']
+    image: require('assets/projects/RGB-D Based RTLS.jpg'),
+    urls: [],
+    tags: ['computer vision', 'python', 'opencv'],
+    lastActive: 'Aug 2019'
   },
   {
     name: "Gaze-Based UI Navigation",
     summary: "Move your mouse to your gaze's destination.",
-    status: 'haitus',
-    //image: "hyperbolic.png",
-    url: {
-      demo: "",
-      repo: ""
+    status: {
+      title: 'Haitus',
+      icon: 'FaPauseCircle',
+      color: '#978840'
     },
-    tags: ['computer vision', 'python', 'opencv', 'human-computer interaction']
+    image: require('assets/projects/Gaze-Based UI Navigation.jpg'),
+    urls: [],
+    tags: ['computer vision', 'python', 'opencv', 'human-computer interaction'],
+    lastActive: 'Dec 2019'
   },
   {
     name: "Patient Egress Alert System",
     summary: "Detects if a patient is leaving their bed.",
-    //image: "VDS.png",
-    status: 'complete', // 'unsatisfied completion'?
-    url: {
-      demo: "",
-      repo: ""
-    },
-    tags: ['computer vision', 'python', 'opencv']
+    image: require('assets/projects/Patient Egress Alert System.jpg'),
+    status: {
+      title: 'Complete',
+      icon: 'FaStopCircle',
+      color: '#975450'
+    }, // 'unsatisfied completion'?
+    urls: [],
+    tags: ['computer vision', 'python', 'opencv'],
+    lastActive: 'May 2019'
   },
   {
     name: "Renegade",
     summary: "A level 3 autonomous vehicle.",
-    status: 'complete',
-    //image: "renegade.jpg",
-    url: {
-      demo: "",
-      repo: "https://github.com/jwmcgettigan/renegade"
+    status: {
+      title: 'Complete',
+      icon: 'FaStopCircle',
+      color: '#975450'
     },
-    tags: ['computer vision', 'python', 'opencv', 'lidar', 'stereoscopic camera', 'autonomous systems']
+    image: require('assets/projects/Renegade.jpg'),
+    urls: [
+      {
+        href: 'https://github.com/jwmcgettigan/renegade',
+        icon: 'FaGithub'
+      }
+    ],
+    tags: ['computer vision', 'python', 'opencv', 'lidar', 'stereoscopic camera', 'autonomous systems'],
+    lastActive: 'May 2018'
   },
   {
     name: "Project Euler",
     summary: "My answers to Project Euler problems.",
-    status: 'in progress',
-    //image: "renegade.jpg",
-    url: {
-      demo: "",
-      repo: "https://github.com/jwmcgettigan/project-euler-solutions"
+    status: {
+      title: 'In Progress',
+      icon: 'FaPlayCircle',
+      color: '#3e7068'
     },
-    tags: ['python', 'javascript', 'math']
-  }
+    image: require('assets/projects/Project Euler.jpg'),
+    urls: [
+      {
+        href: 'https://github.com/jwmcgettigan/project-euler-solutions',
+        icon: 'FaGithub'
+      }
+    ],
+    tags: ['python', 'javascript', 'math'],
+    lastActive: lastActiveCurrent
+  },
+  {
+    name: "My Personal Website",
+    summary: "A place to advertise and express myself.",
+    status: {
+      title: 'In Progress',
+      icon: 'FaPlayCircle',
+      color: '#3e7068'
+    },
+    icon: 'FaGlobe',
+    urls: [],
+    tags: ['javascript', 'nodejs', 'reactjs', 'HTML', 'CSS', 'MongoDB', 'API', 'CMS', 'Docker', 'full-stack'],
+    lastActive: lastActiveCurrent
+  },
 ];
+// sort them by status, then by date
+projects.sort((a, b) => new Date(b.lastActive) - new Date(a.lastActive));
+
 
 /**
  * I should have a section for github stats if there is a github link.
@@ -101,15 +154,53 @@ const ProjectCard = ({ project, ...rest}) => {
   const style = theme => css`
     ${elevate(1)};
     border-radius: 4px;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    align-content: flex-start;
 
     .info {
-      padding: 0 1rem 1rem 1rem;
+      display: grid;
+      gap: 0.25rem;
+      grid-template-rows: min-content auto min-content;
+      padding: 0.5rem 1rem 1rem 1rem;
 
       h4 {
         font-weight: 500;
       }
       p {
         font-size: 1rem;
+      }
+
+      .bottom {
+        display: grid;
+        grid-template-columns: auto min-content;
+        align-items: center;
+        margin-top: 0.5rem;
+
+        .urls {
+          display: grid;
+          grid-auto-flow: column;
+          gap: 1rem;
+          justify-content: left;
+          a {
+            display: grid;
+            align-content: center;
+          }
+        }
+
+        p {
+          white-space: nowrap;
+          //font-style: italic;
+          font-family: monospace;
+          font-weight: 600;
+          font-size: 1rem;
+        }
+      }
+
+      .name-status {
+        display: grid;
+        grid-template-columns: auto min-content;
+        align-items: center;
       }
     }
 
@@ -118,25 +209,17 @@ const ProjectCard = ({ project, ...rest}) => {
       ${elevate(4)};
       transform: scale(1.01, 1.01);
     }
+
+    a:hover {
+      color: ${theme.primary.A200};
+    }
   `;
 
   const imageStyle = theme => css`
     min-width: 16rem;
     height: 16rem;
-
-    &:after {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      box-sizing: inherit;
-      border: inherit;
-      border-radius: inherit;
-      background: rgba(0,0,0, 0.2);
-      pointer-events: none;
-    }
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 
     .tags {
       display: none;
@@ -155,10 +238,30 @@ const ProjectCard = ({ project, ...rest}) => {
         padding: .2em .5em .3em;
         margin: 0 0.5em 0.5em 0;
         ${elevate(1)};
+        cursor: pointer;
+        font-weight: 500;
+
+        &:hover {
+          color: ${color('#fff').getContrastText(15).str};
+        }
       }
     }
 
     &:hover {
+      &:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-sizing: inherit;
+        border: inherit;
+        border-radius: inherit;
+        background: rgba(0,0,0, 0.2);
+        pointer-events: none;
+      }
+
       .tags {
         display: flex;
       }
@@ -173,12 +276,23 @@ const ProjectCard = ({ project, ...rest}) => {
           : <Icon icon='FaExclamationTriangle'/>
         }
         <div className="tags">
-          {project.tags.map(tag => <div>{tag}</div>)}
+          {project.tags.map(tag => <div key={tag}>{tag}</div>)}
         </div>
       </Image>
       <div className="info">
-        <h4>{project.name}</h4>
+        <div className="name-status">
+          <h4>{project.name}</h4>
+          <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
+        </div>
         <p>{project.summary}</p>
+        <div className="bottom">
+          <div className="urls">
+            {project.urls.map((url, i) => {
+              return <Link key={i} href={url.href} newtab><Icon icon={url.icon}/></Link>
+            })}
+          </div>
+          <p>{project.lastActive}</p>
+        </div>
       </div>
     </div>
   );
