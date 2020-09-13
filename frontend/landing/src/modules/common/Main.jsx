@@ -28,10 +28,10 @@ const Main = ({ children, className }) => {
 
   const gridBackground = (bg_color) => css`
     background-color: ${bg_color};
-    /* background-image:
+    /*background-image:
     repeating-linear-gradient(${color(bg_color).getContrastText(1.1).toString()} 0 1px, transparent 1px 100%),
     repeating-linear-gradient(90deg, ${color(bg_color).getContrastText(1.1).toString()} 0 1px, transparent 1px 100%);
-    background-size: 8px 8px; */
+    background-size: 8px 8px;*/
   `;
 
   const swipeAnimation = (from, to) => css`
@@ -40,9 +40,8 @@ const Main = ({ children, className }) => {
   `;
 
   const containerStyle = css`
+    display: grid;
     overflow-x: hidden;
-    width: 100%;
-    height: 100%;
   `;
 
   const menuWidth = '280px';

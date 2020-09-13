@@ -17,8 +17,8 @@ export default [
   Portfolio,
   //Blog,
   //Gallery,
-  Contact,
-  Demo,
+  //Contact,
+  //Demo,
   //Admin,
   NotFound
 ];

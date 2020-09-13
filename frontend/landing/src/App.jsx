@@ -9,6 +9,7 @@ import {
 
 // Import modules
 import pages from 'modules/pages';
+import projectpages from 'modules/pages/Projects';
 
 // Import documents
 import Basic from 'modules/pages/Resume/Basic';
@@ -66,6 +67,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <Switch>
             <Route path="/resume/basic" component={Basic} exact/>
+            {projectpages.map(page => (
+              <Route {...page.routeProps} key={page.name}/>
+            ))}
             {pages.map(page => (
               <Route {...page.routeProps} key={page.name}/>
             ))}

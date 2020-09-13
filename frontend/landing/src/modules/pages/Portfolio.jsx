@@ -13,6 +13,7 @@ import Link from 'modules/common/Link';
 
 // Import helpers
 import { elevate, mq, color } from 'helpers';
+import { useState } from 'react';
 
 // use pause, play, & stop to indicate 'haitus', 'in progress', and 'done'
 const lastActiveCurrent = moment().format('MMM YYYY');
@@ -141,9 +142,47 @@ const projects = [
     lastActive: lastActiveCurrent
   },
 ];
+// derive the path for each project from its name
+projects.map(project => {
+  project.path = `/portfolio/${project.name.replace(/\s+/g, '-').toLowerCase()}`
+})
+
 // sort them by status, then by date
 projects.sort((a, b) => new Date(b.lastActive) - new Date(a.lastActive));
 
+const TagsToggle = (props) => {
+  const style = theme => css`
+    font-size: 1rem;
+    border-radius: 25%;
+    background: ${color(theme.secondary.light).setAlpha(0.5).str};
+    color: ${color(theme.secondary.light).getContrastText(15).str};
+    border: 1px solid ${color(theme.secondary.light).getContrastText(5).str};
+    //padding: .2em .5em .3em;
+    margin: 0 0.5em 0.5em 0;
+    ${elevate(4)};
+    cursor: pointer;
+    font-weight: 500;
+    //pointer-events: none;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    height: 2rem;
+    width: 2rem;
+
+    svg {
+      height: 80%;
+      width: 80%;
+    }
+
+    &:hover {
+      color: ${color('#fff').getContrastText(15).str};
+    }
+  `;
+
+  return <div css={style} {...props}>
+    <Icon icon='FaTags'/>
+  </div>
+} //() => setShowTags(state)
 
 /**
  * I should have a section for github stats if there is a github link.
@@ -151,6 +190,8 @@ projects.sort((a, b) => new Date(b.lastActive) - new Date(a.lastActive));
  * Show status to the right of the project name.
  */
 const ProjectCard = ({ project, ...rest}) => {
+  const [showTags, setShowTags] = useState(false);
+
   const style = theme => css`
     ${elevate(1)};
     border-radius: 4px;
@@ -185,6 +226,14 @@ const ProjectCard = ({ project, ...rest}) => {
           a {
             display: grid;
             align-content: center;
+
+            span {
+              background: grey;
+              border-radius: 4px;
+              //background: ${theme.secondary.light};
+              //color: ${color(theme.secondary.light).getContrastText(15).str};
+              //padding: .1em .25em .15em;
+            }
           }
         }
 
@@ -213,13 +262,33 @@ const ProjectCard = ({ project, ...rest}) => {
     a:hover {
       color: ${theme.primary.A200};
     }
+
+    //animation: breath 3s alternate infinite;
+
+    @keyframes breath {
+      0% {
+        width: 50px;
+        height: 50px;
+      }
+      100% {
+        width: 500px;
+        height: 500px;
+      }
+    }
   `;
 
-  const imageStyle = theme => css`
+  const imageLinkStyle = theme => css`
     min-width: 16rem;
     height: 16rem;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+
+    .tagsToggle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 1rem;
+    }
 
     .tags {
       display: none;
@@ -230,8 +299,9 @@ const ProjectCard = ({ project, ...rest}) => {
 
       //display: flex;
       flex-wrap: wrap;
+      align-items: center;
 
-      & > div {
+      & > span {
         font-size: 1rem;
         background: ${theme.secondary.light};
         color: ${color(theme.secondary.light).getContrastText(15).str};
@@ -248,6 +318,28 @@ const ProjectCard = ({ project, ...rest}) => {
     }
 
     &:hover {
+      ${ showTags ? css`
+        .tags {
+          display: flex;
+          div > svg {
+            height: 50%;
+            width: 50%;
+          }
+        }
+        .tagsToggle {
+          display: none;
+        }
+      ` : ''};
+    }
+  `;
+
+  const imageStyle = theme => css`
+    min-width: 16rem;
+    height: 16rem;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    &:hover {
       &:after {
         position: absolute;
         content: '';
@@ -261,34 +353,45 @@ const ProjectCard = ({ project, ...rest}) => {
         background: rgba(0,0,0, 0.2);
         pointer-events: none;
       }
-
-      .tags {
-        display: flex;
-      }
     }
   `;
 
   return (
     <div css={style} {...rest}>
-      <Image css={imageStyle} src={project.image} alt=''>
-        { project.icon != null
-          ? <Icon icon={project.icon}/>
-          : <Icon icon='FaExclamationTriangle'/>
-        }
+      <div css={imageLinkStyle}>
+        <NavLink to={project.path} exact>
+          <Image css={imageStyle} src={project.image} alt=''>
+            { project.icon != null
+              ? <Icon icon={project.icon}/>
+              : <Icon icon='FaExclamationTriangle'/>
+            }
+          </Image>
+        </NavLink>
         <div className="tags">
-          {project.tags.map(tag => <div key={tag}>{tag}</div>)}
+          <TagsToggle onClick={() => setShowTags(false)}/>
+          {project.tags.map(tag => <span key={tag}>{tag}</span>)}
         </div>
-      </Image>
+        <div className="tagsToggle">
+          <TagsToggle onClick={() => setShowTags(true)}/>
+        </div>
+      </div>
       <div className="info">
         <div className="name-status">
-          <h4>{project.name}</h4>
+          <NavLink to={project.path} exact>
+            <h4>{project.name}</h4>
+          </NavLink>
           <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
         </div>
         <p>{project.summary}</p>
         <div className="bottom">
           <div className="urls">
             {project.urls.map((url, i) => {
-              return <Link key={i} href={url.href} newtab><Icon icon={url.icon}/></Link>
+              return (
+                <Link key={i} href={url.href} newtab>
+                  {url.icon != null ? <Icon icon={url.icon}/> : ''}
+                  {url.text != null ? <span>{url.text}</span> : ''}
+                </Link>
+              )
             })}
           </div>
           <p>{project.lastActive}</p>

@@ -108,6 +108,16 @@ const About = (props) => {
     .row {
       display: grid;
       grid-auto-flow: column;
+      justify-content: left;
+      gap: 2rem;
+    }
+
+    .block {
+      display: grid;
+      align-content: flex-start;
+      h3 { 
+        margin-bottom: 1rem;
+      }
     }
 
     h3 {
@@ -185,25 +195,36 @@ const About = (props) => {
       </Header>
       <Section css={sectionStyle}>
         <h2>Introduction</h2>
-        <p>Hello there! Here's a little bit about myself.  I'm Justin McGettigan and I'm a software developer.  I live in <a href="https://en.wikipedia.org/wiki/Florida">Florida</a> and I studied computer science at <a href="https://en.wikipedia.org/wiki/Florida_Polytechnic_University">Florida Polytechnic University</a>.  My primary interests include programming, mathematics, gaming, and web novels.  I'm particularly passionate about Computer Vision, Autonomous Systems, and Human-Computer Interaction.  You'll be able to see these interests in my projects.</p>
+        <p>Hello there! Here's a little bit about myself.  I'm Justin McGettigan and I'm a software developer.  I live in <a href="https://en.wikipedia.org/wiki/Florida">Florida</a> and I studied computer science at <a href="https://en.wikipedia.org/wiki/Florida_Polytechnic_University">Florida Polytechnic University</a>.  My primary interests include programming, mathematics, gaming, and web novels.  I'm particularly passionate about <a href="https://en.wikipedia.org/wiki/Computer_vision">Computer Vision</a>, <a href="https://en.wikipedia.org/wiki/Autonomous_robot">Autonomous Systems</a>, and <a href="https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction">Human-Computer Interaction</a>.  You'll be able to see these interests in my projects.</p>
         <p>This website is a passion project of mine that I plan to continuously develop. While I have many plans that I'm still fleshing out, my current intended usages of this site include:</p>
         <ul>
           <li>Supplementing information for prospective employers such as my character, passions, projects, etc.</li>
           <li>Consolidating my knowledge and understanding on many topics for both myself and others.</li>
           <li>Exhibiting my work for its quality, digestibility, and visualizations.</li>
         </ul>
+        <p css={theme => css`color: ${theme.secondary.A700};`}>Note: I am currently working on adding content to the site.  For now, it's pretty bare-bones.</p>
 
-        <h3>Web Presence</h3>
-        <div className="resource-cards">
-          {socialNetworks.map(sn => (
-            <Link href={sn.url}>
-              <div className="resource-card">
-                <Icon icon={sn.icon}/>
-                <h5>{sn.name}</h5>
-              </div>
-            </Link>
-          ))}
+        <div className="row">
+          <div className="block">
+            <h3>Web Presence</h3>
+            <div className="resource-cards">
+              {socialNetworks.map(sn => (
+                <Link href={sn.url}>
+                  <div className="resource-card">
+                    <Icon icon={sn.icon}/>
+                    <h5>{sn.name}</h5>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <div className="block">
+            <h3>Contact</h3>
+            <p>Feel free to get in touch. You can email me at:</p>
+            <a href="mailto:jwmcgettigan@gmail.com">jwmcgettigan@gmail.com</a>
+          </div>
         </div>
+        
         {/* Have a section to address prospective employers. */}
         {/* <p>If you're a prospective employer...</p> */}
 
@@ -221,12 +242,12 @@ const About = (props) => {
           <div>
             <h3>Gaming</h3>
             <p>I've been playing games since as far back as I can remember. At every opportunity, no matter the platform, if there was a game then I was playing it: board games, consoles, PCs, sports, etc.</p>
-            <p>Up until I got a PS2 as my first console, I had played games like Runescape, Civ 3, Stronghold Crusaders, C&C on friends' and parents' computers.  Some memorable games were the Pokemon series on GBA and SW:BF2 on PSP.</p>
-            <p>After playing every kind of game my PS2, I moved to Xbox 360 where I mostly played COD, and then finally I got a PC.  I played Minecraft for a good 2 years up until it left beta and then my gaming after that has been pretty exclusively on PC.</p>
+            <p>Before having a console, I played games like Runescape, <a href="https://en.wikipedia.org/wiki/Civilization_(series)">Civ 3</a>, <a href="https://en.wikipedia.org/wiki/Stronghold:_Crusader">Stronghold: Crusader</a>, and <a href="https://en.wikipedia.org/wiki/Command_%26_Conquer">C&C</a> on friends' and parents' computers.  Some memorable games were the Pokemon series on a <a href="https://en.wikipedia.org/wiki/Game_Boy_Advance_SP">GBA SP</a> and <a href="https://en.wikipedia.org/wiki/Star_Wars:_Battlefront_II_(2005_video_game)">SW:BF2</a> on <a href="https://en.wikipedia.org/wiki/PlayStation_Portable">PSP</a>.</p>
+            <p>After getting a <a href="https://en.wikipedia.org/wiki/PlayStation_2">PS2</a> as my first console and creating many memories with it, I moved to <a href="https://en.wikipedia.org/wiki/Xbox_360">Xbox 360</a> where I mostly played <a href="https://en.wikipedia.org/wiki/Call_of_Duty">CoD: Black Ops</a>, and then finally I got a PC.  I played Minecraft for a good 2 years up until it left beta and then my gaming after that has been pretty exclusively on PC.</p>
           </div>
           <div>
             <h3>Web Novels</h3>
-            <p>I used to be a person who wasn't into anime. Then I watched ATLA the summer after middle school and it was my gateway drug into the world of anime. I binged every anime I could find until my junior year when finding anime that fit my tastes started becoming more difficult.</p>
+            <p>I used to be a person who wasn't into anime. Then I watched <a href="https://en.wikipedia.org/wiki/Avatar:_The_Last_Airbender">ATLA</a> the summer after middle school and it was my gateway drug into the world of anime. I binged every anime I could find until my junior year when finding anime that fit my tastes started becoming more difficult.</p>
             <p>It was at this time that I started transitioning into the world of manga.  I quickly consumed every manga I could find.  By my senior year I had expanded my search to manhua and manhwa.</p>
             <p>Once I'd exhausted that medium, I transitioned to light novels.  After that, my search into Korean and Chinese novels introduced me to the world of web novels.  With sites like <a href="https://royalroad.com/">RoyalRoad</a> for native english works and sites like <a href="https://wuxiaworld.com/">Wuxiaworld</a> for translated works.</p>
             <p>Nowadays, I've largely exhausted this medium as well though I continue to read whenever I find something I enjoy.</p>

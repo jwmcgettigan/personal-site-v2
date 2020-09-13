@@ -1,0 +1,70 @@
+https://www.jwmcgettigan.com
+https://linkedin.com/in/jwmcgettigan
+https://github.com/jwmcgettigan
+
+Justin McGettigan
+
+(352) 585-9655
+jwmcgettigan@gmail.com
+Webster, FL
+
+Education
+	Lakeland, FL
+	Florida Polytechnic University
+	Aug 2016 - Dec 2019
+		• Major: Computer Science, B.S. (GPA: 3.8) with a Concentration in Cyber Security
+		• Coursework: (fundamentals): Algorithms, Data Structures, OS Concepts, Networks, Project Management, Statistics
+		(topics): Computer Vision, Autonomous Systems, Software Engineering, Human-Computer Interaction
+
+Employment
+	Software Engineer Intern
+	Motorola Solutions
+	May 2019-Aug 2019
+		Systems and Solutions team for Innovation Design and Realization.
+		• Prototyped a cost-efficient RGB-D based RTLS, similar to OpenPTrack, by testing different RTLS's for people tracking,
+		creating deployment models, and performing cost-benefit and feasibility analyses.
+		• Visualized the distance of persons from a point, based upon the strength of their phones' bluetooth signal, by using
+		plot.ly to process data through an Azure API.
+		Collaborated with a team on a hackathon project (Suspect Search) by implementing the keyword detection, speech-totext, and natural language processing components.
+		• Leveraged knowledge in Git, Docker, C, C++, Python, OpenCV, Matrix Math, Azure App/Log Analytics, plot.ly, Grafana,
+		Intel RealSense SDK & D435 RGB-D camera.
+
+	IT Administrator
+	Maven Asset Management
+	Feb 2017-May 2019
+		• Refined management of Windows and Linux development VM's through VMware vSphere by crafting templates,
+		standardizing server documentation, and automating server updates and backups.
+		• Improved company website security and performance through WordPress updates, backups, and database optimization.
+		• Implemented a network monitor, firewall and VPN, and centralized security administration by respectively creating a
+		server for LibreNMS, pfSense, and Kaspersky Security Center.
+		• Assessed and inventoried the entire IT infrastructure by creating diagrams, supporting documentation, and advocating
+		the use of management tools like Trello.
+		• leveraged knowledge in Bash Scripting, Virtualization (VMware vSphere), Network Security (pfSense), Computer Security
+		(Kaspersky Security Center), SQL Database Management (phpMyAdmin), cPanel, and WordPress.
+
+Projects
+	Personal Website: www.jwmgettigan.com (for more information and projects)
+	• Utilized: JavaScript, HTML, CSS, ReactJS, NodeJS, Git
+	
+	PhoenixHacks Live:
+	• Developed a React app that functions as a real-time information hub for users to refer to during PhoenixHacks.
+	• Designed and wrote the web app after kickstarting it with create-react-app.
+	• Setup an API server hosting a discord bot and a socket.io server - for real-time announcements from discord.
+	• Utilized: JavaScript, HTML, CSS, ReactJS, NodeJS, ExpressJS, DiscordJS, SocketIO, Git
+	
+	RGB-D Based RTLS:
+	• Exercised high levels of linear algebra for conversions between spatial frames of reference.
+	• Created stitched visualizations of point cloud data from multiple cameras and a top-down view of tracked persons.
+	• Utilized: Python, OpenCV, C, C++, OpenPTrack, ROS, Linux, Git
+	
+	Gaze-Based UI Navigation:
+	• Developed an OpenCV application that walks the user through calibrating their eyes' focal point with their mouse cursor.
+	• Utilized: Python, OpenCV, Git
+	
+	Renegade:
+	• Lead a team of two in the creation and testing of software for a level 3 autonomous vehicle using computer vision and
+	sensor fusion technologies.
+	• Utilized: Python, OpenCV, ROS, LiDAR, ZED Stereoscopic Camera, Nvidia TX2, Linux, Git
+
+Skills
+	Software: (proficient): Python, JavaScript, Java, Unix, Git, HTML/CSS, Bash | (familiar): C, C++, C#, SQL, NoSQL
