@@ -106,9 +106,8 @@ const About = (props) => {
     padding-bottom: 1.5rem;
 
     .row {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: left;
+      display: flex;
+      flex-wrap: wrap;
       gap: 2rem;
     }
 
@@ -131,6 +130,7 @@ const About = (props) => {
       &:hover {
         text-decoration: underline;
         text-decoration-color: ${theme.primary.A700};
+        cursor: pointer;
       }
     }
 

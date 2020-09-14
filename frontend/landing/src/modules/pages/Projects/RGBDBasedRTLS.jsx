@@ -1,10 +1,10 @@
 import UnderConstruction from 'modules/pages/UnderConstruction';
 
 export default {
-  name: 'Project Euler',
+  name: 'RGB-D Based RTLS',
   icon: 'FaUserAlt',
   routeProps: {
-    path: '/portfolio/project-euler',
+    path: '/portfolio/rgb-d-based-rtls',
     exact: true,
     component: UnderConstruction
   }

@@ -174,8 +174,8 @@ const Basic = ({ className }) => {
       </div>
       <div className="skills">
         <h3 className="section-title">Skills</h3>
-        {resume.skills.map(skills => (
-          <p>
+        {resume.skills.map((skills, i) => (
+          <p key={i}>
             <b>{skills.type}: </b><i>(proficient): </i>{skills.proficient} | <i>(familiar): </i>{skills.familiar}
           </p>
         ))}

@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { NavLink } from "react-router-dom";
+import { useState } from 'react';
 import moment from 'moment';
 
 // Import components
@@ -13,7 +14,6 @@ import Link from 'modules/common/Link';
 
 // Import helpers
 import { elevate, mq, color } from 'helpers';
-import { useState } from 'react';
 
 // use pause, play, & stop to indicate 'haitus', 'in progress', and 'done'
 const lastActiveCurrent = moment().format('MMM YYYY');
@@ -330,6 +330,32 @@ const ProjectCard = ({ project, ...rest}) => {
           display: none;
         }
       ` : ''};
+      ${mq('desktop')} {
+        .tags {
+          display: flex;
+          div > svg {
+            height: 50%;
+            width: 50%;
+          }
+        }
+        .tagsToggle {
+          display: none;
+        }
+      }
+    }
+    ${mq('desktop')} {
+      ${ showTags ? css`
+        .tags {
+          display: flex;
+          div > svg {
+            height: 50%;
+            width: 50%;
+          }
+        }
+        .tagsToggle {
+          display: none;
+        }
+      ` : ''};
     }
   `;
 
@@ -368,11 +394,11 @@ const ProjectCard = ({ project, ...rest}) => {
           </Image>
         </NavLink>
         <div className="tags">
-          <TagsToggle onClick={() => setShowTags(false)}/>
+          <TagsToggle onClick={() => setShowTags(showTags => !showTags)}/>
           {project.tags.map(tag => <span key={tag}>{tag}</span>)}
         </div>
         <div className="tagsToggle">
-          <TagsToggle onClick={() => setShowTags(true)}/>
+          <TagsToggle onClick={() => setShowTags(showTags => !showTags)}/>
         </div>
       </div>
       <div className="info">

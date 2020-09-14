@@ -26,11 +26,16 @@ const Renegade = (props) => {
 
   const sectionStyle = theme => css`
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
     height: 100%;
     //font-size: 1.25rem;
     font-weight: 400;
     padding-bottom: 1.5rem;
+
+    & > div {
+      display: grid;
+      gap: 1rem;
+    }
 
     .row {
       display: grid;
@@ -110,50 +115,74 @@ const Renegade = (props) => {
         <h2>Renegade</h2>
       </Header>
       <Section css={sectionStyle}>
-        <div css={css`display: flex; gap: 2rem; align-items: center;`}>
+        <div>
           <div>
             <h2>What is this project?</h2>
             <p>Renegade was a self driving car that me and my classmate David Cicerrello spent a semester working on for our Autonomous Robotic Systems course.  The course was composed of 4-5 groups of students each with their own car competitively completing a series of increasingly difficult challenges throughout the semester.  The course was inspired by the <a href="https://racecar.mit.edu/">MIT racecar</a>.</p>
           </div>
           <RepoCard username="jwmcgettigan" repo="renegade"/>
         </div>
-        <h3>What kind of car was Renegade?</h3>
-        <p>Renegade was a rally racing model car that we took apart and put back together so that it gained a brain and some senses.  In particular, the brain was the NVIDIA Jetson TX2 and the sensors were a lidar (Hokuyo Laser Range Finder) and a stereoscopic camera (StereoLabsZED).</p>
-        <img css={css`width:80%;`} src={googleFileURL("1GKyqTYFHC2n1GM8YQ4POU8DEMTUnqGUX")}/>
+        <div>
+          <div>
+            <h3>What kind of car was Renegade?</h3>
+            <p>Renegade was a rally racing model car that we took apart and put back together so that it gained a brain and some senses.  In particular, the brain was the NVIDIA Jetson TX2 and the sensors were a lidar (Hokuyo Laser Range Finder) and a stereoscopic camera (StereoLabsZED).</p>
+          </div>
+          <img css={css`width:80%;`} src={googleFileURL("1GKyqTYFHC2n1GM8YQ4POU8DEMTUnqGUX")}/>
+        </div>
       </Section>
       <Section css={sectionStyle}>
-        <h2>What were the challenges?</h2>
-        <ul>
-          <li>Line Following</li>
-          <li>Obstacle Detection & Lane Centering</li>
-          <li>Visual Servoing Serpentine & Pole Bending</li>
-          <li>A Multi-Car Race</li>
-        </ul>
-
-        <h3>Line Following</h3>
-        <p>This was our first challenge and the one that forced me to learn python very quickly as I hadn't used it before this taking this course.  We essentially needed to use our stereoscopic camera to go through a course by staying centered upon a blue line in the form of blue tape along the ground.</p>
-        <div css={css`grid-template-columns: 1fr 271px;`} className="videos">
-          <iframe src="https://drive.google.com/file/d/1hPylMXipPmXH0asiaYOUh8mogN0U2NLp/preview"/>
-          <iframe src="https://drive.google.com/file/d/1gWxxc7XTLbcXmmKFa4HCSZUlxzD1lU78/preview"/>
+        <div>
+          <h2>What were the challenges?</h2>
+          <ul>
+            <li>Line Following</li>
+            <li>Obstacle Detection & Lane Centering</li>
+            <li>Visual Servoing Serpentine & Pole Bending</li>
+            <li>A Multi-Car Race</li>
+          </ul>
         </div>
 
-        <h3>Obstacle Detection & Lane Centering</h3>
-        <p>This challenge entailed using the Lidar to go through a course by staying centered between two walls and to be able to stop or circumvent any obstacles along the path.</p>
-        <div css={css`grid-template-columns: 271px 1fr;`} className="videos">
-          <iframe src="https://drive.google.com/file/d/1yxgHPOKaWoGiIgN_XKzwiiYcDobNNawc/preview"/>
-          <iframe src="https://drive.google.com/file/d/1qJ5e0DmQJovCi_FOUIU14jYXoksrPjxN/preview"/>
+        <div>
+          <div>
+            <h3>Line Following</h3>
+            <p>This was our first challenge and the one that forced me to learn python very quickly as I hadn't used it before this taking this course.  We essentially needed to use our stereoscopic camera to go through a course by staying centered upon a blue line in the form of blue tape along the ground.</p>
+          </div>
+          <div css={css`grid-template-columns: 1fr 271px;`} className="videos">
+            <iframe src="https://drive.google.com/file/d/1hPylMXipPmXH0asiaYOUh8mogN0U2NLp/preview"/>
+            <iframe src="https://drive.google.com/file/d/1gWxxc7XTLbcXmmKFa4HCSZUlxzD1lU78/preview"/>
+          </div>
         </div>
 
-        <h3>Visual Servoing Serpentine & Pole Bending</h3>
-        <p>This challenge was required a different mindset from the previous ones.  Instead of following a course, we had to be able to navigate around certain landmarks (yellow cones and an orange cube) while maintaining a certain pattern/behavior (swerving in a serpentine pattern).</p>
-        <iframe src="https://drive.google.com/file/d/1gX9T9vYlBpcPUVCRjkMHWeRBnHgxWONX/preview"/>
+        <div>
+          <div>
+            <h3>Obstacle Detection & Lane Centering</h3>
+            <p>This challenge entailed using the Lidar to go through a course by staying centered between two walls and to be able to stop or circumvent any obstacles along the path.</p>
+          </div>
+          <div css={css`grid-template-columns: 271px 1fr;`} className="videos">
+            <iframe src="https://drive.google.com/file/d/1yxgHPOKaWoGiIgN_XKzwiiYcDobNNawc/preview"/>
+            <iframe src="https://drive.google.com/file/d/1qJ5e0DmQJovCi_FOUIU14jYXoksrPjxN/preview"/>
+          </div>
+        </div>
 
-        <h3>A Multi-Car Race</h3>
-        <p>The idea behind this 'final challenge' was to test what we learned from all of our earlier challenges while adding the element of another vehicle in the mix.  We had to go through the course as fast as possible while avoiding the other vehicle.</p>
-        <iframe src="https://drive.google.com/file/d/1yFMl4V9Q-ftioWnG1WYd9m6-QlpG5hRz/preview"/>
+        <div>
+          <div>
+            <h3>Visual Servoing Serpentine & Pole Bending</h3>
+            <p>This challenge was required a different mindset from the previous ones.  Instead of following a course, we had to be able to navigate around certain landmarks (yellow cones and an orange cube) while maintaining a certain pattern/behavior (swerving in a serpentine pattern).</p>
+          </div>
+          <iframe src="https://drive.google.com/file/d/1gX9T9vYlBpcPUVCRjkMHWeRBnHgxWONX/preview"/>
+        </div>
+
+        <div>
+          <div>
+            <h3>A Multi-Car Race</h3>
+            <p>The idea behind this 'final challenge' was to test what we learned from all of our earlier challenges while adding the element of another vehicle in the mix.  We had to go through the course as fast as possible while avoiding the other vehicle.</p>
+          </div>
+          <iframe src="https://drive.google.com/file/d/1yFMl4V9Q-ftioWnG1WYd9m6-QlpG5hRz/preview"/>
+        </div>
       </Section>
-      <Section css={sectionStyle}>
-        
+      <Section>
+        <div css={css`text-align: right;`}>
+          Last Updated: 2020-09-13
+        </div>
       </Section>
     </Main>
   );

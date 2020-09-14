@@ -16,7 +16,7 @@ import { mq, color, elevate } from 'helpers';
 let indicate = true;
 
 const Main = ({ children, className }) => {
-  const [isOpen, setOpen] = useState(true);
+  const [isOpen, setOpen] = useState(false);
   if(isOpen) {
     indicate = false;
   }
@@ -42,6 +42,7 @@ const Main = ({ children, className }) => {
   const containerStyle = css`
     display: grid;
     overflow-x: hidden;
+    height: 100%;
   `;
 
   const menuWidth = '280px';

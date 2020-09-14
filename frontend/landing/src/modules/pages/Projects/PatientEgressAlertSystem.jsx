@@ -1,10 +1,10 @@
 import UnderConstruction from 'modules/pages/UnderConstruction';
 
 export default {
-  name: 'Project Euler',
+  name: 'Patient Egress Alert System',
   icon: 'FaUserAlt',
   routeProps: {
-    path: '/portfolio/project-euler',
+    path: '/portfolio/patient-egress-alert-system',
     exact: true,
     component: UnderConstruction
   }
