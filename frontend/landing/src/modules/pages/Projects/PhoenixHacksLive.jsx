@@ -17,10 +17,14 @@ import Image from 'modules/common/Image';
 import { elevate, mq, color, googleFileURL } from 'helpers';
 
 // Import images
-import Timer from 'assets/projects/phoenixhacks-live/PhoenixHacksTimer.png';
-import Schedule from 'assets/projects/phoenixhacks-live/PhoenixHacksSchedule.png';
-import Announcements from 'assets/projects/phoenixhacks-live/PhoenixHacksAnnouncements.png';
-import Diagram from 'assets/projects/phoenixhacks-live/PhoenixHacksDiagram.svg';
+//import Timer from 'assets/projects/phoenixhacks-live/PhoenixHacksTimer.png';
+//import Schedule from 'assets/projects/phoenixhacks-live/PhoenixHacksSchedule.png';
+//import Announcements from 'assets/projects/phoenixhacks-live/PhoenixHacksAnnouncements.png';
+//import Diagram from 'assets/projects/phoenixhacks-live/PhoenixHacksDiagram.svg';
+const Timer = '/assets/projects/phoenixhacks-live/PhoenixHacksTimer.png';
+const Schedule = '/assets/projects/phoenixhacks-live/PhoenixHacksSchedule.png';
+const Announcements = '/assets/projects/phoenixhacks-live/PhoenixHacksAnnouncements.png';
+const Diagram = '/assets/projects/phoenixhacks-live/PhoenixHacksDiagram.svg';
 
 const PhoenixHacksLive = (props) => {
   const style = theme => css`

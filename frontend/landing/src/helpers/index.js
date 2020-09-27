@@ -5,7 +5,11 @@ import { color } from './color';
 const exists = (any) => any != null;
 
 const googleFileURL = (fileID) => {
-  return `https://drive.google.com/uc?export=view&id=${fileID}`
+  return `https://drive.google.com/uc?export=view&id=${fileID}`;
+}
+
+const youtubeEmbedURL = (youtubeURL) => {
+  return `https://www.youtube-nocookie.com/embed/${youtubeURL}?rel=0&mute=1&modestbranding=1&origin=https://jwmcgettigan.com`;
 }
 
 const downloadFile = (path) => {
@@ -26,5 +30,6 @@ export {
   elevate,
   exists,
   color,
-  googleFileURL
+  googleFileURL,
+  youtubeEmbedURL
 }

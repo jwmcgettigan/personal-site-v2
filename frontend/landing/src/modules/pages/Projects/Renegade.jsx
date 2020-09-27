@@ -1,8 +1,11 @@
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
+import ReactPlayer from 'react-player';
 import { RepoCard } from 'react-github-cards';
 import 'react-github-cards/dist/default.css';
+//import { Document, Page, pdfjs } from 'react-pdf';
+//import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 // Import components
 import Main from 'modules/common/Main';
@@ -10,11 +13,18 @@ import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
 import Icon from 'modules/common/Icon';
 import Link from 'modules/common/Link';
+import Video from 'modules/common/Video';
+import Image from 'modules/common/Image';
+import CalloutCard from 'modules/common/CalloutCard';
 
 // Import helpers
-import { elevate, mq, color, googleFileURL } from 'helpers';
+import { elevate, mq, color, googleFileURL, youtubeEmbedURL } from 'helpers';
+import { useState } from 'react';
+
+//pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Renegade = (props) => {
+
   const style = theme => css`
     height: 100%;
 
@@ -24,49 +34,61 @@ const Renegade = (props) => {
     }
   `;
 
-  const sectionStyle = theme => css`
+  const videoDim = (width, type='px', ratio=16/9) => ({
+    width: `${width}${type}`,
+    height: `${width/ratio}${type}`
+  });
+
+  const videoDim2 = (width, type='px', ratio=16/9, important=false) => (css`
+    width: 100%;
+    height: ${width/ratio}${type}${important ? ' !important' : ''};
+    ${mq('phablet')} {
+      width: ${width}${type}${important ? ' !important' : ''};
+    }
+  `);
+
+  const articleStyle = theme => css`
+    background: ${theme.foreground};
+    color: ${color(theme.foreground).getContrastText(15).str};
+    ${elevate(1)};
+
+    justify-self: center;
     display: grid;
     gap: 2rem;
-    height: 100%;
-    //font-size: 1.25rem;
-    font-weight: 400;
-    padding-bottom: 1.5rem;
+    padding: 1.25rem;
+    max-width: 50rem;
 
-    & > div {
-      display: grid;
-      gap: 1rem;
+    ${mq('tablet')} {
+      padding: 2rem 4rem;
     }
 
-    .row {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: left;
-      gap: 2rem;
+    @media (min-width: 67.5rem) {
+      //max-width: 50rem;
     }
+    
+    section {
 
-    .block {
-      display: grid;
-      align-content: flex-start;
-      h3 { 
-        margin-bottom: 1rem;
+      .videos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: left;
       }
-    }
 
-    .videos {
-      display: grid;
-      gap: 2rem;
-      justify-content: left;
-    }
+      .video {
+        margin-top: 1.5rem;
+      }
 
-    iframe {
-      width: 100%;
-      max-width: 880px;
-      height: 480px;
-    }
-
-    h3 {
-      font-family: 'Rubik', sans-serif;
-      font-weight: 300;
+      .vertical {
+        ${videoDim2(200, 'px', 9/16)};
+      }
+      .horizontal {
+        /* ${videoDim2(355.55)}; */
+        height: 356px;
+        max-width: 633px;
+        min-width: 200px;
+        flex: 1;
+      }
     }
 
     a {
@@ -77,113 +99,173 @@ const Renegade = (props) => {
         text-decoration-color: ${theme.primary.A700};
       }
     }
+  `;
 
-    .repo-card {
-      display: grid;
-      align-content: flex-start;
-      height: auto;
+  const imageStyle = css`
+    //grid-row: 1;
+    //width: 100%;
+    display: flex;
+    margin: 0 0 1rem 0;
+    //height: 100%;
+    //max-height: 16rem;
+    //height: 16rem;
+    ${elevate(4)};
 
-      .header {
-        display: grid;
-        justify-content: center;
+    ${mq('phone-small')} {
+      max-width: 480px;
+    }
 
-        .name {
-          line-height: 1;
-        }
-      }
+    ${mq('tablet-small')} {
+      float: left;
+      width: 35%;
+      margin: 0.5rem 1rem 0 0;
+    }
 
-      .content {
-        height: auto;
-      }
+    ${mq('tablet')} {
+      
+    }
 
-      .status {
-        position: relative;
-        height: auto;
-        line-height: normal;
-        li {
-          display: flex;
-          justify-content: center;
-          strong { margin-right: 0.2rem; }
-        }
-      }
+    img {
+      object-position: center !important;
     }
   `;
 
+  //<RepoCard username="jwmcgettigan" repo="renegade"/>
+
   return (
     <Main css={style} {...props}>
-      <Header>
+      <Header css={css`.container{max-width:50rem;padding:4rem;}`}>
         <h2>Renegade</h2>
       </Header>
-      <Section css={sectionStyle}>
-        <div>
+      <article css={articleStyle}>
+        {/* <Image css={css`
+          display: flex;
+          margin: -2rem -4rem 0 -4rem;
+          width: auto;
+          height: 17.5rem;
+          img { object-position: center; }
+        `} src="/assets/projects/Renegade.jpg"/> */}
+
+        <section>
+          <Image css={imageStyle} src="/assets/projects/Renegade.jpg"/>
           <div>
-            <h2>What is this project?</h2>
-            <p>Renegade was a self driving car that me and my classmate David Cicerrello spent a semester working on for our Autonomous Robotic Systems course.  The course was composed of 4-5 groups of students each with their own car competitively completing a series of increasingly difficult challenges throughout the semester.  The course was inspired by the <a href="https://racecar.mit.edu/">MIT racecar</a>.</p>
+            <h2>About the Project</h2>
+            <p>Renegade was a self driving car that me and my classmate <a href="https://www.linkedin.com/in/david-ciccarello/">David Cicerrello</a> spent a semester working on for our Autonomous Robotic Systems course, instructed by <a href="https://www.linkedin.com/in/dean-bushey/">Dean Bushey</a>.  The course was composed of 4-5 groups of students each with their own car competitively completing a series of increasingly difficult challenges throughout the semester.  The course was based on the <a href="https://racecar.mit.edu/">MIT racecar project</a>.</p>
           </div>
-          <RepoCard username="jwmcgettigan" repo="renegade"/>
-        </div>
-        <div>
+        </section>
+
+        <section>
           <div>
             <h3>What kind of car was Renegade?</h3>
-            <p>Renegade was a rally racing model car that we took apart and put back together so that it gained a brain and some senses.  In particular, the brain was the NVIDIA Jetson TX2 and the sensors were a lidar (Hokuyo Laser Range Finder) and a stereoscopic camera (StereoLabsZED).</p>
+            <p>Renegade was a <a href="https://www.amainhobbies.com/traxxas-rally-rtr-1-10-4wd-rally-racer-tra74076-1/p403885">Traxxas 74076 Rally 1/10 Brushless Rally Racer</a> that we took apart and put back together so that it gained a brain and some senses.  In particular, the brain was the NVIDIA Jetson TX2 and the sensors were the <a href="https://www.robotshop.com/en/hokuyo-ust-10lx-scanning-laser-rangefinder.html">Hokuyo Laser Range Finder</a> (lidar) and <a href="https://www.stereolabs.com/zed/">StereoLabsZED</a> (stereoscopic camera).</p>
           </div>
-          <img css={css`width:80%;`} src={googleFileURL("1GKyqTYFHC2n1GM8YQ4POU8DEMTUnqGUX")}/>
-        </div>
-      </Section>
-      <Section css={sectionStyle}>
-        <div>
-          <h2>What were the challenges?</h2>
-          <ul>
-            <li>Line Following</li>
-            <li>Obstacle Detection & Lane Centering</li>
-            <li>Visual Servoing Serpentine & Pole Bending</li>
-            <li>A Multi-Car Race</li>
-          </ul>
-        </div>
+          <Image css={css`width: 100%; margin-top: 1rem;`} src="/assets/projects/renegade/component_diagram.svg"/>
+          <div>
+            <p>Renegade's brain was an Ubuntu Linux distribution which used ROS for node/service based communication between the different hardware components and the behavior logic.  The behavior logic was programmed in Python using libraries such as rospy, numpy, and opencv-python.</p>
+          </div>
 
-        <div>
+        </section>
+        
+        <section>
+          <h2>What were the challenges?</h2>
+          <p>The following challenges were a means to familiarize ourselves with sensor technologies, sensor fusion, and node/service based communication (w/ROS).</p>
+        </section>
+
+        <section>
           <div>
             <h3>Line Following</h3>
-            <p>This was our first challenge and the one that forced me to learn python very quickly as I hadn't used it before this taking this course.  We essentially needed to use our stereoscopic camera to go through a course by staying centered upon a blue line in the form of blue tape along the ground.</p>
+            <p>Use the ZED stereoscopic camera to stay centered a line (blue tape).</p>
+            <ol>
+              <li><b>Line Following:</b> Use the line detector to determine the steering angle and speed, keeping the car centered on the line.
+                <ol type="a">
+                  <li><b>Line Detection:</b> Detect the relative orientation and distance of the robot to line.</li>
+                  <li><b>Steering Controller:</b> Adjusts the steering angle to align the robot with the line.</li>
+                </ol>
+              </li>
+            </ol>
           </div>
-          <div css={css`grid-template-columns: 1fr 271px;`} className="videos">
-            <iframe src="https://drive.google.com/file/d/1hPylMXipPmXH0asiaYOUh8mogN0U2NLp/preview"/>
-            <iframe src="https://drive.google.com/file/d/1gWxxc7XTLbcXmmKFa4HCSZUlxzD1lU78/preview"/>
+          <div className="videos">
+            <Video className="vertical" src={youtubeEmbedURL('kyWz21H-jaM')}/>
+            <Video className="vertical" src={youtubeEmbedURL('bWIslaxpfDk')}/>
           </div>
-        </div>
+        </section>
 
-        <div>
+        <section>
           <div>
             <h3>Obstacle Detection & Lane Centering</h3>
-            <p>This challenge entailed using the Lidar to go through a course by staying centered between two walls and to be able to stop or circumvent any obstacles along the path.</p>
+            <p>Use a Lidar to stay centered between walls and to stop before obstacles.</p>
+            <ol>
+              <li><b>Obstacle Detection:</b> Detect if there is an obstacle in front of the robot.
+                <ol type="a">
+                  <li><b>Safety Controller:</b> Stops the car when there is an obstacle right in front of the car.</li>
+                </ol>
+              </li>
+              <li><b>Lane Centering:</b> Use the wall detector to determine the steering angle and speed, keeping the car equidistant between walls.
+                <ol type="a">
+                  <li><b>Wall Detection:</b> Detect the relative orientation and distance of the robot to the surrounding walls.</li>
+                  <li><b>Steering Controller:</b> Adjusts the steering angle to align the robot with the corridor.</li>
+                </ol>
+              </li>
+            </ol>
           </div>
-          <div css={css`grid-template-columns: 271px 1fr;`} className="videos">
-            <iframe src="https://drive.google.com/file/d/1yxgHPOKaWoGiIgN_XKzwiiYcDobNNawc/preview"/>
-            <iframe src="https://drive.google.com/file/d/1qJ5e0DmQJovCi_FOUIU14jYXoksrPjxN/preview"/>
+          <div className="videos">
+            <Video className="vertical" src={youtubeEmbedURL('_oDNLpHoLfE')}/>
+            <Video className="horizontal" src={youtubeEmbedURL('9-QTUsi3jeA')}/>
           </div>
-        </div>
+        </section>
 
-        <div>
+        <section>
           <div>
             <h3>Visual Servoing Serpentine & Pole Bending</h3>
-            <p>This challenge was required a different mindset from the previous ones.  Instead of following a course, we had to be able to navigate around certain landmarks (yellow cones and an orange cube) while maintaining a certain pattern/behavior (swerving in a serpentine pattern).</p>
+            <p>Use the ZED camera and Lidar to navigate around certain landmarks (<span css={css`color: #d3a51c;`}>yellow cones</span> and an <span css={css`color: #be4e19;`}>orange cube</span>) while maintaining a serpentine pattern.</p>
+            <ol>
+              <li><b>Polebending:</b> Drive parallel, perform U-turns, and execute serpentine.
+                <ol type="a">
+                  <li><b>Serpentine:</b> Swivel through a series of cones.</li>
+                  <li><b>Collision Avoidance:</b> Move to the left or right of a cone instead of into it.</li>
+                  <li><b>Parking:</b> Park car in front of a cone</li>
+                </ol>
+              </li>
+            </ol>
           </div>
-          <iframe src="https://drive.google.com/file/d/1gX9T9vYlBpcPUVCRjkMHWeRBnHgxWONX/preview"/>
-        </div>
+          <Video className="horizontal" src={youtubeEmbedURL('ZQqze9KQkP8')}/>
+        </section>
 
-        <div>
+        <section>
           <div>
             <h3>A Multi-Car Race</h3>
-            <p>The idea behind this 'final challenge' was to test what we learned from all of our earlier challenges while adding the element of another vehicle in the mix.  We had to go through the course as fast as possible while avoiding the other vehicle.</p>
+            <p>Use the ZED camera and Lidar to navigate through different lane types while contending with another autonomous vehicle.</p>
+            <CalloutCard>
+              <p>The idea behind this 'final challenge' was to test what we learned from all of our earlier challenges while adding the element of another vehicle in the mix.  We had to go through the course as fast as possible while avoiding the other vehicle.</p>
+            </CalloutCard>
+            <ol>
+              <li><b>Obstacle Detection:</b> Detect if there is a vehicle near the robot.
+                <ol type="a">
+                  <li><b>Safety Controller:</b> Stops or maneuvers the car when too close to another object.</li>
+                </ol>
+              </li>
+              <li><b>Lane Centering (w/Walls):</b> Use the wall detector to determine the steering angle and speed, keeping the car equidistant between walls.
+                <ol type="a">
+                  <li><b>Wall Detection:</b> Detect the relative orientation and distance of the robot to the surrounding walls.</li>
+                  <li><b>Steering Controller:</b> Adjusts the steering angle to align the robot with the corridor.</li>
+                </ol>
+              </li>
+              <li><b>Lane Centering (w/Lines):</b> Use the line detector to determine the steering angle and speed, keeping the car centered between the lines.
+                <ol type="a">
+                  <li><b>Line Detection:</b> Detect the relative orientation and distance of the robot to the surrounding lines.</li>
+                  <li><b>Steering Controller:</b> Adjusts the steering angle to align the robot between the lines.</li>
+                </ol>
+              </li>
+            </ol>
           </div>
-          <iframe src="https://drive.google.com/file/d/1yFMl4V9Q-ftioWnG1WYd9m6-QlpG5hRz/preview"/>
-        </div>
-      </Section>
-      <Section>
-        <div css={css`text-align: right;`}>
-          Last Updated: 2020-09-13
-        </div>
-      </Section>
+          <Video className="horizontal" src={youtubeEmbedURL('nmcDLAjBWmQ')}/>
+        </section>
+        
+        <section css={css`display: flex;justify-content:space-between;`}>
+          <p>TODO: Add the powerpoints we made.</p>
+          <p>Last Updated: 2020-09-27</p>
+        </section>
+      </article>
     </Main>
   );
 }

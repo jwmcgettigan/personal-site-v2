@@ -11,7 +11,7 @@ const Image = ({ className, children: placeholder, ...props }) => {
     object-fit: cover;
     object-position: top;
     width: 100%;
-    height: 100%;
+    //height: 100%;
   `;
   
   const placeholderStyle = css`

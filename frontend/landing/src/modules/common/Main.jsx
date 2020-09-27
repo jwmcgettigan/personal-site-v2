@@ -16,7 +16,7 @@ import { mq, color, elevate } from 'helpers';
 let indicate = true;
 
 const Main = ({ children, className }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
   if(isOpen) {
     indicate = false;
   }
@@ -91,6 +91,47 @@ const Main = ({ children, className }) => {
           margin-right: 1rem;
         }
       ` : ''};
+    }
+
+    .repo-card {
+      display: grid;
+      align-content: flex-start;
+      height: auto;
+      width: auto;
+      max-width: 300px;
+
+      .header {
+        display: grid;
+        justify-content: center;
+
+        .avatar {
+          width: 18%;
+          height: 80%;
+        }
+        .avatar > img {
+          width: 100%;
+          height: 100%;
+        }
+
+        .name {
+          line-height: 1;
+        }
+      }
+
+      .content {
+        height: auto;
+      }
+
+      .status {
+        position: relative;
+        height: auto;
+        line-height: normal;
+        li {
+          display: flex;
+          justify-content: center;
+          strong { margin-right: 0.2rem; }
+        }
+      }
     }
   `;
 

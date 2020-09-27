@@ -11,7 +11,7 @@ const projects = [
       icon: 'FaStopCircle',
       color: '#975450'
     },
-    image: require('assets/projects/PhoenixHacks Live.gif'),
+    image: '/assets/projects/PhoenixHacks Live.gif',//require('assets/projects/PhoenixHacks Live.gif'),
     urls: [
       {
         href: 'https://live.phoenixhacks.com/',
@@ -33,7 +33,7 @@ const projects = [
       icon: 'FaStopCircle',
       color: '#975450'
     },
-    image: require('assets/projects/Suspect Search.jpg'),
+    image: '/assets/projects/Suspect Search.jpg',//require('assets/projects/Suspect Search.jpg'),
     urls: [],
     tags: ['python', 'STT', 'NLP'],
     lastActive: 'July 2019'
@@ -46,7 +46,7 @@ const projects = [
       icon: 'FaStopCircle',
       color: '#975450'
     },
-    image: require('assets/projects/RGB-D Based RTLS.jpg'),
+    image: 'assets/projects/RGB-D Based RTLS.jpg',//require('assets/projects/RGB-D Based RTLS.jpg'),
     urls: [],
     tags: ['computer vision', 'python', 'opencv'],
     lastActive: 'Aug 2019'
@@ -59,7 +59,7 @@ const projects = [
       icon: 'FaPauseCircle',
       color: '#978840'
     },
-    image: require('assets/projects/Gaze-Based UI Navigation.jpg'),
+    image: '/assets/projects/Gaze-Based UI Navigation.jpg',//require('assets/projects/Gaze-Based UI Navigation.jpg'),
     urls: [],
     tags: ['computer vision', 'python', 'opencv', 'human-computer interaction'],
     lastActive: 'Dec 2019'
@@ -67,7 +67,7 @@ const projects = [
   {
     name: "Patient Egress Alert System",
     summary: "Detects if a patient is leaving their bed.",
-    image: require('assets/projects/Patient Egress Alert System.jpg'),
+    image: '/assets/projects/Patient Egress Alert System.jpg',//require('assets/projects/Patient Egress Alert System.jpg'),
     status: {
       title: 'Complete',
       icon: 'FaStopCircle',
@@ -85,7 +85,7 @@ const projects = [
       icon: 'FaStopCircle',
       color: '#975450'
     },
-    image: require('assets/projects/Renegade.jpg'),
+    image: '/assets/projects/Renegade.jpg',//require('assets/projects/Renegade.jpg'),
     urls: [
       {
         href: 'https://github.com/jwmcgettigan/renegade',
@@ -103,7 +103,7 @@ const projects = [
       icon: 'FaPlayCircle',
       color: '#3e7068'
     },
-    image: require('assets/projects/Project Euler.jpg'),
+    image: '/assets/projects/Project Euler.jpg',//require('assets/projects/Project Euler.jpg'),
     urls: [
       {
         href: 'https://github.com/jwmcgettigan/project-euler-solutions',

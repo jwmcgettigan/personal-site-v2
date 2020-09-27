@@ -28,9 +28,14 @@ const Header = ({ children, ...rest }) => {
       display: flex;
       justify-items: left;
       align-items: center;
-      padding: 1rem;
+      padding: 1.25rem;
+      max-width: 50rem;
 
       ${mq('tablet')} {
+        padding: 0 4rem;
+      }
+
+      /* ${mq('tablet')} {
         max-width: ${bp['tablet']}px;
       }
       ${mq('tablet-wide')} {
@@ -39,7 +44,7 @@ const Header = ({ children, ...rest }) => {
       }
       ${mq('desktop')} {
         max-width: ${bp['desktop']}px;
-      }
+      } */
     }
   `;
   

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.hydrate(
+// https://stackoverflow.com/questions/46865880/react-16-warning-expected-server-html-to-contain-a-matching-div-in-div-due
+const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+
+renderMethod(
   <React.StrictMode>
     <App />
   </React.StrictMode>,

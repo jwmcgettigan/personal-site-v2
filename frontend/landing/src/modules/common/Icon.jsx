@@ -11,7 +11,7 @@ import {
   FaGamepad, FaTools, FaExclamationTriangle, FaKey,
   FaEnvelopeOpenText, FaRegCopyright, FaFilePdf,
   FaPauseCircle, FaPlayCircle, FaStopCircle, FaFileWord,
-  FaFile, FaTags
+  FaFile, FaTags, FaBook
 } from 'react-icons/fa';
 import { IoIosPaper, IoMdDownload } from 'react-icons/io';
 import { MdWallpaper, MdKeyboardArrowRight } from 'react-icons/md';
@@ -27,7 +27,8 @@ const Icons = {
   FaEnvelopeOpenText, IoIosPaper, MdWallpaper, FaRegCopyright,
   RiGitRepositoryPrivateLine, MdKeyboardArrowRight,
   FaPauseCircle, FaPlayCircle, FaStopCircle, FaFilePdf,
-  GrDocumentTxt, FaFileWord, FaFile, IoMdDownload, FaTags
+  GrDocumentTxt, FaFileWord, FaFile, IoMdDownload, FaTags,
+  FaBook
 };
 
 //DONE: I've verified that {...props} satisfies className={className}

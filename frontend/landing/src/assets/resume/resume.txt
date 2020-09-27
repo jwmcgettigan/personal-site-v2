@@ -25,7 +25,7 @@ Employment
 		creating deployment models, and performing cost-benefit and feasibility analyses.
 		• Visualized the distance of persons from a point, based upon the strength of their phones' bluetooth signal, by using
 		plot.ly to process data through an Azure API.
-		Collaborated with a team on a hackathon project (Suspect Search) by implementing the keyword detection, speech-totext, and natural language processing components.
+		• Collaborated with a team on a hackathon project (Suspect Search) by implementing the keyword detection, speech-totext, and natural language processing components.
 		• Leveraged knowledge in Git, Docker, C, C++, Python, OpenCV, Matrix Math, Azure App/Log Analytics, plot.ly, Grafana,
 		Intel RealSense SDK & D435 RGB-D camera.
 
@@ -39,7 +39,7 @@ Employment
 		server for LibreNMS, pfSense, and Kaspersky Security Center.
 		• Assessed and inventoried the entire IT infrastructure by creating diagrams, supporting documentation, and advocating
 		the use of management tools like Trello.
-		• leveraged knowledge in Bash Scripting, Virtualization (VMware vSphere), Network Security (pfSense), Computer Security
+		• Leveraged knowledge in Bash Scripting, Virtualization (VMware vSphere), Network Security (pfSense), Computer Security
 		(Kaspersky Security Center), SQL Database Management (phpMyAdmin), cPanel, and WordPress.
 
 Projects
