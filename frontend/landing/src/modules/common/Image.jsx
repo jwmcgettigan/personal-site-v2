@@ -1,21 +1,28 @@
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
-import React from 'react';
+import React, { useState } from 'react';
+
+// Import Components
+import Icon from 'modules/common/Icon';
 
 //! WIP
-const Image = ({ className, children: placeholder, ...props }) => {
-  
+const Image = ({ className, icon, ...props }) => {
+  const [loaded, setLoaded] = useState(false);
+  const exists = props.src != null;
+
   const imageStyle = css`
+    display: ${exists && loaded ? 'inline' : 'none'};
     box-sizing: border-box;
     object-fit: cover;
     object-position: top;
     width: 100%;
-    //height: 100%;
+    height: 100%;
   `;
   
-  const placeholderStyle = css`
-    display: block;
+  const iconStyle = css`
+    display: ${!exists && !loaded  ? 'block' : 'none'};
+    //display: block;
     padding: 1rem;
     position: absolute;
     top: 0;
@@ -35,10 +42,13 @@ const Image = ({ className, children: placeholder, ...props }) => {
 
   return (
     <div css={css`overflow: hidden;`} className={className}>
-      {props.src != null ? 
-        <><img css={imageStyle} {...props}/>{placeholder}</>
-        : <div css={placeholderStyle}>{placeholder}</div>
-      }
+      <img css={imageStyle} onLoad={() => setLoaded(true)} {...props}/>
+      <div css={iconStyle}> 
+        { icon != null && !exists && !loaded ?
+          <Icon icon={icon}/>
+          : <Icon icon='FaExclamationTriangle'/>
+        }
+      </div>
     </div>
   );
 }

@@ -236,12 +236,7 @@ const ProjectCard = ({ project, ...rest}) => {
       <div css={imageLinkStyle}>
 
         <NavLink to={project.path} exact>
-          <Image css={imageStyle} src={project.image} alt=''>
-            { project.icon != null
-              ? <Icon icon={project.icon}/>
-              : <Icon icon='FaExclamationTriangle'/>
-            }
-          </Image>
+          <Image css={imageStyle} src={project.image} alt='' icon={project.icon}/>
         </NavLink>
 
         <div className="tags">

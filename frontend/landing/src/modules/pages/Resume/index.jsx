@@ -7,6 +7,7 @@ import Basic from './Basic';
 import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
 import Icon from 'modules/common/Icon';
+import Article from 'modules/common/Article';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
@@ -55,118 +56,12 @@ const formats = [
 
 const Resume = ({ className }) => {
   const style = theme => css`
-    display: grid;
-    //justify-items: right;
-
-    a {
-      //text-decoration: underline;
-      //text-decoration-color: ${color(theme.foreground).getContrastText(1.4).str};
-      &:hover {
-        color: ${theme.primary.A700} !important;
-        text-decoration: underline;
-        text-decoration-color: #000;
-      }
-    }
-  `;
-
-  const docStyle = css`
-    //margin-top: 3rem;
-    ${elevate(8)};
-    //transform: rotate3d(1, 1, 1, 45deg);
-  `;
-
-  const basicStyle = css`
-    ${mq('desktop')} {
-      justify-self: left;
-    }
-    ${docStyle};
-    @media (max-width: 1343px) {
-      margin: 0;
-      width: auto;
-      height: auto;
-    }
-
-    ${mq('tablet', 'max')} {
-      .contact {
-        grid-template-columns: none;
-        gap: 1rem;
-
-        .basic { grid-row: 2; }
-        .name { grid-row: 1; grid-column: 1 / 3; }
-        .social { grid-row: 2; }
-      }
-
-      .item-title {
-        grid-template-columns: none;
-        justify-items: left;
-      }
-    }
-
-    ${mq('phablet', 'max')} {
-      .contact {
-        .basic { 
-          grid-row: 2; grid-column: 2;
-          justify-self: left;
-          a {
-            grid-template-columns: 15px auto;
-            span {
-              grid-column: 2; grid-row: 1;
-              text-align: left;
-              margin-left: 6px;
-            }
-            svg {
-              grid-column: 1; grid-row: 1;
-            }
-          }
-        }
-        .name { grid-row: 1 / 4; grid-column: 1; }
-        .social { grid-row: 3; grid-column: 2; }
-      }
-    }
-
-    ${mq('phone-wide', 'max')} {
-      .contact {
-        justify-content: center;
-        .basic { 
-          grid-row: 2; grid-column: 1;
-          a {
-            grid-template-columns: 15px auto;
-            span {
-              grid-column: 2; grid-row: 1;
-              text-align: left;
-              margin-left: 6px;
-            }
-            svg {
-              grid-column: 1; grid-row: 1;
-            }
-          }
-        }
-        .name { grid-row: 1; grid-column: 1; }
-        .social { grid-row: 3; grid-column: 1; }
-      }
-    }
-  `;
-
-  const sectionStyle = theme => css`
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-    justify-items: center;
-
-    ${mq('tablet-wide')} {
-      gap: 3rem;
-    }
-
-    ${mq('desktop')} {
-      gap: 2rem;
-      grid-auto-flow: column;
-    }
-
-    ${mq('desktop-wide')} {
-      gap: 3rem;
-    }
-
+    
     .download-buttons {
+      position: absolute;
+      left: -10rem;
+      top: 2rem;
+      z-index: 100;
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
@@ -257,30 +152,77 @@ const Resume = ({ className }) => {
         }
       }
     }
+  `;
 
-    .wrapper {
-      //width: 25.5rem;
-      //height: 33rem;
-      width: 10.1rem;
-      height: 13rem;
+  const docStyle = css`
+    width: auto;
+    height: auto;
+    margin: -0.75rem;
+    ${mq('tablet-small')} { margin: -1.25rem; }
+    ${mq('tablet')} { margin: -2rem -3rem; }
+    ${mq('desktop')} { margin: -2rem -4rem; }
+  `;
 
-      .download-page {
-        transform: scale(0.2);
-        transform-origin: top left;
-        ${elevate(1)};
+  const basicStyle = css`
+    ${docStyle};
 
-        &:hover {
-          animation: spinner 5s linear infinite;
-        }
+    ${mq('tablet', 'max')} {
+      .contact {
+        grid-template-columns: none;
+        gap: 1rem;
 
-        @keyframes spinner {
-          0% {
-            transform: scale(0.2) rotateX(30deg) rotateY(0deg);
+        .basic { grid-row: 2; }
+        .name { grid-row: 1; grid-column: 1 / 3; }
+        .social { grid-row: 2; }
+      }
+
+      .item-title {
+        grid-template-columns: none;
+        justify-items: left;
+      }
+    }
+
+    ${mq('phablet', 'max')} {
+      .contact {
+        .basic { 
+          grid-row: 2; grid-column: 2;
+          justify-self: left;
+          a {
+            grid-template-columns: 15px auto;
+            span {
+              grid-column: 2; grid-row: 1;
+              text-align: left;
+              margin-left: 6px;
+            }
+            svg {
+              grid-column: 1; grid-row: 1;
+            }
           }
-          100% {
-            transform: scale(0.2) rotateX(30deg) rotateY(-360deg);
+        }
+        .name { grid-row: 1 / 4; grid-column: 1; }
+        .social { grid-row: 3; grid-column: 2; }
+      }
+    }
+
+    ${mq('phone-wide', 'max')} {
+      .contact {
+        justify-content: center;
+        .basic { 
+          grid-row: 2; grid-column: 1;
+          a {
+            grid-template-columns: 15px auto;
+            span {
+              grid-column: 2; grid-row: 1;
+              text-align: left;
+              margin-left: 6px;
+            }
+            svg {
+              grid-column: 1; grid-row: 1;
+            }
           }
         }
+        .name { grid-row: 1; grid-column: 1; }
+        .social { grid-row: 3; grid-column: 1; }
       }
     }
   `;
@@ -290,14 +232,10 @@ const Resume = ({ className }) => {
       <Header>
         <h2>Resume</h2>
       </Header>
-      {/* <Basic css={basicStyle}/> */}
-      <Section css={sectionStyle}>
-        {/* <div className="wrapper">
-          <Basic className="download-page"/>
-        </div> */}
+      <Article>
         <div className="download-buttons">
-          {formats.map(f => (
-            <h4 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? '' : () => downloadFile(f.filetype)}>
+          {formats.map((f, i) => (
+            <h4 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? () => {} : () => downloadFile(f.filetype)} key={i}>
               <Icon icon={f.icon}/>
               {f.filetype}
               {f.disable && <div className="disable-overlay"/>}
@@ -306,7 +244,7 @@ const Resume = ({ className }) => {
           ))}
         </div>
         <Basic css={basicStyle}/>
-      </Section>
+      </Article>
     </Main>
   );
 }

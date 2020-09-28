@@ -15,12 +15,12 @@ const Article = ({ children, ...props }) => {
     justify-self: center;
     display: grid;
     gap: 2rem;
-    padding: 1.25rem;
     max-width: 50rem;
     
-    ${mq('tablet')} {
-      padding: 2rem 4rem;
-    }
+    padding: 0.75rem;
+    ${mq('tablet-small')} { padding: 1.25rem; }
+    ${mq('tablet')} { padding: 2rem 3rem; }
+    ${mq('desktop')} { padding: 2rem 4rem; }
 
     a {
       color: ${theme.primary.A700};
@@ -28,14 +28,17 @@ const Article = ({ children, ...props }) => {
       &:hover {
         text-decoration: underline;
         text-decoration-color: ${theme.primary.A700};
+        cursor: pointer;
+        /* color: ${theme.primary.A700} !important;
+        text-decoration-color: #000; */
       }
     }
   `;
   
   return (
-    <section css={style} {...props}>
+    <article css={style} {...props}>
       {children}
-    </section>
+    </article>
   );
 }
 

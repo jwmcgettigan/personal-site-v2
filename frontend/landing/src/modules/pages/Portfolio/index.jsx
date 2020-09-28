@@ -4,6 +4,7 @@ import { css, jsx } from '@emotion/core';
 // Import components
 import Main from 'modules/common/Main';
 import Section from 'modules/common/Section';
+import Article from 'modules/common/Article';
 import Header from 'modules/common/Header';
 import Icon from 'modules/common/Icon';
 import ProjectCard from './ProjectCard';
@@ -74,10 +75,10 @@ const Portfolio = (props) => {
 
   return (
     <Main css={style} {...props}>
-      <Header>
+      <Header css={css`.container{max-width:70rem;}`}>
         <h2>Portfolio</h2>
       </Header>
-      <Section>
+      <Article css={css`max-width:70rem;`}>
         <div className="legend-container">
           <h2>Projects</h2>
           <div className="legend">
@@ -94,7 +95,7 @@ const Portfolio = (props) => {
             return <ProjectCard key={index} project={project}/>
           })}
         </div>
-      </Section>
+      </Article>
     </Main>
   );
 };

@@ -9,8 +9,9 @@ import 'react-github-cards/dist/default.css';
 
 // Import components
 import Main from 'modules/common/Main';
-import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
+import Article from 'modules/common/Article';
+import Section from 'modules/common/Section';
 import Icon from 'modules/common/Icon';
 import Link from 'modules/common/Link';
 import Video from 'modules/common/Video';
@@ -26,11 +27,27 @@ import { useState } from 'react';
 const Renegade = (props) => {
 
   const style = theme => css`
-    height: 100%;
+    .videos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: left;
+    }
 
-    h4 {
-      font-family: 'Rubik', sans-serif;
-      font-weight: 300;
+    .video {
+      margin-top: 1.5rem;
+    }
+
+    .vertical {
+      ${videoDim2(200, 'px', 9/16)};
+    }
+
+    .horizontal {
+      /* ${videoDim2(355.55)}; */
+      height: 356px;
+      max-width: 633px;
+      min-width: 200px;
+      flex: 1;
     }
   `;
 
@@ -47,68 +64,9 @@ const Renegade = (props) => {
     }
   `);
 
-  const articleStyle = theme => css`
-    background: ${theme.foreground};
-    color: ${color(theme.foreground).getContrastText(15).str};
-    ${elevate(1)};
-
-    justify-self: center;
-    display: grid;
-    gap: 2rem;
-    padding: 1.25rem;
-    max-width: 50rem;
-
-    ${mq('tablet')} {
-      padding: 2rem 4rem;
-    }
-
-    @media (min-width: 67.5rem) {
-      //max-width: 50rem;
-    }
-    
-    section {
-
-      .videos {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: left;
-      }
-
-      .video {
-        margin-top: 1.5rem;
-      }
-
-      .vertical {
-        ${videoDim2(200, 'px', 9/16)};
-      }
-      .horizontal {
-        /* ${videoDim2(355.55)}; */
-        height: 356px;
-        max-width: 633px;
-        min-width: 200px;
-        flex: 1;
-      }
-    }
-
-    a {
-      color: ${theme.primary.A700};
-
-      &:hover {
-        text-decoration: underline;
-        text-decoration-color: ${theme.primary.A700};
-      }
-    }
-  `;
-
   const imageStyle = css`
-    //grid-row: 1;
-    //width: 100%;
     display: flex;
     margin: 0 0 1rem 0;
-    //height: 100%;
-    //max-height: 16rem;
-    //height: 16rem;
     ${elevate(4)};
 
     ${mq('phone-small')} {
@@ -121,12 +79,8 @@ const Renegade = (props) => {
       margin: 0.5rem 1rem 0 0;
     }
 
-    ${mq('tablet')} {
-      
-    }
-
     img {
-      object-position: center !important;
+      object-position: center;
     }
   `;
 
@@ -137,7 +91,7 @@ const Renegade = (props) => {
       <Header css={css`.container{max-width:50rem;padding:4rem;}`}>
         <h2>Renegade</h2>
       </Header>
-      <article css={articleStyle}>
+      <Article>
         {/* <Image css={css`
           display: flex;
           margin: -2rem -4rem 0 -4rem;
@@ -146,15 +100,15 @@ const Renegade = (props) => {
           img { object-position: center; }
         `} src="/assets/projects/Renegade.jpg"/> */}
 
-        <section>
+        <Section css={css`display: block;`}>
           <Image css={imageStyle} src="/assets/projects/Renegade.jpg"/>
           <div>
             <h2>About the Project</h2>
             <p>Renegade was a self driving car that me and my classmate <a href="https://www.linkedin.com/in/david-ciccarello/">David Cicerrello</a> spent a semester working on for our Autonomous Robotic Systems course, instructed by <a href="https://www.linkedin.com/in/dean-bushey/">Dean Bushey</a>.  The course was composed of 4-5 groups of students each with their own car competitively completing a series of increasingly difficult challenges throughout the semester.  The course was based on the <a href="https://racecar.mit.edu/">MIT racecar project</a>.</p>
           </div>
-        </section>
+        </Section>
 
-        <section>
+        <Section>
           <div>
             <h3>What kind of car was Renegade?</h3>
             <p>Renegade was a <a href="https://www.amainhobbies.com/traxxas-rally-rtr-1-10-4wd-rally-racer-tra74076-1/p403885">Traxxas 74076 Rally 1/10 Brushless Rally Racer</a> that we took apart and put back together so that it gained a brain and some senses.  In particular, the brain was the NVIDIA Jetson TX2 and the sensors were the <a href="https://www.robotshop.com/en/hokuyo-ust-10lx-scanning-laser-rangefinder.html">Hokuyo Laser Range Finder</a> (lidar) and <a href="https://www.stereolabs.com/zed/">StereoLabsZED</a> (stereoscopic camera).</p>
@@ -164,14 +118,14 @@ const Renegade = (props) => {
             <p>Renegade's brain was an Ubuntu Linux distribution which used ROS for node/service based communication between the different hardware components and the behavior logic.  The behavior logic was programmed in Python using libraries such as rospy, numpy, and opencv-python.</p>
           </div>
 
-        </section>
+        </Section>
         
-        <section>
+        <Section>
           <h2>What were the challenges?</h2>
           <p>The following challenges were a means to familiarize ourselves with sensor technologies, sensor fusion, and node/service based communication (w/ROS).</p>
-        </section>
+        </Section>
 
-        <section>
+        <Section>
           <div>
             <h3>Line Following</h3>
             <p>Use the ZED stereoscopic camera to stay centered a line (blue tape).</p>
@@ -188,9 +142,9 @@ const Renegade = (props) => {
             <Video className="vertical" src={youtubeEmbedURL('kyWz21H-jaM')}/>
             <Video className="vertical" src={youtubeEmbedURL('bWIslaxpfDk')}/>
           </div>
-        </section>
+        </Section>
 
-        <section>
+        <Section>
           <div>
             <h3>Obstacle Detection & Lane Centering</h3>
             <p>Use a Lidar to stay centered between walls and to stop before obstacles.</p>
@@ -212,9 +166,9 @@ const Renegade = (props) => {
             <Video className="vertical" src={youtubeEmbedURL('_oDNLpHoLfE')}/>
             <Video className="horizontal" src={youtubeEmbedURL('9-QTUsi3jeA')}/>
           </div>
-        </section>
+        </Section>
 
-        <section>
+        <Section>
           <div>
             <h3>Visual Servoing Serpentine & Pole Bending</h3>
             <p>Use the ZED camera and Lidar to navigate around certain landmarks (<span css={css`color: #d3a51c;`}>yellow cones</span> and an <span css={css`color: #be4e19;`}>orange cube</span>) while maintaining a serpentine pattern.</p>
@@ -229,9 +183,9 @@ const Renegade = (props) => {
             </ol>
           </div>
           <Video className="horizontal" src={youtubeEmbedURL('ZQqze9KQkP8')}/>
-        </section>
+        </Section>
 
-        <section>
+        <Section>
           <div>
             <h3>A Multi-Car Race</h3>
             <p>Use the ZED camera and Lidar to navigate through different lane types while contending with another autonomous vehicle.</p>
@@ -259,13 +213,13 @@ const Renegade = (props) => {
             </ol>
           </div>
           <Video className="horizontal" src={youtubeEmbedURL('nmcDLAjBWmQ')}/>
-        </section>
+        </Section>
         
-        <section css={css`display: flex;justify-content:space-between;`}>
+        <Section css={css`display: flex;justify-content:space-between;`}>
           <p>TODO: Add the powerpoints we made.</p>
           <p>Last Updated: 2020-09-27</p>
-        </section>
-      </article>
+        </Section>
+      </Article>
     </Main>
   );
 }
