@@ -107,8 +107,18 @@ const About = (props) => {
         </Section>
 
         <Section>
-          <h2>My Dreams</h2>
-          
+          <h2>My Dream</h2>
+          <p>I hope that I can contribute to, if not bring to fruition, the bridging between what is considered virtual and real.</p>
+          <p>I imagine a world where we are myriad steps ahead of the simple interface that our smartphone functions as today.</p>
+          <p>Technologies such as neural interfaces, smart contacts, AI, and bionics (eyes, limbs, etc.) will allow
+            us to interact with our reality in ways we've never experienced.  Tasks that currently require multiple steps of interaction
+            will be completable with a mere thought (e.g. solving a math problem.)</p>
+          <p>Information gathering and processing will be greatly expedited.</p>
+          <p>Merely looking at someone will allow us to review their virtual profile in person and in real-time.</p>
+          <p>Real-time spatially correct and interactive directions.</p>
+          <p>Video calls will become virtual calls w/interactive holograms.</p>
+          <p>By augmenting ourselves, we will continue to open new and fascinating possibilities.</p>
+          <p>Just thinking about it is thrilling.  The possibilities are limitless.</p>
         </Section>
       </Article>
     </Main>
