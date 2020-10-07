@@ -101,6 +101,17 @@ const Main = ({ children, className }) => {
         }
       ` : ''};
     }
+
+    .overlay {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      ${mq('tablet-wide', 'max')} {
+        background-color: ${isOpen ? 'rgba(0,0,0,0.6)' : 'none'};
+        transition: all 0.5s;
+      }
+    }
   `;
 
   //#endregion
@@ -120,6 +131,7 @@ const Main = ({ children, className }) => {
             <Icon icon='MdKeyboardArrowRight'/>
             <h3>Slide to Open Menu</h3>
           </div> */}
+          <div className="overlay"/>
         </main>
       </div>
     </>
