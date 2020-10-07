@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -7,9 +9,14 @@ import Basic from './Basic';
 import Section from 'modules/common/Section';
 import Header from 'modules/common/Header';
 import Icon from 'modules/common/Icon';
+import Article from 'modules/common/Article';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
+
+//#endregion
+
+//#region Helpers & Data
 
 const downloadFile = (type) => {
   let file;
@@ -49,42 +56,122 @@ const formats = [
   {
     icon: 'FaFileAlt',
     filetype: '.txt',
-    color: theme => css`background: ${theme.primary.lighter};`
+    color: theme => css`background: ${color(theme.primary.lighter).adjustBrightness(10).str};`
   },
 ]
 
-const Resume = ({ className }) => {
-  const style = theme => css`
-    display: grid;
-    //justify-items: right;
+//#endregion
 
-    a {
-      //text-decoration: underline;
-      //text-decoration-color: ${color(theme.foreground).getContrastText(1.4).str};
-      &:hover {
-        color: ${theme.primary.A700} !important;
-        text-decoration: underline;
-        text-decoration-color: #000;
+/**
+ * Component for downloading a resume file.
+ */
+const DownloadButton = ({format: f, ...rest}) => {
+  return (
+    <h5 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? () => {} : () => downloadFile(f.filetype)} {...rest}>
+      <Icon icon={f.icon}/>
+      {f.disable && <div className="disable-overlay"/>}
+      {<div className="download-overlay">{f.filetype}</div>}
+    </h5>
+  )
+};
+
+/**
+ * Page for displaying my resume(s).
+ */
+const Resume = ({ className }) => {
+
+  //#region CSS
+
+  const style = theme => css`
+    .download-buttons {
+      z-index: 100;
+      display: flex;
+      margin-left: auto;
+      gap: 1rem;
+      margin-top: 1rem;
+      //font-family: Rubik, 'Courier New', Courier, monospace;
+      margin-top: 0;
+
+      ${mq('phone', 'max')} {
+        margin-left: 0;
+        margin-top: 0.5rem;
+      }
+
+      h5 {
+        display: grid;
+        padding: 0.25rem 1rem;
+        color: white;
+        font-weight: 300;
+        ${elevate(1)};
+        cursor: pointer;
+        justify-items: center;
+        align-content: center;
+
+        svg {
+          color: white;
+          width: 32px;
+          height: auto;
+        }
+
+        &:hover {
+          transform: scale(1.025);
+          ${elevate(4)};
+          .download-overlay {
+            display: block;
+          }
+        }
+
+        .disable-overlay {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          cursor: default;
+          background: repeating-linear-gradient(
+            45deg,
+            ${color(theme.primary.main).setAlpha(0.5).str},
+            ${color(theme.primary.main).setAlpha(0.5).str} 10px,
+            ${color(theme.primary.main).setAlpha(0.9).str} 10px,
+            ${color(theme.primary.main).setAlpha(0.9).str} 20px
+          );
+        }
+
+        .download-overlay {
+          display: none;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          font-size: 2rem;
+          text-align: center;
+          background: ${color(theme.primary.main).setAlpha(0.8).str};
+        }
+      }
+    }
+  `;
+
+  const headerStyle = css`
+    ${mq('phone', 'max')} {
+      height: max-content;
+      .container {
+        flex-direction: column;
       }
     }
   `;
 
   const docStyle = css`
-    //margin-top: 3rem;
-    ${elevate(8)};
-    //transform: rotate3d(1, 1, 1, 45deg);
+    width: auto;
+    height: auto;
+    margin: -0.75rem;
+    ${mq('tablet-small')} { margin: -1.25rem; }
+    ${mq('tablet')} { margin: -2rem -3rem; }
+    ${mq('desktop')} { margin: -2rem -4rem; }
   `;
 
   const basicStyle = css`
-    ${mq('desktop')} {
-      justify-self: left;
-    }
     ${docStyle};
-    @media (max-width: 1343px) {
-      margin: 0;
-      width: auto;
-      height: auto;
-    }
 
     ${mq('tablet', 'max')} {
       .contact {
@@ -126,7 +213,7 @@ const Resume = ({ className }) => {
 
     ${mq('phone-wide', 'max')} {
       .contact {
-        justify-content: center;
+        justify-content: left;
         .basic { 
           grid-row: 2; grid-column: 1;
           a {
@@ -147,169 +234,28 @@ const Resume = ({ className }) => {
     }
   `;
 
-  const sectionStyle = theme => css`
-    padding: 0;
-    display: grid;
-    gap: 1rem;
-    justify-items: center;
+  //#endregion
 
-    ${mq('tablet-wide')} {
-      gap: 3rem;
-    }
-
-    ${mq('desktop')} {
-      gap: 2rem;
-      grid-auto-flow: column;
-    }
-
-    ${mq('desktop-wide')} {
-      gap: 3rem;
-    }
-
-    .download-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-      font-family: Rubik, 'Courier New', Courier, monospace;
-
-      ${mq('tablet-wide')} {
-        margin-top: 0;
-      }
-
-      ${mq('desktop')} {
-        display: grid;
-        grid-auto-flow: row;
-        justify-self: right;
-        align-content: flex-start;
-      }
-
-      h4 {
-        display: grid;
-        //padding: 0.5rem 1rem;
-        padding: 0.5rem 1rem;
-        width: 6rem;
-        color: white;
-        font-weight: 300;
-        ${elevate(4)};
-        cursor: pointer;
-        justify-items: center;
-        align-content: center;
-
-        ${mq('desktop')} {
-          width: 8rem;
-          padding: 1rem 2rem;
-        }
-
-        svg {
-          color: white;
-          width: 100%;
-          height: auto;
-        }
-
-        &:hover {
-          //color: ${theme.primary.A100};
-          transform: scale(1.025);
-          ${elevate(8)};
-          svg {
-            //color: ${theme.primary.A100};
-          }
-          .download-overlay {
-            display: grid;
-            color: ${theme.primary.A100};
-            svg {
-              color: ${theme.primary.A100};
-            }
-          }
-        }
-
-        .disable-overlay {
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          cursor: default;
-          //background: ${color(theme.primary.main).setAlpha(0.9).str};
-          background: repeating-linear-gradient(
-            45deg,
-            ${color(theme.primary.main).setAlpha(0.5).str},
-            ${color(theme.primary.main).setAlpha(0.5).str} 10px,
-            ${color(theme.primary.main).setAlpha(0.9).str} 10px,
-            ${color(theme.primary.main).setAlpha(0.9).str} 20px
-          );
-        }
-
-        .download-overlay {
-          display: none;
-          position: absolute;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: ${color(theme.primary.main).setAlpha(0.8).str};
-          svg {
-            top: 0.25rem;
-            ${mq('desktop')} {
-              top: -0.25rem;
-            }
-          }
-        }
-      }
-    }
-
-    .wrapper {
-      //width: 25.5rem;
-      //height: 33rem;
-      width: 10.1rem;
-      height: 13rem;
-
-      .download-page {
-        transform: scale(0.2);
-        transform-origin: top left;
-        ${elevate(1)};
-
-        &:hover {
-          animation: spinner 5s linear infinite;
-        }
-
-        @keyframes spinner {
-          0% {
-            transform: scale(0.2) rotateX(30deg) rotateY(0deg);
-          }
-          100% {
-            transform: scale(0.2) rotateX(30deg) rotateY(-360deg);
-          }
-        }
-      }
-    }
-  `;
+  //#region JSX
 
   return (
     <Main css={style}>
-      <Header>
+      <Header css={headerStyle}>
         <h2>Resume</h2>
-      </Header>
-      {/* <Basic css={basicStyle}/> */}
-      <Section css={sectionStyle}>
-        {/* <div className="wrapper">
-          <Basic className="download-page"/>
-        </div> */}
         <div className="download-buttons">
-          {formats.map(f => (
-            <h4 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? '' : () => downloadFile(f.filetype)}>
-              <Icon icon={f.icon}/>
-              {f.filetype}
-              {f.disable && <div className="disable-overlay"/>}
-              {<div className="download-overlay"><Icon icon="IoMdDownload"/></div>}
-            </h4>
+          {formats.map((format, i) => (
+            <DownloadButton format={format} key={i}/>
           ))}
         </div>
+      </Header>
+      <Article>
         <Basic css={basicStyle}/>
-      </Section>
+      </Article>
     </Main>
   );
-}
+
+  //#endregion
+};
 
 export default {
   name: 'Resume',

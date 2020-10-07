@@ -1,9 +1,12 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
 // Import components
 import Main from 'modules/common/Main';
 import Section from 'modules/common/Section';
+import Article from 'modules/common/Article';
 import Header from 'modules/common/Header';
 import Icon from 'modules/common/Icon';
 import ProjectCard from './ProjectCard';
@@ -14,7 +17,15 @@ import { elevate, mq, color } from 'helpers';
 // Import data
 import projects from './projects';
 
+//#endregion
+
+/**
+ * Page for navigating through my projects.
+ */
 const Portfolio = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     height: 100%;
 
@@ -54,7 +65,6 @@ const Portfolio = (props) => {
     }
 
     .projects {
-      margin-top: 2rem;
       display: grid;
       grid-gap: 2rem;
 
@@ -72,12 +82,16 @@ const Portfolio = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <Main css={style} {...props}>
-      <Header>
+      <Header css={css`.container{max-width:70rem;}`}>
         <h2>Portfolio</h2>
       </Header>
-      <Section>
+      <Article css={css`max-width:70rem;`}>
         <div className="legend-container">
           <h2>Projects</h2>
           <div className="legend">
@@ -87,6 +101,7 @@ const Portfolio = (props) => {
             <span className="play"><Icon icon="FaPlayCircle"/>{"In Progress"}</span>
             <span className="pause"><Icon icon="FaPauseCircle"/>{"Haitus"}</span>
             <span className="stop"><Icon icon="FaStopCircle"/>{"Complete"}</span>
+            <span><Icon icon="FaRegListAlt"/>{"Series"}</span>
           </div>
         </div>
         <div className="projects">
@@ -94,9 +109,11 @@ const Portfolio = (props) => {
             return <ProjectCard key={index} project={project}/>
           })}
         </div>
-      </Section>
+      </Article>
     </Main>
   );
+
+  //#endregion
 };
 
 export default {

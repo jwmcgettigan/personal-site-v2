@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import parse from 'html-react-parser';
@@ -12,7 +14,15 @@ import { elevate, mq, color } from 'helpers';
 // Import data
 import resume from 'data/resume';
 
+//#endregion
+
+/**
+ * Component for formatting my basic resume.
+ */
 const Basic = ({ className }) => {
+
+  //#region CSS
+
   const style = css`
     display: grid;
     grid-template-rows: repeat(5, min-content);
@@ -92,6 +102,10 @@ const Basic = ({ className }) => {
       color: blue;
     }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <Document css={style} className={className}>
@@ -182,6 +196,8 @@ const Basic = ({ className }) => {
       </div>
     </Document>
   );
-}
+
+  //#endregion
+};
 
 export default Basic;

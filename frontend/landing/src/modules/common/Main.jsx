@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
@@ -8,23 +10,30 @@ import { useSwipeable } from 'react-swipeable';
 import ScrollToTop from 'modules/common/ScrollToTop';
 import Menu from 'modules/common/Menu';
 import Copyright from 'modules/common/Copyright';
-import Icon from 'modules/common/Icon';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
 
+//#endregion
+
 let indicate = true;
 
+/**
+ * Component for displaying the content of a path.
+ */
 const Main = ({ children, className }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(true);
   if(isOpen) {
     indicate = false;
   }
+
   const handlers = useSwipeable({
     trackMouse: true,
     onSwipedRight: () => setOpen(true),
     onSwipedLeft: () => setOpen(false)
   });
+
+  //#region CSS
 
   const gridBackground = (bg_color) => css`
     background-color: ${bg_color};
@@ -92,7 +101,22 @@ const Main = ({ children, className }) => {
         }
       ` : ''};
     }
+
+    .overlay {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      ${mq('tablet-wide', 'max')} {
+        background-color: ${isOpen ? 'rgba(0,0,0,0.6)' : 'none'};
+        transition: all 0.5s;
+      }
+    }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <>
@@ -107,10 +131,14 @@ const Main = ({ children, className }) => {
             <Icon icon='MdKeyboardArrowRight'/>
             <h3>Slide to Open Menu</h3>
           </div> */}
+          <div className="overlay"/>
         </main>
       </div>
     </>
   );
-}
+
+  //#endregion
+
+};
 
 export default Main;

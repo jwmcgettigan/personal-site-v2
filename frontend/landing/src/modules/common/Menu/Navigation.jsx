@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { NavLink } from "react-router-dom";
@@ -8,10 +10,18 @@ import Icon from 'modules/common/Icon';
 // Import modules
 import pages from 'modules/pages';
 
-const Navigation = ({ ...props }) => {
+//#endregion
+
+/**
+ * Component for displaying links to the top level
+ * pages and indicating the current page.
+ */
+const Navigation = (props) => {
+
+  //#region CSS
+
   const style = css`
     display: grid;
-    //grid-auto-flow: column;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
     height: min-content;
@@ -25,7 +35,6 @@ const Navigation = ({ ...props }) => {
       text-align: center;
       padding: 0.25rem;
       border: 1px solid rgba(255,255,255,0);
-      //font-size: 1.25rem;
 
       &:hover {
         background: rgba(255,255,255,0.1);
@@ -41,14 +50,16 @@ const Navigation = ({ ...props }) => {
       display: flex;
       align-items: center;
       font-size: 2rem;
-      //margin-right: 0.5rem;
-      //font-size: 1.25rem;
     }
 
     .navbar-expand-md .navbar-collapse {
         height: auto !important;
     }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <nav css={style} {...props}>
@@ -61,6 +72,9 @@ const Navigation = ({ ...props }) => {
       )))}
     </nav>
   );
-}
+
+  //#endregion
+
+};
 
 export default Navigation;

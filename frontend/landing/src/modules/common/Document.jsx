@@ -4,8 +4,7 @@ import { css, jsx } from '@emotion/core';
 //TODO: Test out 'rem' instead of 'px' to try and get text size to scale with document size.
 
 /**
- * A basic component for creating a Letter (US) document with the correct aspect ratio.
- * @param {int} width 
+ * Component for creating a Letter (US) document with the correct aspect ratio.
  */
 const Document = ({ width=816, children, className }) => {
   const height = width * (11.0 / 8.5);

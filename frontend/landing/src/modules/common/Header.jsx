@@ -1,18 +1,28 @@
+//#region Imports
+
 /** @jsx jsx */
-// Imports
 import { css, jsx } from '@emotion/core';
 
 // Import helpers
 import { elevate, mq, bp, color } from 'helpers';
 
+//#endregion
+
+//TODO: Use a better font for the header.
+
+/**
+ * Component for displaying information about the current page.
+ */
 const Header = ({ children, ...rest }) => {
+
+  //#region CSS
 
   const style = theme => css`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 3rem;
+    height: 3.5rem;
     background: ${theme.primary.lighter};
     color: ${color(theme.primary.lighter).getContrastText(17).str};
     ${elevate(1)};
@@ -28,20 +38,18 @@ const Header = ({ children, ...rest }) => {
       display: flex;
       justify-items: left;
       align-items: center;
-      padding: 1rem;
+      padding: 1.25rem;
+      max-width: 50rem;
 
       ${mq('tablet')} {
-        max-width: ${bp['tablet']}px;
-      }
-      ${mq('tablet-wide')} {
-        max-width: ${bp['tablet-wide']}px;
-        padding: 3rem;
-      }
-      ${mq('desktop')} {
-        max-width: ${bp['desktop']}px;
+        padding: 0 4rem;
       }
     }
   `;
+
+  //#endregion
+
+  //#region JSX
   
   return (
     <header css={style} {...rest}>
@@ -50,6 +58,9 @@ const Header = ({ children, ...rest }) => {
       </div>
     </header>
   );
-}
+
+  //#endregion
+
+};
 
 export default Header;

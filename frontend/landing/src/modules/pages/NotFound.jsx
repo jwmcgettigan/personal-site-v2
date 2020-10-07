@@ -1,35 +1,46 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
+// Import components
 import Main from 'modules/common/Main';
-import Section from 'modules/common/Section';
+import Article from 'modules/common/Article';
 import Header from 'modules/common/Header';
 
-const NotFound = (props) => {
-  const style = theme => css`
-    a {
-      color: ${theme.primary.A700};
+//#endregion
 
-      &:hover {
-        text-decoration: underline;
-        text-decoration-color: ${theme.primary.A700};
-        cursor: pointer;
-      }
-    }
+/**
+ * Page for informing the user that a url
+ * does not exist for any purpose.
+ */
+const NotFound = (props) => {
+
+  //#region CSS
+
+  const style = theme => css`
+    article { width: 100%; }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <Main css={style} {...props}>
       <Header>
         <h2>Page Not Found</h2>
       </Header>
-      <Section>
+      <Article>
         <h1>Page Not Found</h1>
         <a onClick={() => props.history.goBack()}>Return to previous page.</a>
-      </Section>
+      </Article>
     </Main>
   );
-}
+
+  //#endregion
+
+};
 
 export default {
   name: 'Not Found',

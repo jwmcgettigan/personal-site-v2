@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { NavLink } from "react-router-dom";
@@ -11,7 +13,15 @@ import Link from 'modules/common/Link';
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
+//#endregion
+
+/**
+ * Component for toggling the visibility of tags for a project card.
+ */
 const TagsToggle = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     font-size: 1rem;
     border-radius: 25%;
@@ -40,18 +50,31 @@ const TagsToggle = (props) => {
     }
   `;
 
-  return <div css={style} {...props}>
-    <Icon icon='FaTags'/>
-  </div>
-} //() => setShowTags(state)
+  //#endregion
 
+  //#region JSX
+
+  return (
+    <div css={style} {...props}>
+      <Icon icon='FaTags'/>
+    </div>
+  );
+
+  //#endregion
+};
+
+
+//TODO: I should have a section for github stats if there is a github link.
+//TODO: Show tags over tinted image on hover over card.
+//TODO: Show status to the right of the project name.
 /**
- * I should have a section for github stats if there is a github link.
- * Show tags over tinted image on hover over card.
- * Show status to the right of the project name.
+ * Component that shows a name, description, image, tags, status,
+ * and date of a project.  Links to a relevant project page.
  */
 const ProjectCard = ({ project, ...rest}) => {
   const [showTags, setShowTags] = useState(false);
+
+  //#region CSS
 
   const style = theme => css`
     ${elevate(1)};
@@ -117,7 +140,7 @@ const ProjectCard = ({ project, ...rest}) => {
     &:hover {
       transition: all 0.01s ease-in-out;
       ${elevate(4)};
-      transform: scale(1.01, 1.01);
+      transform: scale3d(1.01, 1.01, 1);
     }
 
     a:hover {
@@ -230,18 +253,30 @@ const ProjectCard = ({ project, ...rest}) => {
     }
   `;
 
+  const imageStyle2 = css`
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+  `;
+
+  //#endregion
+
+  //#region JSX
   return (
     <div css={style} {...rest}>
 
       <div css={imageLinkStyle}>
 
         <NavLink to={project.path} exact>
-          <Image css={imageStyle} src={project.image} alt=''>
-            { project.icon != null
-              ? <Icon icon={project.icon}/>
-              : <Icon icon='FaExclamationTriangle'/>
-            }
-          </Image>
+          {project.video == null 
+          ? <Image css={imageStyle} src={project.image} alt='' icon={project.icon}/>
+          : <div css={imageStyle}>
+              <video css={imageStyle2} autoPlay loop muted playsInline>
+                <source src={project.video} type="video/mp4"/>
+              </video> 
+            </div>
+          }
         </NavLink>
 
         <div className="tags">
@@ -261,7 +296,10 @@ const ProjectCard = ({ project, ...rest}) => {
           <NavLink to={project.path} exact>
             <h4>{project.name}</h4>
           </NavLink>
-          <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
+          <div css={css`display: flex; gap: 0.5rem;`}>
+            {project.isSeries ? <Icon icon={"FaRegListAlt"}/> : ''}
+            <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
+          </div>
         </div>
 
         <p>{project.summary}</p>
@@ -283,6 +321,7 @@ const ProjectCard = ({ project, ...rest}) => {
 
     </div>
   );
+  //#endregion
 };
 
 export default ProjectCard;
