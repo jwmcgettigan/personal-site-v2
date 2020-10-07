@@ -11,7 +11,7 @@ const projects = [
       icon: 'FaStopCircle',
       color: '#975450'
     },
-    image: '/assets/projects/PhoenixHacks Live.gif',//require('assets/projects/PhoenixHacks Live.gif'),
+    video: '/assets/projects/phoenixhacks_live.mp4',//'/assets/projects/PhoenixHacks Live.gif',//require('assets/projects/PhoenixHacks Live.gif'),
     urls: [
       {
         href: 'https://live.phoenixhacks.com/',
@@ -103,6 +103,7 @@ const projects = [
       icon: 'FaPlayCircle',
       color: '#3e7068'
     },
+    isSeries: true,
     image: '/assets/projects/Project Euler.jpg',//require('assets/projects/Project Euler.jpg'),
     urls: [
       {

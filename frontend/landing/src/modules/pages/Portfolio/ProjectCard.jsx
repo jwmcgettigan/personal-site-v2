@@ -140,7 +140,7 @@ const ProjectCard = ({ project, ...rest}) => {
     &:hover {
       transition: all 0.01s ease-in-out;
       ${elevate(4)};
-      transform: scale(1.01, 1.01);
+      transform: scale3d(1.01, 1.01, 1);
     }
 
     a:hover {
@@ -253,6 +253,13 @@ const ProjectCard = ({ project, ...rest}) => {
     }
   `;
 
+  const imageStyle2 = css`
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+  `;
+
   //#endregion
 
   //#region JSX
@@ -262,7 +269,14 @@ const ProjectCard = ({ project, ...rest}) => {
       <div css={imageLinkStyle}>
 
         <NavLink to={project.path} exact>
-          <Image css={imageStyle} src={project.image} alt='' icon={project.icon}/>
+          {project.video == null 
+          ? <Image css={imageStyle} src={project.image} alt='' icon={project.icon}/>
+          : <div css={imageStyle}>
+              <video css={imageStyle2} autoPlay loop muted playsInline>
+                <source src={project.video} type="video/mp4"/>
+              </video> 
+            </div>
+          }
         </NavLink>
 
         <div className="tags">
@@ -282,7 +296,10 @@ const ProjectCard = ({ project, ...rest}) => {
           <NavLink to={project.path} exact>
             <h4>{project.name}</h4>
           </NavLink>
-          <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
+          <div css={css`display: flex; gap: 0.5rem;`}>
+            {project.isSeries ? <Icon icon={"FaRegListAlt"}/> : ''}
+            <Icon icon={project.status.icon} title={project.status.title} css={css`color: ${project.status.color};`}/>
+          </div>
         </div>
 
         <p>{project.summary}</p>

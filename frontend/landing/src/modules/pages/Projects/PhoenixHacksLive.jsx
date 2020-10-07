@@ -71,6 +71,13 @@ const PhoenixHacksLive = (props) => {
     }
   `;
 
+  const imageStyle2 = css`
+    object-fit: cover;
+    object-position: top;
+    width: 100%;
+    height: 100%;
+  `;
+
   //#endregion
 
   //#region JSX
@@ -82,7 +89,12 @@ const PhoenixHacksLive = (props) => {
       </Header>
       <Article>
         <Section css={css`display: block;`}>
-          <Image css={imageStyle} src="/assets/projects/PhoenixHacks Live.gif"/>
+          {/* <Image css={imageStyle} src="/assets/projects/PhoenixHacks Live.gif"/> */}
+          <div css={imageStyle}>
+            <video css={imageStyle2} autoPlay loop muted playsInline>
+              <source src="/assets/projects/phoenixhacks_live.mp4" type="video/mp4"/>
+            </video> 
+          </div>
           <h2>About This Project</h2>
           <p>PhoenixHacks is an 24-hour <a href="https://en.wikipedia.org/wiki/Hackathon">Hackathon</a> hosted at <a href="https://en.wikipedia.org/wiki/Florida_Polytechnic_University">Florida Polytechnic University</a>.</p>
         </Section>

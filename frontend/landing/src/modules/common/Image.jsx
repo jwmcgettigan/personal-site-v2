@@ -56,12 +56,14 @@ const Image = ({ className, icon, ...props }) => {
   return (
     <div css={css`overflow: hidden;`} className={className}>
       <img css={imageStyle} onLoad={() => setLoaded(true)} {...props}/>
-      <div css={iconStyle}> 
-        { icon != null && !exists && !loaded ?
-          <Icon icon={icon}/>
-          : <Icon icon='FaExclamationTriangle'/>
-        }
-      </div>
+      { !exists && !loaded ? 
+        <div css={iconStyle}> 
+          { icon != null ?
+            <Icon icon={icon}/>
+            : <Icon icon='FaExclamationTriangle'/>
+          }
+        </div> : ''
+      }
     </div>
   );
 
