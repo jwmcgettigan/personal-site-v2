@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
@@ -22,12 +24,18 @@ import { elevate, mq, color, googleFileURL } from 'helpers';
 //import Schedule from 'assets/projects/phoenixhacks-live/PhoenixHacksSchedule.png';
 //import Announcements from 'assets/projects/phoenixhacks-live/PhoenixHacksAnnouncements.png';
 //import Diagram from 'assets/projects/phoenixhacks-live/PhoenixHacksDiagram.svg';
+
+//#endregion
+
 const Timer = '/assets/projects/phoenixhacks-live/PhoenixHacksTimer.png';
 const Schedule = '/assets/projects/phoenixhacks-live/PhoenixHacksSchedule.png';
 const Announcements = '/assets/projects/phoenixhacks-live/PhoenixHacksAnnouncements.png';
 const Diagram = '/assets/projects/phoenixhacks-live/PhoenixHacksDiagram.svg';
 
 const PhoenixHacksLive = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
 
     figcaption {
@@ -63,6 +71,10 @@ const PhoenixHacksLive = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <Main css={style} {...props}>
       <Header>
@@ -76,7 +88,7 @@ const PhoenixHacksLive = (props) => {
         </Section>
 
         <Section>
-          <h2>How it's made.</h2>
+          <h2>How It's Made</h2>
           <p>These following features are the requirements we laid out for the live site.</p>
           <ul>
             <li><b>Countdown Timer</b> - A javascript inverval that calculates the remaining time every second.</li>
@@ -148,7 +160,9 @@ const PhoenixHacksLive = (props) => {
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+};
 
 export default {
   name: 'PhoenixHacks Live',

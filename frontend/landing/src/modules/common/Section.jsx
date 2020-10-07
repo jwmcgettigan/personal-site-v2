@@ -3,8 +3,11 @@
 import { css, jsx } from '@emotion/core';
 
 // Import helpers
-import { elevate, mq, bp, color } from 'helpers';
+import {} from 'helpers';
 
+/**
+ * Component wrapper for displaying a section of content.
+ */
 const Section = ({ children, ...props }) => {
 
   const style = theme => css`

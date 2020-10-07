@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { NavLink } from "react-router-dom";
@@ -11,7 +13,15 @@ import Link from 'modules/common/Link';
 // Import helpers
 import { elevate, mq, color } from 'helpers';
 
+//#endregion
+
+/**
+ * Component for toggling the visibility of tags for a project card.
+ */
 const TagsToggle = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     font-size: 1rem;
     border-radius: 25%;
@@ -40,18 +50,31 @@ const TagsToggle = (props) => {
     }
   `;
 
-  return <div css={style} {...props}>
-    <Icon icon='FaTags'/>
-  </div>
-} //() => setShowTags(state)
+  //#endregion
 
+  //#region JSX
+
+  return (
+    <div css={style} {...props}>
+      <Icon icon='FaTags'/>
+    </div>
+  );
+
+  //#endregion
+};
+
+
+//TODO: I should have a section for github stats if there is a github link.
+//TODO: Show tags over tinted image on hover over card.
+//TODO: Show status to the right of the project name.
 /**
- * I should have a section for github stats if there is a github link.
- * Show tags over tinted image on hover over card.
- * Show status to the right of the project name.
+ * Component that shows a name, description, image, tags, status,
+ * and date of a project.  Links to a relevant project page.
  */
 const ProjectCard = ({ project, ...rest}) => {
   const [showTags, setShowTags] = useState(false);
+
+  //#region CSS
 
   const style = theme => css`
     ${elevate(1)};
@@ -230,6 +253,9 @@ const ProjectCard = ({ project, ...rest}) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
   return (
     <div css={style} {...rest}>
 
@@ -278,6 +304,7 @@ const ProjectCard = ({ project, ...rest}) => {
 
     </div>
   );
+  //#endregion
 };
 
 export default ProjectCard;

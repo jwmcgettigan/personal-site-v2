@@ -1,11 +1,19 @@
+//#region Imports
+
 /** @jsx jsx */
-// Imports
 import { css, jsx } from '@emotion/core';
 
 // Import helpers
-import { elevate, mq, bp, color } from 'helpers';
+import { elevate, mq, color } from 'helpers';
 
+//#endregion
+
+/**
+ * Component for displaying the top-level layout and style of a page.
+ */
 const Article = ({ children, ...props }) => {
+
+  //#region CSS
 
   const style = theme => css`
     background: ${theme.foreground};
@@ -34,12 +42,14 @@ const Article = ({ children, ...props }) => {
       }
     }
   `;
+
+  //#endregion
   
   return (
     <article css={style} {...props}>
       {children}
     </article>
   );
-}
+};
 
 export default Article;

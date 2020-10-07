@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -15,7 +17,15 @@ import { elevate, mq, color } from 'helpers';
 // Import data
 import projects from './projects';
 
+//#endregion
+
+/**
+ * Page for navigating through my projects.
+ */
 const Portfolio = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     height: 100%;
 
@@ -55,7 +65,6 @@ const Portfolio = (props) => {
     }
 
     .projects {
-      margin-top: 2rem;
       display: grid;
       grid-gap: 2rem;
 
@@ -73,6 +82,10 @@ const Portfolio = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <Main css={style} {...props}>
       <Header css={css`.container{max-width:70rem;}`}>
@@ -88,6 +101,7 @@ const Portfolio = (props) => {
             <span className="play"><Icon icon="FaPlayCircle"/>{"In Progress"}</span>
             <span className="pause"><Icon icon="FaPauseCircle"/>{"Haitus"}</span>
             <span className="stop"><Icon icon="FaStopCircle"/>{"Complete"}</span>
+            <span><Icon icon="FaRegListAlt"/>{"Series"}</span>
           </div>
         </div>
         <div className="projects">
@@ -98,6 +112,8 @@ const Portfolio = (props) => {
       </Article>
     </Main>
   );
+
+  //#endregion
 };
 
 export default {

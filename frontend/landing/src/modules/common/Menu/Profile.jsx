@@ -1,23 +1,26 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
 // Import helpers
-import { elevate, mq, color } from 'helpers';
+import { mq } from 'helpers';
 
 //import profilePic from 'assets/head-shot-placeholder.jpg';
 import profilePic from 'assets/body-shot-256x256.png';
 
-const data = {
-  name: 'Justin McGettigan',
-  desc: 'I am a software developer with a passion for mathematics and computer science.',
-  status: 'Job Searching',
-  image: profilePic
-}
+//#endregion
 
+/**
+ * Component for displaying my name, profile picture,
+ * short self description, and current status.
+ */
 const Profile = (props) => {
   //TODO: Look into doing an animated '...' to <code> and consider adding colors.
+
+  //#region CSS
+
   const style = theme => css`
-    //font-family: Rubik, sans-serif;
     display: grid;
     align-content: flex-start;
     gap: 1rem;
@@ -82,14 +85,21 @@ const Profile = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <div css={style} {...props}>
-      <img src={data.image} alt={'ProfilePic'}/>
-      <h3>{data.name}</h3>
-      <p>{data.desc}</p>
-      <code><b>Status: </b>{data.status}</code>
+      <img src={profilePic} alt={'ProfilePic'}/>
+      <h3>Justin McGettigan</h3>
+      <p>I am a software developer with a passion for mathematics and computer science.</p>
+      <code><b>Status: </b>Job Searching</code>
     </div>
-  )
-}
+  );
+
+  //#endregion
+
+};
 
 export default Profile;

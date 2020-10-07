@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
@@ -13,6 +15,10 @@ import CalloutCard from 'modules/common/CalloutCard';
 
 // Import helpers
 import { elevate, mq, color } from 'helpers';
+
+//#endregion
+
+//#region Data
 
 const socialNetworks = [
   {
@@ -40,22 +46,25 @@ const socialNetworks = [
     icon: 'FaDev',
     url: 'https://dev.to/jwmcgettigan'
   },
-]
+];
+
+//#endregion
+
+//Sections:
+// - Introduction
+// - Interests
+// - Dream
 
 /**
- * Sections:
- * - Introduction
- * - Interests
- * - Dream
- * @param {*} props 
+ * Page for introducing myself, my website,
+ * my interests, and my dreams.
  */
 const About = (props) => {
-  const style = theme => css`
-    
-  `;
+
+  //#region JSX
 
   return (
-    <Main css={style} {...props}>
+    <Main {...props}>
       <Header>
         <h2>About</h2>
       </Header>
@@ -71,7 +80,9 @@ const About = (props) => {
             <li>Consolidating my knowledge and understanding on many topics for both myself and others.</li>
             <li>Exhibiting my work for its quality, digestibility, and visualizations.</li>
           </ul>
-          <p css={theme => css`color: ${theme.secondary.A700};`}>Note: I am currently working on adding content to the site.  For now, it's pretty bare-bones.</p>
+          <CalloutCard>
+            <p css={theme => css`color: ${theme.secondary.A700};`}>Note: I am currently working on adding content to the site.  For now, it's pretty bare-bones.</p>
+          </CalloutCard>
         </Section>
 
         <Section>
@@ -102,7 +113,10 @@ const About = (props) => {
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+  
+};
 
 export default {
   name: 'About',

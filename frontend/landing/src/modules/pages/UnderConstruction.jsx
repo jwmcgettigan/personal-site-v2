@@ -1,19 +1,23 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
+// Import components
 import Main from 'modules/common/Main';
 import Article from 'modules/common/Article';
 import Header from 'modules/common/Header';
-
 import Image from 'modules/common/Image';
 
-const UnderConstruction = (props) => {
-  const style = theme => css`
-    
-  `;
+//#endregion
 
+/**
+ * Page for informing the user that a url is currently 
+ * without content but will have content in the future.
+ */
+const UnderConstruction = (props) => {
   return (
-    <Main css={style} {...props}>
+    <Main {...props}>
       <Header>
         <h2 css={css`font-size: 1.3em;`}>Page Under Construction</h2>
       </Header>

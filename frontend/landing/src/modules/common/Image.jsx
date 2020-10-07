@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
@@ -6,10 +8,17 @@ import React, { useState } from 'react';
 // Import Components
 import Icon from 'modules/common/Icon';
 
+//#endregion
+
 //! WIP
+/**
+ * Component wrapper for displaying an image.
+ */
 const Image = ({ className, icon, ...props }) => {
   const [loaded, setLoaded] = useState(false);
   const exists = props.src != null;
+
+  //#region CSS
 
   const imageStyle = css`
     display: ${exists && loaded ? 'inline' : 'none'};
@@ -40,6 +49,10 @@ const Image = ({ className, icon, ...props }) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <div css={css`overflow: hidden;`} className={className}>
       <img css={imageStyle} onLoad={() => setLoaded(true)} {...props}/>
@@ -51,6 +64,9 @@ const Image = ({ className, icon, ...props }) => {
       </div>
     </div>
   );
-}
+
+  //#endregion
+  
+};
 
 export default Image;

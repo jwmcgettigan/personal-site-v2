@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
@@ -15,7 +17,12 @@ import Link from 'modules/common/Link';
 // Import helpers
 import { elevate, mq, color, googleFileURL } from 'helpers';
 
+//#endregion
+
 const MyPersonalWebsite = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
 
     .row {
@@ -34,6 +41,10 @@ const MyPersonalWebsite = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <Main css={style} {...props}>
       <Header>
@@ -48,7 +59,7 @@ const MyPersonalWebsite = (props) => {
             <p>I was finally able to come to terms with the fact that I just need to create <i>something</i>, put it out there, and <i>then</i> I can slowly improve upon it.  My website will always have something that can be improved but what is important is that it is achieving its purpose.  While I will always continue iterating upon it to optimize this achivement, I feel that I've created a site that fulfills its minimum purpose and am happy that I can finally release it for all to see.</p>
           </Section>
           <Section>
-            <h2>How it's made?</h2>
+            <h2>How It's Made</h2>
             <p>My website used create-react-app to kickstart the development process.  Subsequently, after looking through other websites for inspiration, I decided to create my own version of <a href="https://themes.3rdwavemedia.com/devcard/bs4/">this template</a>.</p>
             <p>At first I used scss for styling but as I wanted to implement theming and was steering my design philosophy towards material design, I decided to migrate toward a CSS in JS approach - resulting in my decision to use <a href="https://emotion.sh/">emotion</a> for my styling needs.</p>
             <p>The pages that I've decided to include on my website are:</p>
@@ -96,7 +107,9 @@ const MyPersonalWebsite = (props) => {
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+};
 
 export default {
   name: 'My Personal Website',

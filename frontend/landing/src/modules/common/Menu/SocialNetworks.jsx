@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -6,8 +8,11 @@ import Link from 'modules/common/Link';
 import Icon from 'modules/common/Icon';
 
 // Import helpers
-import { elevate, mq, color } from 'helpers';
+import { color } from 'helpers';
 
+//#endregion
+
+//#region Data
 
 const socialNetworks = [
   {
@@ -35,9 +40,17 @@ const socialNetworks = [
     icon: 'FaDev',
     url: 'https://dev.to/jwmcgettigan'
   },
-]
+];
 
-const SocialNetworks = ({ ...props }) => {
+//#endregion
+
+/**
+ * Component for displaying links to my primary social networks.
+ */
+const SocialNetworks = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     height: max-content;
     display: grid;
@@ -56,6 +69,10 @@ const SocialNetworks = ({ ...props }) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <div css={style} {...props}>
       {socialNetworks.map(sn => (
@@ -65,6 +82,9 @@ const SocialNetworks = ({ ...props }) => {
       ))}
     </div>
   );
-}
+
+  //#endregion
+
+};
 
 export default SocialNetworks;

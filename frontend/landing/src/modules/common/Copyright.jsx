@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 // Imports
 import { css, jsx } from '@emotion/core';
@@ -6,9 +8,17 @@ import { css, jsx } from '@emotion/core';
 import Icon from 'modules/common/Icon';
 
 // Import helpers
-import { elevate, mq, bp, color } from 'helpers';
+import { color } from 'helpers';
 
+//#endregion
+
+/**
+ * Component for displaying copyright 
+ * information at the bottom of a page.
+ */
 const Copyright = ({ children, ...rest }) => {
+
+  //#region CSS
 
   const style = theme => css`
     display: grid;
@@ -24,6 +34,10 @@ const Copyright = ({ children, ...rest }) => {
     font-size: 1.1rem;
     color: ${color(theme.background).getContrastText(15).str};
   `;
+
+  //#endregion
+
+  //#region JSX
   
   return (
     <p css={style} {...rest}>
@@ -32,6 +46,9 @@ const Copyright = ({ children, ...rest }) => {
       {(new Date().getFullYear())} Justin McGettigan
     </p>
   );
-}
+
+  //#endregion
+
+};
 
 export default Copyright;

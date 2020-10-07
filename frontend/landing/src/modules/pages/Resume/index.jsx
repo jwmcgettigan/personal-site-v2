@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -11,6 +13,10 @@ import Article from 'modules/common/Article';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
+
+//#endregion
+
+//#region Helpers & Data
 
 const downloadFile = (type) => {
   let file;
@@ -50,71 +56,68 @@ const formats = [
   {
     icon: 'FaFileAlt',
     filetype: '.txt',
-    color: theme => css`background: ${theme.primary.lighter};`
+    color: theme => css`background: ${color(theme.primary.lighter).adjustBrightness(10).str};`
   },
 ]
 
+//#endregion
+
+/**
+ * Component for downloading a resume file.
+ */
+const DownloadButton = ({format: f, ...rest}) => {
+  return (
+    <h5 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? () => {} : () => downloadFile(f.filetype)} {...rest}>
+      <Icon icon={f.icon}/>
+      {f.disable && <div className="disable-overlay"/>}
+      {<div className="download-overlay">{f.filetype}</div>}
+    </h5>
+  )
+};
+
+/**
+ * Page for displaying my resume(s).
+ */
 const Resume = ({ className }) => {
+
+  //#region CSS
+
   const style = theme => css`
-    
     .download-buttons {
-      position: absolute;
-      left: -10rem;
-      top: 2rem;
       z-index: 100;
       display: flex;
-      flex-wrap: wrap;
+      margin-left: auto;
       gap: 1rem;
       margin-top: 1rem;
-      font-family: Rubik, 'Courier New', Courier, monospace;
+      //font-family: Rubik, 'Courier New', Courier, monospace;
+      margin-top: 0;
 
-      ${mq('tablet-wide')} {
-        margin-top: 0;
+      ${mq('phone', 'max')} {
+        margin-left: 0;
+        margin-top: 0.5rem;
       }
 
-      ${mq('desktop')} {
+      h5 {
         display: grid;
-        grid-auto-flow: row;
-        justify-self: right;
-        align-content: flex-start;
-      }
-
-      h4 {
-        display: grid;
-        //padding: 0.5rem 1rem;
-        padding: 0.5rem 1rem;
-        width: 6rem;
+        padding: 0.25rem 1rem;
         color: white;
         font-weight: 300;
-        ${elevate(4)};
+        ${elevate(1)};
         cursor: pointer;
         justify-items: center;
         align-content: center;
 
-        ${mq('desktop')} {
-          width: 8rem;
-          padding: 1rem 2rem;
-        }
-
         svg {
           color: white;
-          width: 100%;
+          width: 32px;
           height: auto;
         }
 
         &:hover {
-          //color: ${theme.primary.A100};
           transform: scale(1.025);
-          ${elevate(8)};
-          svg {
-            //color: ${theme.primary.A100};
-          }
+          ${elevate(4)};
           .download-overlay {
-            display: grid;
-            color: ${theme.primary.A100};
-            svg {
-              color: ${theme.primary.A100};
-            }
+            display: block;
           }
         }
 
@@ -125,7 +128,6 @@ const Resume = ({ className }) => {
           width: 100%;
           height: 100%;
           cursor: default;
-          //background: ${color(theme.primary.main).setAlpha(0.9).str};
           background: repeating-linear-gradient(
             45deg,
             ${color(theme.primary.main).setAlpha(0.5).str},
@@ -142,14 +144,19 @@ const Resume = ({ className }) => {
           top: 0;
           width: 100%;
           height: 100%;
+          font-size: 2rem;
+          text-align: center;
           background: ${color(theme.primary.main).setAlpha(0.8).str};
-          svg {
-            top: 0.25rem;
-            ${mq('desktop')} {
-              top: -0.25rem;
-            }
-          }
         }
+      }
+    }
+  `;
+
+  const headerStyle = css`
+    ${mq('phone', 'max')} {
+      height: max-content;
+      .container {
+        flex-direction: column;
       }
     }
   `;
@@ -206,7 +213,7 @@ const Resume = ({ className }) => {
 
     ${mq('phone-wide', 'max')} {
       .contact {
-        justify-content: center;
+        justify-content: left;
         .basic { 
           grid-row: 2; grid-column: 1;
           a {
@@ -227,27 +234,28 @@ const Resume = ({ className }) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   return (
     <Main css={style}>
-      <Header>
+      <Header css={headerStyle}>
         <h2>Resume</h2>
-      </Header>
-      <Article>
         <div className="download-buttons">
-          {formats.map((f, i) => (
-            <h4 css={f.disable ? [f.color, css`pointer-events: none;`] : f.color} onClick={f.disable ? () => {} : () => downloadFile(f.filetype)} key={i}>
-              <Icon icon={f.icon}/>
-              {f.filetype}
-              {f.disable && <div className="disable-overlay"/>}
-              {<div className="download-overlay"><Icon icon="IoMdDownload"/></div>}
-            </h4>
+          {formats.map((format, i) => (
+            <DownloadButton format={format} key={i}/>
           ))}
         </div>
+      </Header>
+      <Article>
         <Basic css={basicStyle}/>
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+};
 
 export default {
   name: 'Resume',

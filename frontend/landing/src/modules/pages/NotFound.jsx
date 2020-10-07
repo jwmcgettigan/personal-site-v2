@@ -1,14 +1,30 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
+// Import components
 import Main from 'modules/common/Main';
 import Article from 'modules/common/Article';
 import Header from 'modules/common/Header';
 
+//#endregion
+
+/**
+ * Page for informing the user that a url
+ * does not exist for any purpose.
+ */
 const NotFound = (props) => {
+
+  //#region CSS
+
   const style = theme => css`
     article { width: 100%; }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <Main css={style} {...props}>
@@ -21,7 +37,10 @@ const NotFound = (props) => {
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+
+};
 
 export default {
   name: 'Not Found',

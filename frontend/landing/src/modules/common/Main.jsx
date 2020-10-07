@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
@@ -8,23 +10,30 @@ import { useSwipeable } from 'react-swipeable';
 import ScrollToTop from 'modules/common/ScrollToTop';
 import Menu from 'modules/common/Menu';
 import Copyright from 'modules/common/Copyright';
-import Icon from 'modules/common/Icon';
 
 // Import helpers
 import { mq, color, elevate } from 'helpers';
 
+//#endregion
+
 let indicate = true;
 
+/**
+ * Component for displaying the content of a path.
+ */
 const Main = ({ children, className }) => {
   const [isOpen, setOpen] = useState(true);
   if(isOpen) {
     indicate = false;
   }
+
   const handlers = useSwipeable({
     trackMouse: true,
     onSwipedRight: () => setOpen(true),
     onSwipedLeft: () => setOpen(false)
   });
+
+  //#region CSS
 
   const gridBackground = (bg_color) => css`
     background-color: ${bg_color};
@@ -92,48 +101,11 @@ const Main = ({ children, className }) => {
         }
       ` : ''};
     }
-
-    .repo-card {
-      display: grid;
-      align-content: flex-start;
-      height: auto;
-      width: auto;
-      max-width: 300px;
-
-      .header {
-        display: grid;
-        justify-content: center;
-
-        .avatar {
-          width: 18%;
-          height: 80%;
-        }
-        .avatar > img {
-          width: 100%;
-          height: 100%;
-        }
-
-        .name {
-          line-height: 1;
-        }
-      }
-
-      .content {
-        height: auto;
-      }
-
-      .status {
-        position: relative;
-        height: auto;
-        line-height: normal;
-        li {
-          display: flex;
-          justify-content: center;
-          strong { margin-right: 0.2rem; }
-        }
-      }
-    }
   `;
+
+  //#endregion
+
+  //#region JSX
 
   return (
     <>
@@ -152,6 +124,9 @@ const Main = ({ children, className }) => {
       </div>
     </>
   );
-}
+
+  //#endregion
+
+};
 
 export default Main;

@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { withTheme } from 'emotion-theming';
@@ -22,9 +24,13 @@ import CalloutCard from 'modules/common/CalloutCard';
 import { elevate, mq, color, googleFileURL, youtubeEmbedURL } from 'helpers';
 import { useState } from 'react';
 
+//#endregion
+
 //pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Renegade = (props) => {
+
+  //#region CSS
 
   const style = theme => css`
     .videos {
@@ -84,6 +90,10 @@ const Renegade = (props) => {
     }
   `;
 
+  //#endregion
+
+  //#region JSX
+
   //<RepoCard username="jwmcgettigan" repo="renegade"/>
 
   return (
@@ -129,6 +139,9 @@ const Renegade = (props) => {
           <div>
             <h3>Line Following</h3>
             <p>Use the ZED stereoscopic camera to stay centered a line (blue tape).</p>
+            <CalloutCard>
+              <p>This was our first challenge and the one that forced me to learn python very quickly as I hadn't used it before this taking this course.</p>
+            </CalloutCard>
             <ol>
               <li><b>Line Following:</b> Use the line detector to determine the steering angle and speed, keeping the car centered on the line.
                 <ol type="a">
@@ -148,6 +161,9 @@ const Renegade = (props) => {
           <div>
             <h3>Obstacle Detection & Lane Centering</h3>
             <p>Use a Lidar to stay centered between walls and to stop before obstacles.</p>
+            <CalloutCard>
+              <p>It was particularly satisfying when we had this functionality working for every scenario we could think of.</p>
+            </CalloutCard>
             <ol>
               <li><b>Obstacle Detection:</b> Detect if there is an obstacle in front of the robot.
                 <ol type="a">
@@ -172,6 +188,9 @@ const Renegade = (props) => {
           <div>
             <h3>Visual Servoing Serpentine & Pole Bending</h3>
             <p>Use the ZED camera and Lidar to navigate around certain landmarks (<span css={css`color: #d3a51c;`}>yellow cones</span> and an <span css={css`color: #be4e19;`}>orange cube</span>) while maintaining a serpentine pattern.</p>
+            <CalloutCard>
+              <p>We used the ZED camera for object recognition and the Lidar for distance measurements.</p>
+            </CalloutCard>
             <ol>
               <li><b>Polebending:</b> Drive parallel, perform U-turns, and execute serpentine.
                 <ol type="a">
@@ -222,7 +241,9 @@ const Renegade = (props) => {
       </Article>
     </Main>
   );
-}
+
+  //#endregion
+};
 
 export default {
   name: 'Renegade',

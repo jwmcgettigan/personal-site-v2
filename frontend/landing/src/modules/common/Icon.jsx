@@ -1,3 +1,5 @@
+//#region Imports
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
@@ -11,12 +13,14 @@ import {
   FaGamepad, FaTools, FaExclamationTriangle, FaKey,
   FaEnvelopeOpenText, FaRegCopyright, FaFilePdf,
   FaPauseCircle, FaPlayCircle, FaStopCircle, FaFileWord,
-  FaFile, FaTags, FaBook
+  FaFile, FaTags, FaBook, FaRegListAlt
 } from 'react-icons/fa';
 import { IoIosPaper, IoMdDownload } from 'react-icons/io';
 import { MdWallpaper, MdKeyboardArrowRight } from 'react-icons/md';
 import { RiGitRepositoryPrivateLine } from 'react-icons/ri';
 import { GrDocumentTxt } from 'react-icons/gr';
+
+//#endregion
 
 const Icons = {
   FaGithub, FaGithubAlt, FaLinkedin, FaLinkedinIn,
@@ -28,13 +32,15 @@ const Icons = {
   RiGitRepositoryPrivateLine, MdKeyboardArrowRight,
   FaPauseCircle, FaPlayCircle, FaStopCircle, FaFilePdf,
   GrDocumentTxt, FaFileWord, FaFile, IoMdDownload, FaTags,
-  FaBook
+  FaBook, FaRegListAlt
 };
 
-//DONE: I've verified that {...props} satisfies className={className}
-const Icon = ({ icon, ...props }) => {
+/**
+ * Component for displaying an icon from 'react-icons'.
+ */
+const Icon = ({ icon, ...rest }) => {
   const Icon = Icons[icon];
-  return <Icon {...props}/>;
+  return <Icon {...rest}/>;
 };
 
 export default Icon;

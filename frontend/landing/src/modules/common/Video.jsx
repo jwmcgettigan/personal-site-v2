@@ -1,10 +1,17 @@
+//#region Imports
+
 /** @jsx jsx */
 /** @jsxFrag React.Fragment */
 import { css, jsx } from '@emotion/core';
 import React from 'react';
 
-// Consider custom overlays on the video player
+//#endregion
 
+//TODO: Consider custom overlays on the video player
+
+/**
+ * Component wrapper for displaying a video.
+ */
 const Video = ({className, ...rest}) => {
   const style = css`
     iframe {
@@ -21,6 +28,6 @@ const Video = ({className, ...rest}) => {
       allowFullScreen/>
     </div>
   );
-}
+};
 
 export default Video;
