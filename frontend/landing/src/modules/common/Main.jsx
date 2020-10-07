@@ -106,6 +106,7 @@ const Main = ({ children, className }) => {
       position: absolute;
       height: 100%;
       width: 100%;
+      pointer-events: none;
 
       ${mq('tablet-wide', 'max')} {
         background-color: ${isOpen ? 'rgba(0,0,0,0.6)' : 'none'};
