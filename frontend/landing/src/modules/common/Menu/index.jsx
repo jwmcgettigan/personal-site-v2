@@ -26,7 +26,8 @@ const Menu = (props) => {
     /* Layout */
     position: fixed;
     top: 0; left: 0;
-    height: 100vh;
+    //height: 100vh;
+    height: 100%;
     padding: 2rem;
 
     /* Color */
