@@ -94,7 +94,7 @@ const Profile = (props) => {
       <img src={profilePic} alt={'ProfilePic'}/>
       <h3>Justin McGettigan</h3>
       <p>I am a software developer with a passion for mathematics and computer science.</p>
-      <code><b>Status: </b>Job Searching</code>
+      <code><b>Status: </b>Consolidating Skills</code>
     </div>
   );
 

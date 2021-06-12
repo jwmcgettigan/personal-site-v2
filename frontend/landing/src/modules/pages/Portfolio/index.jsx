@@ -39,7 +39,7 @@ const Portfolio = (props) => {
         flex-wrap: wrap;
         gap: 0.5rem;
         align-self: center;
-        height: 100%;
+        //height: 100%;
         width: 100%;
 
         span {

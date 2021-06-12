@@ -57,7 +57,7 @@ const resume = {
         "Visualized the distance of persons from a point, based upon the strength of their phones' bluetooth signal, by using plot.ly to process data through an Azure API.",
         "Collaborated with a team on a hackathon project (Suspect Search) by implementing the keyword detection, speech-to-text, and natural language processing components.",
       ],
-      leveraged: "Git, Docker, C, C++, Python, OpenCV, Matrix Math, Azure App/Log Analytics, plot.ly, Grafana, Intel RealSense SDK & D435 RGB-D camera."
+      leveraged: "Git, Docker, C, C++, Python, OpenCV, Linear Algebra, Azure App/Log Analytics, plot.ly, Grafana, Intel RealSense SDK & D435 RGB-D camera."
     },
     {
       company: "Maven Asset Management",
@@ -98,7 +98,6 @@ const resume = {
       desc: "",
       highlights: [
         "Developed a React app that functions as a real-time information hub for users to refer to during PhoenixHacks.",
-        "Designed and wrote the web app after kickstarting it with create-react-app.",
         "Setup an API server hosting a discord bot and a socket.io server - for real-time announcements from discord."
       ],
       utilized: "JavaScript, HTML, CSS, ReactJS, NodeJS, ExpressJS, DiscordJS, SocketIO, Git"
@@ -108,7 +107,7 @@ const resume = {
       website: "",
       desc: "",
       highlights: [
-        "Exercised high levels of linear algebra for conversions between spatial frames of reference.",
+        "Exercised linear algebra to convert between spatial frames of reference.",
         "Created stitched visualizations of point cloud data from multiple cameras and a top-down view of tracked persons."
       ],
       utilized: "Python, OpenCV, C, C++, OpenPTrack, ROS, Linux, Git"
